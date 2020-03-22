@@ -11,6 +11,17 @@ class IndexController extends Controller
   }
 
   public function post(Request $request){
-    return view('index',['title',$request->title]);
+    if($request->mode === 'create'){
+      $param = [
+        'mode' => $request->mode,
+        'title' => $request->title,
+        'memo' => $request->memo,
+      ];
+      \Debugbar::info($param);
+      header('content-type: application/json; charset=utf-8');
+      echo json_encode($param);
+      exit;
+    }
+    return view('index',['param','ぱらめーただよ']);
   }
 }

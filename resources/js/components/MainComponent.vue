@@ -19,18 +19,29 @@ export default {
 
     }
   },
-  props:[],
+  props:['memoParam'],
   created(){
     console.log(this.$store.state.message);
   },
   mounted(){
 
   },
+  beforeUpdate(){
+    console.log(this.memoParam);
+  },
   methods:{
-
   },
   computed:{
 
-  }
+  },
+  watch:{
+    memoParam:{
+    handler:(newval,oldval)=>{
+      console.log(newval);
+    },
+    deep: true,
+    immediate: false
+      }
+    }
 }
 </script>

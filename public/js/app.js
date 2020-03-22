@@ -1952,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
         title: this.title,
         memo: this.memo
       }).then(function (res) {
-        console.log(res);
+        console.log(res['data']);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1993,13 +1993,25 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
-  props: [],
+  props: ['memoParam'],
   created: function created() {
     console.log(this.$store.state.message);
   },
   mounted: function mounted() {},
+  beforeUpdate: function beforeUpdate() {
+    console.log(this.memoParam);
+  },
   methods: {},
-  computed: {}
+  computed: {},
+  watch: {
+    memoParam: {
+      handler: function handler(newval, oldval) {
+        console.log(newval);
+      },
+      deep: true,
+      immediate: false
+    }
+  }
 });
 
 /***/ }),

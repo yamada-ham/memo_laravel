@@ -1,11 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-  @isset($title)
-    <p>{{$title}}</p>
-  @endisset
-  @empty($title)
-    <p>タイトルない</p>
-  @endempty
-  <main-component></main-component>
+  @php
+  if(!isset($param)){$param = 'から';}else{echo $param;}
+  @endphp
+  <main-component memo-param='{{$param}}'></main-component>
 @endsection
