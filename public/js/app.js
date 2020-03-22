@@ -1922,15 +1922,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
-    return {};
+    return {
+      title: '',
+      memo: ''
+    };
   },
   props: [],
   created: function created() {},
   mounted: function mounted() {},
-  methods: {},
+  methods: {
+    keyup: function keyup($event) {
+      console.log(this.title);
+    }
+  },
   computed: {}
 });
 
@@ -37347,24 +37362,81 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "createMemoBox" }, [
-      _c("div", { staticClass: "inCreateMemoBox" }, [
-        _c("div", { staticClass: "createMemoFormBox" }, [
-          _c("div", { staticClass: "inCreateMemoFormBox" }, [
-            _c("form", [_c("textarea", [_vm._v("creatememo")])])
-          ])
+  return _c("div", { staticClass: "createMemoBox" }, [
+    _c("div", { staticClass: "inCreateMemoBox" }, [
+      _c("form", { staticClass: "createMemoFormBox" }, [
+        _c("div", { staticClass: "inCreateMemoFormBox" }, [
+          _c("div", { staticClass: "textareaTitleBox" }, [
+            _c("div", { staticClass: "inTextareaTitleBox" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
+                attrs: { rows: "1", placeholder: "タイトル" },
+                domProps: { value: _vm.title },
+                on: {
+                  keyup: function($event) {
+                    return _vm.keyup($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "textareaMemoBox" }, [
+            _c("div", { staticClass: "inTextareaMemoBox" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.memo,
+                    expression: "memo"
+                  }
+                ],
+                attrs: { rows: "1", placeholder: "メモを入力" },
+                domProps: { value: _vm.memo },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.memo = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [_vm._v("作成")]
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
