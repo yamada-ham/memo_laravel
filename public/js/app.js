@@ -1944,6 +1944,18 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     keyup: function keyup($event) {
       console.log(this.title);
+    },
+    submit: function submit($event) {
+      console.log($event);
+      axios.post('/', {
+        mode: 'create',
+        title: this.title,
+        memo: this.memo
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   computed: {}
@@ -37422,11 +37434,16 @@ var render = function() {
           _c(
             "button",
             {
-              attrs: { type: "submit" },
+              attrs: { ype: "submit" },
               on: {
-                click: function($event) {
-                  $event.preventDefault()
-                }
+                click: [
+                  function($event) {
+                    return _vm.submit($event)
+                  },
+                  function($event) {
+                    $event.preventDefault()
+                  }
+                ]
               }
             },
             [_vm._v("作成")]

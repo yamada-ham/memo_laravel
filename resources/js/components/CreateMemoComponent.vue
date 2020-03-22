@@ -13,7 +13,7 @@
       <textarea v-model="memo" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
-    <button type="submit" @click.prevent>作成</button>
+    <button @click="submit($event)"ype="submit" @click.prevent>作成</button>
   </div>
   </form>
 </div>
@@ -38,6 +38,20 @@ export default {
   methods:{
     keyup($event){
       console.log(this.title);
+    },
+    submit($event){
+      console.log($event);
+      axios.post('/', {
+        mode: 'create',
+        title: this.title,
+        memo: this.memo
+      })
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   },
   computed:{
