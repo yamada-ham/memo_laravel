@@ -18,7 +18,7 @@ export default {
   },
   props:[],
   created(){
-
+    console.log(this.$store.state.message);
   },
   mounted(){
 
