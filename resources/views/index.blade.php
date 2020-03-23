@@ -4,5 +4,8 @@
   @php
   if(!isset($param)){$param = 'から';}else{echo $param;}
   @endphp
-  <main-component memo-param='{{$param}}'></main-component>
+  @isset($memos)
+    {{$memos}}
+  @endisset
+  <create-memo-component></create-memo-component>
 @endsection

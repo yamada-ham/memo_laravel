@@ -9,6 +9,7 @@ Vue.use(Router);
 
 
 Vue.component('main-component', require('./components/MainComponent.vue').default);
+Vue.component('create-memo-component', require('./components/CreateMemoComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

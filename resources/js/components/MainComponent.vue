@@ -6,7 +6,7 @@
     <router-link to="/Thank">商品情報</router-link>
   </nav>
   <router-view /> -->
-  <create-memo-component></create-memo-component>
+  <!-- <create-memo-component></create-memo-component> -->
 </main>
 </template>
 
