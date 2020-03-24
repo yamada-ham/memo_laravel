@@ -7,7 +7,7 @@
   </nav>
   <router-view /> -->
   <create-memo-component></create-memo-component>
-    <update-memo-component v-for="memo in cptMemos" :key="memo['id']" :memo-data="memo"></update-memo-component>
+
 </main>
 </template>
 
@@ -18,33 +18,25 @@ export default {
   components:{CreateMemoComponent,UpdateMemoComponent},
   data(){
     return{
-      id:'',
-      title:'',
-      memo:''
     }
   },
-  props:['memoData'],
+  props:[],
   created(){
-    console.log(this.$store.state.message);
   },
   mounted(){
-    console.log(this.memoData);
   },
   methods:{
   },
   computed:{
-    cptMemos(){
-      return JSON.parse(this.memoData);
-    }
   },
   watch:{
-    memoParam:{
-    handler:(newval,oldval)=>{
-      console.log(newval);
-    },
-    deep: true,
-    immediate: false
-      }
+    // memoParam:{
+    // handler:(newval,oldval)=>{
+    //   console.log(newval);
+    // },
+    // deep: true,
+    // immediate: false
+    //   }
     }
 }
 </script>

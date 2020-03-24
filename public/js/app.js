@@ -1930,29 +1930,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
     return {
       title: '',
-      memo: ''
+      memo: '',
+      memoData: ''
     };
   },
   props: [],
-  created: function created() {},
+  created: function created() {
+    this.selectMemos();
+  },
   mounted: function mounted() {},
   methods: {
     keyup: function keyup($event) {
       console.log(this.title);
     },
-    submit: function submit($event) {
+    selectMemos: function selectMemos() {
+      var that = this;
+      axios.post('/', {
+        mode: 'select'
+      }).then(function (res) {
+        that.memoData = res['data'];
+        console.log(that.memoData);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      console.log(this.memoData);
+    },
+    create: function create($event) {
       console.log($event);
+      var that = this;
       axios.post('/', {
         mode: 'create',
         title: this.title,
         memo: this.memo
       }).then(function (res) {
         console.log(res['data']);
+        that.memoData.push(res['data']);
+        console.log(that.memoData);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1995,33 +2016,20 @@ __webpack_require__.r(__webpack_exports__);
     UpdateMemoComponent: _UpdateMemoComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
-    return {
-      id: '',
-      title: '',
-      memo: ''
-    };
+    return {};
   },
-  props: ['memoData'],
-  created: function created() {
-    console.log(this.$store.state.message);
-  },
-  mounted: function mounted() {
-    console.log(this.memoData);
-  },
+  props: [],
+  created: function created() {},
+  mounted: function mounted() {},
   methods: {},
-  computed: {
-    cptMemos: function cptMemos() {
-      return JSON.parse(this.memoData);
-    }
-  },
-  watch: {
-    memoParam: {
-      handler: function handler(newval, oldval) {
-        console.log(newval);
-      },
-      deep: true,
-      immediate: false
-    }
+  computed: {},
+  watch: {// memoParam:{
+    // handler:(newval,oldval)=>{
+    //   console.log(newval);
+    // },
+    // deep: true,
+    // immediate: false
+    //   }
   }
 });
 
@@ -2066,24 +2074,18 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isShow: 'true',
-      // title:JSON.parse(this.memoData)['title'],
-      // memo:JSON.parse(this.memoData)['memo']
       title: '',
       memo: ''
     };
   },
   props: ['memoData'],
-  created: function created() {
-    console.log(this.memoData);
-  },
-  mounted: function mounted() {// console.log(this.memoData);
-  },
+  created: function created() {},
+  mounted: function mounted() {},
   methods: {
     keyup: function keyup($event) {
       console.log(this.title);
     },
-    submit: function submit($event) {
-      console.log($event);
+    update: function update($event) {
       axios.post('/', {
         mode: 'update',
         id: this.memoData.id,
@@ -37483,84 +37485,97 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "createMemoBox" }, [
-    _c("div", { staticClass: "inCreateMemoBox" }, [
-      _c("form", { staticClass: "createMemoFormBox" }, [
-        _c("div", { staticClass: "inCreateMemoFormBox" }, [
-          _c("div", { staticClass: "textareaTitleBox" }, [
-            _c("div", { staticClass: "inTextareaTitleBox" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.title,
-                    expression: "title"
-                  }
-                ],
-                attrs: { rows: "1", placeholder: "タイトル" },
-                domProps: { value: _vm.title },
-                on: {
-                  keyup: function($event) {
-                    return _vm.keyup($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "createMemoBox" }, [
+        _c("div", { staticClass: "inCreateMemoBox" }, [
+          _c("form", { staticClass: "createMemoFormBox" }, [
+            _c("div", { staticClass: "inCreateMemoFormBox" }, [
+              _c("div", { staticClass: "textareaTitleBox" }, [
+                _c("div", { staticClass: "inTextareaTitleBox" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title"
+                      }
+                    ],
+                    attrs: { rows: "1", placeholder: "タイトル" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      keyup: function($event) {
+                        return _vm.keyup($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      }
                     }
-                    _vm.title = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "textareaMemoBox" }, [
-            _c("div", { staticClass: "inTextareaMemoBox" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.memo,
-                    expression: "memo"
-                  }
-                ],
-                attrs: { rows: "1", placeholder: "メモを入力" },
-                domProps: { value: _vm.memo },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "textareaMemoBox" }, [
+                _c("div", { staticClass: "inTextareaMemoBox" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.memo,
+                        expression: "memo"
+                      }
+                    ],
+                    attrs: { rows: "1", placeholder: "メモを入力" },
+                    domProps: { value: _vm.memo },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.memo = $event.target.value
+                      }
                     }
-                    _vm.memo = $event.target.value
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  attrs: { type: "submit" },
+                  on: {
+                    click: [
+                      function($event) {
+                        return _vm.create($event)
+                      },
+                      function($event) {
+                        $event.preventDefault()
+                      }
+                    ]
                   }
-                }
-              })
+                },
+                [_vm._v("作成")]
+              )
             ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              attrs: { type: "submit" },
-              on: {
-                click: [
-                  function($event) {
-                    return _vm.submit($event)
-                  },
-                  function($event) {
-                    $event.preventDefault()
-                  }
-                ]
-              }
-            },
-            [_vm._v("作成")]
-          )
+          ])
         ])
-      ])
-    ])
-  ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.memoData, function(memo) {
+        return _c("update-memo-component", {
+          key: memo["id"],
+          attrs: { "memo-data": memo }
+        })
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37584,20 +37599,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    [
-      _c("create-memo-component"),
-      _vm._v(" "),
-      _vm._l(_vm.cptMemos, function(memo) {
-        return _c("update-memo-component", {
-          key: memo["id"],
-          attrs: { "memo-data": memo }
-        })
-      })
-    ],
-    2
-  )
+  return _c("main", [_c("create-memo-component")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37687,7 +37689,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      return _vm.submit($event)
+                      return _vm.update($event)
                     }
                   }
                 },

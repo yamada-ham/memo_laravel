@@ -14,7 +14,7 @@
       <textarea v-model="memoData.memo" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
-    <button @click.prevent="submit($event)" type="submit">更新</button>
+    <button @click.prevent="update($event)" type="submit">更新</button>
     <button @click.prevent="del($event)" type="submit">削除</button>
   </div>
     <input type="hidden" v-model="memoData.id"/>
@@ -29,25 +29,20 @@ export default {
   data(){
     return{
         isShow:'true',
-        // title:JSON.parse(this.memoData)['title'],
-        // memo:JSON.parse(this.memoData)['memo']
         title:'',
         memo:''
     }
   },
   props:['memoData'],
   created(){
-    console.log(this.memoData)
   },
   mounted(){
-    // console.log(this.memoData);
   },
   methods:{
     keyup($event){
       console.log(this.title);
     },
-    submit($event){
-      console.log($event)
+    update($event){
       axios.post('/', {
         mode: 'update',
         id:this.memoData.id,
@@ -59,7 +54,7 @@ export default {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      })
     },
     del($event){
       let that = this

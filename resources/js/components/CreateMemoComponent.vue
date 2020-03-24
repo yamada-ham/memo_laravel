@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class="createMemoBox">
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">
@@ -13,10 +14,12 @@
       <textarea v-model="memo" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
-    <button @click="submit($event) "type="submit" @click.prevent>作成</button>
+    <button @click="create($event) "type="submit" @click.prevent>作成</button>
   </div>
   </form>
 </div>
+</div>
+<update-memo-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo"></update-memo-component>
 </div>
 </template>
 
@@ -26,21 +29,37 @@ export default {
   data(){
     return{
         title:'',
-        memo:''
+        memo:'',
+        memoData:''
     }
   },
   props:[],
   created(){
+    this.selectMemos()
   },
   mounted(){
-
   },
   methods:{
     keyup($event){
       console.log(this.title);
     },
-    submit($event){
+    selectMemos(){
+      let that = this
+      axios.post('/', {
+        mode: 'select',
+      })
+      .then(function (res) {
+        that.memoData = res['data']
+        console.log(that.memoData);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      console.log(this.memoData)
+    },
+    create($event){
       console.log($event);
+      let that = this
       axios.post('/', {
         mode: 'create',
         title: this.title,
@@ -48,6 +67,8 @@ export default {
       })
       .then(function (res) {
         console.log(res['data']);
+        that.memoData.push(res['data']);
+        console.log(that.memoData);
       })
       .catch(function (error) {
         console.log(error);

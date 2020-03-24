@@ -10,12 +10,17 @@ class IndexController extends Controller
   public function get(){
     $memos = DB::table('memo')->get();
     // $memos = json_encode($memos);
-    \Debugbar::info(['db'=>$memos]);
+    // \Debugbar::info(['db'=>$memos]);
     return view('index',['memos'=>$memos]);
   }
 
   public function post(Request $request){
     switch($request->mode){
+      case 'select':
+        $selectAll = DB::table('memo')->get();
+        header('content-type: application/json; charset=utf-8');
+        echo json_encode($selectAll);
+        break;
       case 'create':
         $param = [
           // 'mode' => $request->mode,
@@ -23,9 +28,14 @@ class IndexController extends Controller
           'memo' => $request->memo,
         ];
         DB::table('memo')->insert($param);
-        \Debugbar::info($param);
+        // \Debugbar::info($param);
+
+        $lastInsertId = DB::table('memo')->max('id');
+        $lastInsertMemo = DB::table('memo')->where('id',$lastInsertId)->first();
+        // \Debugbar::info($lastInsertMemo);
+
         header('content-type: application/json; charset=utf-8');
-        echo json_encode($param);
+        echo json_encode($lastInsertMemo);
         break;
       case 'update':
         $param = [
