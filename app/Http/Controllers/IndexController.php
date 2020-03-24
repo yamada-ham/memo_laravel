@@ -15,17 +15,28 @@ class IndexController extends Controller
   }
 
   public function post(Request $request){
-    if($request->mode === 'create'){
-      $param = [
-        // 'mode' => $request->mode,
-        'title' => $request->title,
-        'memo' => $request->memo,
-      ];
-      DB::table('memo')->insert($param);
-      \Debugbar::info($param);
-      header('content-type: application/json; charset=utf-8');
-      echo json_encode($param);
+    switch($request->mode){
+      case 'create':
+        $param = [
+          // 'mode' => $request->mode,
+          'title' => $request->title,
+          'memo' => $request->memo,
+        ];
+        DB::table('memo')->insert($param);
+        \Debugbar::info($param);
+        header('content-type: application/json; charset=utf-8');
+        echo json_encode($param);
+        break;
+      case 'update':
+        $param = [
+          'title' => $request->title,
+          'memo' => $request->memo,
+        ];
+        \Debugbar::info($param);
+        DB::table('memo')->where('id',$request->id)->update($param);
+        break;
     }
+
     // return view('index',['param','ぱらめーただよ']);
     // return redirect()->route('');
   }

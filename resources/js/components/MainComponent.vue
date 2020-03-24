@@ -6,33 +6,36 @@
     <router-link to="/Thank">商品情報</router-link>
   </nav>
   <router-view /> -->
-  <!-- <create-memo-component></create-memo-component> -->
+  <create-memo-component></create-memo-component>
+    <update-memo-component v-for="memo in cptMemos" :key="memo['id']" :memo-data="memo"></update-memo-component>
 </main>
 </template>
 
 <script>
 import CreateMemoComponent from './CreateMemoComponent'
+import UpdateMemoComponent from './UpdateMemoComponent'
 export default {
-  components:{CreateMemoComponent},
+  components:{CreateMemoComponent,UpdateMemoComponent},
   data(){
     return{
-
+      id:'',
+      title:'',
+      memo:''
     }
   },
-  props:['memoParam'],
+  props:['memoData'],
   created(){
     console.log(this.$store.state.message);
   },
   mounted(){
-
-  },
-  beforeUpdate(){
-    console.log(this.memoParam);
+    console.log(this.memoData);
   },
   methods:{
   },
   computed:{
-
+    cptMemos(){
+      return JSON.parse(this.memoData);
+    }
   },
   watch:{
     memoParam:{

@@ -4,8 +4,9 @@
   @php
   if(!isset($param)){$param = 'から';}else{echo $param;}
   @endphp
-  @isset($memos)
-    {{$memos}}
-  @endisset
-  <create-memo-component></create-memo-component>
+  <main-component memo-data="{{json_encode($memos)}}"></main-component>
+
+  {{-- @foreach($memos as $memo)
+    <update-memo-component memo-data="{{json_encode($memos)}}"></update-memo-component>
+  @endforeach --}}
 @endsection

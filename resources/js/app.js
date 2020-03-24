@@ -9,6 +9,7 @@ Vue.use(Router);
 
 
 Vue.component('main-component', require('./components/MainComponent.vue').default);
+Vue.component('update-memo-component', require('./components/UpdateMemoComponent.vue').default);
 Vue.component('create-memo-component', require('./components/CreateMemoComponent.vue').default);
 
 /**

@@ -13,7 +13,7 @@
       <textarea v-model="memo" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
-    <button @click="submit($event)"ype="submit" @click.prevent>作成</button>
+    <button @click="submit($event) "type="submit" @click.prevent>作成</button>
   </div>
   </form>
 </div>
