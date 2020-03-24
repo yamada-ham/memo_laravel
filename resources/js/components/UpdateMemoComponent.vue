@@ -1,5 +1,5 @@
 <template>
-<div class="updateMemoBox">
+<div class="updateMemoBox" v-if="isShow">
   アップデート用{{memoData.id}}
 <div class="inupdateMemoBox">
   <form class="updateMemoFormBox">
@@ -14,7 +14,8 @@
       <textarea v-model="memoData.memo" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
-    <button @click="submit($event)" type="submit" @click.prevent>更新</button>
+    <button @click.prevent="submit($event)" type="submit">更新</button>
+    <button @click.prevent="del($event)" type="submit">削除</button>
   </div>
     <input type="hidden" v-model="memoData.id"/>
   </form>
@@ -27,6 +28,7 @@ export default {
   components:{},
   data(){
     return{
+        isShow:'true',
         // title:JSON.parse(this.memoData)['title'],
         // memo:JSON.parse(this.memoData)['memo']
         title:'',
@@ -35,7 +37,7 @@ export default {
   },
   props:['memoData'],
   created(){
-    console.log(this.memoData);
+    console.log(this.memoData)
   },
   mounted(){
     // console.log(this.memoData);
@@ -45,7 +47,7 @@ export default {
       console.log(this.title);
     },
     submit($event){
-      console.log($event);
+      console.log($event)
       axios.post('/', {
         mode: 'update',
         id:this.memoData.id,
@@ -53,6 +55,20 @@ export default {
         memo: this.memoData.memo
       })
       .then(function (res) {
+        console.log(res['data']);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    del($event){
+      let that = this
+      axios.post('/', {
+        mode: 'delete',
+        id:this.memoData.id,
+      })
+      .then(function (res) {
+        that.isShow = false;
         console.log(res['data']);
       })
       .catch(function (error) {

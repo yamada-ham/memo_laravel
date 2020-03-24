@@ -34,6 +34,13 @@ class IndexController extends Controller
         ];
         \Debugbar::info($param);
         DB::table('memo')->where('id',$request->id)->update($param);
+        header('content-type: application/json; charset=utf-8');
+        echo json_encode('Successfully updated!!');
+        break;
+      case 'delete':
+        DB::table('memo')->where('id',$request->id)->delete();
+        header('content-type: application/json; charset=utf-8');
+        echo json_encode('Successfully deleted!!');
         break;
     }
 

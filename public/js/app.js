@@ -2060,10 +2060,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
     return {
+      isShow: 'true',
       // title:JSON.parse(this.memoData)['title'],
       // memo:JSON.parse(this.memoData)['memo']
       title: '',
@@ -2088,6 +2090,18 @@ __webpack_require__.r(__webpack_exports__);
         title: this.memoData.title,
         memo: this.memoData.memo
       }).then(function (res) {
+        console.log(res['data']);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    del: function del($event) {
+      var that = this;
+      axios.post('/', {
+        mode: 'delete',
+        id: this.memoData.id
+      }).then(function (res) {
+        that.isShow = false;
         console.log(res['data']);
       })["catch"](function (error) {
         console.log(error);
@@ -37607,106 +37621,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "updateMemoBox" }, [
-    _vm._v("\n  アップデート用" + _vm._s(_vm.memoData.id) + "\n"),
-    _c("div", { staticClass: "inupdateMemoBox" }, [
-      _c("form", { staticClass: "updateMemoFormBox" }, [
-        _c("div", { staticClass: "inupdateMemoFormBox" }, [
-          _c("div", { staticClass: "textareaTitleBox" }, [
-            _c("div", { staticClass: "inTextareaTitleBox" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.memoData.title,
-                    expression: "memoData.title"
-                  }
-                ],
-                attrs: { rows: "1", placeholder: "タイトル" },
-                domProps: { value: _vm.memoData.title },
-                on: {
-                  keyup: function($event) {
-                    return _vm.keyup($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+  return _vm.isShow
+    ? _c("div", { staticClass: "updateMemoBox" }, [
+        _vm._v("\n  アップデート用" + _vm._s(_vm.memoData.id) + "\n"),
+        _c("div", { staticClass: "inupdateMemoBox" }, [
+          _c("form", { staticClass: "updateMemoFormBox" }, [
+            _c("div", { staticClass: "inupdateMemoFormBox" }, [
+              _c("div", { staticClass: "textareaTitleBox" }, [
+                _c("div", { staticClass: "inTextareaTitleBox" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.memoData.title,
+                        expression: "memoData.title"
+                      }
+                    ],
+                    attrs: { rows: "1", placeholder: "タイトル" },
+                    domProps: { value: _vm.memoData.title },
+                    on: {
+                      keyup: function($event) {
+                        return _vm.keyup($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.memoData, "title", $event.target.value)
+                      }
                     }
-                    _vm.$set(_vm.memoData, "title", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "textareaMemoBox" }, [
-            _c("div", { staticClass: "inTextareaMemoBox" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.memoData.memo,
-                    expression: "memoData.memo"
-                  }
-                ],
-                attrs: { rows: "1", placeholder: "メモを入力" },
-                domProps: { value: _vm.memoData.memo },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "textareaMemoBox" }, [
+                _c("div", { staticClass: "inTextareaMemoBox" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.memoData.memo,
+                        expression: "memoData.memo"
+                      }
+                    ],
+                    attrs: { rows: "1", placeholder: "メモを入力" },
+                    domProps: { value: _vm.memoData.memo },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.memoData, "memo", $event.target.value)
+                      }
                     }
-                    _vm.$set(_vm.memoData, "memo", $event.target.value)
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.submit($event)
+                    }
                   }
+                },
+                [_vm._v("更新")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.del($event)
+                    }
+                  }
+                },
+                [_vm._v("削除")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.memoData.id,
+                  expression: "memoData.id"
                 }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              attrs: { type: "submit" },
+              ],
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.memoData.id },
               on: {
-                click: [
-                  function($event) {
-                    return _vm.submit($event)
-                  },
-                  function($event) {
-                    $event.preventDefault()
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
-                ]
+                  _vm.$set(_vm.memoData, "id", $event.target.value)
+                }
               }
-            },
-            [_vm._v("更新")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.memoData.id,
-              expression: "memoData.id"
-            }
-          ],
-          attrs: { type: "hidden" },
-          domProps: { value: _vm.memoData.id },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.memoData, "id", $event.target.value)
-            }
-          }
-        })
+            })
+          ])
+        ])
       ])
-    ])
-  ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
