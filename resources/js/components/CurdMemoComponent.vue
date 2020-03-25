@@ -6,12 +6,12 @@
   <div class="inCreateMemoFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea v-model="title" @keyup="keyup($event)" rows="1" placeholder="タイトル"></textarea>
+      <textarea v-model="title" @input="autoResizeTextarea($event)" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea v-model="memo" rows="1" placeholder="メモを入力"></textarea>
+      <textarea v-model="memo" @input="autoResizeTextarea($event)" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
     <button @click="create($event) "type="submit" @click.prevent>作成</button>
@@ -45,8 +45,12 @@ export default {
   mounted(){
   },
   methods:{
-    keyup($event){
-      console.log(this.title);
+    autoResizeTextarea($event){
+      var areaHeight = $event.target.scrollHeight
+      areaHeight = parseInt(areaHeight) - 54;
+      if(areaHeight < 30){ areaHeight = 30; }
+      $event.target.style.height = areaHeight + "px";
+      $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
     selectMemos(){
       let that = this

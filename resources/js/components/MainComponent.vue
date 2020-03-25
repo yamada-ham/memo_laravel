@@ -1,5 +1,5 @@
 <template>
-<main>
+<main @click="ok($event)">
 
   <!-- <nav>
     <router-link to="/">Home</router-link>
@@ -25,6 +25,16 @@ export default {
   mounted(){
   },
   methods:{
+    ok($event){
+      let classes =[];
+      $event.path.forEach((el)=>{
+        classes.push(el.className);
+      });
+      console.log(classes.indexOf('createMemoBox'));
+      if(classes.indexOf('createMemoBox')  < 0){
+        console.log('実行');
+      }
+    }
   },
   computed:{
   },

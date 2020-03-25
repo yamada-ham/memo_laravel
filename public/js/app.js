@@ -1956,8 +1956,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {},
   methods: {
-    keyup: function keyup($event) {
-      console.log(this.title);
+    autoResizeTextarea: function autoResizeTextarea($event) {
+      var areaHeight = $event.target.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      $event.target.style.height = areaHeight + "px";
+      $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
     },
     selectMemos: function selectMemos() {
       var that = this;
@@ -2026,7 +2034,19 @@ __webpack_require__.r(__webpack_exports__);
   props: [],
   created: function created() {},
   mounted: function mounted() {},
-  methods: {},
+  methods: {
+    ok: function ok($event) {
+      var classes = [];
+      $event.path.forEach(function (el) {
+        classes.push(el.className);
+      });
+      console.log(classes.indexOf('createMemoBox'));
+
+      if (classes.indexOf('createMemoBox') < 0) {
+        console.log('実行');
+      }
+    }
+  },
   computed: {},
   watch: {// memoParam:{
     // handler:(newval,oldval)=>{
@@ -37509,15 +37529,17 @@ var render = function() {
                   attrs: { rows: "1", placeholder: "タイトル" },
                   domProps: { value: _vm.title },
                   on: {
-                    keyup: function($event) {
-                      return _vm.keyup($event)
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      },
+                      function($event) {
+                        return _vm.autoResizeTextarea($event)
                       }
-                      _vm.title = $event.target.value
-                    }
+                    ]
                   }
                 })
               ])
@@ -37537,12 +37559,17 @@ var render = function() {
                   attrs: { rows: "1", placeholder: "メモを入力" },
                   domProps: { value: _vm.memo },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.memo = $event.target.value
+                      },
+                      function($event) {
+                        return _vm.autoResizeTextarea($event)
                       }
-                      _vm.memo = $event.target.value
-                    }
+                    ]
                   }
                 })
               ])
@@ -37607,7 +37634,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [_c("curd-memo-component")], 1)
+  return _c(
+    "main",
+    {
+      on: {
+        click: function($event) {
+          return _vm.ok($event)
+        }
+      }
+    },
+    [_c("curd-memo-component")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
