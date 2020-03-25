@@ -11010,12 +11010,18 @@ div.createBox p a {
   padding-bottom: 40px;
 }
 
+main div.inMain div.createMemoBox.making div.inCreateMemoBox form.createMemoFormBox {
+  border: 1px solid rgba(145, 152, 158, 0);
+  box-shadow: 0px 0px 10px #91989e;
+}
+
 main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  box-shadow: 0px 0px 10px #91989e;
+  box-shadow: none;
+  border: 1px solid #91989e;
   border-radius: 10px;
 }
 

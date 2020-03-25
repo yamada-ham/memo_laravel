@@ -1947,12 +1947,14 @@ __webpack_require__.r(__webpack_exports__);
     return {
       title: '',
       memo: '',
+      isMaking: false,
       memoData: ''
     };
   },
   props: [],
   created: function created() {
     this.selectMemos();
+    this.windowClick();
   },
   mounted: function mounted() {},
   methods: {
@@ -1967,6 +1969,32 @@ __webpack_require__.r(__webpack_exports__);
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
     },
+    windowClick: function windowClick() {
+      var _this = this;
+
+      //div.createMemoBox外がクリックすされたら実行
+      window.addEventListener('click', function (e) {
+        var classes = [];
+        e.path.forEach(function (el) {
+          if (el.classList) {
+            //classListプロパティが存在すればtrue
+            el.classList.forEach(function (val) {
+              classes.push(val);
+            });
+          }
+        });
+
+        if (classes.indexOf('createMemoBox') < 0) {
+          _this.isMaking = false;
+
+          if (_this.isMaking === true & (_this.title.length > 0 || _this.memo.length > 0)) {
+            console.log('実行');
+
+            _this.create();
+          }
+        }
+      });
+    },
     selectMemos: function selectMemos() {
       var that = this;
       axios.post('/', {
@@ -1980,7 +2008,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.memoData);
     },
     create: function create($event) {
-      console.log($event);
       var that = this;
       axios.post('/', {
         mode: 'create',
@@ -2034,18 +2061,16 @@ __webpack_require__.r(__webpack_exports__);
   props: [],
   created: function created() {},
   mounted: function mounted() {},
-  methods: {
-    ok: function ok($event) {
-      var classes = [];
-      $event.path.forEach(function (el) {
-        classes.push(el.className);
-      });
-      console.log(classes.indexOf('createMemoBox'));
-
-      if (classes.indexOf('createMemoBox') < 0) {
-        console.log('実行');
-      }
-    }
+  methods: {// ok($event){
+    //   let classes =[];
+    //   $event.path.forEach((el)=>{
+    //     classes.push(el.className);
+    //   });
+    //   console.log(classes.indexOf('createMemoBox'));
+    //   if(classes.indexOf('createMemoBox')  < 0){
+    //     console.log('実行');
+    //   }
+    // }
   },
   computed: {},
   watch: {// memoParam:{
@@ -37511,91 +37536,104 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "inMain" }, [
-    _c("div", { staticClass: "createMemoBox" }, [
-      _c("div", { staticClass: "inCreateMemoBox" }, [
-        _c("form", { staticClass: "createMemoFormBox" }, [
-          _c("div", { staticClass: "inCreateMemoFormBox" }, [
-            _c("div", { staticClass: "textareaTitleBox" }, [
-              _c("div", { staticClass: "inTextareaTitleBox" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.title,
-                      expression: "title"
-                    }
-                  ],
-                  attrs: { rows: "1", placeholder: "タイトル" },
-                  domProps: { value: _vm.title },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
+    _c(
+      "div",
+      {
+        staticClass: "createMemoBox",
+        class: { making: _vm.isMaking },
+        on: {
+          click: function($event) {
+            _vm.isMaking = true
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "inCreateMemoBox" }, [
+          _c("form", { staticClass: "createMemoFormBox" }, [
+            _c("div", { staticClass: "inCreateMemoFormBox" }, [
+              _c("div", { staticClass: "textareaTitleBox" }, [
+                _c("div", { staticClass: "inTextareaTitleBox" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title"
+                      }
+                    ],
+                    attrs: { rows: "1", placeholder: "タイトル" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      input: [
+                        function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.title = $event.target.value
+                        },
+                        function($event) {
+                          return _vm.autoResizeTextarea($event)
                         }
-                        _vm.title = $event.target.value
+                      ]
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "textareaMemoBox" }, [
+                _c("div", { staticClass: "inTextareaMemoBox" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.memo,
+                        expression: "memo"
+                      }
+                    ],
+                    attrs: { rows: "1", placeholder: "メモを入力" },
+                    domProps: { value: _vm.memo },
+                    on: {
+                      input: [
+                        function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.memo = $event.target.value
+                        },
+                        function($event) {
+                          return _vm.autoResizeTextarea($event)
+                        }
+                      ]
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "hidden",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: [
+                      function($event) {
+                        return _vm.create($event)
                       },
                       function($event) {
-                        return _vm.autoResizeTextarea($event)
+                        $event.preventDefault()
                       }
                     ]
                   }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "textareaMemoBox" }, [
-              _c("div", { staticClass: "inTextareaMemoBox" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.memo,
-                      expression: "memo"
-                    }
-                  ],
-                  attrs: { rows: "1", placeholder: "メモを入力" },
-                  domProps: { value: _vm.memo },
-                  on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.memo = $event.target.value
-                      },
-                      function($event) {
-                        return _vm.autoResizeTextarea($event)
-                      }
-                    ]
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                attrs: { type: "submit" },
-                on: {
-                  click: [
-                    function($event) {
-                      return _vm.create($event)
-                    },
-                    function($event) {
-                      $event.preventDefault()
-                    }
-                  ]
-                }
-              },
-              [_vm._v("作成")]
-            )
+                },
+                [_vm._v("作成")]
+              )
+            ])
           ])
         ])
-      ])
-    ]),
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "memoCardComponentBox" }, [
       _c(
@@ -37634,18 +37672,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    {
-      on: {
-        click: function($event) {
-          return _vm.ok($event)
-        }
-      }
-    },
-    [_c("curd-memo-component")],
-    1
-  )
+  return _c("main", [_c("curd-memo-component")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

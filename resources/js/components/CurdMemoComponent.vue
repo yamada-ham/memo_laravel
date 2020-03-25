@@ -1,6 +1,6 @@
 <template>
 <div class="inMain">
-<div class="createMemoBox">
+<div class="createMemoBox" :class="{making:isMaking}" @click="isMaking = true">
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">
   <div class="inCreateMemoFormBox">
@@ -14,7 +14,7 @@
       <textarea v-model="memo" @input="autoResizeTextarea($event)" rows="1" placeholder="メモを入力"></textarea>
     </div>
     </div>
-    <button @click="create($event) "type="submit" @click.prevent>作成</button>
+    <button  class="hidden" @click="create($event) "type="submit" @click.prevent>作成</button>
   </div>
   </form>
 </div>
@@ -35,14 +35,17 @@ export default {
     return{
         title:'',
         memo:'',
+        isMaking:false,
         memoData:''
     }
   },
   props:[],
   created(){
     this.selectMemos()
+    this.windowClick()
   },
   mounted(){
+
   },
   methods:{
     autoResizeTextarea($event){
@@ -51,6 +54,27 @@ export default {
       if(areaHeight < 30){ areaHeight = 30; }
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
+    },
+    windowClick(){
+      //div.createMemoBox外がクリックすされたら実行
+      window.addEventListener('click',(e)=>{
+        let classes =[]
+        e.path.forEach((el)=>{
+          if(el.classList){//classListプロパティが存在すればtrue
+            el.classList.forEach((val)=>{
+              classes.push(val)
+            });
+          }
+        });
+        if(classes.indexOf('createMemoBox')  < 0){
+          this.isMaking = false
+          if(this.isMaking === true &
+            (this.title.length > 0 || this.memo.length > 0)){
+              console.log('実行')
+              this.create()
+          }
+        }
+      });
     },
     selectMemos(){
       let that = this
@@ -67,7 +91,6 @@ export default {
       console.log(this.memoData)
     },
     create($event){
-      console.log($event);
       let that = this
       axios.post('/', {
         mode: 'create',
