@@ -6,16 +6,15 @@
     <router-link to="/Thank">商品情報</router-link>
   </nav>
   <router-view /> -->
-  <create-memo-component></create-memo-component>
+  <curd-memo-component></curd-memo-component>
 
 </main>
 </template>
 
 <script>
-import CreateMemoComponent from './CreateMemoComponent'
-import UpdateMemoComponent from './UpdateMemoComponent'
+import CurdMemoComponent from './CurdMemoComponent'
 export default {
-  components:{CreateMemoComponent,UpdateMemoComponent},
+  components:{CurdMemoComponent},
   data(){
     return{
     }

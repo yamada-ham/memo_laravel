@@ -1899,15 +1899,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateMemoComponent.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CreateMemoComponent.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CurdMemoComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CurdMemoComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MemoCardComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemoCardComponent */ "./resources/js/components/MemoCardComponent.vue");
 //
 //
 //
@@ -1933,8 +1934,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {},
+  components: {
+    MemoCardComponent: _MemoCardComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       title: '',
@@ -1971,9 +1979,9 @@ __webpack_require__.r(__webpack_exports__);
         title: this.title,
         memo: this.memo
       }).then(function (res) {
-        console.log(res['data']);
         that.memoData.push(res['data']);
-        console.log(that.memoData);
+        that.title = '';
+        that.memo = '';
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1993,8 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CreateMemoComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateMemoComponent */ "./resources/js/components/CreateMemoComponent.vue");
-/* harmony import */ var _UpdateMemoComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateMemoComponent */ "./resources/js/components/UpdateMemoComponent.vue");
+/* harmony import */ var _CurdMemoComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CurdMemoComponent */ "./resources/js/components/CurdMemoComponent.vue");
 //
 //
 //
@@ -2008,12 +2015,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    CreateMemoComponent: _CreateMemoComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
-    UpdateMemoComponent: _UpdateMemoComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+    CurdMemoComponent: _CurdMemoComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {};
@@ -2035,10 +2040,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UpdateMemoComponent.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UpdateMemoComponent.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MemoCardComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MemoCardComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37470,10 +37475,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateMemoComponent.vue?vue&type=template&id=7321d3ac&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CreateMemoComponent.vue?vue&type=template&id=7321d3ac& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CurdMemoComponent.vue?vue&type=template&id=070f12c4&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CurdMemoComponent.vue?vue&type=template&id=070f12c4& ***!
+  \********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37485,97 +37490,100 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "createMemoBox" }, [
-        _c("div", { staticClass: "inCreateMemoBox" }, [
-          _c("form", { staticClass: "createMemoFormBox" }, [
-            _c("div", { staticClass: "inCreateMemoFormBox" }, [
-              _c("div", { staticClass: "textareaTitleBox" }, [
-                _c("div", { staticClass: "inTextareaTitleBox" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.title,
-                        expression: "title"
-                      }
-                    ],
-                    attrs: { rows: "1", placeholder: "タイトル" },
-                    domProps: { value: _vm.title },
-                    on: {
-                      keyup: function($event) {
-                        return _vm.keyup($event)
-                      },
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.title = $event.target.value
-                      }
+  return _c("div", { staticClass: "inMain" }, [
+    _c("div", { staticClass: "createMemoBox" }, [
+      _c("div", { staticClass: "inCreateMemoBox" }, [
+        _c("form", { staticClass: "createMemoFormBox" }, [
+          _c("div", { staticClass: "inCreateMemoFormBox" }, [
+            _c("div", { staticClass: "textareaTitleBox" }, [
+              _c("div", { staticClass: "inTextareaTitleBox" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.title,
+                      expression: "title"
                     }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "textareaMemoBox" }, [
-                _c("div", { staticClass: "inTextareaMemoBox" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.memo,
-                        expression: "memo"
-                      }
-                    ],
-                    attrs: { rows: "1", placeholder: "メモを入力" },
-                    domProps: { value: _vm.memo },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.memo = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  attrs: { type: "submit" },
+                  ],
+                  attrs: { rows: "1", placeholder: "タイトル" },
+                  domProps: { value: _vm.title },
                   on: {
-                    click: [
-                      function($event) {
-                        return _vm.create($event)
-                      },
-                      function($event) {
-                        $event.preventDefault()
+                    keyup: function($event) {
+                      return _vm.keyup($event)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    ]
+                      _vm.title = $event.target.value
+                    }
                   }
-                },
-                [_vm._v("作成")]
-              )
-            ])
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "textareaMemoBox" }, [
+              _c("div", { staticClass: "inTextareaMemoBox" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.memo,
+                      expression: "memo"
+                    }
+                  ],
+                  attrs: { rows: "1", placeholder: "メモを入力" },
+                  domProps: { value: _vm.memo },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.memo = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                attrs: { type: "submit" },
+                on: {
+                  click: [
+                    function($event) {
+                      return _vm.create($event)
+                    },
+                    function($event) {
+                      $event.preventDefault()
+                    }
+                  ]
+                }
+              },
+              [_vm._v("作成")]
+            )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.memoData, function(memo) {
-        return _c("update-memo-component", {
-          key: memo["id"],
-          attrs: { "memo-data": memo }
-        })
-      })
-    ],
-    2
-  )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "memoCardComponentBox" }, [
+      _c(
+        "div",
+        { staticClass: "inMemoCardComponentBox" },
+        _vm._l(_vm.memoData, function(memo) {
+          return _c("memo-card-component", {
+            key: memo["id"],
+            attrs: { "memo-data": memo }
+          })
+        }),
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37599,7 +37607,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [_c("create-memo-component")], 1)
+  return _c("main", [_c("curd-memo-component")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37608,10 +37616,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UpdateMemoComponent.vue?vue&type=template&id=de0ba102&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UpdateMemoComponent.vue?vue&type=template&id=de0ba102& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MemoCardComponent.vue?vue&type=template&id=4e994f50&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MemoCardComponent.vue?vue&type=template&id=4e994f50& ***!
+  \********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37624,11 +37632,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isShow
-    ? _c("div", { staticClass: "updateMemoBox" }, [
-        _vm._v("\n  アップデート用" + _vm._s(_vm.memoData.id) + "\n"),
-        _c("div", { staticClass: "inupdateMemoBox" }, [
-          _c("form", { staticClass: "updateMemoFormBox" }, [
-            _c("div", { staticClass: "inupdateMemoFormBox" }, [
+    ? _c("div", { staticClass: "memoCardBox" }, [
+        _vm._v("\n  id:" + _vm._s(_vm.memoData.id) + "\n"),
+        _c("div", { staticClass: "inMemoCardBox" }, [
+          _c("form", { staticClass: "memoCardFormBox" }, [
+            _c("div", { staticClass: "inMemoCardFormBox" }, [
               _c("div", { staticClass: "textareaTitleBox" }, [
                 _c("div", { staticClass: "inTextareaTitleBox" }, [
                   _c("textarea", {
@@ -53973,14 +53981,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
-Vue.component('main-component', __webpack_require__(/*! ./components/MainComponent.vue */ "./resources/js/components/MainComponent.vue")["default"]);
-Vue.component('update-memo-component', __webpack_require__(/*! ./components/UpdateMemoComponent.vue */ "./resources/js/components/UpdateMemoComponent.vue")["default"]);
-Vue.component('create-memo-component', __webpack_require__(/*! ./components/CreateMemoComponent.vue */ "./resources/js/components/CreateMemoComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.component('main-component', __webpack_require__(/*! ./components/MainComponent.vue */ "./resources/js/components/MainComponent.vue")["default"]); // Vue.component('memo-card-component', require('./components/MemoCardComponent.vue').default);
+// Vue.component('curd-memo-component', require('./components/CurdMemoComponent.vue').default);
 
 var app = new Vue({
   el: '#app',
@@ -54035,17 +54037,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/CreateMemoComponent.vue":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/CreateMemoComponent.vue ***!
-  \*********************************************************/
+/***/ "./resources/js/components/CurdMemoComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/CurdMemoComponent.vue ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CreateMemoComponent_vue_vue_type_template_id_7321d3ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateMemoComponent.vue?vue&type=template&id=7321d3ac& */ "./resources/js/components/CreateMemoComponent.vue?vue&type=template&id=7321d3ac&");
-/* harmony import */ var _CreateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMemoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CreateMemoComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CurdMemoComponent_vue_vue_type_template_id_070f12c4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CurdMemoComponent.vue?vue&type=template&id=070f12c4& */ "./resources/js/components/CurdMemoComponent.vue?vue&type=template&id=070f12c4&");
+/* harmony import */ var _CurdMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CurdMemoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CurdMemoComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -54055,9 +54057,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CreateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CreateMemoComponent_vue_vue_type_template_id_7321d3ac___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CreateMemoComponent_vue_vue_type_template_id_7321d3ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CurdMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CurdMemoComponent_vue_vue_type_template_id_070f12c4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CurdMemoComponent_vue_vue_type_template_id_070f12c4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -54067,38 +54069,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/CreateMemoComponent.vue"
+component.options.__file = "resources/js/components/CurdMemoComponent.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/CreateMemoComponent.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/CreateMemoComponent.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/components/CurdMemoComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/CurdMemoComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateMemoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateMemoComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CurdMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CurdMemoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CurdMemoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CurdMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/CreateMemoComponent.vue?vue&type=template&id=7321d3ac&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/CreateMemoComponent.vue?vue&type=template&id=7321d3ac& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/CurdMemoComponent.vue?vue&type=template&id=070f12c4&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/CurdMemoComponent.vue?vue&type=template&id=070f12c4& ***!
+  \**************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMemoComponent_vue_vue_type_template_id_7321d3ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateMemoComponent.vue?vue&type=template&id=7321d3ac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateMemoComponent.vue?vue&type=template&id=7321d3ac&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMemoComponent_vue_vue_type_template_id_7321d3ac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CurdMemoComponent_vue_vue_type_template_id_070f12c4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CurdMemoComponent.vue?vue&type=template&id=070f12c4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CurdMemoComponent.vue?vue&type=template&id=070f12c4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CurdMemoComponent_vue_vue_type_template_id_070f12c4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMemoComponent_vue_vue_type_template_id_7321d3ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CurdMemoComponent_vue_vue_type_template_id_070f12c4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -54173,17 +54175,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/UpdateMemoComponent.vue":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/UpdateMemoComponent.vue ***!
-  \*********************************************************/
+/***/ "./resources/js/components/MemoCardComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/MemoCardComponent.vue ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _UpdateMemoComponent_vue_vue_type_template_id_de0ba102___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateMemoComponent.vue?vue&type=template&id=de0ba102& */ "./resources/js/components/UpdateMemoComponent.vue?vue&type=template&id=de0ba102&");
-/* harmony import */ var _UpdateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateMemoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/UpdateMemoComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemoCardComponent.vue?vue&type=template&id=4e994f50& */ "./resources/js/components/MemoCardComponent.vue?vue&type=template&id=4e994f50&");
+/* harmony import */ var _MemoCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemoCardComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/MemoCardComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -54193,9 +54195,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _UpdateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _UpdateMemoComponent_vue_vue_type_template_id_de0ba102___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _UpdateMemoComponent_vue_vue_type_template_id_de0ba102___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _MemoCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -54205,38 +54207,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/UpdateMemoComponent.vue"
+component.options.__file = "resources/js/components/MemoCardComponent.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/UpdateMemoComponent.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/UpdateMemoComponent.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/components/MemoCardComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/MemoCardComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateMemoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UpdateMemoComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateMemoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemoCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MemoCardComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MemoCardComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemoCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/UpdateMemoComponent.vue?vue&type=template&id=de0ba102&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/UpdateMemoComponent.vue?vue&type=template&id=de0ba102& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/MemoCardComponent.vue?vue&type=template&id=4e994f50&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/MemoCardComponent.vue?vue&type=template&id=4e994f50& ***!
+  \**************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateMemoComponent_vue_vue_type_template_id_de0ba102___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateMemoComponent.vue?vue&type=template&id=de0ba102& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UpdateMemoComponent.vue?vue&type=template&id=de0ba102&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateMemoComponent_vue_vue_type_template_id_de0ba102___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MemoCardComponent.vue?vue&type=template&id=4e994f50& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MemoCardComponent.vue?vue&type=template&id=4e994f50&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateMemoComponent_vue_vue_type_template_id_de0ba102___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

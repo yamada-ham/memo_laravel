@@ -9,14 +9,9 @@ Vue.use(Router);
 
 
 Vue.component('main-component', require('./components/MainComponent.vue').default);
-Vue.component('update-memo-component', require('./components/UpdateMemoComponent.vue').default);
-Vue.component('create-memo-component', require('./components/CreateMemoComponent.vue').default);
+// Vue.component('memo-card-component', require('./components/MemoCardComponent.vue').default);
+// Vue.component('curd-memo-component', require('./components/CurdMemoComponent.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 const app = new Vue({
     el: '#app',

@@ -11010,7 +11010,7 @@ div.createBox p a {
   padding-bottom: 40px;
 }
 
-div.createMemoBox div.inCreateMemoBox form.createMemoFormBox {
+main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -11018,19 +11018,41 @@ div.createMemoBox div.inCreateMemoBox form.createMemoFormBox {
 }
 
 @media only screen and (min-width: 767px) {
-  div.createMemoBox div.inCreateMemoBox form.createMemoFormBox {
+  main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox {
     width: 40%;
   }
 }
 
-div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
+main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
   width: 100%;
   display: block;
   resize: none;
   overflow: auto;
 }
 
-div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
+main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
+  width: 100%;
+  display: block;
+  resize: none;
+  overflow: auto;
+}
+
+main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox {
+  width: 100%;
+}
+
+main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardBox {
+  width: 50%;
+}
+
+main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
+  width: 100%;
+  display: block;
+  resize: none;
+  overflow: auto;
+}
+
+main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
   width: 100%;
   display: block;
   resize: none;

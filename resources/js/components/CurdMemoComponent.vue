@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="inMain">
 <div class="createMemoBox">
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">
@@ -19,13 +19,18 @@
   </form>
 </div>
 </div>
-<update-memo-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo"></update-memo-component>
+<div class="memoCardComponentBox">
+  <div class="inMemoCardComponentBox">
+  <memo-card-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo"></memo-card-component>
+  </div>
+</div>
 </div>
 </template>
 
 <script>
+import MemoCardComponent from './MemoCardComponent'
 export default {
-  components:{},
+  components:{MemoCardComponent},
   data(){
     return{
         title:'',
@@ -66,9 +71,9 @@ export default {
         memo: this.memo
       })
       .then(function (res) {
-        console.log(res['data']);
         that.memoData.push(res['data']);
-        console.log(that.memoData);
+        that.title = ''
+        that.memo = ''
       })
       .catch(function (error) {
         console.log(error);

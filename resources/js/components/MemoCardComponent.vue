@@ -1,9 +1,9 @@
 <template>
-<div class="updateMemoBox" v-if="isShow">
-  アップデート用{{memoData.id}}
-<div class="inupdateMemoBox">
-  <form class="updateMemoFormBox">
-  <div class="inupdateMemoFormBox">
+<div class="memoCardBox" v-if="isShow">
+  id:{{memoData.id}}
+<div class="inMemoCardBox">
+  <form class="memoCardFormBox">
+  <div class="inMemoCardFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
       <textarea v-model="memoData.title" @keyup="keyup($event)" rows="1" placeholder="タイトル"></textarea>
