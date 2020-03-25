@@ -6,12 +6,12 @@
   <div class="inMemoCardFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea v-model="memoData.title" @keyup="keyup($event)" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="autoResizeTitle" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea v-model="memoData.memo" rows="1" placeholder="メモを入力"></textarea>
+      <textarea ref="autoResizeMemo" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
     </div>
     </div>
     <button @click.prevent="update($event)" type="submit">更新</button>
@@ -37,10 +37,24 @@ export default {
   created(){
   },
   mounted(){
+    this.initResizeTextarea(this.$refs.autoResizeTitle);
+    this.initResizeTextarea(this.$refs.autoResizeMemo);
+    // console.log(this.$refs.autoResize.scrollHeight);
   },
   methods:{
-    keyup($event){
-      console.log(this.title);
+    initResizeTextarea(el){
+      var areaHeight = el.scrollHeight
+      areaHeight = parseInt(areaHeight) - 54;
+      if(areaHeight < 30){ areaHeight = 30; }
+      el.style.height = areaHeight + "px";
+      el.style.height = el.scrollHeight + 2 + 'px'
+    },
+    autoResizeTextarea($event){
+      var areaHeight = $event.target.scrollHeight
+      areaHeight = parseInt(areaHeight) - 54;
+      if(areaHeight < 30){ areaHeight = 30; }
+      $event.target.style.height = areaHeight + "px";
+      $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
     update($event){
       axios.post('/', {

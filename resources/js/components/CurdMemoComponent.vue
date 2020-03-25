@@ -11,7 +11,7 @@
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea v-model="memo" @input="autoResizeTextarea($event)" rows="1" placeholder="メモを入力"></textarea>
+      <textarea v-model="memo" @input="autoResizeTextarea($event)" rows="1" placeholder="メモを入力..."></textarea>
     </div>
     </div>
     <button  class="hidden" @click="create($event) "type="submit" @click.prevent>作成</button>
@@ -67,12 +67,12 @@ export default {
           }
         });
         if(classes.indexOf('createMemoBox')  < 0){
-          this.isMaking = false
-          if(this.isMaking === true &
+          if(this.isMaking &
             (this.title.length > 0 || this.memo.length > 0)){
               console.log('実行')
               this.create()
           }
+          this.isMaking = false
         }
       });
     },
@@ -83,12 +83,10 @@ export default {
       })
       .then(function (res) {
         that.memoData = res['data']
-        console.log(that.memoData);
       })
       .catch(function (error) {
         console.log(error);
       })
-      console.log(this.memoData)
     },
     create($event){
       let that = this

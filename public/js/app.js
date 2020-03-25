@@ -1985,13 +1985,13 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         if (classes.indexOf('createMemoBox') < 0) {
-          _this.isMaking = false;
-
-          if (_this.isMaking === true & (_this.title.length > 0 || _this.memo.length > 0)) {
+          if (_this.isMaking & (_this.title.length > 0 || _this.memo.length > 0)) {
             console.log('実行');
 
             _this.create();
           }
+
+          _this.isMaking = false;
         }
       });
     },
@@ -2001,11 +2001,9 @@ __webpack_require__.r(__webpack_exports__);
         mode: 'select'
       }).then(function (res) {
         that.memoData = res['data'];
-        console.log(that.memoData);
       })["catch"](function (error) {
         console.log(error);
       });
-      console.log(this.memoData);
     },
     create: function create($event) {
       var that = this;
@@ -2130,10 +2128,32 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ['memoData'],
   created: function created() {},
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.initResizeTextarea(this.$refs.autoResizeTitle);
+    this.initResizeTextarea(this.$refs.autoResizeMemo); // console.log(this.$refs.autoResize.scrollHeight);
+  },
   methods: {
-    keyup: function keyup($event) {
-      console.log(this.title);
+    initResizeTextarea: function initResizeTextarea(el) {
+      var areaHeight = el.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      el.style.height = areaHeight + "px";
+      el.style.height = el.scrollHeight + 2 + 'px';
+    },
+    autoResizeTextarea: function autoResizeTextarea($event) {
+      var areaHeight = $event.target.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      $event.target.style.height = areaHeight + "px";
+      $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
     },
     update: function update($event) {
       axios.post('/', {
@@ -37592,7 +37612,7 @@ var render = function() {
                         expression: "memo"
                       }
                     ],
-                    attrs: { rows: "1", placeholder: "メモを入力" },
+                    attrs: { rows: "1", placeholder: "メモを入力..." },
                     domProps: { value: _vm.memo },
                     on: {
                       input: [
@@ -37713,18 +37733,21 @@ var render = function() {
                         expression: "memoData.title"
                       }
                     ],
+                    ref: "autoResizeTitle",
                     attrs: { rows: "1", placeholder: "タイトル" },
                     domProps: { value: _vm.memoData.title },
                     on: {
-                      keyup: function($event) {
-                        return _vm.keyup($event)
-                      },
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      input: [
+                        function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.memoData, "title", $event.target.value)
+                        },
+                        function($event) {
+                          return _vm.autoResizeTextarea($event)
                         }
-                        _vm.$set(_vm.memoData, "title", $event.target.value)
-                      }
+                      ]
                     }
                   })
                 ])
@@ -37741,15 +37764,21 @@ var render = function() {
                         expression: "memoData.memo"
                       }
                     ],
-                    attrs: { rows: "1", placeholder: "メモを入力" },
+                    ref: "autoResizeMemo",
+                    attrs: { rows: "1", placeholder: "メモを入力..." },
                     domProps: { value: _vm.memoData.memo },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      input: [
+                        function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.memoData, "memo", $event.target.value)
+                        },
+                        function($event) {
+                          return _vm.autoResizeTextarea($event)
                         }
-                        _vm.$set(_vm.memoData, "memo", $event.target.value)
-                      }
+                      ]
                     }
                   })
                 ])

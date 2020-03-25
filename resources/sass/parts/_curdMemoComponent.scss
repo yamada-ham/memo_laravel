@@ -12,16 +12,22 @@
 main{
   div.inMain{
     div.createMemoBox{
+      @include media(m){
+        width:40%;
+      }
+      width:80%;
+      margin-left: auto;
+      margin-right: auto;
+      div.inCreateMemoBox{
       &.making{
         div.inCreateMemoBox{
           form.createMemoFormBox{
-            border:1px solid rgba(145, 152, 158, 0);
-            box-shadow:0px 0px 10px #91989e;
             div.inCreateMemoFormBox{
+              border:1px solid rgba(145, 152, 158, 0);
+              box-shadow:0px 0px 10px #91989e;
               div.textareaTitleBox{
                 div.inTextareaTitleBox{
                   textarea{
-
                   }
                 }
               }
@@ -35,20 +41,15 @@ main{
           }
         }
       }
-      div.inCreateMemoBox{
         form.createMemoFormBox{
-          @include media(m){
-            width:40%;
-          }
-          width:80%;
-          margin-left: auto;
-          margin-right: auto;
           margin-top:20px;
-          box-shadow:none;
-          border:1px solid #91989e;
-          border-radius: 10px;
           div.inCreateMemoFormBox{
+            box-shadow:none;
+            border:1px solid #91989e;
+            border-radius: 10px;
+            padding-top: 10px;
             div.textareaTitleBox{
+              margin-bottom:8px;
               div.inTextareaTitleBox{
                 textarea{
                   @include textareaDefault()
@@ -56,6 +57,7 @@ main{
               }
             }
             div.textareaMemoBox{
+              margin-bottom:8px;
               div.inTextareaMemoBox{
                 textarea{
                   @include textareaDefault()
@@ -67,16 +69,25 @@ main{
       }
     }
     div.memoCardComponentBox{
+      width:100%;
       div.inMemoCardComponentBox{
-        width:100%;
-        // display: flex;
-        // flex-wrap: wrap;
-        // align-content: space-around;
-        // justify-content: space-around;
-        // align-content: stretch;
+        @include media(m){
+          width:90%;
+        }
+        width:98%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        align-content: stretch;
         div.memoCardBox{
-          width:50%;;
+          width:24%;
+          margin-right:1%;
+          box-sizing: border-box;
           div.inMemoCardBox{
+            border:1px solid #91989e;
             form.memoCardFormBox{
               div.inMemoCardFormBox{
                 div.textareaTitleBox{
