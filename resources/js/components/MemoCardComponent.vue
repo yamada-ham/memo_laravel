@@ -1,5 +1,6 @@
 <template>
-<div  :class="['memoCardBox',{modalWindow:isModal}]" @click="modalMemoCardBox($event)" v-if="isShow">
+<div class="memoCardWrap">
+<div :class="['memoCardBox',{modalWindow:isModal}]"  v-if="isShow" @click="modalMemoCardBox($event)">
   id:{{memoData.id}}
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
@@ -17,11 +18,10 @@
     <button @click.prevent="update($event)" type="submit">更新</button>
     <button @click.prevent="del($event)" type="submit">削除</button>
   </div>
-    <input type="hidden" v-model="memoData.id"/>
   </form>
+  <input type="hidden" v-model="memoData.id"/>
 </div>
-
-
+</div>
 
 <div class="modalBox" v-if="isModal">
 <div class="inModalBox">
@@ -44,10 +44,12 @@
   </form>
 </div>
 </div>
+<div :class="{mask:isModal}" @click="closeModal($event)"></div>
 </div>
 </template>
 
 <script>
+import store from '../store/store.js';
 export default {
   components:{},
   data(){
@@ -75,6 +77,9 @@ export default {
   methods:{
     modalMemoCardBox($event){
       this.isModal = true
+    },
+    closeModal($event){
+      this.isModal = false
       console.log($event)
     },
     initResizeTextarea(el){

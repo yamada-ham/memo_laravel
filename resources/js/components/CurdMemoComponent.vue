@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import store from '../store/store.js';
 import MemoCardComponent from './MemoCardComponent'
 export default {
   components:{MemoCardComponent},
@@ -45,7 +46,6 @@ export default {
     this.windowClick()
   },
   mounted(){
-
   },
   methods:{
     autoResizeTextarea($event){
