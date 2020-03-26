@@ -1,5 +1,5 @@
 <template>
-<div class="memoCardBox" v-if="isShow">
+<div  :class="['memoCardBox',{modalWindow:isModal}]" @click="modalMemoCardBox($event)" v-if="isShow">
   id:{{memoData.id}}
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
@@ -20,6 +20,30 @@
     <input type="hidden" v-model="memoData.id"/>
   </form>
 </div>
+
+
+
+<div class="modalBox" v-if="isModal">
+<div class="inModalBox">
+  <form class="modalFormBox">
+  <div class="inModalFormBox">
+    <div class="modalTitleBox">
+    <div class="inModalTitleBox">
+      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
+    </div>
+    </div>
+    <div class="modalMemoBox">
+    <div class="inModalMemoBox">
+      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
+    </div>
+    </div>
+    <button @click.prevent="update($event)" type="submit">更新</button>
+    <button @click.prevent="del($event)" type="submit">削除</button>
+  </div>
+    <input type="hidden" v-model="memoData.id"/>
+  </form>
+</div>
+</div>
 </div>
 </template>
 
@@ -28,7 +52,8 @@ export default {
   components:{},
   data(){
     return{
-        isShow:'true',
+        isShow:true,
+        isModal:false,
         title:'',
         memo:''
     }
@@ -37,11 +62,21 @@ export default {
   created(){
   },
   mounted(){
-    this.initResizeTextarea(this.$refs.autoResizeTitle);
-    this.initResizeTextarea(this.$refs.autoResizeMemo);
+    this.initResizeTextarea(this.$refs.autoResizeTitle)
+    this.initResizeTextarea(this.$refs.autoResizeMemo)
     // console.log(this.$refs.autoResize.scrollHeight);
   },
+  updated(){
+    if(this.isModal){
+      this.initResizeTextarea(this.$refs.modalTitleTextarea)
+      this.initResizeTextarea(this.$refs.modalMemoTextarea)
+    }
+  },
   methods:{
+    modalMemoCardBox($event){
+      this.isModal = true
+      console.log($event)
+    },
     initResizeTextarea(el){
       var areaHeight = el.scrollHeight
       areaHeight = parseInt(areaHeight) - 54;
@@ -87,6 +122,17 @@ export default {
   },
   computed:{
 
+  },
+  watch: {
+    // isModal: {
+    //   handler: function(newVal, oldVal) {
+    //     if(newVal === true){
+    //       // this.initResizeTextarea(this.$refs.modalTitleTextarea)
+    //     }
+    //   },
+    //   deep: true,
+    //   immediate: true
+    // },
   }
 }
 </script>

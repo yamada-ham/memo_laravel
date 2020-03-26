@@ -17,7 +17,7 @@ class IndexController extends Controller
   public function post(Request $request){
     switch($request->mode){
       case 'select':
-        $selectAll = DB::table('memo')->get();
+        $selectAll = DB::table('memo')->orderBy('id','desc')->get();
         header('content-type: application/json; charset=utf-8');
         echo json_encode($selectAll);
         break;
