@@ -96,7 +96,7 @@ export default {
         memo: this.memo
       })
       .then(function (res) {
-        that.memoData.push(res['data']);
+        that.memoData.unshift(res['data']);
         that.title = ''
         that.memo = ''
       })

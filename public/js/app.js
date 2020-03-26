@@ -2014,7 +2014,7 @@ __webpack_require__.r(__webpack_exports__);
         title: this.title,
         memo: this.memo
       }).then(function (res) {
-        that.memoData.push(res['data']);
+        that.memoData.unshift(res['data']);
         that.title = '';
         that.memo = '';
       })["catch"](function (error) {
@@ -2175,6 +2175,7 @@ __webpack_require__.r(__webpack_exports__);
     closeModal: function closeModal($event) {
       this.isModal = false;
       console.log($event);
+      this.update();
     },
     initResizeTextarea: function initResizeTextarea(el) {
       var areaHeight = el.scrollHeight;
@@ -54277,6 +54278,8 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./script/script.js */ "./resources/js/script/script.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.component('main-component', __webpack_require__(/*! ./components/MainComponent.vue */ "./resources/js/components/MainComponent.vue")["default"]); // Vue.component('memo-card-component', require('./components/MemoCardComponent.vue').default);
@@ -54567,6 +54570,22 @@ __webpack_require__.r(__webpack_exports__);
     component: _views_Thank__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
 }));
+
+/***/ }),
+
+/***/ "./resources/js/script/script.js":
+/*!***************************************!*\
+  !*** ./resources/js/script/script.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {// var $container = $('#packery');
+  // 	$container.packery({
+  // 	itemSelector: '.item',
+  // 	gutter: 10
+  // });
+});
 
 /***/ }),
 

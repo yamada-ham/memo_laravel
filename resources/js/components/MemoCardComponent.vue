@@ -81,6 +81,7 @@ export default {
     closeModal($event){
       this.isModal = false
       console.log($event)
+      this.update()
     },
     initResizeTextarea(el){
       var areaHeight = el.scrollHeight

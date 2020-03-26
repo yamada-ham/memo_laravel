@@ -3,6 +3,7 @@ import router from './router';
 import Vuex from 'vuex';
 import store from './store/store.js';
 require('./bootstrap');
+require('./script/script.js');
 
 window.Vue = require('vue');
 Vue.use(Router);
