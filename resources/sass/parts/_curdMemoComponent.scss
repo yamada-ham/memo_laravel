@@ -12,10 +12,8 @@
 main{
   div.inMain{
     div.createMemoBox{
-      @include media(m){
-        width:40%;
-      }
-      width:80%;
+      width:600px;
+      max-width:80%;
       margin-left: auto;
       margin-right: auto;
       &.making{
@@ -43,6 +41,7 @@ main{
       div.inCreateMemoBox{
         form.createMemoFormBox{
           margin-top:20px;
+          margin-bottom:20px;
           div.inCreateMemoFormBox{
             box-shadow:none;
             border:1px solid #91989e;
@@ -69,24 +68,44 @@ main{
       }
     }
     div.memoCardComponentBox{
-      width:100%;
+      width:98%;
+      margin-left: auto;
+      margin-right:auto;
+      @include media(m){
+        width:80%;
+      }
       div.inMemoCardComponentBox{
         width:100%;
-        // display:flex;
-        // flex-wrap: wrap;
-        // justify-content: space-around;
-        // align-items:center;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items:center;
+        align-content: flex-start;
         &:after{
           @include clear()
         }
         div.memoCardWrap{
-          float:left;
+          // float:left;
           display: block;
-          width:24%;
+          position:relative;
+
+          width:100%;
           box-sizing: border-box;
+          border:1px solid #91989e;
+          border-radius: 8px;
+          margin-bottom:12px;
+          &:hover{
+            border:1px solid rgba(145, 152, 158, 0);
+            box-shadow:0px 0px 10px #91989e;
+          }
+          @include media(s){
+            width:49%;
+          }
+          @include media(m){
+            width:32%;
+          }
           div.memoCardBox{
             div.inMemoCardBox{
-              border:1px solid #91989e;
               form.memoCardFormBox{
                 div.inMemoCardFormBox{
                   div.textareaTitleBox{
@@ -112,12 +131,15 @@ main{
           div.modalBox{
             position:fixed;
             left:50%;
-            top:20%;
+            top:15%;
             transform: translate(-50%,0%);
             background:#fff;
             border:1px solid rgba(145, 152, 158, 0);
+            border-radius: 8px;
             box-shadow:0px 0px 10px #91989e;
             z-index:30;
+            width:700px;
+            max-width:100%;
             div.inModalBox{
               form.modalFormBox{
                 div.inModalFormBox{
@@ -143,17 +165,57 @@ main{
               }
             }
           }
+          div.operationBox{
+            min-height:36px;
+            div.inOperationBox{
+              ul{
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items:center;
+                li{
+                  button{
+                    @include buttonReset;
+                    padding:4px 8px;
+                    border-radius: 45px;
+                    &:hover{
+                      background:#dedede;
+                    }
+                    i{
+                      color:#787878;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
   }
 }
 div.mask{
-  background: rgba(140, 140, 140, 0.6);
+  background: rgba(201, 201, 201, 0.6);
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   z-index:20;
+}
+
+.operationBox-enter-active, .operationBox-leave-active{
+	transition:opacity 0.3s;
+}
+
+.operationBox-enter, .operationBox-leave-to{
+	opacity:0;
+}
+
+.operationLi-enter-active, .operationLi-leave-active{
+	transition:background-color 0.3s;
+}
+
+.operationLi-enter, .operationLi-leave-to{
+	background-color:red;
 }

@@ -6,6 +6,7 @@
 <title>{{Config('const.QUICKQ.name')}}</title>
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 <div id='app'>

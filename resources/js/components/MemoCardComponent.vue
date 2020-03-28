@@ -1,6 +1,6 @@
 <template>
-<div class="memoCardWrap">
-<div :class="['memoCardBox',{modalWindow:isModal}]"  v-if="isShow" @click="modalMemoCardBox($event)">
+<div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false">
+<div :class="['memoCardBox',{modalWindow:isModal}]"   @click="modalMemoCardBox($event)">
   id:{{memoData.id}}
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
@@ -15,8 +15,6 @@
       <textarea ref="autoResizeMemo" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
     </div>
     </div>
-    <button @click.prevent="update($event)" type="submit">更新</button>
-    <button @click.prevent="del($event)" type="submit">削除</button>
   </div>
   </form>
   <input type="hidden" v-model="memoData.id"/>
@@ -38,13 +36,26 @@
     </div>
     </div>
     <button @click.prevent="update($event)" type="submit">更新</button>
-    <button @click.prevent="del($event)" type="submit">削除</button>
+    <button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button>
   </div>
     <input type="hidden" v-model="memoData.id"/>
   </form>
 </div>
 </div>
 <div :class="{mask:isModal}" @click="closeModal($event)"></div>
+<div　class="operationBox">
+  <div class="inOperationBox">
+    <transition name="operationBox">
+    <ul v-show="isShowOperation" >
+      <transition name="operationLi"><li><button type="submit"><i class="fas fa-archive"></i></button></li></transition><!--アーカイブ-->
+      <li><button type="submit"><i class="fas fa-palette"></i></button></li><!--色変更-->
+      <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
+      <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
+      <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
+    </ul>
+  </transition>
+  </div>
+</div>
 </div>
 </template>
 
@@ -56,6 +67,7 @@ export default {
     return{
         isShow:true,
         isModal:false,
+        isShowOperation:false,
         title:'',
         memo:''
     }
