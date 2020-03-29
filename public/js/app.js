@@ -2233,6 +2233,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
@@ -38044,6 +38046,83 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
+          _c("div", { staticClass: "operationBox" }, [
+            _c(
+              "div",
+              { staticClass: "inOperationBox" },
+              [
+                _c("transition", { attrs: { name: "operationBox" } }, [
+                  _c(
+                    "ul",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.isShowOperation,
+                          expression: "isShowOperation"
+                        }
+                      ]
+                    },
+                    [
+                      _c("transition", { attrs: { name: "operationLi" } }, [
+                        _c("li", [
+                          _c("button", { attrs: { type: "submit" } }, [
+                            _c("i", { staticClass: "fas fa-archive" })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", { attrs: { type: "submit" } }, [
+                          _c("i", { staticClass: "fas fa-palette" })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.update($event)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-edit" })]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", [_c("i", { staticClass: "fas fa-tag" })])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.del($event)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
           _vm.isModal
             ? _c("div", { staticClass: "modalBox" }, [
                 _c("div", { staticClass: "inModalBox" }, [
@@ -38064,21 +38143,16 @@ var render = function() {
                             attrs: { rows: "1", placeholder: "タイトル" },
                             domProps: { value: _vm.memoData.title },
                             on: {
-                              input: [
-                                function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.memoData,
-                                    "title",
-                                    $event.target.value
-                                  )
-                                },
-                                function($event) {
-                                  return _vm.autoResizeTextarea($event)
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
                                 }
-                              ]
+                                _vm.$set(
+                                  _vm.memoData,
+                                  "title",
+                                  $event.target.value
+                                )
+                              }
                             }
                           })
                         ])
@@ -38096,7 +38170,7 @@ var render = function() {
                               }
                             ],
                             ref: "modalMemoTextarea",
-                            attrs: { rows: "1", placeholder: "メモを入力..." },
+                            attrs: { placeholder: "メモを入力..." },
                             domProps: { value: _vm.memoData.memo },
                             on: {
                               input: [
@@ -38210,84 +38284,7 @@ var render = function() {
                 return _vm.closeModal($event)
               }
             }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "operationBox" }, [
-            _c(
-              "div",
-              { staticClass: "inOperationBox" },
-              [
-                _c("transition", { attrs: { name: "operationBox" } }, [
-                  _c(
-                    "ul",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.isShowOperation,
-                          expression: "isShowOperation"
-                        }
-                      ]
-                    },
-                    [
-                      _c("transition", { attrs: { name: "operationLi" } }, [
-                        _c("li", [
-                          _c("button", { attrs: { type: "submit" } }, [
-                            _c("i", { staticClass: "fas fa-archive" })
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("button", { attrs: { type: "submit" } }, [
-                          _c("i", { staticClass: "fas fa-palette" })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.update($event)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "far fa-edit" })]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("button", [_c("i", { staticClass: "fas fa-tag" })])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.del($event)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-trash-alt" })]
-                        )
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              ],
-              1
-            )
-          ])
+          })
         ]
       )
     : _vm._e()
