@@ -1,7 +1,5 @@
 @mixin textareaDefault() {
-  width:90%;
-  margin-left: auto;
-  margin-right: auto;
+  width:100%;
   display:block;
   resize: none;
   overflow: auto;
@@ -12,6 +10,8 @@
 main{
   div.inMain{
     div.createMemoBox{
+      margin-top:70px;
+      margin-bottom:50px;
       width:600px;
       max-width:80%;
       margin-left: auto;
@@ -40,7 +40,6 @@ main{
       }
       div.inCreateMemoBox{
         form.createMemoFormBox{
-          margin-top:20px;
           margin-bottom:20px;
           div.inCreateMemoFormBox{
             box-shadow:none;
@@ -106,6 +105,9 @@ main{
           }
           div.memoCardBox{
             div.inMemoCardBox{
+              width:90%;
+              margin-left: auto;
+              margin-right: auto;
               form.memoCardFormBox{
                 div.inMemoCardFormBox{
                   div.textareaTitleBox{
@@ -141,6 +143,9 @@ main{
             width:700px;
             max-width:100%;
             div.inModalBox{
+              width:96%;
+              margin-left: auto;
+              margin-right: auto;
               form.modalFormBox{
                 div.inModalFormBox{
                   div.modalTitleBox{
@@ -158,6 +163,30 @@ main{
                     div.inModalMemoBox{
                       textarea{
                         @include textareaDefault()
+                      }
+                    }
+                  }
+                  div.modalOperationBox{
+                    min-height:36px;
+                    div.inModalOperationBox{
+                      ul{
+                        display:flex;
+                        flex-wrap: wrap;
+                        align-items:center;
+                        li{
+                          button{
+                            @include buttonReset;
+                            padding:6px 12px;
+                            border-radius: 45px;
+
+                            &:hover{
+                              background:#dedede;
+                            }
+                            i{
+                              color:#787878;
+                            }
+                          }
+                        }
                       }
                     }
                   }

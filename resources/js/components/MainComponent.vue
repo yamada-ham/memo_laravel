@@ -1,6 +1,6 @@
 <template>
 <main>
-
+  <header-component></header-component>
   <!-- <nav>
     <router-link to="/">Home</router-link>
     <router-link to="/Thank">商品情報</router-link>
@@ -13,8 +13,9 @@
 
 <script>
 import CurdMemoComponent from './CurdMemoComponent'
+import HeaderComponent from './HeaderComponent'
 export default {
-  components:{CurdMemoComponent},
+  components:{CurdMemoComponent,HeaderComponent},
   data(){
     return{
     }
