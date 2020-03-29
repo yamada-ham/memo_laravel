@@ -2242,7 +2242,8 @@ __webpack_require__.r(__webpack_exports__);
       isShowOperation: false,
       title: '',
       memo: '',
-      paddingVal: ''
+      paddingVal: '',
+      isScrollModal: false
     };
   },
   props: ['memoData'],
@@ -2291,9 +2292,14 @@ __webpack_require__.r(__webpack_exports__);
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
     },
     marginTestarea: function marginTestarea($event) {
-      console.log(this.$refs.modalTitleBox.clientHeight);
-      this.$refs.modalMemoBox.style.paddingTop = this.$refs.modalTitleBox.clientHeight + 'px';
-      console.log(this.$refs.modalTitleBox.clientHeight);
+      this.$refs.modalMemoBox.style.marginTop = this.$refs.modalTitleBox.clientHeight + 8 + 'px';
+    },
+    modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
+      if ($event.target.scrollTop === 0) {
+        this.isScrollModal = false;
+      } else {
+        this.isScrollModal = true;
+      }
     },
     update: function update($event) {
       axios.post('/', {
@@ -38146,7 +38152,10 @@ var render = function() {
                   _c("div", { staticClass: "inModalFormBox" }, [
                     _c(
                       "div",
-                      { ref: "modalTitleBox", staticClass: "modalTitleBox" },
+                      {
+                        ref: "modalTitleBox",
+                        class: ["modalTitleBox", { scroll: _vm.isScrollModal }]
+                      },
                       [
                         _c("div", { staticClass: "inModalTitleBox" }, [
                           _c("textarea", {
@@ -38189,7 +38198,14 @@ var render = function() {
                       {
                         ref: "modalMemoBox",
                         staticClass: "modalMemoBox",
-                        style: { paddingTop: _vm.paddingVal }
+                        on: {
+                          scroll: function($event) {
+                            if ($event.target !== $event.currentTarget) {
+                              return null
+                            }
+                            return _vm.modalMemoScrollAndTitleShadow($event)
+                          }
+                        }
                       },
                       [
                         _c("div", { staticClass: "inModalMemoBox" }, [

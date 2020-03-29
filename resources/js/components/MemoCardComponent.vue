@@ -33,16 +33,16 @@
   </div>
 </div>
 
-<div class="modalBox" v-show="isModal">
+<div v-show="isModal" class="modalBox">
 <div class="inModalBox">
   <form class="modalFormBox">
   <div class="inModalFormBox">
-    <div class="modalTitleBox" ref="modalTitleBox">
+    <div :class="['modalTitleBox',{scroll:isScrollModal}]" ref="modalTitleBox">
     <div class="inModalTitleBox">
       <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event); marginTestarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
-    <div class="modalMemoBox" ref="modalMemoBox" :style="{paddingTop:paddingVal}">
+    <div class="modalMemoBox" ref="modalMemoBox" @scroll.self="modalMemoScrollAndTitleShadow($event)">
     <div class="inModalMemoBox">
       <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
     </div>
@@ -83,7 +83,8 @@ export default {
         isShowOperation:false,
         title:'',
         memo:'',
-        paddingVal:''
+        paddingVal:'',
+        isScrollModal:false
     }
   },
   props:['memoData'],
@@ -125,10 +126,14 @@ export default {
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
     marginTestarea($event){
-      console.log(this.$refs.modalTitleBox.clientHeight);
-      this.$refs.modalMemoBox.style.paddingTop =  this.$refs.modalTitleBox.clientHeight + 'px'
-      console.log(this.$refs.modalTitleBox.clientHeight);
-
+      this.$refs.modalMemoBox.style.marginTop =  this.$refs.modalTitleBox.clientHeight + 8 +  'px'
+    },
+    modalMemoScrollAndTitleShadow($event){
+      if($event.target.scrollTop === 0){
+        this.isScrollModal = false
+      }else{
+        this.isScrollModal = true
+      }
     },
     update($event){
       axios.post('/', {
