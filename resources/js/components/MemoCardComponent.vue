@@ -37,17 +37,16 @@
     </div>
     <!-- <button @click.prevent="update($event)" type="submit">更新</button>
     <button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button> -->
-    <div　class="modalOperationBox">
+    <div class="modalOperationBox">
       <div class="inModalOperationBox">
-        <transition name="operationBox">
-        <ul v-show="isShowOperation" >
-          <transition name="operationLi"><li><button type="submit"><i class="fas fa-archive"></i></button></li></transition><!--アーカイブ-->
+        <ul>
+          <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
           <li><button type="submit"><i class="fas fa-palette"></i></button></li><!--色変更-->
           <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
           <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
           <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
+          <li class="liClose"><button @click="closeModal($event)">閉じる</button></li>
         </ul>
-      </transition>
       </div>
     </div>
   </div>

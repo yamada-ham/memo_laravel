@@ -35,6 +35,10 @@ textarea {
   overflow: auto;
 }
 
+ul,dl{
+  margin-bottom:0;
+}
+
 p,a,span{
   word-wrap: break-word;
   /* word-break : break-all; */

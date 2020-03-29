@@ -136,19 +136,18 @@ main{
             top:15%;
             transform: translate(-50%,0%);
             background:#fff;
-            border:1px solid rgba(145, 152, 158, 0);
             border-radius: 8px;
             box-shadow:0px 0px 10px #91989e;
             z-index:30;
             width:700px;
             max-width:100%;
             div.inModalBox{
-              width:96%;
-              margin-left: auto;
-              margin-right: auto;
               form.modalFormBox{
                 div.inModalFormBox{
                   div.modalTitleBox{
+                    width:96%;
+                    margin-left: auto;
+                    margin-right: auto;
                     div.inModalTitleBox{
                       textarea{
                         //文字改行の際に上方向に伸びなくさせられる。
@@ -160,6 +159,9 @@ main{
                     }
                   }
                   div.modalMemoBox{
+                    width:96%;
+                    margin-left: auto;
+                    margin-right: auto;
                     div.inModalMemoBox{
                       textarea{
                         @include textareaDefault()
@@ -167,18 +169,26 @@ main{
                     }
                   }
                   div.modalOperationBox{
-                    min-height:36px;
+                    box-shadow:0px -1px 4px #91989e;
+                    min-height:32px;
+                    // margin-bottom:2px;
                     div.inModalOperationBox{
                       ul{
-                        display:flex;
-                        flex-wrap: wrap;
-                        align-items:center;
+                        &:after{
+                          @include clear;
+                        }
                         li{
+                          float:left;
+                          &.liClose{
+                            float:right;
+                            button{
+                              font-size:0.9rem;
+                            }
+                          }
                           button{
                             @include buttonReset;
                             padding:6px 12px;
-                            border-radius: 45px;
-
+                            border-radius: 4px;
                             &:hover{
                               background:#dedede;
                             }
@@ -239,12 +249,4 @@ div.mask{
 
 .operationBox-enter, .operationBox-leave-to{
 	opacity:0;
-}
-
-.operationLi-enter-active, .operationLi-leave-active{
-	transition:background-color 0.3s;
-}
-
-.operationLi-enter, .operationLi-leave-to{
-	background-color:red;
 }

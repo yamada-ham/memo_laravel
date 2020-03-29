@@ -2233,7 +2233,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
@@ -38121,110 +38120,61 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "modalOperationBox" }, [
-                        _c(
-                          "div",
-                          { staticClass: "inModalOperationBox" },
-                          [
-                            _c(
-                              "transition",
-                              { attrs: { name: "operationBox" } },
-                              [
-                                _c(
-                                  "ul",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "show",
-                                        rawName: "v-show",
-                                        value: _vm.isShowOperation,
-                                        expression: "isShowOperation"
-                                      }
-                                    ]
-                                  },
-                                  [
-                                    _c(
-                                      "transition",
-                                      { attrs: { name: "operationLi" } },
-                                      [
-                                        _c("li", [
-                                          _c(
-                                            "button",
-                                            { attrs: { type: "submit" } },
-                                            [
-                                              _c("i", {
-                                                staticClass: "fas fa-archive"
-                                              })
-                                            ]
-                                          )
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _c(
-                                        "button",
-                                        { attrs: { type: "submit" } },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-palette"
-                                          })
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _c(
-                                        "button",
-                                        {
-                                          attrs: { type: "submit" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.update($event)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "far fa-edit"
-                                          })
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _c("button", [
-                                        _c("i", { staticClass: "fas fa-tag" })
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _c(
-                                        "button",
-                                        {
-                                          attrs: { type: "submit" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.del($event)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-trash-alt"
-                                          })
-                                        ]
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
+                        _c("div", { staticClass: "inModalOperationBox" }, [
+                          _c("ul", [
+                            _vm._m(0),
+                            _vm._v(" "),
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c("li", [
+                              _c(
+                                "button",
+                                {
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.update($event)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "far fa-edit" })]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c("li", [
+                              _c(
+                                "button",
+                                {
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.del($event)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-trash-alt" })]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("li", { staticClass: "liClose" }, [
+                              _c(
+                                "button",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.closeModal($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("閉じる")]
+                              )
+                            ])
+                          ])
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
@@ -38342,7 +38292,34 @@ var render = function() {
       )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", { attrs: { type: "submit" } }, [
+        _c("i", { staticClass: "fas fa-archive" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", { attrs: { type: "submit" } }, [
+        _c("i", { staticClass: "fas fa-palette" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("button", [_c("i", { staticClass: "fas fa-tag" })])])
+  }
+]
 render._withStripped = true
 
 
