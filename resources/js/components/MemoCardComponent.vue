@@ -20,8 +20,6 @@
   <input type="hidden" v-model="memoData.id"/>
 </div>
 </div>
-
-
 <div　class="operationBox">
   <div class="inOperationBox">
     <transition name="operationBox">
@@ -42,12 +40,12 @@
   <div class="inModalFormBox">
     <div class="modalTitleBox">
     <div class="inModalTitleBox">
-      <textarea ref="modalTitleTextarea"  v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event); marginTestarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
-    <div class="modalMemoBox">
+    <div class="modalMemoBox" ref="modalMemoBox" :style="{marginTop:marginVal}">
     <div class="inModalMemoBox">
-      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo"  placeholder="メモを入力..."></textarea>
+      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
     </div>
     </div>
     <!-- <button @click.prevent="update($event)" type="submit">更新</button>
@@ -60,7 +58,7 @@
           <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
           <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
           <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
-          <li class="liClose"><button @click="closeModal($event)">閉じる</button></li>
+          <li class="liClose"><button @click.prevent="closeModal($event)">閉じる</button></li>
         </ul>
       </div>
     </div>
@@ -85,7 +83,8 @@ export default {
         isModal:false,
         isShowOperation:false,
         title:'',
-        memo:''
+        memo:'',
+        marginVal:'100px'
     }
   },
   props:['memoData'],
@@ -94,7 +93,6 @@ export default {
   mounted(){
     this.initResizeTextarea(this.$refs.autoResizeTitle)
     this.initResizeTextarea(this.$refs.autoResizeMemo)
-    // console.log(this.$refs.autoResize.scrollHeight);
   },
   updated(){
     if(this.isModal){
@@ -124,6 +122,9 @@ export default {
       if(areaHeight < 30){ areaHeight = 30; }
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
+    },
+    marginTestarea($event){
+      this.$refs.modalMemoBox.style.paddingTop =  $event.target.clientHeight + 'px'
     },
     update($event){
       axios.post('/', {

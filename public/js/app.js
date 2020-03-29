@@ -2233,8 +2233,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
@@ -2244,14 +2242,15 @@ __webpack_require__.r(__webpack_exports__);
       isModal: false,
       isShowOperation: false,
       title: '',
-      memo: ''
+      memo: '',
+      marginVal: '100px'
     };
   },
   props: ['memoData'],
   created: function created() {},
   mounted: function mounted() {
     this.initResizeTextarea(this.$refs.autoResizeTitle);
-    this.initResizeTextarea(this.$refs.autoResizeMemo); // console.log(this.$refs.autoResize.scrollHeight);
+    this.initResizeTextarea(this.$refs.autoResizeMemo);
   },
   updated: function updated() {
     if (this.isModal) {
@@ -2289,6 +2288,9 @@ __webpack_require__.r(__webpack_exports__);
 
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
+    },
+    marginTestarea: function marginTestarea($event) {
+      this.$refs.modalMemoBox.style.paddingTop = $event.target.clientHeight + 'px';
     },
     update: function update($event) {
       axios.post('/', {
@@ -38143,36 +38145,6 @@ var render = function() {
                             attrs: { rows: "1", placeholder: "タイトル" },
                             domProps: { value: _vm.memoData.title },
                             on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.memoData,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modalMemoBox" }, [
-                        _c("div", { staticClass: "inModalMemoBox" }, [
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.memoData.memo,
-                                expression: "memoData.memo"
-                              }
-                            ],
-                            ref: "modalMemoTextarea",
-                            attrs: { placeholder: "メモを入力..." },
-                            domProps: { value: _vm.memoData.memo },
-                            on: {
                               input: [
                                 function($event) {
                                   if ($event.target.composing) {
@@ -38180,18 +38152,65 @@ var render = function() {
                                   }
                                   _vm.$set(
                                     _vm.memoData,
-                                    "memo",
+                                    "title",
                                     $event.target.value
                                   )
                                 },
                                 function($event) {
-                                  return _vm.autoResizeTextarea($event)
+                                  _vm.autoResizeTextarea($event)
+                                  _vm.marginTestarea($event)
                                 }
                               ]
                             }
                           })
                         ])
                       ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          ref: "modalMemoBox",
+                          staticClass: "modalMemoBox",
+                          style: { marginTop: _vm.marginVal }
+                        },
+                        [
+                          _c("div", { staticClass: "inModalMemoBox" }, [
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.memoData.memo,
+                                  expression: "memoData.memo"
+                                }
+                              ],
+                              ref: "modalMemoTextarea",
+                              attrs: {
+                                rows: "1",
+                                placeholder: "メモを入力..."
+                              },
+                              domProps: { value: _vm.memoData.memo },
+                              on: {
+                                input: [
+                                  function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.memoData,
+                                      "memo",
+                                      $event.target.value
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.autoResizeTextarea($event)
+                                  }
+                                ]
+                              }
+                            })
+                          ])
+                        ]
+                      ),
                       _vm._v(" "),
                       _c("div", { staticClass: "modalOperationBox" }, [
                         _c("div", { staticClass: "inModalOperationBox" }, [
@@ -38240,6 +38259,7 @@ var render = function() {
                                 {
                                   on: {
                                     click: function($event) {
+                                      $event.preventDefault()
                                       return _vm.closeModal($event)
                                     }
                                   }
