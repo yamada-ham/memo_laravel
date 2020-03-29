@@ -17,6 +17,19 @@
     <button  class="hidden" @click="create($event) "type="submit" @click.prevent>作成</button>
   </div>
   </form>
+  <div class="operationBox">
+    <div class="inOperationBox">
+      <ul>
+        <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
+        <li><button type="submit"><i class="fas fa-palette"></i></button></li><!--色変更-->
+        <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
+        <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
+        <li><button><i class="fas fa-undo-alt"></i></button></li>
+        <li><button><i class="fas fa-redo-alt"></i>
+        </button></li>
+      </ul>
+    </div>
+  </div>
 </div>
 </div>
 <div class="memoCardComponentBox">

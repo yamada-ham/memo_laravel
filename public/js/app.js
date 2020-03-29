@@ -1939,6 +1939,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37806,6 +37819,38 @@ var render = function() {
                 [_vm._v("作成")]
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "operationBox" }, [
+            _c("div", { staticClass: "inOperationBox" }, [
+              _c("ul", [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "button",
+                    {
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.update($event)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "far fa-edit" })]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ])
           ])
         ])
       ]
@@ -37826,7 +37871,50 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", { attrs: { type: "submit" } }, [
+        _c("i", { staticClass: "fas fa-archive" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", { attrs: { type: "submit" } }, [
+        _c("i", { staticClass: "fas fa-palette" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("button", [_c("i", { staticClass: "fas fa-tag" })])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-undo-alt" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })])
+    ])
+  }
+]
 render._withStripped = true
 
 

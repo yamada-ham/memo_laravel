@@ -16,49 +16,54 @@ main{
       max-width:80%;
       margin-left: auto;
       margin-right: auto;
+      box-shadow:none;
+      border:1px solid #91989e;
+      border-radius: 10px;
+      padding:10px 10px;
       &.making{
+        border:1px solid rgba(145, 152, 158, 0);
+        box-shadow:0px 0px 10px #91989e;
+      }
       div.inCreateMemoBox{
         form.createMemoFormBox{
           div.inCreateMemoFormBox{
-            border:1px solid rgba(145, 152, 158, 0);
-            box-shadow:0px 0px 10px #91989e;
+
             div.textareaTitleBox{
+              margin-bottom:8px;
               div.inTextareaTitleBox{
                 textarea{
+                  @include textareaDefault()
                 }
               }
             }
             div.textareaMemoBox{
+              margin-bottom:8px;
               div.inTextareaMemoBox{
                 textarea{
+                  @include textareaDefault()
                 }
               }
             }
           }
         }
-      }
-      }
-      div.inCreateMemoBox{
-        form.createMemoFormBox{
-          margin-bottom:20px;
-          div.inCreateMemoFormBox{
-            box-shadow:none;
-            border:1px solid #91989e;
-            border-radius: 10px;
-            padding-top: 10px;
-            div.textareaTitleBox{
-              margin-bottom:8px;
-              div.inTextareaTitleBox{
-                textarea{
-                  @include textareaDefault()
-                }
-              }
-            }
-            div.textareaMemoBox{
-              margin-bottom:8px;
-              div.inTextareaMemoBox{
-                textarea{
-                  @include textareaDefault()
+        div.operationBox{
+          div.inOperationBox{
+            ul{
+              display:flex;
+              flex-wrap: wrap;
+              align-items:flex-end;
+              align-content: flex-start;
+              li{
+                button{
+                  @include buttonReset;
+                  padding:6px 12px;
+                  border-radius: 45px;
+                  &:hover{
+                    background:#dedede;
+                  }
+                  i{
+                    color:#787878;
+                  }
                 }
               }
             }
@@ -105,12 +110,12 @@ main{
           }
           div.memoCardBox{
             div.inMemoCardBox{
-              width:90%;
               height:30vh;
-              margin-left: auto;
-              margin-right: auto;
               overflow: scroll;
               form.memoCardFormBox{
+                width:90%;
+                margin-left: auto;
+                margin-right: auto;
                 div.inMemoCardFormBox{
                   div.textareaTitleBox{
                     div.inTextareaTitleBox{
