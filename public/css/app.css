@@ -11195,7 +11195,6 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCard
   top: 0%;
   transform: translate(-50%, 0%);
   background: #fff;
-  box-sizing: border-box;
   border-radius: 8px;
   box-shadow: 0px 0px 10px #91989e;
   z-index: 30;
@@ -11205,16 +11204,17 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCard
 
 @media only screen and (min-width: 575px) {
   main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardWrap div.modalBox {
-    top: 15%;
+    top: 12%;
   }
 }
 
 main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox {
   position: fixed;
-  width: 96%;
-  padding-left: 2%;
-  padding-right: 2%;
+  box-sizing: border-box;
   top: 0%;
+  left: 50%;
+  width: 94%;
+  transform: translate(-50%, 0%);
   background: #fff;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -11235,7 +11235,7 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCard
 
 main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox {
   position: relative;
-  width: 96%;
+  width: 94%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
@@ -11247,7 +11247,7 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCard
 @media only screen and (min-width: 575px) {
   main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox {
     height: none;
-    max-height: 60vh;
+    max-height: 70vh;
   }
 }
 
@@ -11270,6 +11270,7 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCard
   transform: translate(0%, -100%);
   z-index: 40;
   background: #fff;
+  border-radius: 0px 0px 8px 8px;
 }
 
 @media only screen and (min-width: 575px) {

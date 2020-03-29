@@ -1,7 +1,6 @@
 <template>
 <div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false">
 <div :class="['memoCardBox',{modalWindow:isModal}]"   @click="modalMemoCardBox($event)">
-  id:{{memoData.id}}
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
   <div class="inMemoCardFormBox">
@@ -34,16 +33,16 @@
   </div>
 </div>
 
-<div class="modalBox" v-if="isModal">
+<div class="modalBox" v-show="isModal">
 <div class="inModalBox">
   <form class="modalFormBox">
   <div class="inModalFormBox">
-    <div class="modalTitleBox">
+    <div class="modalTitleBox" ref="modalTitleBox">
     <div class="inModalTitleBox">
       <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event); marginTestarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
-    <div class="modalMemoBox" ref="modalMemoBox" :style="{marginTop:marginVal}">
+    <div class="modalMemoBox" ref="modalMemoBox" :style="{paddingTop:paddingVal}">
     <div class="inModalMemoBox">
       <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
     </div>
@@ -84,7 +83,7 @@ export default {
         isShowOperation:false,
         title:'',
         memo:'',
-        marginVal:'100px'
+        paddingVal:''
     }
   },
   props:['memoData'],
@@ -95,6 +94,8 @@ export default {
     this.initResizeTextarea(this.$refs.autoResizeMemo)
   },
   updated(){
+    this.marginTestarea();
+
     if(this.isModal){
       this.initResizeTextarea(this.$refs.modalTitleTextarea)
       this.initResizeTextarea(this.$refs.modalMemoTextarea)
@@ -124,7 +125,10 @@ export default {
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
     marginTestarea($event){
-      this.$refs.modalMemoBox.style.paddingTop =  $event.target.clientHeight + 'px'
+      console.log(this.$refs.modalTitleBox.clientHeight);
+      this.$refs.modalMemoBox.style.paddingTop =  this.$refs.modalTitleBox.clientHeight + 'px'
+      console.log(this.$refs.modalTitleBox.clientHeight);
+
     },
     update($event){
       axios.post('/', {

@@ -2232,7 +2232,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
@@ -2243,7 +2242,7 @@ __webpack_require__.r(__webpack_exports__);
       isShowOperation: false,
       title: '',
       memo: '',
-      marginVal: '100px'
+      paddingVal: ''
     };
   },
   props: ['memoData'],
@@ -2253,6 +2252,8 @@ __webpack_require__.r(__webpack_exports__);
     this.initResizeTextarea(this.$refs.autoResizeMemo);
   },
   updated: function updated() {
+    this.marginTestarea();
+
     if (this.isModal) {
       this.initResizeTextarea(this.$refs.modalTitleTextarea);
       this.initResizeTextarea(this.$refs.modalMemoTextarea);
@@ -2290,7 +2291,9 @@ __webpack_require__.r(__webpack_exports__);
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
     },
     marginTestarea: function marginTestarea($event) {
-      this.$refs.modalMemoBox.style.paddingTop = $event.target.clientHeight + 'px';
+      console.log(this.$refs.modalTitleBox.clientHeight);
+      this.$refs.modalMemoBox.style.paddingTop = this.$refs.modalTitleBox.clientHeight + 'px';
+      console.log(this.$refs.modalTitleBox.clientHeight);
     },
     update: function update($event) {
       axios.post('/', {
@@ -37948,7 +37951,6 @@ var render = function() {
               }
             },
             [
-              _vm._v("\n  id:" + _vm._s(_vm.memoData.id) + "\n"),
               _c("div", { staticClass: "inMemoCardBox" }, [
                 _c("form", { staticClass: "memoCardFormBox" }, [
                   _c("div", { staticClass: "inMemoCardFormBox" }, [
@@ -38125,12 +38127,27 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm.isModal
-            ? _c("div", { staticClass: "modalBox" }, [
-                _c("div", { staticClass: "inModalBox" }, [
-                  _c("form", { staticClass: "modalFormBox" }, [
-                    _c("div", { staticClass: "inModalFormBox" }, [
-                      _c("div", { staticClass: "modalTitleBox" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isModal,
+                  expression: "isModal"
+                }
+              ],
+              staticClass: "modalBox"
+            },
+            [
+              _c("div", { staticClass: "inModalBox" }, [
+                _c("form", { staticClass: "modalFormBox" }, [
+                  _c("div", { staticClass: "inModalFormBox" }, [
+                    _c(
+                      "div",
+                      { ref: "modalTitleBox", staticClass: "modalTitleBox" },
+                      [
                         _c("div", { staticClass: "inModalTitleBox" }, [
                           _c("textarea", {
                             directives: [
@@ -38164,138 +38181,136 @@ var render = function() {
                             }
                           })
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          ref: "modalMemoBox",
-                          staticClass: "modalMemoBox",
-                          style: { marginTop: _vm.marginVal }
-                        },
-                        [
-                          _c("div", { staticClass: "inModalMemoBox" }, [
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.memoData.memo,
-                                  expression: "memoData.memo"
-                                }
-                              ],
-                              ref: "modalMemoTextarea",
-                              attrs: {
-                                rows: "1",
-                                placeholder: "メモを入力..."
-                              },
-                              domProps: { value: _vm.memoData.memo },
-                              on: {
-                                input: [
-                                  function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.memoData,
-                                      "memo",
-                                      $event.target.value
-                                    )
-                                  },
-                                  function($event) {
-                                    return _vm.autoResizeTextarea($event)
-                                  }
-                                ]
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        ref: "modalMemoBox",
+                        staticClass: "modalMemoBox",
+                        style: { paddingTop: _vm.paddingVal }
+                      },
+                      [
+                        _c("div", { staticClass: "inModalMemoBox" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.memoData.memo,
+                                expression: "memoData.memo"
                               }
-                            })
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modalOperationBox" }, [
-                        _c("div", { staticClass: "inModalOperationBox" }, [
-                          _c("ul", [
-                            _vm._m(0),
-                            _vm._v(" "),
-                            _vm._m(1),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c(
-                                "button",
-                                {
-                                  attrs: { type: "submit" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.update($event)
-                                    }
+                            ],
+                            ref: "modalMemoTextarea",
+                            attrs: { rows: "1", placeholder: "メモを入力..." },
+                            domProps: { value: _vm.memoData.memo },
+                            on: {
+                              input: [
+                                function($event) {
+                                  if ($event.target.composing) {
+                                    return
                                   }
+                                  _vm.$set(
+                                    _vm.memoData,
+                                    "memo",
+                                    $event.target.value
+                                  )
                                 },
-                                [_c("i", { staticClass: "far fa-edit" })]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(2),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c(
-                                "button",
-                                {
-                                  attrs: { type: "submit" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.del($event)
-                                    }
+                                function($event) {
+                                  return _vm.autoResizeTextarea($event)
+                                }
+                              ]
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modalOperationBox" }, [
+                      _c("div", { staticClass: "inModalOperationBox" }, [
+                        _c("ul", [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "button",
+                              {
+                                attrs: { type: "submit" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.update($event)
                                   }
-                                },
-                                [_c("i", { staticClass: "fas fa-trash-alt" })]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("li", { staticClass: "liClose" }, [
-                              _c(
-                                "button",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.closeModal($event)
-                                    }
+                                }
+                              },
+                              [_c("i", { staticClass: "far fa-edit" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "button",
+                              {
+                                attrs: { type: "submit" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.del($event)
                                   }
-                                },
-                                [_vm._v("閉じる")]
-                              )
-                            ])
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash-alt" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "liClose" }, [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.closeModal($event)
+                                  }
+                                }
+                              },
+                              [_vm._v("閉じる")]
+                            )
                           ])
                         ])
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.memoData.id,
-                          expression: "memoData.id"
-                        }
-                      ],
-                      attrs: { type: "hidden" },
-                      domProps: { value: _vm.memoData.id },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.memoData, "id", $event.target.value)
-                        }
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.memoData.id,
+                        expression: "memoData.id"
                       }
-                    })
-                  ])
+                    ],
+                    attrs: { type: "hidden" },
+                    domProps: { value: _vm.memoData.id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.memoData, "id", $event.target.value)
+                      }
+                    }
+                  })
                 ])
               ])
-            : _vm._e(),
+            ]
+          ),
           _vm._v(" "),
           _c("div", {
             class: { mask: _vm.isModal },

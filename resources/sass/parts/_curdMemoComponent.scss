@@ -162,24 +162,25 @@ main{
             top:0%;
             transform: translate(-50%,0%);
             background:#fff;
-            box-sizing: border-box;
+            // box-sizing: border-box;
             border-radius: 8px;
             box-shadow:0px 0px 10px #91989e;
             z-index:30;
             width:700px;
             max-width:100%;
             @include media(s){
-              top:15%;
+              top:12%;
             }
             div.inModalBox{
               form.modalFormBox{
                 div.inModalFormBox{
                   div.modalTitleBox{
                     position:fixed;
-                    width:96%;
-                    padding-left:2%;
-                    padding-right:2%;
+                    box-sizing: border-box;
                     top:0%;
+                    left:50%;
+                    width:94%;
+                    transform: translate(-50%,0%);
                     background: #fff;
                     padding-top:10px;
                     padding-bottom:10px;
@@ -196,7 +197,7 @@ main{
                   }
                   div.modalMemoBox{
                     position: relative;
-                    width:96%;
+                    width:94%;
                     margin-left: auto;
                     margin-right: auto;
                     margin-bottom:40px;
@@ -205,7 +206,7 @@ main{
                     z-index:35;
                     @include media(s){
                       height:none;
-                      max-height:60vh;
+                      max-height:70vh;
                     }
                     div.inModalMemoBox{
                       textarea{
@@ -223,6 +224,7 @@ main{
                     transform: translate(0%,-100%);
                     z-index:40;
                     background: #fff;
+                    border-radius: 0px 0px 8px 8px;
                     @include media(s){
                       transform: none;
                     }
