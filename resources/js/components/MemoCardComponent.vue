@@ -39,7 +39,7 @@
   <div class="inModalFormBox">
     <div :class="['modalTitleBox',{scroll:isScrollModal}]" ref="modalTitleBox">
     <div class="inModalTitleBox">
-      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event); marginTestarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
     <div class="modalMemoBox" ref="modalMemoBox" @scroll.self="modalMemoScrollAndTitleShadow($event)">
@@ -95,8 +95,6 @@ export default {
     this.initResizeTextarea(this.$refs.autoResizeMemo)
   },
   updated(){
-    this.marginTestarea();
-
     if(this.isModal){
       this.initResizeTextarea(this.$refs.modalTitleTextarea)
       this.initResizeTextarea(this.$refs.modalMemoTextarea)
@@ -124,9 +122,6 @@ export default {
       if(areaHeight < 30){ areaHeight = 30; }
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
-    },
-    marginTestarea($event){
-      this.$refs.modalMemoBox.style.marginTop =  this.$refs.modalTitleBox.clientHeight + 8 +  'px'
     },
     modalMemoScrollAndTitleShadow($event){
       if($event.target.scrollTop === 0){

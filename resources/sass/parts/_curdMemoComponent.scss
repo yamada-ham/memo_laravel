@@ -174,31 +174,36 @@ main{
             width:700px;
             max-width:100%;
             @include media(s){
-              top:12%;
+              top:14%;
+              max-height:76vh;
             }
             div.inModalBox{
               form.modalFormBox{
                 div.inModalFormBox{
                   div.modalTitleBox{
-                    position:fixed;
-                    box-sizing: border-box;
-                    top:0%;
-                    left:50%;
+                    position:relative;
+                    // position:fixed;
+                    // box-sizing: border-box;
+                    // top:0%;
+                    // left:50%;
                     width:100%;
                     padding-left:20px;
-                    transform: translate(-50%,0%);
+                    // transform: translate(-50%,0%);
                     background: #fff;
                     border-radius: 8px 8px 0 0;
                     padding-top:10px;
                     padding-bottom:10px;
                     z-index:40;
+                    overflow: scroll;
+                    @include media(s){
+                      height:auto;
+                      max-height:20vh;
+                    }
                     &.scroll{
                       box-shadow:0px 1px 4px #91989e;
                     }
                     div.inModalTitleBox{
                       textarea{
-                        //文字改行の際に上方向に伸びなくさせられる。
-                        position:relative;
                         font-size: 1.5rem;
                         font-weight: bold;
                         @include textareaDefault();
@@ -215,8 +220,8 @@ main{
                     overflow: scroll;
                     z-index:35;
                     @include media(s){
-                      height:none;
-                      max-height:70vh;
+                      height:auto;
+                      max-height:56vh;
                     }
                     div.inModalMemoBox{
                       textarea{

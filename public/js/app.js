@@ -2266,8 +2266,6 @@ __webpack_require__.r(__webpack_exports__);
     this.initResizeTextarea(this.$refs.autoResizeMemo);
   },
   updated: function updated() {
-    this.marginTestarea();
-
     if (this.isModal) {
       this.initResizeTextarea(this.$refs.modalTitleTextarea);
       this.initResizeTextarea(this.$refs.modalMemoTextarea);
@@ -2303,9 +2301,6 @@ __webpack_require__.r(__webpack_exports__);
 
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
-    },
-    marginTestarea: function marginTestarea($event) {
-      this.$refs.modalMemoBox.style.marginTop = this.$refs.modalTitleBox.clientHeight + 8 + 'px';
     },
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
@@ -38271,8 +38266,7 @@ var render = function() {
                                   )
                                 },
                                 function($event) {
-                                  _vm.autoResizeTextarea($event)
-                                  _vm.marginTestarea($event)
+                                  return _vm.autoResizeTextarea($event)
                                 }
                               ]
                             }
