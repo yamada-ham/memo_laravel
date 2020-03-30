@@ -1971,7 +1971,9 @@ __webpack_require__.r(__webpack_exports__);
     this.selectMemos();
     this.windowClick();
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.$refs.textareaTitle.focus();
+  },
   methods: {
     autoResizeTextarea: function autoResizeTextarea($event) {
       var areaHeight = $event.target.scrollHeight;
@@ -2245,6 +2247,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
@@ -2262,13 +2267,14 @@ __webpack_require__.r(__webpack_exports__);
   props: ['memoData'],
   created: function created() {},
   mounted: function mounted() {
-    this.initResizeTextarea(this.$refs.autoResizeTitle);
-    this.initResizeTextarea(this.$refs.autoResizeMemo);
+    this.initResizeTextarea(this.$refs.titleTextarea);
+    this.initResizeTextarea(this.$refs.MemoTextarea);
   },
   updated: function updated() {
     if (this.isModal) {
       this.initResizeTextarea(this.$refs.modalTitleTextarea);
       this.initResizeTextarea(this.$refs.modalMemoTextarea);
+      this.$refs.modalTitleTextarea.focus();
     }
   },
   methods: {
@@ -2277,7 +2283,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     closeModal: function closeModal($event) {
       this.isModal = false;
-      console.log($event);
       this.update();
     },
     initResizeTextarea: function initResizeTextarea(el) {
@@ -2334,17 +2339,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: {},
-  watch: {// isModal: {
-    //   handler: function(newVal, oldVal) {
-    //     if(newVal === true){
-    //       // this.initResizeTextarea(this.$refs.modalTitleTextarea)
-    //     }
-    //   },
-    //   deep: true,
-    //   immediate: true
-    // },
-  }
+  computed: {} // watch: {
+  //   isModal: {
+  //     handler: function(newVal, oldVal) {
+  //       if(newVal === true){
+  //         this.$refs.modalTitleTextarea.focus()
+  //       }
+  //     },
+  //     deep: true,
+  //     immediate: true
+  //   },
+  // }
+
 });
 
 /***/ }),
@@ -37722,15 +37728,7 @@ var render = function() {
   return _c("div", { staticClass: "inMain" }, [
     _c(
       "div",
-      {
-        staticClass: "createMemoBox",
-        class: { making: _vm.isMaking },
-        on: {
-          click: function($event) {
-            _vm.isMaking = true
-          }
-        }
-      },
+      { staticClass: "createMemoBox", class: { making: _vm.isMaking } },
       [
         _c("div", { staticClass: "inCreateMemoBox" }, [
           _c("form", { staticClass: "createMemoFormBox" }, [
@@ -37746,6 +37744,7 @@ var render = function() {
                         expression: "title"
                       }
                     ],
+                    ref: "textareaTitle",
                     attrs: { rows: "1", placeholder: "タイトル" },
                     domProps: { value: _vm.title },
                     on: {
@@ -37759,7 +37758,10 @@ var render = function() {
                         function($event) {
                           return _vm.autoResizeTextarea($event)
                         }
-                      ]
+                      ],
+                      focus: function($event) {
+                        _vm.isMaking = true
+                      }
                     }
                   })
                 ])
@@ -38054,8 +38056,12 @@ var render = function() {
                               expression: "memoData.title"
                             }
                           ],
-                          ref: "autoResizeTitle",
-                          attrs: { rows: "1", placeholder: "タイトル" },
+                          ref: "titleTextarea",
+                          attrs: {
+                            rows: "1",
+                            placeholder: "タイトル",
+                            disabled: ""
+                          },
                           domProps: { value: _vm.memoData.title },
                           on: {
                             input: [
@@ -38089,8 +38095,12 @@ var render = function() {
                               expression: "memoData.memo"
                             }
                           ],
-                          ref: "autoResizeMemo",
-                          attrs: { rows: "1", placeholder: "メモを入力..." },
+                          ref: "MemoTextarea",
+                          attrs: {
+                            rows: "1",
+                            placeholder: "メモを入力...",
+                            disabled: ""
+                          },
                           domProps: { value: _vm.memoData.memo },
                           on: {
                             input: [
@@ -38366,6 +38376,10 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
                               "button",
@@ -38448,6 +38462,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", [_c("button", [_c("i", { staticClass: "fas fa-tag" })])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-undo-alt" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })])
+    ])
   }
 ]
 render._withStripped = true

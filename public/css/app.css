@@ -11112,7 +11112,7 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   align-content: flex-start;
 }

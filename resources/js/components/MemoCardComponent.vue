@@ -6,12 +6,12 @@
   <div class="inMemoCardFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea ref="autoResizeTitle" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" disabled></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea ref="autoResizeMemo" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
+      <textarea ref="MemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
     </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div v-show="isModal" class="modalBox">
+<div class="modalBox" v-show="isModal" >
 <div class="inModalBox">
   <form class="modalFormBox">
   <div class="inModalFormBox">
@@ -57,6 +57,9 @@
           <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
           <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
           <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
+          <li><button><i class="fas fa-undo-alt"></i></button></li>
+          <li><button><i class="fas fa-redo-alt"></i>
+          </button></li>
           <li class="liClose"><button @click.prevent="closeModal($event)">閉じる</button></li>
         </ul>
       </div>
@@ -89,15 +92,17 @@ export default {
   },
   props:['memoData'],
   created(){
+
   },
   mounted(){
-    this.initResizeTextarea(this.$refs.autoResizeTitle)
-    this.initResizeTextarea(this.$refs.autoResizeMemo)
+    this.initResizeTextarea(this.$refs.titleTextarea)
+    this.initResizeTextarea(this.$refs.MemoTextarea)
   },
   updated(){
     if(this.isModal){
       this.initResizeTextarea(this.$refs.modalTitleTextarea)
       this.initResizeTextarea(this.$refs.modalMemoTextarea)
+      this.$refs.modalTitleTextarea.focus()
     }
   },
   methods:{
@@ -106,7 +111,6 @@ export default {
     },
     closeModal($event){
       this.isModal = false
-      console.log($event)
       this.update()
     },
     initResizeTextarea(el){
@@ -162,16 +166,16 @@ export default {
   computed:{
 
   },
-  watch: {
-    // isModal: {
-    //   handler: function(newVal, oldVal) {
-    //     if(newVal === true){
-    //       // this.initResizeTextarea(this.$refs.modalTitleTextarea)
-    //     }
-    //   },
-    //   deep: true,
-    //   immediate: true
-    // },
-  }
+  // watch: {
+  //   isModal: {
+  //     handler: function(newVal, oldVal) {
+  //       if(newVal === true){
+  //         this.$refs.modalTitleTextarea.focus()
+  //       }
+  //     },
+  //     deep: true,
+  //     immediate: true
+  //   },
+  // }
 }
 </script>

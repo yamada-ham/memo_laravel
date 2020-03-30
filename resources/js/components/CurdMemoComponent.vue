@@ -1,12 +1,12 @@
 <template>
 <div class="inMain">
-<div class="createMemoBox" :class="{making:isMaking}" @click="isMaking = true">
+<div class="createMemoBox" :class="{making:isMaking}">
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">
   <div class="inCreateMemoFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea v-model="title" @input="autoResizeTextarea($event)" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="textareaTitle" v-model="title" @input="autoResizeTextarea($event)" @focus="isMaking = true" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
@@ -59,6 +59,7 @@ export default {
     this.windowClick()
   },
   mounted(){
+    this.$refs.textareaTitle.focus()
   },
   methods:{
     autoResizeTextarea($event){
