@@ -4,14 +4,14 @@
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">
   <div class="inCreateMemoFormBox">
-    <div class="textareaTitleBox">
+    <div class="textareaTitleBox" ref="textareaTitleBox">
     <div class="inTextareaTitleBox">
       <textarea ref="textareaTitle" v-model="title" @input="autoResizeTextarea($event)" @focus="isMaking = true" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
-    <div class="textareaMemoBox">
+    <div class="textareaMemoBox" ref="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea v-model="memo" @input="autoResizeTextarea($event)" rows="1" placeholder="メモを入力..."></textarea>
+      <textarea v-model="memo" ref="textareaMemo" @input="autoResizeTextarea($event)" @focus="isMaking = true" rows="1" placeholder="メモを入力..."></textarea>
     </div>
     </div>
     <button  class="hidden" @click="create($event) "type="submit" @click.prevent>作成</button>
@@ -113,6 +113,8 @@ export default {
         that.memoData.unshift(res['data']);
         that.title = ''
         that.memo = ''
+        that.$refs.textareaTitle.style.height = '32px'
+        that.$refs.textareaMemo.style.height = '32px'
       })
       .catch(function (error) {
         console.log(error);

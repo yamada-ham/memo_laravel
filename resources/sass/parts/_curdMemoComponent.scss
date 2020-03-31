@@ -10,8 +10,8 @@
 main{
   div.inMain{
     div.createMemoBox{
-      margin-top:70px;
-      margin-bottom:50px;
+      margin-top:100px;
+      margin-bottom:70px;
       width:600px;
       max-width:80%;
       margin-left: auto;
@@ -27,9 +27,11 @@ main{
       div.inCreateMemoBox{
         form.createMemoFormBox{
           div.inCreateMemoFormBox{
-
             div.textareaTitleBox{
               margin-bottom:8px;
+              min-height:32px;
+              max-height:20vh;
+              overflow: scroll;
               div.inTextareaTitleBox{
                 textarea{
                   @include textareaDefault()
@@ -38,6 +40,9 @@ main{
             }
             div.textareaMemoBox{
               margin-bottom:8px;
+              min-height:32px;
+              max-height:50vh;
+              overflow: scroll;
               div.inTextareaMemoBox{
                 textarea{
                   @include textareaDefault()

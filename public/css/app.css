@@ -228,8 +228,8 @@ header.header div.inHeader div.accountBtnBox div.inAccountBtnBox button {
 }
 
 main div.inMain div.createMemoBox {
-  margin-top: 70px;
-  margin-bottom: 50px;
+  margin-top: 100px;
+  margin-bottom: 70px;
   width: 600px;
   max-width: 80%;
   margin-left: auto;
@@ -247,6 +247,9 @@ main div.inMain div.createMemoBox.making {
 
 main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox {
   margin-bottom: 8px;
+  min-height: 32px;
+  max-height: 20vh;
+  overflow: scroll;
 }
 
 main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
@@ -260,6 +263,9 @@ main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div
 
 main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox {
   margin-bottom: 8px;
+  min-height: 32px;
+  max-height: 50vh;
+  overflow: scroll;
 }
 
 main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
