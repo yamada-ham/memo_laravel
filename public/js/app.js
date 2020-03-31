@@ -2086,6 +2086,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 // import store from '../store/store.js';
 // import MemoCardComponent from './MemoCardComponent'
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37942,27 +37947,41 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "header" }, [
       _c("div", { staticClass: "inHeader" }, [
-        _c("div", { staticClass: "menuBtnBox" }, [
-          _c("div", { staticClass: "inMenuBtnBox" })
+        _c("div", { staticClass: "menuTitleBox" }, [
+          _c("div", { staticClass: "inMenuTitleBox" }, [
+            _c("div", { staticClass: "menuBtnBox" }, [
+              _c("div", { staticClass: "inMenuBtnBox" }, [
+                _c("button", [_c("i", { staticClass: "fas fa-bars" })])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "titleBox" }, [
+              _c("div", { staticClass: "inTitleBox" }, [
+                _c("h1", [
+                  _c("a", [_c("img", { attrs: { src: "img/memo.png" } })])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "searchFormBox" }, [
+          _c("div", { staticClass: "inSearchFormBox" }, [
+            _c("form", [_c("input", { attrs: { type: "text" } })])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "reloadBox" }, [
+          _c("div", { staticClass: "inReloadBox" }, [
+            _c("button", [_c("i", { staticClass: "fas fa-redo" })])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "accountBtnBox" }, [
+          _c("div", { staticClass: "inAccountBtnBox" }, [
+            _c("button", [_c("i", { staticClass: "fas fa-user-circle" })])
+          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "titleBox" }, [
-        _c("div", { staticClass: "inTitleBox" }, [_c("h1")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "searchFormBox" }, [
-        _c("div", { staticClass: "inSearchFormBox" }, [
-          _c("form", [_c("input", { attrs: { type: "text" } })])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "reloadBox" }, [
-        _c("div", { staticClass: "inReloadBox" }, [_c("span")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "accountBtnBox" }, [
-        _c("div", { staticClass: "inAccountBtnBox" }, [_c("span")])
       ])
     ])
   }

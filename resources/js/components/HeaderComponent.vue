@@ -1,33 +1,38 @@
 <template>
 <header class="header">
 <div class="inHeader">
-  <div class="menuBtnBox">
-    <div class="inMenuBtnBox">
+  <div class="menuTitleBox">
+    <div class="inMenuTitleBox">
+    <div class="menuBtnBox">
+      <div class="inMenuBtnBox">
+        <button><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div class="titleBox">
+      <div class="inTitleBox">
+        <h1>
+          <a><img src="img/memo.png"></a>
+        </h1>
+      </div>
     </div>
   </div>
-</div>
-<div class="titleBox">
-  <div class="inTitleBox">
-    <h1>
-      <!-- <img> -->
-    </h1>
   </div>
-</div>
-<div class="searchFormBox">
-  <div class="inSearchFormBox">
-    <form>
-      <input type="text">
-    </form>
+  <div class="searchFormBox">
+    <div class="inSearchFormBox">
+      <form>
+        <input type="text">
+      </form>
+    </div>
   </div>
-</div>
-<div class="reloadBox">
-  <div class="inReloadBox">
-    <span></span>
+  <div class="reloadBox">
+    <div class="inReloadBox">
+      <button><i class="fas fa-redo"></i></button>
+    </div>
   </div>
-</div>
-<div class="accountBtnBox">
-  <div class="inAccountBtnBox">
-    <span></span>
+  <div class="accountBtnBox">
+    <div class="inAccountBtnBox">
+      <button><i class="fas fa-user-circle"></i></button>
+    </div>
   </div>
 </div>
 </header>
