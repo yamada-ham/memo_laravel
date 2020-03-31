@@ -102,7 +102,6 @@ export default {
     if(this.isModal){
       this.initResizeTextarea(this.$refs.modalTitleTextarea)
       this.initResizeTextarea(this.$refs.modalMemoTextarea)
-      this.$refs.modalTitleTextarea.focus()
     }
   },
   methods:{
