@@ -2038,8 +2038,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     }
-  },
-  computed: {}
+  }
 });
 
 /***/ }),
@@ -2098,10 +2097,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
-    return {};
+    return {
+      isShadow: false
+    };
   },
   props: [],
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    window.addEventListener('scroll', function (e) {
+      if (window.scrollY > 0) {
+        _this.isShadow = true;
+      } else {
+        _this.isShadow = false;
+      }
+    });
+  },
   mounted: function mounted() {},
   methods: {},
   computed: {}
@@ -37951,49 +37962,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("header", { class: ["header", { shadow: _vm.isShadow }] }, [
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "header" }, [
-      _c("div", { staticClass: "inHeader" }, [
-        _c("div", { staticClass: "menuTitleBox" }, [
-          _c("div", { staticClass: "inMenuTitleBox" }, [
-            _c("div", { staticClass: "menuBtnBox" }, [
-              _c("div", { staticClass: "inMenuBtnBox" }, [
-                _c("button", [_c("i", { staticClass: "fas fa-bars" })])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "titleBox" }, [
-              _c("div", { staticClass: "inTitleBox" }, [
-                _c("h1", [
-                  _c("a", [_c("img", { attrs: { src: "img/memo.png" } })])
-                ])
+    return _c("div", { staticClass: "inHeader" }, [
+      _c("div", { staticClass: "menuTitleBox" }, [
+        _c("div", { staticClass: "inMenuTitleBox" }, [
+          _c("div", { staticClass: "menuBtnBox" }, [
+            _c("div", { staticClass: "inMenuBtnBox" }, [
+              _c("button", [_c("i", { staticClass: "fas fa-bars" })])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "titleBox" }, [
+            _c("div", { staticClass: "inTitleBox" }, [
+              _c("h1", [
+                _c("a", [_c("img", { attrs: { src: "img/memo.png" } })])
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "searchFormBox" }, [
-          _c("div", { staticClass: "inSearchFormBox" }, [
-            _c("form", [_c("input", { attrs: { type: "text" } })])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "reloadBox" }, [
-          _c("div", { staticClass: "inReloadBox" }, [
-            _c("button", [_c("i", { staticClass: "fas fa-redo" })])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "accountBtnBox" }, [
-          _c("div", { staticClass: "inAccountBtnBox" }, [
-            _c("button", [_c("i", { staticClass: "fas fa-user-circle" })])
-          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "searchFormBox" }, [
+        _c("div", { staticClass: "inSearchFormBox" }, [
+          _c("form", [_c("input", { attrs: { type: "text" } })])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "reloadBox" }, [
+        _c("div", { staticClass: "inReloadBox" }, [
+          _c("button", [_c("i", { staticClass: "fas fa-redo" })])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "accountBtnBox" }, [
+        _c("div", { staticClass: "inAccountBtnBox" }, [
+          _c("button", [_c("i", { staticClass: "fas fa-user-circle" })])
         ])
       ])
     ])

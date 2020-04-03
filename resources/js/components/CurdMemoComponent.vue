@@ -121,8 +121,5 @@ export default {
       });
     }
   },
-  computed:{
-
-  }
 }
 </script>

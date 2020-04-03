@@ -1,5 +1,5 @@
 <template>
-<header class="header">
+<header :class="['header',{shadow:isShadow}]">
 <div class="inHeader">
   <div class="menuTitleBox">
     <div class="inMenuTitleBox">
@@ -45,12 +45,18 @@ export default {
   components:{},
   data(){
     return{
-
+      isShadow:false
     }
   },
   props:[],
   created(){
-
+    window.addEventListener('scroll',(e)=>{
+      if(window.scrollY > 0){
+        this.isShadow = true
+      }else{
+        this.isShadow = false
+      }
+    })
   },
   mounted(){
   },
