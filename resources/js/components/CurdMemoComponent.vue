@@ -118,15 +118,12 @@ export default {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      })
     },
     parentsMethod:function(id){
-
       for(let i = 0; i < this.memoData.length; i++){
-        console.log(this.memoData[i][id])
         if(this.memoData[i]['id'] === id){
           this.memoData.splice(i,1)
-          console.log(i)
           break;
         }
       }

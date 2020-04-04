@@ -2040,11 +2040,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     parentsMethod: function parentsMethod(id) {
       for (var i = 0; i < this.memoData.length; i++) {
-        console.log(this.memoData[i][id]);
-
         if (this.memoData[i]['id'] === id) {
           this.memoData.splice(i, 1);
-          console.log(i);
           break;
         }
       }
