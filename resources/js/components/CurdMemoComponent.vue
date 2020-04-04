@@ -33,9 +33,9 @@
 </div>
 </div>
 <div class="memoCardComponentBox">
-  <div class="inMemoCardComponentBox">
+  <transition-group name="memoCard" tag="div" class="inMemoCardComponentBox">
   <memo-card-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo"></memo-card-component>
-  </div>
+</transition-group>
 </div>
 </div>
 </template>

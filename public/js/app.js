@@ -37882,19 +37882,27 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "memoCardComponentBox" }, [
-      _c(
-        "div",
-        { staticClass: "inMemoCardComponentBox" },
-        _vm._l(_vm.memoData, function(memo) {
-          return _c("memo-card-component", {
-            key: memo["id"],
-            attrs: { "memo-data": memo }
-          })
-        }),
-        1
-      )
-    ])
+    _c(
+      "div",
+      { staticClass: "memoCardComponentBox" },
+      [
+        _c(
+          "transition-group",
+          {
+            staticClass: "inMemoCardComponentBox",
+            attrs: { name: "memoCard", tag: "div" }
+          },
+          _vm._l(_vm.memoData, function(memo) {
+            return _c("memo-card-component", {
+              key: memo["id"],
+              attrs: { "memo-data": memo }
+            })
+          }),
+          1
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [

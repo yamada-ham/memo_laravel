@@ -104,9 +104,15 @@ main{
           border:1px solid #91989e;
           border-radius: 8px;
           margin-bottom:12px;
+          background: #fff;
           &:hover{
+            animation-name:delAnime;
+            animation-duration: 3s;
             border:1px solid rgba(145, 152, 158, 0);
             box-shadow:0px 0px 10px #91989e;
+          }
+          &.delAnim{
+
           }
           @include media(s){
             width:49%;
@@ -297,7 +303,23 @@ div.mask{
 .operationBox-enter-active, .operationBox-leave-active{
 	transition:opacity 0.3s;
 }
-
 .operationBox-enter, .operationBox-leave-to{
 	opacity:0;
 }
+.operationBox-enter-to, .operationBox-leave{
+	opacity:1;
+}
+
+
+.memoCard-enter-active, .memoCard-leave-active{
+	transition:opacity 2.0s;
+}
+.memoCard-move{
+  transition: transform 1s;
+}
+// .memoCard-enter, .memoCard-leave-to{
+// 	opacity:0;
+// }
+// .memoCard-enter-to, .memoCard-leave{
+// 	opacity:1;
+// }

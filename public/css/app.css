@@ -345,9 +345,14 @@ main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCard
   border: 1px solid #91989e;
   border-radius: 8px;
   margin-bottom: 12px;
+  background: #fff;
 }
 
 main div.inMain div.memoCardComponentBox div.inMemoCardComponentBox div.memoCardWrap:hover {
+  -webkit-animation-name: delAnime;
+          animation-name: delAnime;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
   border: 1px solid rgba(145, 152, 158, 0);
   box-shadow: 0px 0px 10px #91989e;
 }
@@ -582,5 +587,19 @@ div.mask {
 .operationBox-enter,
 .operationBox-leave-to {
   opacity: 0;
+}
+
+.operationBox-enter-to,
+.operationBox-leave {
+  opacity: 1;
+}
+
+.memoCard-enter-active,
+.memoCard-leave-active {
+  transition: opacity 2s;
+}
+
+.memoCard-move {
+  transition: transform 1s;
 }
 
