@@ -34,7 +34,7 @@
 </div>
 <div class="memoCardComponentBox">
   <transition-group name="memoCard" tag="div" class="inMemoCardComponentBox">
-  <memo-card-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo"></memo-card-component>
+  <memo-card-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo" @childs-event="parentsMethod"></memo-card-component>
 </transition-group>
 </div>
 </div>
@@ -119,6 +119,17 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+    },
+    parentsMethod:function(id){
+
+      for(let i = 0; i < this.memoData.length; i++){
+        console.log(this.memoData[i][id])
+        if(this.memoData[i]['id'] === id){
+          this.memoData.splice(i,1)
+          console.log(i)
+          break;
+        }
+      }
     }
   },
 }

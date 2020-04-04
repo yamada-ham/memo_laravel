@@ -2037,6 +2037,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    parentsMethod: function parentsMethod(id) {
+      for (var i = 0; i < this.memoData.length; i++) {
+        console.log(this.memoData[i][id]);
+
+        if (this.memoData[i]['id'] === id) {
+          this.memoData.splice(i, 1);
+          console.log(i);
+          break;
+        }
+      }
     }
   }
 });
@@ -2344,16 +2355,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     del: function del($event) {
-      var that = this;
-      axios.post('/', {
-        mode: 'delete',
-        id: this.memoData.id
-      }).then(function (res) {
-        that.isShow = false;
-        console.log(res['data']);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      this.$emit('childs-event', this.memoData.id); // let that = this
+      // axios.post('/', {
+      //   mode: 'delete',
+      //   id:this.memoData.id,
+      // })
+      // .then(function (res) {
+      //   that.isShow = false;
+      //   console.log(res['data']);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
     }
   },
   computed: {} // watch: {
@@ -37895,7 +37908,8 @@ var render = function() {
           _vm._l(_vm.memoData, function(memo) {
             return _c("memo-card-component", {
               key: memo["id"],
-              attrs: { "memo-data": memo }
+              attrs: { "memo-data": memo },
+              on: { "childs-event": _vm.parentsMethod }
             })
           }),
           1
