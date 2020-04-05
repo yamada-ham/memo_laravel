@@ -46,7 +46,9 @@ p,a,span{
   /* word-break : break-all; */
   /* overflow: hidden; */
 }
-
+input::-ms-clear {
+    visibility:hidden;
+}
 input:focus {
     outline: none;
 }

@@ -1,8 +1,8 @@
 <template>
 <header :class="['header',{shadow:isShadow}]">
 <div class="inHeader">
-  <div class="menuTitleBox">
-    <div class="inMenuTitleBox">
+  <!-- <div class="menuTitleBox"> -->
+    <!-- <div class="inMenuTitleBox"> -->
     <div class="menuBtnBox">
       <div class="inMenuBtnBox">
         <button><i class="fas fa-bars"></i></button>
@@ -15,18 +15,25 @@
         </h1>
       </div>
     </div>
-  </div>
-  </div>
+  <!-- </div> -->
+  <!-- </div> -->
   <div class="searchFormBox">
     <div class="inSearchFormBox">
       <form>
+        <button class="searchBtn"><i class="fas fa-search"></i></button>
         <input type="text">
+        <button class="searchTextDelBtn"><i class="fas fa-times"></i></button>
       </form>
     </div>
   </div>
   <div class="reloadBox">
     <div class="inReloadBox">
       <button><i class="fas fa-redo"></i></button>
+    </div>
+  </div>
+  <div class="settingBtnBox">
+    <div class="inSettingBtnBox">
+      <button><i class="fas fa-cog"></i></button>
     </div>
   </div>
   <div class="accountBtnBox">

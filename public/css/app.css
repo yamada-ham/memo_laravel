@@ -43,6 +43,10 @@ span {
   /* overflow: hidden; */
 }
 
+input::-ms-clear {
+  visibility: hidden;
+}
+
 input:focus {
   outline: none;
 }
@@ -140,7 +144,7 @@ header.header {
   position: fixed;
   background: #fff;
   z-index: 15;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 header.header.shadow {
@@ -155,14 +159,14 @@ header.header div.inHeader {
   height: 100%;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+header.header div.inHeader div.menuBtnBox {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 16px;
+  margin-right: 10px;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.menuBtnBox div.inMenuBtnBox button {
+header.header div.inHeader div.menuBtnBox div.inMenuBtnBox button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -175,38 +179,115 @@ header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.menuBtnBox di
   border-radius: 45px;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.menuBtnBox div.inMenuBtnBox button:hover {
+header.header div.inHeader div.menuBtnBox div.inMenuBtnBox button:hover {
   background: #f0f0f0;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.menuBtnBox div.inMenuBtnBox button i {
+header.header div.inHeader div.menuBtnBox div.inMenuBtnBox button i {
   font-size: 1.1rem;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.titleBox div.inTitleBox h1 {
+header.header div.inHeader div.titleBox {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 50px;
+}
+
+header.header div.inHeader div.titleBox div.inTitleBox h1 {
   line-height: 0;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.titleBox div.inTitleBox h1 a {
+header.header div.inHeader div.titleBox div.inTitleBox h1 a {
+  display: inline-block;
+  padding: 10px 8px;
   border-radius: 45px;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.titleBox div.inTitleBox h1 a:hover {
+header.header div.inHeader div.titleBox div.inTitleBox h1 a:hover {
   background: #f0f0f0;
 }
 
-header.header div.inHeader div.menuTitleBox div.inMenuTitleBox div.titleBox div.inTitleBox h1 a img {
+header.header div.inHeader div.titleBox div.inTitleBox h1 a img {
   vertical-align: middle;
   width: 110px;
 }
 
 header.header div.inHeader div.searchFormBox {
-  width: 50%;
+  flex-grow: 5;
+  flex-shrink: 1;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox {
+  background: #f0f0f0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox.focus {
+  border: 1px solid #c4c4c4;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+  background: #fff;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox form {
+  width: 100%;
+  position: relative;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox form button.searchBtn {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translate(0%, -50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox form button.searchBtn i {
+  font-size: 1.2rem;
 }
 
 header.header div.inHeader div.searchFormBox div.inSearchFormBox form input[type=text] {
   width: 100%;
   font-size: 1.2rem;
+  border: 1px solid rgba(196, 196, 196, 0);
+  background: rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  padding: 10px 44px;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox form button.searchTextDelBtn {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translate(0%, -50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+header.header div.inHeader div.searchFormBox div.inSearchFormBox form button.searchTextDelBtn i {
+  font-size: 1.2rem;
+}
+
+header.header div.inHeader div.reloadBox {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 30px;
+  margin-right: 4px;
 }
 
 header.header div.inHeader div.reloadBox div.inReloadBox button {
@@ -218,6 +299,50 @@ header.header div.inHeader div.reloadBox div.inReloadBox button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  padding: 10px;
+  border-radius: 45px;
+}
+
+header.header div.inHeader div.reloadBox div.inReloadBox button i {
+  font-size: 1.1rem;
+  color: #787878;
+}
+
+header.header div.inHeader div.reloadBox div.inReloadBox button:hover {
+  background: #f0f0f0;
+}
+
+header.header div.inHeader div.settingBtnBox {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 30px;
+}
+
+header.header div.inHeader div.settingBtnBox div.inSettingBtnBox button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 10px;
+  border-radius: 45px;
+}
+
+header.header div.inHeader div.settingBtnBox div.inSettingBtnBox button i {
+  font-size: 1.5rem;
+  color: #787878;
+}
+
+header.header div.inHeader div.settingBtnBox div.inSettingBtnBox button:hover {
+  background: #f0f0f0;
+}
+
+header.header div.inHeader div.accountBtnBox {
+  margin-left: auto;
+  margin-right: 14px;
 }
 
 header.header div.inHeader div.accountBtnBox div.inAccountBtnBox button {
@@ -229,6 +354,11 @@ header.header div.inHeader div.accountBtnBox div.inAccountBtnBox button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+
+header.header div.inHeader div.accountBtnBox div.inAccountBtnBox button i {
+  font-size: 2rem;
+  color: #787878;
 }
 
 main div.inMain div.createMemoBox {
