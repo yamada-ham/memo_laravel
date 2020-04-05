@@ -149,18 +149,18 @@ export default {
     },
     del($event){
       this.$emit('childs-event',this.memoData.id)
-      // let that = this
-      // axios.post('/', {
-      //   mode: 'delete',
-      //   id:this.memoData.id,
-      // })
-      // .then(function (res) {
-      //   that.isShow = false;
-      //   console.log(res['data']);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      let that = this
+      axios.post('/', {
+        mode: 'delete',
+        id:this.memoData.id,
+      })
+      .then(function (res) {
+        that.isShow = false;
+        console.log(res['data']);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   },
   computed:{

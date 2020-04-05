@@ -1952,6 +1952,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2352,18 +2354,17 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     del: function del($event) {
-      this.$emit('childs-event', this.memoData.id); // let that = this
-      // axios.post('/', {
-      //   mode: 'delete',
-      //   id:this.memoData.id,
-      // })
-      // .then(function (res) {
-      //   that.isShow = false;
-      //   console.log(res['data']);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      this.$emit('childs-event', this.memoData.id);
+      var that = this;
+      axios.post('/', {
+        mode: 'delete',
+        id: this.memoData.id
+      }).then(function (res) {
+        that.isShow = false;
+        console.log(res['data']);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   computed: {} // watch: {
@@ -37900,16 +37901,22 @@ var render = function() {
           "transition-group",
           {
             staticClass: "inMemoCardComponentBox",
-            attrs: { name: "memoCard", tag: "div" }
+            attrs: { name: "memoCard", tag: "ul" }
           },
           _vm._l(_vm.memoData, function(memo) {
-            return _c("memo-card-component", {
-              key: memo["id"],
-              attrs: { "memo-data": memo },
-              on: { "childs-event": _vm.parentsMethod }
-            })
+            return _c(
+              "li",
+              { key: memo["id"], staticClass: "memoCardLi" },
+              [
+                _c("memo-card-component", {
+                  attrs: { "memo-data": memo },
+                  on: { "childs-event": _vm.parentsMethod }
+                })
+              ],
+              1
+            )
           }),
-          1
+          0
         )
       ],
       1

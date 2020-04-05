@@ -33,8 +33,10 @@
 </div>
 </div>
 <div class="memoCardComponentBox">
-  <transition-group name="memoCard" tag="div" class="inMemoCardComponentBox">
-  <memo-card-component v-for="memo in memoData" :key="memo['id']" :memo-data="memo" @childs-event="parentsMethod"></memo-card-component>
+  <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
+    <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
+      <memo-card-component  :memo-data="memo" @childs-event="parentsMethod"></memo-card-component>
+    </li>
 </transition-group>
 </div>
 </div>
