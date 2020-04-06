@@ -2115,7 +2115,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {},
   data: function data() {
     return {
-      isShadow: false
+      isShadow: false,
+      isFocus: false
     };
   },
   props: [],
@@ -37996,7 +37997,107 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("header", { class: ["header", { shadow: _vm.isShadow }] }, [
-    _vm._m(0)
+    _c("div", { staticClass: "inHeader" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "searchFormBox" }, [
+        _c(
+          "div",
+          { staticClass: "inSearchFormBox", class: { focus: _vm.isFocus } },
+          [
+            _c("form", [
+              _c(
+                "button",
+                {
+                  staticClass: "searchBtn",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-search" })]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "text" },
+                on: {
+                  focus: function($event) {
+                    _vm.isFocus = true
+                  },
+                  blur: function($event) {
+                    _vm.isFocus = false
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "searchTextDelBtn",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-times" })]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "reloadBox" }, [
+        _c("div", { staticClass: "inReloadBox" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-redo" })]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "settingBtnBox" }, [
+        _c("div", { staticClass: "inSettingBtnBox" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-cog" })]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "accountBtnBox" }, [
+        _c("div", { staticClass: "inAccountBtnBox" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-user-circle" })]
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -38004,51 +38105,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inHeader" }, [
-      _c("div", { staticClass: "menuBtnBox" }, [
-        _c("div", { staticClass: "inMenuBtnBox" }, [
-          _c("button", [_c("i", { staticClass: "fas fa-bars" })])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "titleBox" }, [
-        _c("div", { staticClass: "inTitleBox" }, [
-          _c("h1", [_c("a", [_c("img", { attrs: { src: "img/memo.png" } })])])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "searchFormBox" }, [
-        _c("div", { staticClass: "inSearchFormBox" }, [
-          _c("form", [
-            _c("button", { staticClass: "searchBtn" }, [
-              _c("i", { staticClass: "fas fa-search" })
-            ]),
-            _vm._v(" "),
-            _c("input", { attrs: { type: "text" } }),
-            _vm._v(" "),
-            _c("button", { staticClass: "searchTextDelBtn" }, [
-              _c("i", { staticClass: "fas fa-times" })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "reloadBox" }, [
-        _c("div", { staticClass: "inReloadBox" }, [
-          _c("button", [_c("i", { staticClass: "fas fa-redo" })])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "settingBtnBox" }, [
-        _c("div", { staticClass: "inSettingBtnBox" }, [
-          _c("button", [_c("i", { staticClass: "fas fa-cog" })])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "accountBtnBox" }, [
-        _c("div", { staticClass: "inAccountBtnBox" }, [
-          _c("button", [_c("i", { staticClass: "fas fa-user-circle" })])
-        ])
+    return _c("div", { staticClass: "menuBtnBox" }, [
+      _c("div", { staticClass: "inMenuBtnBox" }, [
+        _c("button", [_c("i", { staticClass: "fas fa-bars" })])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "titleBox" }, [
+      _c("div", { staticClass: "inTitleBox" }, [
+        _c("h1", [_c("a", [_c("img", { attrs: { src: "img/memo.png" } })])])
       ])
     ])
   }

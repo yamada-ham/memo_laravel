@@ -18,27 +18,27 @@
   <!-- </div> -->
   <!-- </div> -->
   <div class="searchFormBox">
-    <div class="inSearchFormBox">
+    <div class="inSearchFormBox" :class="{focus:isFocus}">
       <form>
-        <button class="searchBtn"><i class="fas fa-search"></i></button>
-        <input type="text">
-        <button class="searchTextDelBtn"><i class="fas fa-times"></i></button>
+        <button class="searchBtn" @click.prevent><i class="fas fa-search"></i></button>
+        <input type="text" @focus="isFocus = true" @blur="isFocus = false">
+        <button class="searchTextDelBtn" @click.prevent><i class="fas fa-times"></i></button>
       </form>
     </div>
   </div>
   <div class="reloadBox">
     <div class="inReloadBox">
-      <button><i class="fas fa-redo"></i></button>
+      <button @click.prevent><i class="fas fa-redo"></i></button>
     </div>
   </div>
   <div class="settingBtnBox">
     <div class="inSettingBtnBox">
-      <button><i class="fas fa-cog"></i></button>
+      <button @click.prevent><i class="fas fa-cog"></i></button>
     </div>
   </div>
   <div class="accountBtnBox">
     <div class="inAccountBtnBox">
-      <button><i class="fas fa-user-circle"></i></button>
+      <button @click.prevent><i class="fas fa-user-circle"></i></button>
     </div>
   </div>
 </div>
@@ -52,7 +52,8 @@ export default {
   components:{},
   data(){
     return{
-      isShadow:false
+      isShadow:false,
+      isFocus:false
     }
   },
   props:[],
