@@ -7,6 +7,50 @@
   height:32px;
 }
 
+@mixin colorPalleteLi(){
+  button{
+    i{
+
+    }
+  }
+  div.tooltip{
+    display:none;
+  }
+  &:hover{
+    button{
+      position: relative;
+
+      i{
+
+      }
+    }
+    div.tooltip{
+      position:absolute;
+      transform: translate(-25%,-100%);
+      display:inline-block;
+      z-index:15;
+      // display: inline-block;
+      // position:absolute;
+      background:#f6f6f6;
+      width:170px;
+      // height:10vh;
+      box-shadow:0px 0px 2px #91989e;
+      span{
+        float:left;
+        display:block;
+        border-radius: 45px;
+        box-sizing: border-box;
+        width:24px;
+        height:24px;
+        margin:4px;
+        &:hover{
+          border: 2px solid #000000;
+        }
+      }
+    }
+  }
+}
+
 main{
   div.inMain{
     div.createMemoBox{
@@ -74,47 +118,7 @@ main{
                   }
                 }
                 &.colorPalleteLi{
-                  button{
-                    i{
-
-                    }
-                  }
-                  div.tooltip{
-                    display:none;
-                  }
-                  &:hover{
-                    button{
-                      position: relative;
-
-                      i{
-
-                      }
-                    }
-                    div.tooltip{
-                      position:absolute;
-                      transform: translate(-25%,-100%);
-                      display:inline-block;
-                      z-index:15;
-                      // display: inline-block;
-                      // position:absolute;
-                      background:#f6f6f6;
-                      width:170px;
-                      // height:10vh;
-                      box-shadow:0px 0px 2px #91989e;
-                      span{
-                        float:left;
-                        display:block;
-                        border-radius: 45px;
-                        box-sizing: border-box;
-                        width:24px;
-                        height:24px;
-                        margin:4px;
-                        &:hover{
-                          border: 2px solid #000000;
-                        }
-                      }
-                    }
-                  }
+                  @include colorPalleteLi();
                 }
               }
             }
@@ -141,17 +145,6 @@ main{
         }
         li.memoCardLi{
           width:100%;
-          box-sizing: border-box;
-          border:1px solid #91989e;
-          border-radius: 8px;
-          margin-bottom:12px;
-          background: #fff;
-          &:hover{
-            animation-name:delAnime;
-            animation-duration: 3s;
-            border:1px solid rgba(145, 152, 158, 0);
-            box-shadow:0px 0px 10px #91989e;
-          }
           @include media(s){
             width:49%;
           }
@@ -166,24 +159,18 @@ main{
           }
           div.memoCardWrap{
             position:relative;
-            // width:100%;
-            // box-sizing: border-box;
-            // border:1px solid #91989e;
-            // border-radius: 8px;
-            // margin-bottom:12px;
-            // background: #fff;
-            // &:hover{
-            //   animation-name:delAnime;
-            //   animation-duration: 3s;
-            //   border:1px solid rgba(145, 152, 158, 0);
-            //   box-shadow:0px 0px 10px #91989e;
-            // }
-            // @include media(s){
-            //   width:49%;
-            // }
-            // @include media(m){
-            //   width:32%;
-            // }
+            background: none;
+            box-sizing: border-box;
+            border:1px solid #91989e;
+            border-radius: 8px;
+            margin-bottom:12px;
+            background: #fff;
+            &:hover{
+              animation-name:delAnime;
+              animation-duration: 3s;
+              border:1px solid rgba(145, 152, 158, 0);
+              box-shadow:0px 0px 10px #91989e;
+            }
             div.memoCardBox{
               div.inMemoCardBox{
                 height:30vh;
@@ -198,6 +185,7 @@ main{
                         textarea{
                           font-size:1.1rem;
                           font-weight: bold;
+                          background: none;
                           @include textareaDefault()
                         }
                       }
@@ -205,6 +193,7 @@ main{
                     div.textareaMemoBox{
                       div.inTextareaMemoBox{
                         textarea{
+                          background: none;
                           @include textareaDefault()
                         }
                       }
@@ -234,6 +223,9 @@ main{
                         font-size:0.9rem;
                       }
                     }
+                    &.colorPalleteLi{
+                      @include colorPalleteLi();
+                    }
                   }
                 }
               }
@@ -262,7 +254,6 @@ main{
                       width:100%;
                       // padding-left:20px;
                       // transform: translate(-50%,0%);
-                      background: #fff;
                       border-radius: 8px 8px 0 0;
                       padding-top:10px;
                       padding-bottom:10px;
@@ -280,6 +271,7 @@ main{
                           padding-left:20px;
                           font-size: 1.5rem;
                           font-weight: bold;
+                          background: none;
                           @include textareaDefault();
                         }
                       }
@@ -299,6 +291,7 @@ main{
                       }
                       div.inModalMemoBox{
                         textarea{
+                          background: none;
                           @include textareaDefault();
                         }
                       }
@@ -312,7 +305,6 @@ main{
                       bottom:0;
                       transform: translate(0%,-100%);
                       z-index:40;
-                      background: #fff;
                       border-radius: 0px 0px 8px 8px;
                       @include media(s){
                         transform: none;
@@ -340,6 +332,9 @@ main{
                               i{
                                 color:#787878;
                               }
+                            }
+                            &.colorPalleteLi{
+                              @include colorPalleteLi();
                             }
                           }
                         }

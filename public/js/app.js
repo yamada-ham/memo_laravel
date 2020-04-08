@@ -1976,18 +1976,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       memo: '',
       isMaking: false,
       memoData: false,
-      backgroundColor: '#ffffff' // colorPallete:[
-      //   {'id':0,'name':'白','hex':'#ffffff'},
-      //   {'id':1,'name':'赤','hex':'#ff7474'},
-      //   {'id':2,'name':'青','hex':'#5e7dff'},
-      //   {'id':3,'name':'黄','hex':'#f8fe94'},
-      //   {'id':4,'name':'緑','hex':'#86ffba'},
-      //   {'id':5,'name':'紫','hex':'#d394ff'},
-      //   {'id':6,'name':'橙','hex':'#feb365'},
-      //   {'id':7,'name':'灰','hex':'#d0d0d0'},
-      //   {'id':8,'name':'桃','hex':'#fb92da'},
-      //   {'id':9,'name':'茶','hex':'#833f3f'}]
-
+      backgroundColor: '#ffffff'
     };
   },
   props: [],
@@ -2071,7 +2060,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getColorPallete']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
 });
 
 /***/ }),
@@ -2231,7 +2220,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store_store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/store.js */ "./resources/js/store/store.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store_store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store.js */ "./resources/js/store/store.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -2310,6 +2310,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
@@ -2320,7 +2321,8 @@ __webpack_require__.r(__webpack_exports__);
       title: '',
       memo: '',
       paddingVal: '',
-      isScrollModal: false
+      isScrollModal: false,
+      backgroundColor: '#ffffff'
     };
   },
   props: ['memoData'],
@@ -2398,7 +2400,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: {} // watch: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
   //   isModal: {
   //     handler: function(newVal, oldVal) {
   //       if(newVal === true){
@@ -37903,7 +37905,7 @@ var render = function() {
                   _c(
                     "div",
                     { staticClass: "tooltip" },
-                    _vm._l(_vm.getColorPallete, function(color) {
+                    _vm._l(_vm.colorPallete, function(color) {
                       return _c("span", {
                         key: color.id,
                         style: { background: color.hex },
@@ -38217,6 +38219,7 @@ var render = function() {
         "div",
         {
           staticClass: "memoCardWrap",
+          style: { background: _vm.backgroundColor },
           on: {
             mouseenter: function($event) {
               _vm.isShowOperation = true
@@ -38372,10 +38375,26 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("li", [
-                        _c("button", { attrs: { type: "submit" } }, [
+                      _c("li", { staticClass: "colorPalleteLi" }, [
+                        _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
-                        ])
+                        ]),
+                        _c(
+                          "div",
+                          { staticClass: "tooltip" },
+                          _vm._l(_vm.colorPallete, function(color) {
+                            return _c("span", {
+                              key: color.id,
+                              style: { background: color.hex },
+                              on: {
+                                click: function($event) {
+                                  _vm.backgroundColor = color.hex
+                                }
+                              }
+                            })
+                          }),
+                          0
+                        )
                       ]),
                       _vm._v(" "),
                       _c("li", [
@@ -38433,7 +38452,8 @@ var render = function() {
                   expression: "isModal"
                 }
               ],
-              staticClass: "modalBox"
+              staticClass: "modalBox",
+              style: { background: _vm.backgroundColor }
             },
             [
               _c("div", { staticClass: "inModalBox" }, [
@@ -38536,7 +38556,25 @@ var render = function() {
                         _c("ul", [
                           _vm._m(0),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c("li", { staticClass: "colorPalleteLi" }, [
+                            _vm._m(1),
+                            _c(
+                              "div",
+                              { staticClass: "tooltip" },
+                              _vm._l(_vm.colorPallete, function(color) {
+                                return _c("span", {
+                                  key: color.id,
+                                  style: { background: color.hex },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.backgroundColor = color.hex
+                                    }
+                                  }
+                                })
+                              }),
+                              0
+                            )
+                          ]),
                           _vm._v(" "),
                           _c("li", [
                             _c(
@@ -38647,11 +38685,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("button", { attrs: { type: "submit" } }, [
-        _c("i", { staticClass: "fas fa-palette" })
-      ])
-    ])
+    return _c("button", [_c("i", { staticClass: "fas fa-palette" })])
   },
   function() {
     var _vm = this
@@ -55307,8 +55341,6 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    message: 'storeだよ',
-    isMask: false,
     colorPallete: [{
       'id': 0,
       'name': '白',
@@ -55351,11 +55383,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       'hex': '#833f3f'
     }]
   },
-  getters: {
-    getColorPallete: function getColorPallete(state, getters) {
-      console.log(state.colorPallete);
-      return state.colorPallete;
-    }
+  getters: {// getColorPallete(state,getters){
+    //   console.log(state.colorPallete)
+    //   return state.colorPallete
+    // }
   },
   mutations: {
     mutIsMask: function mutIsMask(state, payload) {

@@ -1,5 +1,5 @@
 <template>
-<div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false">
+<div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false" :style="{'background':backgroundColor}">
 <div :class="['memoCardBox',{modalWindow:isModal}]"   @click="modalMemoCardBox($event)">
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
@@ -19,12 +19,14 @@
   <input type="hidden" v-model="memoData.id"/>
 </div>
 </div>
-<div　class="operationBox">
+<div　class="operationBox" >
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
       <transition name="operationLi"><li><button type="submit"><i class="fas fa-archive"></i></button></li></transition><!--アーカイブ-->
-      <li><button type="submit"><i class="fas fa-palette"></i></button></li><!--色変更-->
+      <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
+        <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
+      </div></li><!--色変更-->
       <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
       <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
       <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
@@ -33,7 +35,7 @@
   </div>
 </div>
 
-<div class="modalBox" v-show="isModal" >
+<div class="modalBox" v-show="isModal" :style="{'background':backgroundColor}">
 <div class="inModalBox">
   <form class="modalFormBox">
   <div class="inModalFormBox">
@@ -53,7 +55,9 @@
       <div class="inModalOperationBox">
         <ul>
           <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
-          <li><button type="submit"><i class="fas fa-palette"></i></button></li><!--色変更-->
+          <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
+            <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
+          </div></li><!--色変更-->
           <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
           <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
           <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
@@ -76,6 +80,7 @@
 </template>
 
 <script>
+import {mapState,mapGetters } from 'vuex';
 import store from '../store/store.js';
 export default {
   components:{},
@@ -87,7 +92,8 @@ export default {
         title:'',
         memo:'',
         paddingVal:'',
-        isScrollModal:false
+        isScrollModal:false,
+        backgroundColor:'#ffffff'
     }
   },
   props:['memoData'],
@@ -164,8 +170,8 @@ export default {
     }
   },
   computed:{
-
-  },
+    ...mapState(['colorPallete']),
+  }
   // watch: {
   //   isModal: {
   //     handler: function(newVal, oldVal) {

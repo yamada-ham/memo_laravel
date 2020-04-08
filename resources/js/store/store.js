@@ -4,8 +4,6 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    message:'storeだよ',
-    isMask:false,
     colorPallete:[
       {'id':0,'name':'白','hex':'#ffffff'},
       {'id':1,'name':'赤','hex':'#ff7474'},
@@ -19,10 +17,10 @@ const store = new Vuex.Store({
       {'id':9,'name':'茶','hex':'#833f3f'}]
   },
   getters: {
-    getColorPallete(state,getters){
-      console.log(state.colorPallete)
-      return state.colorPallete
-    }
+    // getColorPallete(state,getters){
+    //   console.log(state.colorPallete)
+    //   return state.colorPallete
+    // }
   },
   mutations: {
     mutIsMask(state, payload) {
