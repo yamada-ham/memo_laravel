@@ -6,12 +6,12 @@
   <div class="inMemoCardFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" disabled></textarea>
+      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea ref="MemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
+      <textarea ref="MemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
     </div>
     </div>
   </div>

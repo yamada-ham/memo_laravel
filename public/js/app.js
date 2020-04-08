@@ -38256,11 +38256,7 @@ var render = function() {
                             }
                           ],
                           ref: "titleTextarea",
-                          attrs: {
-                            rows: "1",
-                            placeholder: "タイトル",
-                            disabled: ""
-                          },
+                          attrs: { rows: "1", placeholder: "タイトル" },
                           domProps: { value: _vm.memoData.title },
                           on: {
                             input: [
@@ -38295,11 +38291,7 @@ var render = function() {
                             }
                           ],
                           ref: "MemoTextarea",
-                          attrs: {
-                            rows: "1",
-                            placeholder: "メモを入力...",
-                            disabled: ""
-                          },
+                          attrs: { rows: "1", placeholder: "メモを入力..." },
                           domProps: { value: _vm.memoData.memo },
                           on: {
                             input: [
