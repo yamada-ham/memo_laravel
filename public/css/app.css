@@ -524,6 +524,7 @@ main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div
   overflow: auto;
   border: none;
   height: 32px;
+  background: none;
 }
 
 main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox {
@@ -540,6 +541,7 @@ main div.inMain div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div
   overflow: auto;
   border: none;
   height: 32px;
+  background: none;
 }
 
 main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul {
@@ -569,6 +571,38 @@ main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOpe
 main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button i {
   font-size: 0.9rem;
   color: #787878;
+}
+
+main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
+  display: none;
+}
+
+main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover button {
+  position: relative;
+}
+
+main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip {
+  position: absolute;
+  transform: translate(-25%, -100%);
+  display: inline-block;
+  z-index: 15;
+  background: #f6f6f6;
+  width: 170px;
+  box-shadow: 0px 0px 2px #91989e;
+}
+
+main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
+  float: left;
+  display: block;
+  border-radius: 45px;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+}
+
+main div.inMain div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
+  border: 2px solid #000000;
 }
 
 main div.inMain div.memoCardComponentBox {

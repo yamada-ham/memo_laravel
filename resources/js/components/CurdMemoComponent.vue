@@ -1,6 +1,6 @@
 <template>
 <div class="inMain">
-<div class="createMemoBox" :class="{making:isMaking}">
+<div class="createMemoBox" :class="{making:isMaking}" :style="{'background':backgroundColor}">
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">
   <div class="inCreateMemoFormBox">
@@ -21,7 +21,9 @@
     <div class="inOperationBox">
       <ul>
         <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
-        <li><button type="submit"><i class="fas fa-palette"></i></button></li><!--色変更-->
+        <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
+          <span v-for="color in getColorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
+        </div></li><!--色変更-->
         <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
         <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
         <li><button><i class="fas fa-undo-alt"></i></button></li>
@@ -43,6 +45,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import store from '../store/store.js';
 import MemoCardComponent from './MemoCardComponent'
 export default {
@@ -52,7 +55,19 @@ export default {
         title:'',
         memo:'',
         isMaking:false,
-        memoData:''
+        memoData:false,
+        backgroundColor:'#ffffff',
+        // colorPallete:[
+        //   {'id':0,'name':'白','hex':'#ffffff'},
+        //   {'id':1,'name':'赤','hex':'#ff7474'},
+        //   {'id':2,'name':'青','hex':'#5e7dff'},
+        //   {'id':3,'name':'黄','hex':'#f8fe94'},
+        //   {'id':4,'name':'緑','hex':'#86ffba'},
+        //   {'id':5,'name':'紫','hex':'#d394ff'},
+        //   {'id':6,'name':'橙','hex':'#feb365'},
+        //   {'id':7,'name':'灰','hex':'#d0d0d0'},
+        //   {'id':8,'name':'桃','hex':'#fb92da'},
+        //   {'id':9,'name':'茶','hex':'#833f3f'}]
     }
   },
   props:[],
@@ -131,5 +146,11 @@ export default {
       }
     }
   },
+  computed:{
+    // getColorPallete(){
+    //   return store.getters.getColorPallete
+    // },
+    ...mapGetters(['getColorPallete']),
+  }
 }
 </script>

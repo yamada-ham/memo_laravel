@@ -34,7 +34,8 @@ main{
               overflow: scroll;
               div.inTextareaTitleBox{
                 textarea{
-                  @include textareaDefault()
+                  @include textareaDefault();
+                  background: none;
                 }
               }
             }
@@ -45,7 +46,8 @@ main{
               overflow: scroll;
               div.inTextareaMemoBox{
                 textarea{
-                  @include textareaDefault()
+                  @include textareaDefault();
+                  background: none;
                 }
               }
             }
@@ -69,6 +71,49 @@ main{
                   i{
                     font-size:0.9rem;
                     color:#787878;
+                  }
+                }
+                &.colorPalleteLi{
+                  button{
+                    i{
+
+                    }
+                  }
+                  div.tooltip{
+                    display:none;
+                  }
+                  &:hover{
+                    button{
+                      position: relative;
+
+                      i{
+
+                      }
+                    }
+                    div.tooltip{
+                      position:absolute;
+                      transform: translate(-25%,-100%);
+                      display:inline-block;
+                      z-index:15;
+                      // display: inline-block;
+                      // position:absolute;
+                      background:#f6f6f6;
+                      width:170px;
+                      // height:10vh;
+                      box-shadow:0px 0px 2px #91989e;
+                      span{
+                        float:left;
+                        display:block;
+                        border-radius: 45px;
+                        box-sizing: border-box;
+                        width:24px;
+                        height:24px;
+                        margin:4px;
+                        &:hover{
+                          border: 2px solid #000000;
+                        }
+                      }
+                    }
                   }
                 }
               }
