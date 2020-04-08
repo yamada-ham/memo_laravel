@@ -819,6 +819,7 @@ main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox div.inModalTitleBox textarea {
+  box-sizing: border-box;
   padding-left: 20px;
   font-size: 1.5rem;
   font-weight: bold;

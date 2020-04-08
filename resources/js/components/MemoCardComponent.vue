@@ -6,12 +6,12 @@
   <div class="inMemoCardFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" disabled></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea ref="MemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
+      <textarea ref="memoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
     </div>
     </div>
   </div>
@@ -41,12 +41,12 @@
   <div class="inModalFormBox">
     <div :class="['modalTitleBox',{scroll:isScrollModal}]" ref="modalTitleBox">
     <div class="inModalTitleBox">
-      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル"></textarea>
+      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" class="modalTitleTextarea"></textarea>
     </div>
     </div>
     <div class="modalMemoBox" ref="modalMemoBox" @scroll.self="modalMemoScrollAndTitleShadow($event)">
     <div class="inModalMemoBox">
-      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..."></textarea>
+      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." class="modalMemoTextarea"></textarea>
     </div>
     </div>
     <!-- <button @click.prevent="update($event)" type="submit">更新</button>
@@ -102,7 +102,7 @@ export default {
   },
   mounted(){
     this.initResizeTextarea(this.$refs.titleTextarea)
-    this.initResizeTextarea(this.$refs.MemoTextarea)
+    this.initResizeTextarea(this.$refs.memoTextarea)
   },
   updated(){
     if(this.isModal){
@@ -126,12 +126,22 @@ export default {
       el.style.height = el.scrollHeight + 2 + 'px'
     },
     autoResizeTextarea($event){
-      var areaHeight = $event.target.scrollHeight
+
+      //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
+      if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+        this.newLineTextarea(this.$refs.titleTextarea)
+        this.newLineTextarea(this.$refs.memoTextarea)
+      }
+
+      this.newLineTextarea($event.target)
+    },
+    newLineTextarea(textarea){
+      var areaHeight = textarea.scrollHeight
       areaHeight = parseInt(areaHeight) - 54;
       if(areaHeight < 30){ areaHeight = 30; }
-      $event.target.style.height = areaHeight + "px";
-      $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
-    },
+     textarea.style.height = areaHeight + "px";
+     textarea.style.height = textarea.scrollHeight + 2 + 'px'
+   },
     modalMemoScrollAndTitleShadow($event){
       if($event.target.scrollTop === 0){
         this.isScrollModal = false

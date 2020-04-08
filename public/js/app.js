@@ -2329,7 +2329,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {},
   mounted: function mounted() {
     this.initResizeTextarea(this.$refs.titleTextarea);
-    this.initResizeTextarea(this.$refs.MemoTextarea);
+    this.initResizeTextarea(this.$refs.memoTextarea);
   },
   updated: function updated() {
     if (this.isModal) {
@@ -2357,15 +2357,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       el.style.height = el.scrollHeight + 2 + 'px';
     },
     autoResizeTextarea: function autoResizeTextarea($event) {
-      var areaHeight = $event.target.scrollHeight;
+      //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
+      if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
+        this.newLineTextarea(this.$refs.titleTextarea);
+        this.newLineTextarea(this.$refs.memoTextarea);
+      }
+
+      this.newLineTextarea($event.target);
+    },
+    newLineTextarea: function newLineTextarea(textarea) {
+      var areaHeight = textarea.scrollHeight;
       areaHeight = parseInt(areaHeight) - 54;
 
       if (areaHeight < 30) {
         areaHeight = 30;
       }
 
-      $event.target.style.height = areaHeight + "px";
-      $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
+      textarea.style.height = areaHeight + "px";
+      textarea.style.height = textarea.scrollHeight + 2 + 'px';
     },
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
@@ -38256,7 +38265,11 @@ var render = function() {
                             }
                           ],
                           ref: "titleTextarea",
-                          attrs: { rows: "1", placeholder: "タイトル" },
+                          attrs: {
+                            rows: "1",
+                            placeholder: "タイトル",
+                            disabled: ""
+                          },
                           domProps: { value: _vm.memoData.title },
                           on: {
                             input: [
@@ -38290,8 +38303,12 @@ var render = function() {
                               expression: "memoData.memo"
                             }
                           ],
-                          ref: "MemoTextarea",
-                          attrs: { rows: "1", placeholder: "メモを入力..." },
+                          ref: "memoTextarea",
+                          attrs: {
+                            rows: "1",
+                            placeholder: "メモを入力...",
+                            disabled: ""
+                          },
                           domProps: { value: _vm.memoData.memo },
                           on: {
                             input: [
@@ -38469,6 +38486,7 @@ var render = function() {
                               }
                             ],
                             ref: "modalTitleTextarea",
+                            staticClass: "modalTitleTextarea",
                             attrs: { rows: "1", placeholder: "タイトル" },
                             domProps: { value: _vm.memoData.title },
                             on: {
@@ -38519,6 +38537,7 @@ var render = function() {
                               }
                             ],
                             ref: "modalMemoTextarea",
+                            staticClass: "modalMemoTextarea",
                             attrs: { rows: "1", placeholder: "メモを入力..." },
                             domProps: { value: _vm.memoData.memo },
                             on: {
