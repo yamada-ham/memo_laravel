@@ -788,13 +788,7 @@ main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi
   z-index: 30;
   width: 700px;
   max-width: 100%;
-}
-
-@media only screen and (min-width: 575px) {
-  main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
-    top: 14%;
-    max-height: 76vh;
-  }
+  top: 14%;
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox {
@@ -805,13 +799,9 @@ main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi
   padding-bottom: 10px;
   z-index: 40;
   overflow: scroll;
-}
-
-@media only screen and (min-width: 575px) {
-  main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox {
-    height: auto;
-    max-height: 20vh;
-  }
+  box-sizing: border-box;
+  height: auto;
+  max-height: 16vh;
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox.scroll {
@@ -838,16 +828,10 @@ main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
-  height: 100vh;
   overflow: scroll;
   z-index: 35;
-}
-
-@media only screen and (min-width: 575px) {
-  main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox {
-    height: auto;
-    max-height: 56vh;
-  }
+  height: auto;
+  max-height: 52vh;
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox div.inModalMemoBox textarea {
@@ -861,21 +845,15 @@ main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox {
+  max-height: 5vh;
   box-sizing: border-box;
   box-shadow: 0px -1px 4px #91989e;
   box-sizing: border-box;
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  transform: translate(0%, -100%);
   z-index: 40;
   border-radius: 0px 0px 8px 8px;
-}
-
-@media only screen and (min-width: 575px) {
-  main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox {
-    transform: none;
-  }
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul {
