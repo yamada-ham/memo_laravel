@@ -299,30 +299,34 @@ main{
                       }
                     }
                     div.modalOperationBox{
-                      max-height:5vh;
                       box-sizing: border-box;
                       box-shadow:0px -1px 4px #91989e;
                       box-sizing: border-box;
                       width:100%;
-                      position:absolute;
-                      bottom:0;
+                      // position:absolute;
+                      // bottom:0;
                       // transform: translate(0%,-100%);
                       z-index:40;
                       border-radius: 0px 0px 8px 8px;
+                      background: #fff;
                       // @include media(s){
                         // transform: none;
                       // }
                       div.inModalOperationBox{
+                        height:100%;
                         ul{
+                          height:100%;
                           display:flex;
                           flex-wrap: wrap;
-                          align-items:flex-end;
+                          align-items:center;
                           align-content: flex-start;
                           li{
                             &.liClose{
                               margin-left:auto;
+                              height:100%;
                               button{
                                 font-size: 1rem;
+                                height:100%;
                               }
                             }
                             button{
