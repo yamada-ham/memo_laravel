@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import CurdMemoComponent from './CurdMemoComponent'
+// import CurdMemoComponent from './CurdMemoComponent'
 import HeaderComponent from './HeaderComponent'
 // import MenuBarComponent from './MenuBarComponent'
 export default {
-  components:{CurdMemoComponent,HeaderComponent},
+  components:{HeaderComponent},
   data(){
     return{
       isMenuBar:false
