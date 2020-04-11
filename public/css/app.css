@@ -143,7 +143,7 @@ header.header {
   top: 0;
   position: fixed;
   background: #fff;
-  z-index: 15;
+  z-index: 40;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -785,10 +785,15 @@ main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi
   background: #fff;
   border-radius: 8px;
   box-shadow: 0px 0px 10px #91989e;
-  z-index: 30;
+  z-index: 55;
   width: 700px;
   max-width: 100%;
-  top: 14%;
+}
+
+@media only screen and (min-width: 575px) {
+  main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
+    top: 14%;
+  }
 }
 
 main div.inMain div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox {
@@ -936,7 +941,7 @@ div.mask {
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 20;
+  z-index: 50;
 }
 
 .operationBox-enter-active,
@@ -968,5 +973,15 @@ div.mask {
 
 .memoCard-leave-active {
   position: absolute;
+}
+
+nav#menuBar {
+  position: fixed;
+  top: 60px;
+  background: #fff;
+  height: 100vh;
+  z-index: 35;
+  width: 280px;
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.4);
 }
 

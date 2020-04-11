@@ -172,4 +172,6 @@ div.createBox{
    padding-bottom: 40px;
 }
 
+@import './parts/headerComponent';
 @import './pages/index';
+@import './parts/menuBar';

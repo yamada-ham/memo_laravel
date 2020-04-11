@@ -6,7 +6,17 @@
     <router-link to="/Thank">商品情報</router-link>
   </nav>
   <router-view /> -->
-  <curd-memo-component></curd-memo-component>
+  <nav id="menuBar" class="menuBar">
+    <div class="inMenuBar">
+      <ul>
+        <li><p><router-link to="/">メモ</router-link></p></li>
+        <li><p><router-link to="/archive">アーカイブ</router-link></p></li>
+      </ul>
+    </div>
+  </nav>
+  <router-view />
+  <!-- <menu-bar-component></menu-bar-component> -->
+  <!-- <curd-memo-component></curd-memo-component> -->
 
 </main>
 </template>
@@ -14,6 +24,7 @@
 <script>
 import CurdMemoComponent from './CurdMemoComponent'
 import HeaderComponent from './HeaderComponent'
+// import MenuBarComponent from './MenuBarComponent'
 export default {
   components:{CurdMemoComponent,HeaderComponent},
   data(){
