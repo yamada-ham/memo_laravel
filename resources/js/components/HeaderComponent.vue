@@ -5,7 +5,7 @@
     <!-- <div class="inMenuTitleBox"> -->
     <div class="menuBtnBox">
       <div class="inMenuBtnBox">
-        <button><i class="fas fa-bars"></i></button>
+        <button @click="showMenubar()"><i class="fas fa-bars"></i></button>
       </div>
     </div>
     <div class="titleBox">
@@ -69,7 +69,9 @@ export default {
   mounted(){
   },
   methods:{
-
+    showMenubar(){
+        this.$emit('show-menubar-event')
+    }
   },
   computed:{
 

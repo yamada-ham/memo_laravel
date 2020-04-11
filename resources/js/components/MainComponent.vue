@@ -1,12 +1,12 @@
 <template>
 <main>
-  <header-component></header-component>
+  <header-component @show-menubar-event="isMenuBar = !isMenuBar"></header-component>
   <!-- <nav>
     <router-link to="/">Home</router-link>
     <router-link to="/Thank">商品情報</router-link>
   </nav>
   <router-view /> -->
-  <nav id="menuBar" class="menuBar">
+  <nav id="menuBar" class="menuBar" v-show="isMenuBar">
     <div class="inMenuBar">
       <ul>
         <li><p><router-link to="/">メモ</router-link></p></li>
@@ -29,6 +29,7 @@ export default {
   components:{CurdMemoComponent,HeaderComponent},
   data(){
     return{
+      isMenuBar:false
     }
   },
   props:[],

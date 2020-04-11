@@ -23,9 +23,9 @@ const store = new Vuex.Store({
     // }
   },
   mutations: {
-    mutIsMask(state, payload) {
-      state.isMask = !state.isMask
-    },
+    // mutIsMask(state, payload) {
+    //   state.isMask = !state.isMask
+    // },
   },
   actions: {
 

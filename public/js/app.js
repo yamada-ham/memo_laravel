@@ -2146,7 +2146,11 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   mounted: function mounted() {},
-  methods: {},
+  methods: {
+    showMenubar: function showMenubar() {
+      this.$emit('show-menubar-event');
+    }
+  },
   computed: {}
 });
 
@@ -2195,7 +2199,9 @@ __webpack_require__.r(__webpack_exports__);
     HeaderComponent: _HeaderComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      isMenuBar: false
+    };
   },
   props: [],
   created: function created() {},
@@ -2791,7 +2797,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     del: function del($event) {
-      this.$emit('childs-event', this.memoData.id);
+      this.$emit('del-memo-event', this.memoData.id);
       var that = this;
       axios.post('/', {
         mode: 'delete',
@@ -38445,9 +38451,23 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("header", { class: ["header", { shadow: _vm.isShadow }] }, [
     _c("div", { staticClass: "inHeader" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "menuBtnBox" }, [
+        _c("div", { staticClass: "inMenuBtnBox" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.showMenubar()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-bars" })]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "searchFormBox" }, [
         _c(
@@ -38552,16 +38572,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menuBtnBox" }, [
-      _c("div", { staticClass: "inMenuBtnBox" }, [
-        _c("button", [_c("i", { staticClass: "fas fa-bars" })])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "titleBox" }, [
       _c("div", { staticClass: "inTitleBox" }, [
         _c("h1", [_c("a", [_c("img", { attrs: { src: "img/memo.png" } })])])
@@ -38593,33 +38603,54 @@ var render = function() {
   return _c(
     "main",
     [
-      _c("header-component"),
+      _c("header-component", {
+        on: {
+          "show-menubar-event": function($event) {
+            _vm.isMenuBar = !_vm.isMenuBar
+          }
+        }
+      }),
       _vm._v(" "),
-      _c("nav", { staticClass: "menuBar", attrs: { id: "menuBar" } }, [
-        _c("div", { staticClass: "inMenuBar" }, [
-          _c("ul", [
-            _c("li", [
-              _c(
-                "p",
-                [_c("router-link", { attrs: { to: "/" } }, [_vm._v("メモ")])],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c(
-                "p",
-                [
-                  _c("router-link", { attrs: { to: "/archive" } }, [
-                    _vm._v("アーカイブ")
-                  ])
-                ],
-                1
-              )
+      _c(
+        "nav",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.isMenuBar,
+              expression: "isMenuBar"
+            }
+          ],
+          staticClass: "menuBar",
+          attrs: { id: "menuBar" }
+        },
+        [
+          _c("div", { staticClass: "inMenuBar" }, [
+            _c("ul", [
+              _c("li", [
+                _c(
+                  "p",
+                  [_c("router-link", { attrs: { to: "/" } }, [_vm._v("メモ")])],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "p",
+                  [
+                    _c("router-link", { attrs: { to: "/archive" } }, [
+                      _vm._v("アーカイブ")
+                    ])
+                  ],
+                  1
+                )
+              ])
             ])
           ])
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
       _c("router-view")
     ],
@@ -39370,7 +39401,7 @@ var render = function() {
               [
                 _c("memo-card-component", {
                   attrs: { "memo-data": memo },
-                  on: { "childs-event": _vm.parentsMethod }
+                  on: { "del-memo-event": _vm.parentsMethod }
                 })
               ],
               1
@@ -56631,10 +56662,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     //   return state.colorPallete
     // }
   },
-  mutations: {
-    mutIsMask: function mutIsMask(state, payload) {
-      state.isMask = !state.isMask;
-    }
+  mutations: {// mutIsMask(state, payload) {
+    //   state.isMask = !state.isMask
+    // },
   },
   actions: {}
 });

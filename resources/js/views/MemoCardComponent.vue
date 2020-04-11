@@ -164,7 +164,7 @@ export default {
       })
     },
     del($event){
-      this.$emit('childs-event',this.memoData.id)
+      this.$emit('del-memo-event',this.memoData.id)
       let that = this
       axios.post('/', {
         mode: 'delete',
