@@ -5,9 +5,9 @@
 
   <div class="contentsBox">
   <nav id="menuBarBox" class="menuBarBox" :style="menuBarData.css">
-    <div class="inMenuBar">
+    <div class="inMenuBarBox">
       <ul>
-        <li v-for="li in menuLi" @key="li.id"><div class="inLi"><router-link :to="li.to">{{li.text}}</router-link></div></li>
+        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to">{{li.text}}</router-link></div></li>
       </ul>
     </div>
   </nav>

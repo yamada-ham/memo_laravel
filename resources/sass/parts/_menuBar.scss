@@ -5,4 +5,13 @@ nav#menuBarBox{
   width: 10%;
   // box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
   box-sizing: border-box;
+  div.inMenuBarBox{
+    ul{
+      li{
+        div.inMenuBarLi{
+          
+        }
+      }
+    }
+  }
 }

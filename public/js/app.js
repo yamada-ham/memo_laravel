@@ -38000,14 +38000,14 @@ var render = function() {
                 attrs: { id: "menuBarBox" }
               },
               [
-                _c("div", { staticClass: "inMenuBar" }, [
+                _c("div", { staticClass: "inMenuBarBox" }, [
                   _c(
                     "ul",
                     _vm._l(_vm.menuLi, function(li) {
                       return _c("li", { on: { key: li.id } }, [
                         _c(
                           "div",
-                          { staticClass: "inLi" },
+                          { staticClass: "inMenuBarLi" },
                           [
                             _c("router-link", { attrs: { to: li.to } }, [
                               _vm._v(_vm._s(li.text))
