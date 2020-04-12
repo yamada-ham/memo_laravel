@@ -2032,11 +2032,13 @@ __webpack_require__.r(__webpack_exports__);
       menuLi: [{
         id: 0,
         text: 'メモ',
-        to: '/'
+        to: '/',
+        iconClass: 'fas fa-book memo'
       }, {
         id: 1,
         text: 'アーカイブ',
-        to: '/archive'
+        to: '/archive',
+        iconClass: 'fas fa-archive archive'
       }],
       menuBarData: {
         css: {
@@ -38010,7 +38012,8 @@ var render = function() {
                           { staticClass: "inMenuBarLi" },
                           [
                             _c("router-link", { attrs: { to: li.to } }, [
-                              _vm._v(_vm._s(li.text))
+                              _c("i", { class: li.iconClass }),
+                              _c("p", { staticClass: "menuBarText" })
                             ])
                           ],
                           1

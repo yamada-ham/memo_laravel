@@ -992,3 +992,53 @@ nav#menuBarBox {
   box-sizing: border-box;
 }
 
+nav#menuBarBox div.inMenuBarBox {
+  position: fixed;
+  width: 20%;
+  top: 60px;
+}
+
+nav#menuBarBox div.inMenuBarBox ul {
+  width: 100%;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li {
+  width: 100%;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi {
+  width: 100%;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a {
+  position: relative;
+  display: block;
+  border-radius: 45px;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a:hover {
+  width: 100%;
+  background: #dbff00;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a i {
+  position: relative;
+  left: 20px;
+  float: left;
+  font-size: 1.5rem;
+  text-align: center;
+  background: #dbff00;
+  padding: 5px;
+  border-radius: 45px;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a p.menuBarText {
+  float: left;
+}
+

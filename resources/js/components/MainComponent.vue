@@ -7,7 +7,7 @@
   <nav id="menuBarBox" class="menuBarBox" :style="menuBarData.css">
     <div class="inMenuBarBox">
       <ul>
-        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to">{{li.text}}</router-link></div></li>
+        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to"><i :class="li.iconClass"></i><p class="menuBarText"></p></router-link></div></li>
       </ul>
     </div>
   </nav>
@@ -29,8 +29,8 @@ export default {
     return{
       isMenuBar:false,
       menuLi:[
-        {id:0,text:'メモ',to:'/'},
-        {id:1,text:'アーカイブ',to:'/archive'},
+        {id:0,text:'メモ',to:'/',iconClass:'fas fa-book memo'},
+        {id:1,text:'アーカイブ',to:'/archive',iconClass:'fas fa-archive archive'},
       ],
       menuBarData:{css:{width:'10%'}},
     }

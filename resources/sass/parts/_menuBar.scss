@@ -6,10 +6,41 @@ nav#menuBarBox{
   // box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
   box-sizing: border-box;
   div.inMenuBarBox{
+    position:fixed;
+    width:20%;
+    top:60px;
     ul{
+      width:100%;
       li{
+        width:100%;
         div.inMenuBarLi{
-          
+          width:100%;
+          a{
+            position:relative;
+            display: block;
+            border-radius: 45px;
+            &:hover{
+              // padding-left:20px;
+              width:100%;
+              background:#dbff00;
+            }
+            &:after{
+              @include clear;
+            }
+            i{
+              position:relative;
+              left:20px;
+              float:left;
+              font-size: 1.5rem;
+              text-align:center;
+              background:#dbff00;
+              padding:5px;
+              border-radius: 45px;
+            }
+            p.menuBarText{
+              float:left;
+            }
+          }
         }
       }
     }
