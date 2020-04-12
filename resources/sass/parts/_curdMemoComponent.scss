@@ -51,292 +51,291 @@
   }
 }
 
-main{
-  div.inMain{
-    div.createMemoBox{
-      margin-top:100px;
-      margin-bottom:70px;
-      width:600px;
-      max-width:80%;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow:none;
-      border:1px solid #91989e;
-      border-radius: 10px;
-      padding:10px 10px;
-      &.making{
-        border:1px solid rgba(145, 152, 158, 0);
-        box-shadow:0px 0px 10px #91989e;
-      }
-      div.inCreateMemoBox{
-        form.createMemoFormBox{
-          div.inCreateMemoFormBox{
-            div.textareaTitleBox{
-              margin-bottom:8px;
-              min-height:32px;
-              max-height:20vh;
-              overflow: scroll;
-              div.inTextareaTitleBox{
-                textarea{
-                  @include textareaDefault();
-                  background: none;
-                }
+div.content{
+  width:80%;
+  div.createMemoBox{
+    margin-top:100px;
+    margin-bottom:70px;
+    width:600px;
+    max-width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow:none;
+    border:1px solid #91989e;
+    border-radius: 10px;
+    padding:10px 10px;
+    &.making{
+      border:1px solid rgba(145, 152, 158, 0);
+      box-shadow:0px 0px 10px #91989e;
+    }
+    div.inCreateMemoBox{
+      form.createMemoFormBox{
+        div.inCreateMemoFormBox{
+          div.textareaTitleBox{
+            margin-bottom:8px;
+            min-height:32px;
+            max-height:20vh;
+            overflow: scroll;
+            div.inTextareaTitleBox{
+              textarea{
+                @include textareaDefault();
+                background: none;
               }
             }
-            div.textareaMemoBox{
-              margin-bottom:8px;
-              min-height:32px;
-              max-height:50vh;
-              overflow: scroll;
-              div.inTextareaMemoBox{
-                textarea{
-                  @include textareaDefault();
-                  background: none;
-                }
+          }
+          div.textareaMemoBox{
+            margin-bottom:8px;
+            min-height:32px;
+            max-height:50vh;
+            overflow: scroll;
+            div.inTextareaMemoBox{
+              textarea{
+                @include textareaDefault();
+                background: none;
               }
             }
           }
         }
-        div.operationBox{
-          div.inOperationBox{
-            ul{
-              display:flex;
-              flex-wrap: wrap;
-              align-items:flex-end;
-              align-content: flex-start;
-              li{
-                button{
-                  @include buttonReset;
-                  padding:6px 12px;
-                  border-radius: 45px;
-                  &:hover{
-                    background:#dedede;
-                  }
-                  i{
-                    font-size:0.9rem;
-                    color:#787878;
-                  }
+      }
+      div.operationBox{
+        div.inOperationBox{
+          ul{
+            display:flex;
+            flex-wrap: wrap;
+            align-items:flex-end;
+            align-content: flex-start;
+            li{
+              button{
+                @include buttonReset;
+                padding:6px 12px;
+                border-radius: 45px;
+                &:hover{
+                  background:#dedede;
                 }
-                &.colorPalleteLi{
-                  @include colorPalleteLi();
+                i{
+                  font-size:0.9rem;
+                  color:#787878;
                 }
+              }
+              &.colorPalleteLi{
+                @include colorPalleteLi();
               }
             }
           }
         }
       }
     }
-    div.memoCardComponentBox{
-      width:98%;
-      margin-left: auto;
-      margin-right:auto;
-      @include media(m){
-        width:90%;
+  }
+  div.memoCardComponentBox{
+    width:98%;
+    margin-left: auto;
+    margin-right:auto;
+    @include media(m){
+      width:90%;
+    }
+    ul.inMemoCardComponentBox{
+      width:100%;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items:center;
+      align-content: flex-start;
+      &:after{
+        @include clear()
       }
-      ul.inMemoCardComponentBox{
+      li.memoCardLi{
         width:100%;
-        display:flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items:center;
-        align-content: flex-start;
-        &:after{
-          @include clear()
+        @include media(s){
+          width:49%;
         }
-        li.memoCardLi{
-          width:100%;
-          @include media(s){
-            width:49%;
+        @include media(m){
+          width:32%;
+        }
+        @include media(l){
+          width:24%;
+        }
+        @include media(xl){
+          width:19%;
+        }
+        div.memoCardWrap{
+          position:relative;
+          background: none;
+          box-sizing: border-box;
+          border:1px solid #91989e;
+          border-radius: 8px;
+          margin-bottom:12px;
+          background: #fff;
+          &:hover{
+            animation-name:delAnime;
+            animation-duration: 3s;
+            border:1px solid rgba(145, 152, 158, 0);
+            box-shadow:0px 0px 10px #91989e;
           }
-          @include media(m){
-            width:32%;
+          div.memoCardBox{
+            div.inMemoCardBox{
+              height:30vh;
+              overflow: scroll;
+              form.memoCardFormBox{
+                width:90%;
+                margin-left: auto;
+                margin-right: auto;
+                div.inMemoCardFormBox{
+                  div.textareaTitleBox{
+                    div.inTextareaTitleBox{
+                      textarea{
+                        font-size:1.1rem;
+                        font-weight: bold;
+                        background: none;
+                        @include textareaDefault()
+                      }
+                    }
+                  }
+                  div.textareaMemoBox{
+                    div.inTextareaMemoBox{
+                      textarea{
+                        background: none;
+                        @include textareaDefault()
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-          @include media(l){
-            width:24%;
+          div.operationBox{
+            min-height:36px;
+            div.inOperationBox{
+              ul{
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items:center;
+                li{
+                  button{
+                    @include buttonReset;
+                    padding:4px 8px;
+                    border-radius: 45px;
+                    &:hover{
+                      background:#dedede;
+                    }
+                    i{
+                      color:#787878;
+                      font-size:0.9rem;
+                    }
+                  }
+                  &.colorPalleteLi{
+                    @include colorPalleteLi();
+                  }
+                }
+              }
+            }
           }
-          @include media(xl){
-            width:19%;
-          }
-          div.memoCardWrap{
-            position:relative;
-            background: none;
-            box-sizing: border-box;
-            border:1px solid #91989e;
+          div.modalBox{
+            position:fixed;
+            left:50%;
+            top:0%;
+            transform: translate(-50%,0%);
+            background:#fff;
+            // box-sizing: border-box;
             border-radius: 8px;
-            margin-bottom:12px;
-            background: #fff;
-            &:hover{
-              animation-name:delAnime;
-              animation-duration: 3s;
-              border:1px solid rgba(145, 152, 158, 0);
-              box-shadow:0px 0px 10px #91989e;
+            box-shadow:0px 0px 10px #91989e;
+            z-index:55;
+            width:700px;
+            max-width:100%;
+            @include media(s){
+              top:14%;
+              // max-height:76vh;
             }
-            div.memoCardBox{
-              div.inMemoCardBox{
-                height:30vh;
-                overflow: scroll;
-                form.memoCardFormBox{
-                  width:90%;
-                  margin-left: auto;
-                  margin-right: auto;
-                  div.inMemoCardFormBox{
-                    div.textareaTitleBox{
-                      div.inTextareaTitleBox{
-                        textarea{
-                          font-size:1.1rem;
-                          font-weight: bold;
-                          background: none;
-                          @include textareaDefault()
-                        }
-                      }
+            div.inModalBox{
+              form.modalFormBox{
+                div.inModalFormBox{
+                  div.modalTitleBox{
+                    position:relative;
+                    width:100%;
+                    // padding-left:20px;
+                    // transform: translate(-50%,0%);
+                    border-radius: 8px 8px 0 0;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    z-index:40;
+                    overflow: scroll;
+                    box-sizing: border-box;
+                    // @include media(s){
+                      height:auto;
+                      max-height:16vh;
+                    // }
+                    &.scroll{
+                      box-shadow:0px 1px 4px #91989e;
                     }
-                    div.textareaMemoBox{
-                      div.inTextareaMemoBox{
-                        textarea{
-                          background: none;
-                          @include textareaDefault()
-                        }
+                    div.inModalTitleBox{
+                      textarea{
+                        box-sizing: border-box;
+                        padding-left:20px;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        background: none;
+                        @include textareaDefault();
                       }
                     }
                   }
-                }
-              }
-            }
-            div.operationBox{
-              min-height:36px;
-              div.inOperationBox{
-                ul{
-                  display:flex;
-                  flex-wrap: wrap;
-                  justify-content: space-around;
-                  align-items:center;
-                  li{
-                    button{
-                      @include buttonReset;
-                      padding:4px 8px;
-                      border-radius: 45px;
-                      &:hover{
-                        background:#dedede;
+                  div.modalMemoBox{
+                    position: relative;
+                    width:94%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom:40px;
+                    // height:50vh;
+                    overflow: scroll;
+                    z-index:35;
+                    // @include media(s){
+                      height:auto;
+                      max-height:52vh;
+                    // }
+                    div.inModalMemoBox{
+                      textarea{
+                        background: none;
+                        @include textareaDefault();
                       }
-                      i{
-                        color:#787878;
-                        font-size:0.9rem;
-                      }
-                    }
-                    &.colorPalleteLi{
-                      @include colorPalleteLi();
                     }
                   }
-                }
-              }
-            }
-            div.modalBox{
-              position:fixed;
-              left:50%;
-              top:0%;
-              transform: translate(-50%,0%);
-              background:#fff;
-              // box-sizing: border-box;
-              border-radius: 8px;
-              box-shadow:0px 0px 10px #91989e;
-              z-index:55;
-              width:700px;
-              max-width:100%;
-              @include media(s){
-                top:14%;
-                // max-height:76vh;
-              }
-              div.inModalBox{
-                form.modalFormBox{
-                  div.inModalFormBox{
-                    div.modalTitleBox{
-                      position:relative;
-                      width:100%;
-                      // padding-left:20px;
-                      // transform: translate(-50%,0%);
-                      border-radius: 8px 8px 0 0;
-                      padding-top:10px;
-                      padding-bottom:10px;
-                      z-index:40;
-                      overflow: scroll;
-                      box-sizing: border-box;
-                      // @include media(s){
-                        height:auto;
-                        max-height:16vh;
-                      // }
-                      &.scroll{
-                        box-shadow:0px 1px 4px #91989e;
-                      }
-                      div.inModalTitleBox{
-                        textarea{
-                          box-sizing: border-box;
-                          padding-left:20px;
-                          font-size: 1.5rem;
-                          font-weight: bold;
-                          background: none;
-                          @include textareaDefault();
-                        }
-                      }
-                    }
-                    div.modalMemoBox{
-                      position: relative;
-                      width:94%;
-                      margin-left: auto;
-                      margin-right: auto;
-                      margin-bottom:40px;
-                      // height:50vh;
-                      overflow: scroll;
-                      z-index:35;
-                      // @include media(s){
-                        height:auto;
-                        max-height:52vh;
-                      // }
-                      div.inModalMemoBox{
-                        textarea{
-                          background: none;
-                          @include textareaDefault();
-                        }
-                      }
-                    }
-                    div.modalOperationBox{
-                      box-sizing: border-box;
-                      box-shadow:0px -1px 4px #91989e;
-                      box-sizing: border-box;
-                      width:100%;
-                      z-index:40;
-                      border-radius: 0px 0px 8px 8px;
-                      background: #fff;
-                      div.inModalOperationBox{
+                  div.modalOperationBox{
+                    box-sizing: border-box;
+                    box-shadow:0px -1px 4px #91989e;
+                    box-sizing: border-box;
+                    width:100%;
+                    z-index:40;
+                    border-radius: 0px 0px 8px 8px;
+                    background: #fff;
+                    div.inModalOperationBox{
+                      height:100%;
+                      ul{
                         height:100%;
-                        ul{
-                          height:100%;
-                          display:flex;
-                          flex-wrap: wrap;
-                          align-items:center;
-                          align-content: flex-start;
-                          li{
-                            &.liClose{
-                              margin-left:auto;
-                              height:100%;
-                              button{
-                                font-size: 1rem;
-                                height:100%;
-                              }
-                            }
+                        display:flex;
+                        flex-wrap: wrap;
+                        align-items:center;
+                        align-content: flex-start;
+                        li{
+                          &.liClose{
+                            margin-left:auto;
+                            height:100%;
                             button{
-                              @include buttonReset;
-                              padding:6px 12px;
-                              border-radius: 4px;
-                              &:hover{
-                                background:#dedede;
-                              }
-                              i{
-                                color:#787878;
-                              }
+                              font-size: 1rem;
+                              height:100%;
                             }
-                            &.colorPalleteLi{
-                              @include colorPalleteLi();
+                          }
+                          button{
+                            @include buttonReset;
+                            padding:6px 12px;
+                            border-radius: 4px;
+                            &:hover{
+                              background:#dedede;
                             }
+                            i{
+                              color:#787878;
+                            }
+                          }
+                          &.colorPalleteLi{
+                            @include colorPalleteLi();
                           }
                         }
                       }

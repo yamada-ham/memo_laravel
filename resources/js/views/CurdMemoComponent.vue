@@ -1,5 +1,5 @@
 <template>
-<div class="inMain">
+<div class="content">
 <div class="createMemoBox" :class="{making:isMaking}" :style="{'background':backgroundColor}">
 <div class="inCreateMemoBox">
   <form class="createMemoFormBox">

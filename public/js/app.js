@@ -2017,9 +2017,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 // import CurdMemoComponent from './CurdMemoComponent'
  // import MenuBarComponent from './MenuBarComponent'
 
@@ -37971,59 +37968,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    [
-      _c("header-component", {
-        on: {
-          "show-menubar-event": function($event) {
-            _vm.isMenuBar = !_vm.isMenuBar
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "nav",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.isMenuBar,
-              expression: "isMenuBar"
+  return _c("main", [
+    _c(
+      "div",
+      { staticClass: "inMain" },
+      [
+        _c("header-component", {
+          on: {
+            "show-menubar-event": function($event) {
+              _vm.isMenuBar = !_vm.isMenuBar
             }
-          ],
-          staticClass: "menuBar",
-          attrs: { id: "menuBar" }
-        },
-        [
-          _c("div", { staticClass: "inMenuBar" }, [
-            _c(
-              "ul",
-              _vm._l(_vm.menuLi, function(li) {
-                return _c("li", { on: { key: li.id } }, [
-                  _c(
-                    "div",
-                    { staticClass: "inLi" },
-                    [
-                      _c("router-link", { attrs: { to: li.to } }, [
-                        _vm._v(_vm._s(li.text))
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              }),
-              0
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "nav",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.isMenuBar,
+                expression: "isMenuBar"
+              }
+            ],
+            staticClass: "menuBar",
+            attrs: { id: "menuBar" }
+          },
+          [
+            _c("div", { staticClass: "inMenuBar" }, [
+              _c(
+                "ul",
+                _vm._l(_vm.menuLi, function(li) {
+                  return _c("li", { on: { key: li.id } }, [
+                    _c(
+                      "div",
+                      { staticClass: "inLi" },
+                      [
+                        _c("router-link", { attrs: { to: li.to } }, [
+                          _vm._v(_vm._s(li.text))
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                }),
+                0
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("router-view")
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38071,7 +38071,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "inMain" }, [
+  return _c("div", { staticClass: "content" }, [
     _c(
       "div",
       {

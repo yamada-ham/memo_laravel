@@ -172,6 +172,20 @@ div.createBox{
    padding-bottom: 40px;
 }
 
+main{
+  div.inMain{
+    &:after{
+      @include clear;
+    }
+    #menuBar{
+      float:left;
+    }
+    div.content{
+      float:left;
+    }
+  }
+}
+
 @import './parts/headerComponent';
 @import './pages/index';
 @import './parts/menuBar';

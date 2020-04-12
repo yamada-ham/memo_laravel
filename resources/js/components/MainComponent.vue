@@ -1,11 +1,8 @@
 <template>
 <main>
+<div class="inMain">
   <header-component @show-menubar-event="isMenuBar = !isMenuBar"></header-component>
-  <!-- <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/Thank">商品情報</router-link>
-  </nav>
-  <router-view /> -->
+
   <nav id="menuBar" class="menuBar" v-show="isMenuBar">
     <div class="inMenuBar">
       <ul>
@@ -16,7 +13,7 @@
   <router-view />
   <!-- <menu-bar-component></menu-bar-component> -->
   <!-- <curd-memo-component></curd-memo-component> -->
-
+</div>
 </main>
 </template>
 

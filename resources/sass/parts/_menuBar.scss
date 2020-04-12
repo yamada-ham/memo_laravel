@@ -1,9 +1,8 @@
 nav#menuBar{
-  position:fixed;
-  top:60px;
-  background:#fff;
+  background:red;
   height:100vh;
   z-index:35;
-  width:280px;
-  box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
+  width:20%;
+  // box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
+  box-sizing: border-box;
 }
