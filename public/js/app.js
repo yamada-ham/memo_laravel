@@ -2017,6 +2017,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // import CurdMemoComponent from './CurdMemoComponent'
  // import MenuBarComponent from './MenuBarComponent'
 
@@ -2035,22 +2037,27 @@ __webpack_require__.r(__webpack_exports__);
         id: 1,
         text: 'アーカイブ',
         to: '/archive'
-      }]
+      }],
+      menuBarData: {
+        css: {
+          width: '10%'
+        }
+      }
     };
   },
   props: [],
   created: function created() {},
   mounted: function mounted() {},
-  methods: {// ok($event){
-    //   let classes =[];
-    //   $event.path.forEach((el)=>{
-    //     classes.push(el.className);
-    //   });
-    //   console.log(classes.indexOf('createMemoBox'));
-    //   if(classes.indexOf('createMemoBox')  < 0){
-    //     console.log('実行');
-    //   }
-    // }
+  methods: {
+    showMenuBar: function showMenuBar() {
+      this.isMenuBar = !this.isMenuBar;
+
+      if (this.isMenuBar) {
+        this.menuBarData.css.width = '20%';
+      } else {
+        this.menuBarData.css.width = '10%';
+      }
+    }
   },
   computed: {},
   watch: {// memoParam:{
@@ -37976,50 +37983,50 @@ var render = function() {
         _c("header-component", {
           on: {
             "show-menubar-event": function($event) {
-              _vm.isMenuBar = !_vm.isMenuBar
+              return _vm.showMenuBar()
             }
           }
         }),
         _vm._v(" "),
         _c(
-          "nav",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.isMenuBar,
-                expression: "isMenuBar"
-              }
-            ],
-            staticClass: "menuBar",
-            attrs: { id: "menuBar" }
-          },
+          "div",
+          { staticClass: "contentsBox" },
           [
-            _c("div", { staticClass: "inMenuBar" }, [
-              _c(
-                "ul",
-                _vm._l(_vm.menuLi, function(li) {
-                  return _c("li", { on: { key: li.id } }, [
-                    _c(
-                      "div",
-                      { staticClass: "inLi" },
-                      [
-                        _c("router-link", { attrs: { to: li.to } }, [
-                          _vm._v(_vm._s(li.text))
-                        ])
-                      ],
-                      1
-                    )
-                  ])
-                }),
-                0
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("router-view")
+            _c(
+              "nav",
+              {
+                staticClass: "menuBarBox",
+                style: _vm.menuBarData.css,
+                attrs: { id: "menuBarBox" }
+              },
+              [
+                _c("div", { staticClass: "inMenuBar" }, [
+                  _c(
+                    "ul",
+                    _vm._l(_vm.menuLi, function(li) {
+                      return _c("li", { on: { key: li.id } }, [
+                        _c(
+                          "div",
+                          { staticClass: "inLi" },
+                          [
+                            _c("router-link", { attrs: { to: li.to } }, [
+                              _vm._v(_vm._s(li.text))
+                            ])
+                          ],
+                          1
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("router-view")
+          ],
+          1
+        )
       ],
       1
     )
@@ -38071,7 +38078,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content" }, [
+  return _c("div", { staticClass: "contentBox" }, [
     _c(
       "div",
       {

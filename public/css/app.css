@@ -137,18 +137,9 @@ div.createBox p a {
   padding-bottom: 40px;
 }
 
-main div.inMain:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-main div.inMain #menuBar {
-  float: left;
-}
-
-main div.inMain div.content {
-  float: left;
+main div.inMain div.contentsBox {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 header.header {
@@ -506,11 +497,11 @@ header.header div.inHeader div.accountBtnBox div.inAccountBtnBox button i {
   }
 }
 
-div.content {
+div.contentBox {
   width: 80%;
 }
 
-div.content div.createMemoBox {
+div.contentBox div.createMemoBox {
   margin-top: 100px;
   margin-bottom: 70px;
   width: 600px;
@@ -523,19 +514,19 @@ div.content div.createMemoBox {
   padding: 10px 10px;
 }
 
-div.content div.createMemoBox.making {
+div.contentBox div.createMemoBox.making {
   border: 1px solid rgba(145, 152, 158, 0);
   box-shadow: 0px 0px 10px #91989e;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox {
+div.contentBox div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox {
   margin-bottom: 8px;
   min-height: 32px;
   max-height: 20vh;
   overflow: scroll;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
+div.contentBox div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
   width: 100%;
   display: block;
   resize: none;
@@ -545,14 +536,14 @@ div.content div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inC
   background: none;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox {
+div.contentBox div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox {
   margin-bottom: 8px;
   min-height: 32px;
   max-height: 50vh;
   overflow: scroll;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
+div.contentBox div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inCreateMemoFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
   width: 100%;
   display: block;
   resize: none;
@@ -562,14 +553,14 @@ div.content div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.inC
   background: none;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   align-content: flex-start;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -582,24 +573,24 @@ div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperati
   border-radius: 45px;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button:hover {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button:hover {
   background: #dedede;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button i {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button i {
   font-size: 0.9rem;
   color: #787878;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
   display: none;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover button {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover button {
   position: relative;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip {
   position: absolute;
   transform: translate(-25%, -100%);
   display: inline-block;
@@ -609,7 +600,7 @@ div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperati
   box-shadow: 0px 0px 2px #91989e;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
   float: left;
   display: block;
   border-radius: 45px;
@@ -619,23 +610,23 @@ div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperati
   margin: 4px;
 }
 
-div.content div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
   border: 2px solid #000000;
 }
 
-div.content div.memoCardComponentBox {
+div.contentBox div.memoCardComponentBox {
   width: 98%;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media only screen and (min-width: 767px) {
-  div.content div.memoCardComponentBox {
+  div.contentBox div.memoCardComponentBox {
     width: 90%;
   }
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -644,41 +635,41 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox {
   align-content: flex-start;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox:after {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox:after {
   content: "";
   display: block;
   clear: both;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
   width: 100%;
 }
 
 @media only screen and (min-width: 575px) {
-  div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
+  div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 49%;
   }
 }
 
 @media only screen and (min-width: 767px) {
-  div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
+  div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 32%;
   }
 }
 
 @media only screen and (min-width: 991px) {
-  div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
+  div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 24%;
   }
 }
 
 @media only screen and (min-width: 1199px) {
-  div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
+  div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 19%;
   }
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap {
   position: relative;
   background: none;
   box-sizing: border-box;
@@ -688,7 +679,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   background: #fff;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap:hover {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap:hover {
   -webkit-animation-name: delAnime;
           animation-name: delAnime;
   -webkit-animation-duration: 3s;
@@ -697,18 +688,18 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   box-shadow: 0px 0px 10px #91989e;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox {
   height: 30vh;
   overflow: scroll;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaTitleBox div.inTextareaTitleBox textarea {
   font-size: 1.1rem;
   font-weight: bold;
   background: none;
@@ -720,7 +711,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   height: 32px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
   background: none;
   width: 100%;
   display: block;
@@ -730,18 +721,18 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   height: 32px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox {
   min-height: 36px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -754,24 +745,24 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   border-radius: 45px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button:hover {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button:hover {
   background: #dedede;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button i {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button i {
   color: #787878;
   font-size: 0.9rem;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
   display: none;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover button {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover button {
   position: relative;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip {
   position: absolute;
   transform: translate(-25%, -100%);
   display: inline-block;
@@ -781,7 +772,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   box-shadow: 0px 0px 2px #91989e;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
   float: left;
   display: block;
   border-radius: 45px;
@@ -791,11 +782,11 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   margin: 4px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
   border: 2px solid #000000;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
   position: fixed;
   left: 50%;
   top: 0%;
@@ -809,12 +800,12 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
 }
 
 @media only screen and (min-width: 575px) {
-  div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
+  div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
     top: 14%;
   }
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox {
   position: relative;
   width: 100%;
   border-radius: 8px 8px 0 0;
@@ -827,11 +818,11 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   max-height: 16vh;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox.scroll {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox.scroll {
   box-shadow: 0px 1px 4px #91989e;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox div.inModalTitleBox textarea {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalTitleBox div.inModalTitleBox textarea {
   box-sizing: border-box;
   padding-left: 20px;
   font-size: 1.5rem;
@@ -845,7 +836,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   height: 32px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox {
   position: relative;
   width: 94%;
   margin-left: auto;
@@ -857,7 +848,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   max-height: 52vh;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox div.inModalMemoBox textarea {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalMemoBox div.inModalMemoBox textarea {
   background: none;
   width: 100%;
   display: block;
@@ -867,7 +858,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   height: 32px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox {
   box-sizing: border-box;
   box-shadow: 0px -1px 4px #91989e;
   box-sizing: border-box;
@@ -877,11 +868,11 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   background: #fff;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox {
   height: 100%;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -889,17 +880,17 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   align-content: flex-start;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.liClose {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.liClose {
   margin-left: auto;
   height: 100%;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.liClose button {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.liClose button {
   font-size: 1rem;
   height: 100%;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -912,23 +903,23 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   border-radius: 4px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button:hover {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button:hover {
   background: #dedede;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button i {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button i {
   color: #787878;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi div.tooltip {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi div.tooltip {
   display: none;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover button {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover button {
   position: relative;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip {
   position: absolute;
   transform: translate(-25%, -100%);
   display: inline-block;
@@ -938,7 +929,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   box-shadow: 0px 0px 2px #91989e;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip span {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip span {
   float: left;
   display: block;
   border-radius: 45px;
@@ -948,7 +939,7 @@ div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div
   margin: 4px;
 }
 
-div.content div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
   border: 2px solid #000000;
 }
 
@@ -993,11 +984,11 @@ div.mask {
   position: absolute;
 }
 
-nav#menuBar {
+nav#menuBarBox {
   background: red;
   height: 100vh;
   z-index: 35;
-  width: 20%;
+  width: 10%;
   box-sizing: border-box;
 }
 

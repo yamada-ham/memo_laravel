@@ -174,14 +174,14 @@ div.createBox{
 
 main{
   div.inMain{
-    &:after{
-      @include clear;
-    }
-    #menuBar{
-      float:left;
-    }
-    div.content{
-      float:left;
+    div.contentsBox{
+      display:flex;
+      flex-wrap: nowrap;
+      #menuBarBox{
+
+      }
+      div.contentBox{
+      }
     }
   }
 }
