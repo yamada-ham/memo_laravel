@@ -9,8 +9,7 @@
   <nav id="menuBar" class="menuBar" v-show="isMenuBar">
     <div class="inMenuBar">
       <ul>
-        <li><p><router-link to="/">メモ</router-link></p></li>
-        <li><p><router-link to="/archive">アーカイブ</router-link></p></li>
+        <li v-for="li in menuLi" @key="li.id"><div class="inLi"><router-link :to="li.to">{{li.text}}</router-link></div></li>
       </ul>
     </div>
   </nav>
@@ -29,7 +28,11 @@ export default {
   components:{HeaderComponent},
   data(){
     return{
-      isMenuBar:false
+      isMenuBar:false,
+      menuLi:[
+        {id:0,text:'メモ',to:'/'},
+        {id:1,text:'アーカイブ',to:'/archive'},
+      ]
     }
   },
   props:[],

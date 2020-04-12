@@ -2020,7 +2020,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 // import CurdMemoComponent from './CurdMemoComponent'
  // import MenuBarComponent from './MenuBarComponent'
 
@@ -2030,7 +2029,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      isMenuBar: false
+      isMenuBar: false,
+      menuLi: [{
+        id: 0,
+        text: 'メモ',
+        to: '/'
+      }, {
+        id: 1,
+        text: 'アーカイブ',
+        to: '/archive'
+      }]
     };
   },
   props: [],
@@ -37990,27 +37998,24 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "inMenuBar" }, [
-            _c("ul", [
-              _c("li", [
-                _c(
-                  "p",
-                  [_c("router-link", { attrs: { to: "/" } }, [_vm._v("メモ")])],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c(
-                  "p",
-                  [
-                    _c("router-link", { attrs: { to: "/archive" } }, [
-                      _vm._v("アーカイブ")
-                    ])
-                  ],
-                  1
-                )
-              ])
-            ])
+            _c(
+              "ul",
+              _vm._l(_vm.menuLi, function(li) {
+                return _c("li", { on: { key: li.id } }, [
+                  _c(
+                    "div",
+                    { staticClass: "inLi" },
+                    [
+                      _c("router-link", { attrs: { to: li.to } }, [
+                        _vm._v(_vm._s(li.text))
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
+            )
           ])
         ]
       ),
