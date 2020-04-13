@@ -2019,6 +2019,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 // import CurdMemoComponent from './CurdMemoComponent'
  // import MenuBarComponent from './MenuBarComponent'
 
@@ -2039,8 +2043,19 @@ __webpack_require__.r(__webpack_exports__);
         text: 'アーカイブ',
         to: '/archive',
         iconClass: 'fas fa-archive archive'
+      }, {
+        id: 2,
+        text: 'ゴミ箱',
+        to: '/archive',
+        iconClass: 'fas fa-trash-alt'
       }],
+      isLiTest: false,
       menuBarData: {
+        css: {
+          width: '10%'
+        }
+      },
+      inMenuBarData: {
         css: {
           width: '10%'
         }
@@ -2061,10 +2076,14 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.isMenuBar) {
         this.menuBarData.css.width = '20%';
+        this.inMenuBarData.css.width = '200px';
         this.routerLinkData.css.width = '100%';
+        this.isLiTest = true;
       } else {
         this.menuBarData.css.width = '10%';
+        this.inMenuBarData.css.width = '10%';
         this.routerLinkData.css.width = '0%';
+        this.isLiTest = false;
       }
     }
   },
@@ -38009,34 +38028,60 @@ var render = function() {
                 attrs: { id: "menuBarBox" }
               },
               [
-                _c("div", { staticClass: "inMenuBarBox" }, [
-                  _c(
-                    "ul",
-                    _vm._l(_vm.menuLi, function(li) {
-                      return _c("li", { on: { key: li.id } }, [
-                        _c(
-                          "div",
-                          { staticClass: "inMenuBarLi" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                style: _vm.routerLinkData.css,
-                                attrs: { to: li.to }
-                              },
-                              [
-                                _c("i", { class: li.iconClass }),
-                                _c("p", { staticClass: "menuBarText" })
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    }),
-                    0
-                  )
-                ])
+                _c(
+                  "div",
+                  { staticClass: "inMenuBarBox", style: _vm.inMenuBarData.css },
+                  [
+                    _c(
+                      "ul",
+                      _vm._l(_vm.menuLi, function(li) {
+                        return _c("li", { on: { key: li.id } }, [
+                          _c(
+                            "div",
+                            { staticClass: "inMenuBarLi" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  style: _vm.routerLinkData.css,
+                                  attrs: { to: li.to }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "inMenuRouterLink" },
+                                    [
+                                      _c("p", { staticClass: "menuBarIcon" }, [
+                                        _c("i", { class: li.iconClass })
+                                      ]),
+                                      _c(
+                                        "p",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: _vm.isLiTest,
+                                              expression: "isLiTest"
+                                            }
+                                          ],
+                                          staticClass: "menuBarText"
+                                        },
+                                        [_vm._v(_vm._s(li.text))]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ]
+                )
               ]
             ),
             _vm._v(" "),

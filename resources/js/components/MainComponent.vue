@@ -5,9 +5,13 @@
 
   <div class="contentsBox">
   <nav id="menuBarBox" class="menuBarBox" :style="menuBarData.css">
-    <div class="inMenuBarBox">
+    <div class="inMenuBarBox" :style="inMenuBarData.css">
       <ul>
-        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to" :style="routerLinkData.css"><i :class="li.iconClass"></i><p class="menuBarText"></p></router-link></div></li>
+        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to" :style="routerLinkData.css">
+          <div class="inMenuRouterLink">
+            <p class="menuBarIcon"><i :class="li.iconClass"></i></p><p class="menuBarText" v-show="isLiTest">{{li.text}}</p>
+          </div>
+        </router-link></div></li>
       </ul>
     </div>
   </nav>
@@ -31,8 +35,11 @@ export default {
       menuLi:[
         {id:0,text:'メモ',to:'/',iconClass:'fas fa-book memo'},
         {id:1,text:'アーカイブ',to:'/archive',iconClass:'fas fa-archive archive'},
+        {id:2,text:'ゴミ箱',to:'/archive',iconClass:'fas fa-trash-alt'},
       ],
+      isLiTest:false,
       menuBarData:{css:{width:'10%'}},
+      inMenuBarData:{css:{width:'10%'}},
       routerLinkData:{css:{width:'0%'}}
     }
   },
@@ -46,10 +53,14 @@ export default {
       this.isMenuBar = !this.isMenuBar
       if(this.isMenuBar){
         this.menuBarData.css.width = '20%'
+        this.inMenuBarData.css.width = '200px'
         this.routerLinkData.css.width = '100%'
+        this.isLiTest = true
       }else{
         this.menuBarData.css.width = '10%'
+        this.inMenuBarData.css.width = '10%'
         this.routerLinkData.css.width = '0%'
+        this.isLiTest = false
       }
     }
   },

@@ -993,11 +993,20 @@ nav#menuBarBox {
 
 nav#menuBarBox div.inMenuBarBox {
   position: fixed;
-  width: 20%;
+  width: 10%;
   top: 60px;
+  background: #fff;
+  height: 100vh;
+}
+
+@media only screen and (min-width: 575px) {
+  nav#menuBarBox div.inMenuBarBox {
+    box-shadow: none;
+  }
 }
 
 nav#menuBarBox div.inMenuBarBox ul {
+  margin-top: 4px;
   width: 100%;
 }
 
@@ -1023,11 +1032,11 @@ nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active
   background: #fdff99;
 }
 
-nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active i {
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active div.inMenuRouterLink p.menuBarIcon i {
   background: #fdff99;
 }
 
-nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active i:hover {
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active div.inMenuRouterLink p.menuBarIcon i:hover {
   background: #fdff99;
 }
 
@@ -1042,20 +1051,28 @@ nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a:after {
   clear: both;
 }
 
-nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a i {
-  transform: translateX(14px);
-  float: left;
-  font-size: 1.5rem;
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a div.inMenuRouterLink {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-left: 10px;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a div.inMenuRouterLink p.menuBarIcon i {
+  display: block;
+  font-size: 1.3rem;
   text-align: center;
   padding: 14px;
   border-radius: 45px;
+  color: #474747;
 }
 
-nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a i:hover {
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a div.inMenuRouterLink p.menuBarIcon i:hover {
   background: #e3e3e3;
 }
 
-nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a p.menuBarText {
-  float: left;
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a div.inMenuRouterLink p.menuBarText {
+  color: #474747;
+  white-space: nowrap;
 }
 

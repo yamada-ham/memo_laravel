@@ -7,9 +7,15 @@ nav#menuBarBox{
   box-sizing: border-box;
   div.inMenuBarBox{
     position:fixed;
-    width:20%;
+    width:10%;
     top:60px;
+    background: #fff;
+    height:100vh;
+    @include media(s){
+      box-shadow: none;
+    }
     ul{
+      margin-top:4px;
       width:100%;
       li{
         width:100%;
@@ -25,10 +31,14 @@ nav#menuBarBox{
               &:hover{
                 background: #fdff99;
               }
-              i{
-                background: #fdff99;
-                &:hover{
-                  background: #fdff99;
+              div.inMenuRouterLink{
+                p.menuBarIcon{
+                  i{
+                    background: #fdff99;
+                    &:hover{
+                      background: #fdff99;
+                    }
+                  }
                 }
               }
             }
@@ -40,19 +50,31 @@ nav#menuBarBox{
             &:after{
               @include clear;
             }
-            i{
-              transform:translateX(14px);
-              float:left;
-              font-size: 1.5rem;
-              text-align:center;
-              padding:14px;
-              border-radius: 45px;
-              &:hover{
-                background:#e3e3e3;
+            div.inMenuRouterLink{
+              display:flex;
+              flex-wrap: nowrap;
+              align-items: center;
+              margin-left:10px;
+              p.menuBarIcon{
+                i{
+                  display: block;
+                  // transform:translateX(14px);
+                  // float:left;
+                  font-size: 1.3rem;
+                  text-align:center;
+                  padding:14px;
+                  border-radius: 45px;
+                  color:#474747;
+                  &:hover{
+                    background:#e3e3e3;
+                  }
+                }
               }
-            }
-            p.menuBarText{
-              float:left;
+              p.menuBarText{
+                color:#474747;
+                white-space: nowrap
+                // float:left;
+              }
             }
           }
         }
