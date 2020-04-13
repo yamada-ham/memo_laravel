@@ -985,7 +985,6 @@ div.mask {
 }
 
 nav#menuBarBox {
-  background: red;
   height: 100vh;
   z-index: 35;
   width: 10%;
@@ -1013,12 +1012,28 @@ nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi {
 nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a {
   position: relative;
   display: block;
-  border-radius: 45px;
+  border-radius: 0 45px 45px 0;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active {
+  background: #fdff99;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active:hover {
+  background: #fdff99;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active i {
+  background: #fdff99;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a.router-link-exact-active i:hover {
+  background: #fdff99;
 }
 
 nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a:hover {
   width: 100%;
-  background: #dbff00;
+  background: #e3e3e3;
 }
 
 nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a:after {
@@ -1028,14 +1043,16 @@ nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a:after {
 }
 
 nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a i {
-  position: relative;
-  left: 20px;
+  transform: translateX(14px);
   float: left;
   font-size: 1.5rem;
   text-align: center;
-  background: #dbff00;
-  padding: 5px;
+  padding: 14px;
   border-radius: 45px;
+}
+
+nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a i:hover {
+  background: #e3e3e3;
 }
 
 nav#menuBarBox div.inMenuBarBox ul li div.inMenuBarLi a p.menuBarText {

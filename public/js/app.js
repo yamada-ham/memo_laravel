@@ -2044,6 +2044,11 @@ __webpack_require__.r(__webpack_exports__);
         css: {
           width: '10%'
         }
+      },
+      routerLinkData: {
+        css: {
+          width: '0%'
+        }
       }
     };
   },
@@ -2056,8 +2061,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.isMenuBar) {
         this.menuBarData.css.width = '20%';
+        this.routerLinkData.css.width = '100%';
       } else {
         this.menuBarData.css.width = '10%';
+        this.routerLinkData.css.width = '0%';
       }
     }
   },
@@ -38011,10 +38018,17 @@ var render = function() {
                           "div",
                           { staticClass: "inMenuBarLi" },
                           [
-                            _c("router-link", { attrs: { to: li.to } }, [
-                              _c("i", { class: li.iconClass }),
-                              _c("p", { staticClass: "menuBarText" })
-                            ])
+                            _c(
+                              "router-link",
+                              {
+                                style: _vm.routerLinkData.css,
+                                attrs: { to: li.to }
+                              },
+                              [
+                                _c("i", { class: li.iconClass }),
+                                _c("p", { staticClass: "menuBarText" })
+                              ]
+                            )
                           ],
                           1
                         )

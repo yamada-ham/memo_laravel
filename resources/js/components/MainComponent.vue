@@ -7,7 +7,7 @@
   <nav id="menuBarBox" class="menuBarBox" :style="menuBarData.css">
     <div class="inMenuBarBox">
       <ul>
-        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to"><i :class="li.iconClass"></i><p class="menuBarText"></p></router-link></div></li>
+        <li v-for="li in menuLi" @key="li.id"><div class="inMenuBarLi"><router-link :to="li.to" :style="routerLinkData.css"><i :class="li.iconClass"></i><p class="menuBarText"></p></router-link></div></li>
       </ul>
     </div>
   </nav>
@@ -33,6 +33,7 @@ export default {
         {id:1,text:'アーカイブ',to:'/archive',iconClass:'fas fa-archive archive'},
       ],
       menuBarData:{css:{width:'10%'}},
+      routerLinkData:{css:{width:'0%'}}
     }
   },
   props:[],
@@ -45,8 +46,10 @@ export default {
       this.isMenuBar = !this.isMenuBar
       if(this.isMenuBar){
         this.menuBarData.css.width = '20%'
+        this.routerLinkData.css.width = '100%'
       }else{
         this.menuBarData.css.width = '10%'
+        this.routerLinkData.css.width = '0%'
       }
     }
   },
