@@ -2046,7 +2046,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         id: 2,
         text: 'ゴミ箱',
-        to: '/archive',
+        to: '/trash',
         iconClass: 'fas fa-trash-alt'
       }],
       isLiTest: false,
@@ -2057,7 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       inMenuBarData: {
         css: {
-          width: '10%'
+          width: '10%',
+          boxShadow: 'none'
         }
       },
       routerLinkData: {
@@ -2069,7 +2070,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: [],
   created: function created() {},
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log(window.innerWidth);
+  },
   methods: {
     showMenuBar: function showMenuBar() {
       this.isMenuBar = !this.isMenuBar;
@@ -2077,11 +2080,17 @@ __webpack_require__.r(__webpack_exports__);
       if (this.isMenuBar) {
         this.menuBarData.css.width = '20%';
         this.inMenuBarData.css.width = '200px';
+
+        if (window.innerWidth < 767) {
+          this.inMenuBarData.css.boxShadow = '1px 0px 5px  rgba(0,0,0,0.4)';
+        }
+
         this.routerLinkData.css.width = '100%';
         this.isLiTest = true;
       } else {
         this.menuBarData.css.width = '10%';
         this.inMenuBarData.css.width = '10%';
+        this.inMenuBarData.css.boxShadow = 'none';
         this.routerLinkData.css.width = '0%';
         this.isLiTest = false;
       }

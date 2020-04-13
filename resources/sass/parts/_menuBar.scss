@@ -11,6 +11,7 @@ nav#menuBarBox{
     top:60px;
     background: #fff;
     height:100vh;
+    box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
     @include media(s){
       box-shadow: none;
     }
