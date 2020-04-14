@@ -1,0 +1,85 @@
+nav#menuBarBox{
+  // background:red;
+  height:100vh;
+  z-index:35;
+  width: 10%;
+  // box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
+  box-sizing: border-box;
+  div.inMenuBarBox{
+    position:fixed;
+    width:10%;
+    top:60px;
+    background: #fff;
+    height:100vh;
+    box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
+    @include media(s){
+      box-shadow: none;
+    }
+    ul{
+      margin-top:4px;
+      width:100%;
+      li{
+        width:100%;
+        div.inMenuBarLi{
+          width:100%;
+          a{
+            position:relative;
+            display: block;
+            border-radius:0 45px 45px 0;
+            // background:#e3e3e3;
+            &.router-link-exact-active{
+              background: #fdff99;
+              &:hover{
+                background: #fdff99;
+              }
+              div.inMenuRouterLink{
+                p.menuBarIcon{
+                  i{
+                    background: #fdff99;
+                    &:hover{
+                      background: #fdff99;
+                    }
+                  }
+                }
+              }
+            }
+            &:hover{
+              // padding-left:20px;
+              width:100%;
+              background:#e3e3e3;
+            }
+            &:after{
+              @include clear;
+            }
+            div.inMenuRouterLink{
+              display:flex;
+              flex-wrap: nowrap;
+              align-items: center;
+              margin-left:10px;
+              p.menuBarIcon{
+                i{
+                  display: block;
+                  // transform:translateX(14px);
+                  // float:left;
+                  font-size: 1.3rem;
+                  text-align:center;
+                  padding:14px;
+                  border-radius: 45px;
+                  color:#474747;
+                  &:hover{
+                    background:#e3e3e3;
+                  }
+                }
+              }
+              p.menuBarText{
+                color:#474747;
+                white-space: nowrap
+                // float:left;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
