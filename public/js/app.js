@@ -2070,9 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: [],
   created: function created() {},
-  mounted: function mounted() {
-    console.log(window.innerWidth);
-  },
+  mounted: function mounted() {},
   methods: {
     showMenuBar: function showMenuBar() {
       this.isMenuBar = !this.isMenuBar;
@@ -2252,7 +2250,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post('/', {
         mode: 'create',
         title: this.title,
-        memo: this.memo
+        memo: this.memo,
+        backgroundColor: this.backgroundColor
       }).then(function (res) {
         that.memoData.unshift(res['data']);
         that.title = '';
@@ -2374,7 +2373,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2394,6 +2392,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   props: ['memoData'],
   created: function created() {},
   mounted: function mounted() {
+    this.backgroundColor = this.memoData.backgroundColor;
     this.initResizeTextarea(this.$refs.titleTextarea);
     this.initResizeTextarea(this.$refs.memoTextarea);
   },
@@ -2454,7 +2453,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         mode: 'update',
         id: this.memoData.id,
         title: this.memoData.title,
-        memo: this.memoData.memo
+        memo: this.memoData.memo,
+        backgroundColor: this.backgroundColor
       }).then(function (res) {
         console.log(res['data']);
       })["catch"](function (error) {
@@ -38591,22 +38591,7 @@ var render = function() {
                         _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
                         ]),
-                        _c(
-                          "div",
-                          { staticClass: "tooltip" },
-                          _vm._l(_vm.colorPallete, function(color) {
-                            return _c("span", {
-                              key: color.id,
-                              style: { background: color.hex },
-                              on: {
-                                click: function($event) {
-                                  _vm.backgroundColor = color.hex
-                                }
-                              }
-                            })
-                          }),
-                          0
-                        )
+                        _c("div", { staticClass: "tooltip" })
                       ]),
                       _vm._v(" "),
                       _c("li", [
@@ -38771,7 +38756,17 @@ var render = function() {
                           _vm._m(0),
                           _vm._v(" "),
                           _c("li", { staticClass: "colorPalleteLi" }, [
-                            _vm._m(1),
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-palette" })]
+                            ),
                             _c(
                               "div",
                               { staticClass: "tooltip" },
@@ -38782,6 +38777,7 @@ var render = function() {
                                   on: {
                                     click: function($event) {
                                       _vm.backgroundColor = color.hex
+                                      _vm.update()
                                     }
                                   }
                                 })
@@ -38806,7 +38802,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(2),
+                          _vm._m(1),
                           _vm._v(" "),
                           _c("li", [
                             _c(
@@ -38824,9 +38820,9 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(3),
+                          _vm._m(2),
                           _vm._v(" "),
-                          _vm._m(4),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
@@ -38894,12 +38890,6 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-archive" })
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [_c("i", { staticClass: "fas fa-palette" })])
   },
   function() {
     var _vm = this

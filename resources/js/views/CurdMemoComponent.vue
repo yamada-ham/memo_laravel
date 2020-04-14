@@ -115,7 +115,8 @@ export default {
       axios.post('/', {
         mode: 'create',
         title: this.title,
-        memo: this.memo
+        memo: this.memo,
+        backgroundColor:this.backgroundColor
       })
       .then(function (res) {
         that.memoData.unshift(res['data']);

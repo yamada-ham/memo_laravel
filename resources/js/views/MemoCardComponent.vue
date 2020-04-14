@@ -25,7 +25,6 @@
     <ul v-show="isShowOperation" >
       <transition name="operationLi"><li><button type="submit"><i class="fas fa-archive"></i></button></li></transition><!--アーカイブ-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
-        <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
       </div></li><!--色変更-->
       <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
       <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
@@ -55,8 +54,8 @@
       <div class="inModalOperationBox">
         <ul>
           <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
-          <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
-            <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
+          <li class="colorPalleteLi"><button @click.prevent><i class="fas fa-palette"></i></button><div class="tooltip" >
+            <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
           </div></li><!--色変更-->
           <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
           <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
@@ -101,6 +100,7 @@ export default {
 
   },
   mounted(){
+    this.backgroundColor = this.memoData.backgroundColor
     this.initResizeTextarea(this.$refs.titleTextarea)
     this.initResizeTextarea(this.$refs.memoTextarea)
   },
@@ -154,7 +154,8 @@ export default {
         mode: 'update',
         id:this.memoData.id,
         title: this.memoData.title,
-        memo: this.memoData.memo
+        memo: this.memoData.memo,
+        backgroundColor: this.backgroundColor
       })
       .then(function (res) {
         console.log(res['data']);

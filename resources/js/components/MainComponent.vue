@@ -47,7 +47,7 @@ export default {
   created(){
   },
   mounted(){
-    console.log(window.innerWidth)
+
   },
   methods:{
     showMenuBar(){

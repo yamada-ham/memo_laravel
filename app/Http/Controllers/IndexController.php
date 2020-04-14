@@ -26,6 +26,7 @@ class IndexController extends Controller
           // 'mode' => $request->mode,
           'title' => $request->title,
           'memo' => $request->memo,
+          'backgroundColor'=>$request->backgroundColor
         ];
         DB::table('memo')->insert($param);
         // \Debugbar::info($param);
@@ -41,6 +42,7 @@ class IndexController extends Controller
         $param = [
           'title' => $request->title,
           'memo' => $request->memo,
+          'backgroundColor'=>$request->backgroundColor
         ];
         \Debugbar::info($param);
         DB::table('memo')->where('id',$request->id)->update($param);
