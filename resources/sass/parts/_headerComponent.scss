@@ -27,8 +27,8 @@ header.header{
           flex-shrink: 0;
           margin-left:4px;
           margin-right:4px;
+          margin-left:16px;
           @include media(m){
-            margin-left:16px;
             margin-right:10px;
           }
           div.inMenuBtnBox{
