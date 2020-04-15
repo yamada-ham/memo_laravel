@@ -2373,6 +2373,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38591,7 +38592,23 @@ var render = function() {
                         _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
                         ]),
-                        _c("div", { staticClass: "tooltip" })
+                        _c(
+                          "div",
+                          { staticClass: "tooltip" },
+                          _vm._l(_vm.colorPallete, function(color) {
+                            return _c("span", {
+                              key: color.id,
+                              style: { background: color.hex },
+                              on: {
+                                click: function($event) {
+                                  _vm.backgroundColor = color.hex
+                                  _vm.update()
+                                }
+                              }
+                            })
+                          }),
+                          0
+                        )
                       ]),
                       _vm._v(" "),
                       _c("li", [
