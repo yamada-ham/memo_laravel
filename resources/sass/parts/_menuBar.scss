@@ -3,6 +3,10 @@ nav#menuBarBox{
   height:100vh;
   z-index:35;
   width: 10%;
+  position:fixed;
+  @include media(m){
+    position:static;
+  }
   // box-shadow: 1px 0px 5px  rgba(0,0,0,0.4);
   box-sizing: border-box;
   div.inMenuBarBox{
