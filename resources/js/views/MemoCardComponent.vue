@@ -30,6 +30,7 @@
       <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
       <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
       <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
+      <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
     </ul>
   </transition>
   </div>
@@ -54,7 +55,7 @@
     <div class="modalOperationBox">
       <div class="inModalOperationBox">
         <ul>
-          <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
+          <li><button><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
           <li class="colorPalleteLi"><button @click.prevent><i class="fas fa-palette"></i></button><div class="tooltip" >
             <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
           </div></li><!--色変更-->
@@ -64,6 +65,7 @@
           <li><button><i class="fas fa-undo-alt"></i></button></li>
           <li><button><i class="fas fa-redo-alt"></i>
           </button></li>
+          <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
           <li class="liClose"><button @click.prevent="closeModal($event)">閉じる</button></li>
         </ul>
       </div>

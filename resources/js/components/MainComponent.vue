@@ -35,7 +35,8 @@ export default {
       menuLi:[
         {id:0,text:'メモ',to:'/',iconClass:'fas fa-book memo'},
         {id:1,text:'アーカイブ',to:'/archive',iconClass:'fas fa-archive archive'},
-        {id:2,text:'ゴミ箱',to:'/trash',iconClass:'fas fa-trash-alt'},
+        {id:2,text:'プライベート',to:'/private',iconClass:'fas fa-user-lock'},
+        {id:3,text:'ゴミ箱',to:'/trash',iconClass:'fas fa-trash-alt'},
       ],
       isLiTest:false,
       menuBarData:{css:{width:'10%'}},

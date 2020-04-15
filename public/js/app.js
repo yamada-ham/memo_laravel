@@ -2045,6 +2045,11 @@ __webpack_require__.r(__webpack_exports__);
         iconClass: 'fas fa-archive archive'
       }, {
         id: 2,
+        text: 'プライベート',
+        to: '/private',
+        iconClass: 'fas fa-user-lock'
+      }, {
+        id: 3,
         text: 'ゴミ箱',
         to: '/trash',
         iconClass: 'fas fa-trash-alt'
@@ -2125,6 +2130,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -2256,6 +2262,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         that.memoData.unshift(res['data']);
         that.title = '';
         that.memo = '';
+        that.backgroundColor = '#ffffff';
         that.$refs.textareaTitle.style.height = '32px';
         that.$refs.textareaMemo.style.height = '32px';
       })["catch"](function (error) {
@@ -2293,6 +2300,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -38304,7 +38313,9 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(3),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5)
               ])
             ])
           ])
@@ -38379,6 +38390,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", [
       _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-user-lock" })])
     ])
   }
 ]
@@ -38645,6 +38664,12 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "fas fa-trash-alt" })]
                         )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", [
+                          _c("i", { staticClass: "fas fa-user-lock" })
+                        ])
                       ])
                     ],
                     1
@@ -38841,6 +38866,8 @@ var render = function() {
                           _vm._v(" "),
                           _vm._m(3),
                           _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
                               "button",
@@ -38903,9 +38930,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", [
-      _c("button", { attrs: { type: "submit" } }, [
-        _c("i", { staticClass: "fas fa-archive" })
-      ])
+      _c("button", [_c("i", { staticClass: "fas fa-archive" })])
     ])
   },
   function() {
@@ -38928,6 +38953,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", [
       _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-user-lock" })])
     ])
   }
 ]

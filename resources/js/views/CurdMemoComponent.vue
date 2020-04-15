@@ -26,9 +26,10 @@
         </div></li><!--色変更-->
         <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
         <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
-        <li><button><i class="fas fa-undo-alt"></i></button></li>
+        <li><button><i class="fas fa-undo-alt"></i></button></li><!--戻る-->
         <li><button><i class="fas fa-redo-alt"></i>
-        </button></li>
+        </button></li><!--進む-->
+        <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
       </ul>
     </div>
   </div>
@@ -122,6 +123,7 @@ export default {
         that.memoData.unshift(res['data']);
         that.title = ''
         that.memo = ''
+        that.backgroundColor = '#ffffff'
         that.$refs.textareaTitle.style.height = '32px'
         that.$refs.textareaMemo.style.height = '32px'
       })
