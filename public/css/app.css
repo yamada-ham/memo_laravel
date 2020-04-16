@@ -605,7 +605,8 @@ div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOper
   z-index: 15;
   background: #f6f6f6;
   width: 170px;
-  box-shadow: 0px 0px 2px #91989e;
+  box-shadow: 0px 0px 4px #c9d0d5;
+  border-radius: 4px;
 }
 
 div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
@@ -771,7 +772,8 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   z-index: 15;
   background: #f6f6f6;
   width: 170px;
-  box-shadow: 0px 0px 2px #91989e;
+  box-shadow: 0px 0px 4px #c9d0d5;
+  border-radius: 4px;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span {
@@ -928,7 +930,8 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   z-index: 15;
   background: #f6f6f6;
   width: 170px;
-  box-shadow: 0px 0px 2px #91989e;
+  box-shadow: 0px 0px 4px #c9d0d5;
+  border-radius: 4px;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi:hover div.tooltip span {
