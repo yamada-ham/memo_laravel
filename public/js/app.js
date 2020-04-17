@@ -2464,7 +2464,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id: this.memoData.id,
         title: this.memoData.title,
         memo: this.memoData.memo,
-        backgroundColor: this.backgroundColor
+        backgroundColor: this.backgroundColor,
+        isArchive: this.memoData.isArchive
       }).then(function (res) {
         console.log(res['data']);
       })["catch"](function (error) {
@@ -2483,6 +2484,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    sendArchive: function sendArchive() {
+      // console.log(this.memoData.isArchive)
+      this.memoData.isArchive = !this.memoData.isArchive; // console.log(this.memoData.isArchive)
+
+      this.update();
+      console.log('アーカイブ');
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
@@ -38599,12 +38607,18 @@ var render = function() {
                       ]
                     },
                     [
-                      _c("transition", { attrs: { name: "operationLi" } }, [
-                        _c("li", [
-                          _c("button", { attrs: { type: "submit" } }, [
-                            _c("i", { staticClass: "fas fa-archive" })
-                          ])
-                        ])
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.sendArchive()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-archive" })]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("li", { staticClass: "colorPalleteLi" }, [
@@ -38671,8 +38685,7 @@ var render = function() {
                           _c("i", { staticClass: "fas fa-user-lock" })
                         ])
                       ])
-                    ],
-                    1
+                    ]
                   )
                 ])
               ],
@@ -38795,7 +38808,19 @@ var render = function() {
                     _c("div", { staticClass: "modalOperationBox" }, [
                       _c("div", { staticClass: "inModalOperationBox" }, [
                         _c("ul", [
-                          _vm._m(0),
+                          _c("li", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-archive" })]
+                            )
+                          ]),
                           _vm._v(" "),
                           _c("li", { staticClass: "colorPalleteLi" }, [
                             _c(
@@ -38844,7 +38869,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _vm._m(0),
                           _vm._v(" "),
                           _c("li", [
                             _c(
@@ -38862,11 +38887,11 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
+                          _vm._m(1),
+                          _vm._v(" "),
                           _vm._m(2),
                           _vm._v(" "),
                           _vm._m(3),
-                          _vm._v(" "),
-                          _vm._m(4),
                           _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
@@ -38925,14 +38950,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("button", [_c("i", { staticClass: "fas fa-archive" })])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

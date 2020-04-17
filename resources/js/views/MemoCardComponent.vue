@@ -23,7 +23,7 @@
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
-      <transition name="operationLi"><li><button type="submit"><i class="fas fa-archive"></i></button></li></transition><!--アーカイブ-->
+      <li><button @click="sendArchive()"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
         <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
       </div></li><!--色変更-->
@@ -55,7 +55,7 @@
     <div class="modalOperationBox">
       <div class="inModalOperationBox">
         <ul>
-          <li><button><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
+          <li><button @click.prevent><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
           <li class="colorPalleteLi"><button @click.prevent><i class="fas fa-palette"></i></button><div class="tooltip" >
             <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
           </div></li><!--色変更-->
@@ -158,7 +158,8 @@ export default {
         id:this.memoData.id,
         title: this.memoData.title,
         memo: this.memoData.memo,
-        backgroundColor: this.backgroundColor
+        backgroundColor: this.backgroundColor,
+        isArchive :this.memoData.isArchive
       })
       .then(function (res) {
         console.log(res['data']);
@@ -181,6 +182,13 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+    },
+    sendArchive(){
+      // console.log(this.memoData.isArchive)
+      this.memoData.isArchive = !this.memoData.isArchive
+      // console.log(this.memoData.isArchive)
+      this.update()
+      console.log('アーカイブ')
     }
   },
   computed:{
