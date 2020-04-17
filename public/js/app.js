@@ -1899,6 +1899,232 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ArchiveCardComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ArchiveCardComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store_store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store.js */ "./resources/js/store/store.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {},
+  data: function data() {
+    return {
+      isShow: true,
+      isModal: false,
+      isShowOperation: false,
+      title: '',
+      memo: '',
+      paddingVal: '',
+      isScrollModal: false,
+      backgroundColor: '#ffffff'
+    };
+  },
+  props: ['memoData'],
+  created: function created() {},
+  mounted: function mounted() {
+    this.backgroundColor = this.memoData.backgroundColor;
+    this.initResizeTextarea(this.$refs.titleTextarea);
+    this.initResizeTextarea(this.$refs.memoTextarea);
+  },
+  updated: function updated() {
+    if (this.isModal) {
+      this.initResizeTextarea(this.$refs.modalTitleTextarea);
+      this.initResizeTextarea(this.$refs.modalMemoTextarea);
+    }
+  },
+  methods: {
+    modalMemoCardBox: function modalMemoCardBox($event) {
+      this.isModal = true;
+    },
+    closeModal: function closeModal($event) {
+      this.isModal = false;
+      this.update();
+    },
+    initResizeTextarea: function initResizeTextarea(el) {
+      var areaHeight = el.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      el.style.height = areaHeight + "px";
+      el.style.height = el.scrollHeight + 2 + 'px';
+    },
+    autoResizeTextarea: function autoResizeTextarea($event) {
+      //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
+      if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
+        this.newLineTextarea(this.$refs.titleTextarea);
+        this.newLineTextarea(this.$refs.memoTextarea);
+      }
+
+      this.newLineTextarea($event.target);
+    },
+    newLineTextarea: function newLineTextarea(textarea) {
+      var areaHeight = textarea.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      textarea.style.height = areaHeight + "px";
+      textarea.style.height = textarea.scrollHeight + 2 + 'px';
+    },
+    modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
+      if ($event.target.scrollTop === 0) {
+        this.isScrollModal = false;
+      } else {
+        this.isScrollModal = true;
+      }
+    },
+    update: function update($event) {
+      axios.post('/', {
+        mode: 'update',
+        id: this.memoData.id,
+        title: this.memoData.title,
+        memo: this.memoData.memo,
+        backgroundColor: this.backgroundColor,
+        isArchive: this.memoData.isArchive
+      }).then(function (res) {
+        console.log(res['data']);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    del: function del($event) {
+      this.$emit('del-memo-event', this.memoData.id);
+      var that = this;
+      axios.post('/', {
+        mode: 'delete',
+        id: this.memoData.id
+      }).then(function (res) {
+        that.isShow = false;
+        console.log(res['data']);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    sendArchive: function sendArchive() {
+      // console.log(this.memoData.isArchive)
+      this.memoData.isArchive = !this.memoData.isArchive; // console.log(this.memoData.isArchive)
+
+      this.update();
+      console.log('アーカイブ');
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
+  //   isModal: {
+  //     handler: function(newVal, oldVal) {
+  //       if(newVal === true){
+  //         this.$refs.modalTitleTextarea.focus()
+  //       }
+  //     },
+  //     deep: true,
+  //     immediate: true
+  //   },
+  // }
+
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeaderComponent.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeaderComponent.vue?vue&type=script&lang=js& ***!
@@ -2108,6 +2334,140 @@ __webpack_require__.r(__webpack_exports__);
     // immediate: false
     //   }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Archive.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Archive.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store_store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store.js */ "./resources/js/store/store.js");
+/* harmony import */ var _components_ArchiveCardComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ArchiveCardComponent */ "./resources/js/components/ArchiveCardComponent.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+ // import MenuBarComponent from './MenuBarComponent'
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ArchiveCardComponent: _components_ArchiveCardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      title: '',
+      memo: '',
+      isMaking: false,
+      memoData: false,
+      backgroundColor: '#ffffff'
+    };
+  },
+  props: [],
+  created: function created() {
+    this.selectMemos();
+    this.windowClick();
+  },
+  mounted: function mounted() {},
+  methods: {
+    autoResizeTextarea: function autoResizeTextarea($event) {
+      var areaHeight = $event.target.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      $event.target.style.height = areaHeight + "px";
+      $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
+    },
+    windowClick: function windowClick() {
+      var _this = this;
+
+      //div.createMemoBox外がクリックすされたら実行
+      window.addEventListener('click', function (e) {
+        var classes = [];
+        e.path.forEach(function (el) {
+          if (el.classList) {
+            //classListプロパティが存在すればtrue
+            el.classList.forEach(function (val) {
+              classes.push(val);
+            });
+          }
+        });
+
+        if (classes.indexOf('createMemoBox') < 0) {
+          if (_this.isMaking & (_this.title.length > 0 || _this.memo.length > 0)) {
+            console.log('実行');
+
+            _this.create();
+          }
+
+          _this.isMaking = false;
+        }
+      });
+    },
+    selectMemos: function selectMemos() {
+      var that = this;
+      axios.post('/', {
+        mode: 'select'
+      }).then(function (res) {
+        that.memoData = res['data'];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    create: function create($event) {
+      var that = this;
+      axios.post('/', {
+        mode: 'create',
+        title: this.title,
+        memo: this.memo,
+        backgroundColor: this.backgroundColor
+      }).then(function (res) {
+        that.memoData.unshift(res['data']);
+        that.title = '';
+        that.memo = '';
+        that.backgroundColor = '#ffffff';
+        that.$refs.textareaTitle.style.height = '32px';
+        that.$refs.textareaMemo.style.height = '32px';
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    parentsMethod: function parentsMethod(id) {
+      for (var i = 0; i < this.memoData.length; i++) {
+        if (this.memoData[i]['id'] === id) {
+          this.memoData.splice(i, 1);
+          break;
+        }
+      }
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
 });
 
 /***/ }),
@@ -37864,6 +38224,554 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ArchiveCardComponent.vue?vue&type=template&id=31da9cd4&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ArchiveCardComponent.vue?vue&type=template&id=31da9cd4& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.isShow
+    ? _c(
+        "div",
+        {
+          staticClass: "archiveCardWrap",
+          style: { background: _vm.backgroundColor },
+          on: {
+            mouseenter: function($event) {
+              _vm.isShowOperation = true
+            },
+            mouseleave: function($event) {
+              _vm.isShowOperation = false
+            }
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              class: ["archiveCardBox", { modalWindow: _vm.isModal }],
+              on: {
+                click: function($event) {
+                  return _vm.modalMemoCardBox($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "inArchiveCardBox" }, [
+                _c("form", { staticClass: "archiveCardFormBox" }, [
+                  _c("div", { staticClass: "inArchiveCardFormBox" }, [
+                    _c("div", { staticClass: "textareaTitleBox" }, [
+                      _c("div", { staticClass: "inTextareaTitleBox" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.memoData.title,
+                              expression: "memoData.title"
+                            }
+                          ],
+                          ref: "titleTextarea",
+                          attrs: {
+                            rows: "1",
+                            placeholder: "タイトル",
+                            disabled: ""
+                          },
+                          domProps: { value: _vm.memoData.title },
+                          on: {
+                            input: [
+                              function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.memoData,
+                                  "title",
+                                  $event.target.value
+                                )
+                              },
+                              function($event) {
+                                return _vm.autoResizeTextarea($event)
+                              }
+                            ]
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "textareaMemoBox" }, [
+                      _c("div", { staticClass: "inTextareaMemoBox" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.memoData.memo,
+                              expression: "memoData.memo"
+                            }
+                          ],
+                          ref: "memoTextarea",
+                          attrs: {
+                            rows: "1",
+                            placeholder: "メモを入力...",
+                            disabled: ""
+                          },
+                          domProps: { value: _vm.memoData.memo },
+                          on: {
+                            input: [
+                              function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.memoData,
+                                  "memo",
+                                  $event.target.value
+                                )
+                              },
+                              function($event) {
+                                return _vm.autoResizeTextarea($event)
+                              }
+                            ]
+                          }
+                        })
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.memoData.id,
+                      expression: "memoData.id"
+                    }
+                  ],
+                  attrs: { type: "hidden" },
+                  domProps: { value: _vm.memoData.id },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.memoData, "id", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "operationBox" }, [
+            _c(
+              "div",
+              { staticClass: "inOperationBox" },
+              [
+                _c("transition", { attrs: { name: "operationBox" } }, [
+                  _c(
+                    "ul",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.isShowOperation,
+                          expression: "isShowOperation"
+                        }
+                      ]
+                    },
+                    [
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.sendArchive()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-archive" })]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "colorPalleteLi" }, [
+                        _c("button", [
+                          _c("i", { staticClass: "fas fa-palette" })
+                        ]),
+                        _c(
+                          "div",
+                          { staticClass: "tooltip" },
+                          _vm._l(_vm.colorPallete, function(color) {
+                            return _c("span", {
+                              key: color.id,
+                              style: { background: color.hex },
+                              on: {
+                                click: function($event) {
+                                  _vm.backgroundColor = color.hex
+                                  _vm.update()
+                                }
+                              }
+                            })
+                          }),
+                          0
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.update($event)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-edit" })]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", [_c("i", { staticClass: "fas fa-tag" })])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.del($event)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", [
+                          _c("i", { staticClass: "fas fa-user-lock" })
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isModal,
+                  expression: "isModal"
+                }
+              ],
+              staticClass: "modalBox",
+              style: { background: _vm.backgroundColor }
+            },
+            [
+              _c("div", { staticClass: "inModalBox" }, [
+                _c("form", { staticClass: "modalFormBox" }, [
+                  _c("div", { staticClass: "inModalFormBox" }, [
+                    _c(
+                      "div",
+                      {
+                        ref: "modalTitleBox",
+                        class: ["modalTitleBox", { scroll: _vm.isScrollModal }]
+                      },
+                      [
+                        _c("div", { staticClass: "inModalTitleBox" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.memoData.title,
+                                expression: "memoData.title"
+                              }
+                            ],
+                            ref: "modalTitleTextarea",
+                            staticClass: "modalTitleTextarea",
+                            attrs: { rows: "1", placeholder: "タイトル" },
+                            domProps: { value: _vm.memoData.title },
+                            on: {
+                              input: [
+                                function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.memoData,
+                                    "title",
+                                    $event.target.value
+                                  )
+                                },
+                                function($event) {
+                                  return _vm.autoResizeTextarea($event)
+                                }
+                              ]
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        ref: "modalMemoBox",
+                        staticClass: "modalMemoBox",
+                        on: {
+                          scroll: function($event) {
+                            if ($event.target !== $event.currentTarget) {
+                              return null
+                            }
+                            return _vm.modalMemoScrollAndTitleShadow($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "inModalMemoBox" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.memoData.memo,
+                                expression: "memoData.memo"
+                              }
+                            ],
+                            ref: "modalMemoTextarea",
+                            staticClass: "modalMemoTextarea",
+                            attrs: { rows: "1", placeholder: "メモを入力..." },
+                            domProps: { value: _vm.memoData.memo },
+                            on: {
+                              input: [
+                                function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.memoData,
+                                    "memo",
+                                    $event.target.value
+                                  )
+                                },
+                                function($event) {
+                                  return _vm.autoResizeTextarea($event)
+                                }
+                              ]
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modalOperationBox" }, [
+                      _c("div", { staticClass: "inModalOperationBox" }, [
+                        _c("ul", [
+                          _c("li", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-archive" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "colorPalleteLi" }, [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-palette" })]
+                            ),
+                            _c(
+                              "div",
+                              { staticClass: "tooltip" },
+                              _vm._l(_vm.colorPallete, function(color) {
+                                return _c("span", {
+                                  key: color.id,
+                                  style: { background: color.hex },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.backgroundColor = color.hex
+                                      _vm.update()
+                                    }
+                                  }
+                                })
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "button",
+                              {
+                                attrs: { type: "submit" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.update($event)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "far fa-edit" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "button",
+                              {
+                                attrs: { type: "submit" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.del($event)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash-alt" })]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "liClose" }, [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.closeModal($event)
+                                  }
+                                }
+                              },
+                              [_vm._v("閉じる")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.memoData.id,
+                        expression: "memoData.id"
+                      }
+                    ],
+                    attrs: { type: "hidden" },
+                    domProps: { value: _vm.memoData.id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.memoData, "id", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", {
+            class: { mask: _vm.isModal },
+            on: {
+              click: function($event) {
+                return _vm.closeModal($event)
+              }
+            }
+          })
+        ]
+      )
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("button", [_c("i", { staticClass: "fas fa-tag" })])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-undo-alt" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-user-lock" })])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HeaderComponent.vue?vue&type=template&id=153bfd55&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HeaderComponent.vue?vue&type=template&id=153bfd55& ***!
@@ -38143,7 +39051,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("あーかいぶだよ")])
+  return _c("div", { staticClass: "contentBox" }, [
+    _c(
+      "div",
+      { staticClass: "archiveCardComponentBox" },
+      [
+        _c(
+          "transition-group",
+          {
+            staticClass: "inArchiveCardComponentBox",
+            attrs: { name: "memoCard", tag: "ul" }
+          },
+          _vm._l(_vm.memoData, function(memo) {
+            return _c(
+              "li",
+              { key: memo["id"], staticClass: "archiveCardLi" },
+              [
+                _c("archive-card-component", {
+                  attrs: { "memo-data": memo },
+                  on: { "del-memo-event": _vm.parentsMethod }
+                })
+              ],
+              1
+            )
+          }),
+          0
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55251,6 +56188,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/ArchiveCardComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/ArchiveCardComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ArchiveCardComponent_vue_vue_type_template_id_31da9cd4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ArchiveCardComponent.vue?vue&type=template&id=31da9cd4& */ "./resources/js/components/ArchiveCardComponent.vue?vue&type=template&id=31da9cd4&");
+/* harmony import */ var _ArchiveCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ArchiveCardComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ArchiveCardComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ArchiveCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ArchiveCardComponent_vue_vue_type_template_id_31da9cd4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ArchiveCardComponent_vue_vue_type_template_id_31da9cd4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ArchiveCardComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ArchiveCardComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/ArchiveCardComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ArchiveCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ArchiveCardComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ArchiveCardComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ArchiveCardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ArchiveCardComponent.vue?vue&type=template&id=31da9cd4&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/ArchiveCardComponent.vue?vue&type=template&id=31da9cd4& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArchiveCardComponent_vue_vue_type_template_id_31da9cd4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ArchiveCardComponent.vue?vue&type=template&id=31da9cd4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ArchiveCardComponent.vue?vue&type=template&id=31da9cd4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArchiveCardComponent_vue_vue_type_template_id_31da9cd4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArchiveCardComponent_vue_vue_type_template_id_31da9cd4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/HeaderComponent.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/HeaderComponent.vue ***!
@@ -55528,15 +56534,17 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Archive_vue_vue_type_template_id_59f043f3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Archive.vue?vue&type=template&id=59f043f3& */ "./resources/js/views/Archive.vue?vue&type=template&id=59f043f3&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Archive_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Archive.vue?vue&type=script&lang=js& */ "./resources/js/views/Archive.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Archive_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Archive_vue_vue_type_template_id_59f043f3___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Archive_vue_vue_type_template_id_59f043f3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -55550,6 +56558,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/views/Archive.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Archive.vue?vue&type=script&lang=js&":
+/*!*****************************************************************!*\
+  !*** ./resources/js/views/Archive.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Archive_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Archive.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Archive.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Archive_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
