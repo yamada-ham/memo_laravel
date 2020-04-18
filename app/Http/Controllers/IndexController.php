@@ -26,7 +26,8 @@ class IndexController extends Controller
           // 'mode' => $request->mode,
           'title' => $request->title,
           'memo' => $request->memo,
-          'backgroundColor'=>$request->backgroundColor
+          'backgroundColor'=>$request->backgroundColor,
+          'isArchive' => false
         ];
         DB::table('memo')->insert($param);
         // \Debugbar::info($param);
