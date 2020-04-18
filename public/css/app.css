@@ -1111,6 +1111,7 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button {

@@ -1999,6 +1999,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2015,10 +2017,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       backgroundColor: '#ffffff'
     };
   },
-  props: ['memoData'],
+  props: ['archiveData'],
   created: function created() {},
   mounted: function mounted() {
-    this.backgroundColor = this.memoData.backgroundColor;
+    this.backgroundColor = this.archiveData.backgroundColor;
     this.initResizeTextarea(this.$refs.titleTextarea);
     this.initResizeTextarea(this.$refs.memoTextarea);
   },
@@ -2077,11 +2079,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     update: function update($event) {
       axios.post('/', {
         mode: 'update',
-        id: this.memoData.id,
-        title: this.memoData.title,
-        memo: this.memoData.memo,
+        id: this.archiveData.id,
+        title: this.archiveData.title,
+        memo: this.archiveData.memo,
         backgroundColor: this.backgroundColor,
-        isArchive: this.memoData.isArchive
+        isArchive: this.archiveData.isArchive
       }).then(function (res) {
         console.log(res['data']);
       })["catch"](function (error) {
@@ -2089,11 +2091,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     del: function del($event) {
-      this.$emit('del-memo-event', this.memoData.id);
+      this.$emit('del-memo-event', this.archiveData.id);
       var that = this;
       axios.post('/', {
         mode: 'delete',
-        id: this.memoData.id
+        id: this.archiveData.id
       }).then(function (res) {
         that.isShow = false;
         console.log(res['data']);
@@ -2101,12 +2103,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
-    sendArchive: function sendArchive() {
-      // console.log(this.memoData.isArchive)
-      this.memoData.isArchive = !this.memoData.isArchive; // console.log(this.memoData.isArchive)
+    kickArchive: function kickArchive() {
+      // console.log(this.archiveData.isArchive)
+      this.archiveData.isArchive = false; // console.log(this.archiveData.isArchive)
 
       this.update();
-      console.log('アーカイブ');
+      console.log('アーカイブ追い出す');
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
@@ -2382,13 +2384,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       title: '',
       memo: '',
       isMaking: false,
-      memoData: false,
+      archiveData: {},
       backgroundColor: '#ffffff'
     };
   },
   props: [],
   created: function created() {
-    this.selectMemos();
+    this.selectArchiveMemos();
     this.windowClick();
   },
   mounted: function mounted() {},
@@ -2430,12 +2432,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
     },
-    selectMemos: function selectMemos() {
+    // selectMemos(){
+    //   let that = this
+    //   axios.post('/', {
+    //     mode: 'select',
+    //   })
+    //   .then(function (res) {
+    //     that.archiveData = res['data']
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
+    // },
+    selectArchiveMemos: function selectArchiveMemos() {
       var that = this;
-      axios.post('/', {
+      axios.post('/archive', {
         mode: 'select'
       }).then(function (res) {
-        that.memoData = res['data'];
+        that.archiveData = res['data'];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2448,7 +2462,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         memo: this.memo,
         backgroundColor: this.backgroundColor
       }).then(function (res) {
-        that.memoData.unshift(res['data']);
+        that.archiveData.unshift(res['data']);
         that.title = '';
         that.memo = '';
         that.backgroundColor = '#ffffff';
@@ -2459,9 +2473,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     parentsMethod: function parentsMethod(id) {
-      for (var i = 0; i < this.memoData.length; i++) {
-        if (this.memoData[i]['id'] === id) {
-          this.memoData.splice(i, 1);
+      for (var i = 0; i < this.archiveData.length; i++) {
+        if (this.archiveData[i]['id'] === id) {
+          this.archiveData.splice(i, 1);
           break;
         }
       }
@@ -38276,8 +38290,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.memoData.title,
-                              expression: "memoData.title"
+                              value: _vm.archiveData.title,
+                              expression: "archiveData.title"
                             }
                           ],
                           ref: "titleTextarea",
@@ -38286,7 +38300,7 @@ var render = function() {
                             placeholder: "タイトル",
                             disabled: ""
                           },
-                          domProps: { value: _vm.memoData.title },
+                          domProps: { value: _vm.archiveData.title },
                           on: {
                             input: [
                               function($event) {
@@ -38294,7 +38308,7 @@ var render = function() {
                                   return
                                 }
                                 _vm.$set(
-                                  _vm.memoData,
+                                  _vm.archiveData,
                                   "title",
                                   $event.target.value
                                 )
@@ -38315,8 +38329,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.memoData.memo,
-                              expression: "memoData.memo"
+                              value: _vm.archiveData.memo,
+                              expression: "archiveData.memo"
                             }
                           ],
                           ref: "memoTextarea",
@@ -38325,7 +38339,7 @@ var render = function() {
                             placeholder: "メモを入力...",
                             disabled: ""
                           },
-                          domProps: { value: _vm.memoData.memo },
+                          domProps: { value: _vm.archiveData.memo },
                           on: {
                             input: [
                               function($event) {
@@ -38333,7 +38347,7 @@ var render = function() {
                                   return
                                 }
                                 _vm.$set(
-                                  _vm.memoData,
+                                  _vm.archiveData,
                                   "memo",
                                   $event.target.value
                                 )
@@ -38354,18 +38368,18 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.memoData.id,
-                      expression: "memoData.id"
+                      value: _vm.archiveData.id,
+                      expression: "archiveData.id"
                     }
                   ],
                   attrs: { type: "hidden" },
-                  domProps: { value: _vm.memoData.id },
+                  domProps: { value: _vm.archiveData.id },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.memoData, "id", $event.target.value)
+                      _vm.$set(_vm.archiveData, "id", $event.target.value)
                     }
                   }
                 })
@@ -38398,7 +38412,7 @@ var render = function() {
                           {
                             on: {
                               click: function($event) {
-                                return _vm.sendArchive()
+                                return _vm.kickArchive()
                               }
                             }
                           },
@@ -38437,26 +38451,6 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.update($event)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "far fa-edit" })]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("button", [_c("i", { staticClass: "fas fa-tag" })])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
                                 return _vm.del($event)
                               }
                             }
@@ -38467,7 +38461,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("li", [
                         _c("button", [
-                          _c("i", { staticClass: "fas fa-user-lock" })
+                          _c("i", { staticClass: "fas fa-ellipsis-v" })
                         ])
                       ])
                     ]
@@ -38509,14 +38503,14 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.memoData.title,
-                                expression: "memoData.title"
+                                value: _vm.archiveData.title,
+                                expression: "archiveData.title"
                               }
                             ],
                             ref: "modalTitleTextarea",
                             staticClass: "modalTitleTextarea",
                             attrs: { rows: "1", placeholder: "タイトル" },
-                            domProps: { value: _vm.memoData.title },
+                            domProps: { value: _vm.archiveData.title },
                             on: {
                               input: [
                                 function($event) {
@@ -38524,7 +38518,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.memoData,
+                                    _vm.archiveData,
                                     "title",
                                     $event.target.value
                                   )
@@ -38560,14 +38554,14 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.memoData.memo,
-                                expression: "memoData.memo"
+                                value: _vm.archiveData.memo,
+                                expression: "archiveData.memo"
                               }
                             ],
                             ref: "modalMemoTextarea",
                             staticClass: "modalMemoTextarea",
                             attrs: { rows: "1", placeholder: "メモを入力..." },
-                            domProps: { value: _vm.memoData.memo },
+                            domProps: { value: _vm.archiveData.memo },
                             on: {
                               input: [
                                 function($event) {
@@ -38575,7 +38569,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.memoData,
+                                    _vm.archiveData,
                                     "memo",
                                     $event.target.value
                                   )
@@ -38702,18 +38696,18 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.memoData.id,
-                        expression: "memoData.id"
+                        value: _vm.archiveData.id,
+                        expression: "archiveData.id"
                       }
                     ],
                     attrs: { type: "hidden" },
-                    domProps: { value: _vm.memoData.id },
+                    domProps: { value: _vm.archiveData.id },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.memoData, "id", $event.target.value)
+                        _vm.$set(_vm.archiveData, "id", $event.target.value)
                       }
                     }
                   })
@@ -39062,13 +39056,13 @@ var render = function() {
             staticClass: "inArchiveCardComponentBox",
             attrs: { name: "memoCard", tag: "ul" }
           },
-          _vm._l(_vm.memoData, function(memo) {
+          _vm._l(_vm.archiveData, function(memo) {
             return _c(
               "li",
               { key: memo["id"], staticClass: "archiveCardLi" },
               [
                 _c("archive-card-component", {
-                  attrs: { "memo-data": memo },
+                  attrs: { "archive-data": memo },
                   on: { "del-memo-event": _vm.parentsMethod }
                 })
               ],

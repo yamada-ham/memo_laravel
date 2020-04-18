@@ -2,8 +2,8 @@
 <div class="contentBox">
 <div class="archiveCardComponentBox">
   <transition-group name="memoCard" tag="ul" class="inArchiveCardComponentBox">
-    <li v-for="memo in memoData" :key="memo['id']" class="archiveCardLi">
-      <archive-card-component  :memo-data="memo" @del-memo-event="parentsMethod"></archive-card-component>
+    <li v-for="memo in archiveData" :key="memo['id']" class="archiveCardLi">
+      <archive-card-component  :archive-data="memo" @del-memo-event="parentsMethod"></archive-card-component>
     </li>
 </transition-group>
 </div>
@@ -23,13 +23,13 @@ export default {
         title:'',
         memo:'',
         isMaking:false,
-        memoData:false,
+        archiveData:{},
         backgroundColor:'#ffffff',
     }
   },
   props:[],
   created(){
-    this.selectMemos()
+    this.selectArchiveMemos()
     this.windowClick()
   },
   mounted(){
@@ -63,13 +63,25 @@ export default {
         }
       });
     },
-    selectMemos(){
+    // selectMemos(){
+    //   let that = this
+    //   axios.post('/', {
+    //     mode: 'select',
+    //   })
+    //   .then(function (res) {
+    //     that.archiveData = res['data']
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
+    // },
+    selectArchiveMemos(){
       let that = this
-      axios.post('/', {
+      axios.post('/archive', {
         mode: 'select',
       })
       .then(function (res) {
-        that.memoData = res['data']
+        that.archiveData = res['data']
       })
       .catch(function (error) {
         console.log(error);
@@ -84,7 +96,7 @@ export default {
         backgroundColor:this.backgroundColor
       })
       .then(function (res) {
-        that.memoData.unshift(res['data']);
+        that.archiveData.unshift(res['data']);
         that.title = ''
         that.memo = ''
         that.backgroundColor = '#ffffff'
@@ -96,9 +108,9 @@ export default {
       })
     },
     parentsMethod:function(id){
-      for(let i = 0; i < this.memoData.length; i++){
-        if(this.memoData[i]['id'] === id){
-          this.memoData.splice(i,1)
+      for(let i = 0; i < this.archiveData.length; i++){
+        if(this.archiveData[i]['id'] === id){
+          this.archiveData.splice(i,1)
           break;
         }
       }

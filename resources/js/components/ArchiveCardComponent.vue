@@ -6,31 +6,33 @@
   <div class="inArchiveCardFormBox">
     <div class="textareaTitleBox">
     <div class="inTextareaTitleBox">
-      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" disabled></textarea>
+      <textarea ref="titleTextarea" @input="autoResizeTextarea($event)" v-model="archiveData.title" rows="1" placeholder="タイトル" disabled></textarea>
     </div>
     </div>
     <div class="textareaMemoBox">
     <div class="inTextareaMemoBox">
-      <textarea ref="memoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
+      <textarea ref="memoTextarea" @input="autoResizeTextarea($event)" v-model="archiveData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
     </div>
     </div>
   </div>
   </form>
-  <input type="hidden" v-model="memoData.id"/>
+  <input type="hidden" v-model="archiveData.id"/>
 </div>
 </div>
 <div class="operationBox" >
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
-      <li><button @click="sendArchive()"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
+      <li><button @click="kickArchive()"><i class="fas fa-archive"></i></button></li><!--アーカイブ戻す-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
         <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
       </div></li><!--色変更-->
-      <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
-      <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
+      <!-- <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li> --><!--更新-->
+      <!--<li><button><i class="fas fa-tag"></i></button></li>--><!--タグを追加-->
       <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
-      <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+      <!-- <li><button><i class="fas fa-user-lock"></i></button></li> --><!--プライベート-->
+      <li><button><i class="fas fa-ellipsis-v"></i></button></li><!--その他-->
+
     </ul>
   </transition>
   </div>
@@ -42,12 +44,12 @@
   <div class="inModalFormBox">
     <div :class="['modalTitleBox',{scroll:isScrollModal}]" ref="modalTitleBox">
     <div class="inModalTitleBox">
-      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" class="modalTitleTextarea"></textarea>
+      <textarea ref="modalTitleTextarea" @input="autoResizeTextarea($event)" v-model="archiveData.title" rows="1" placeholder="タイトル" class="modalTitleTextarea"></textarea>
     </div>
     </div>
     <div class="modalMemoBox" ref="modalMemoBox" @scroll.self="modalMemoScrollAndTitleShadow($event)">
     <div class="inModalMemoBox">
-      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." class="modalMemoTextarea"></textarea>
+      <textarea ref="modalMemoTextarea" @input="autoResizeTextarea($event)" v-model="archiveData.memo" rows="1" placeholder="メモを入力..." class="modalMemoTextarea"></textarea>
     </div>
     </div>
     <!-- <button @click.prevent="update($event)" type="submit">更新</button>
@@ -71,7 +73,7 @@
       </div>
     </div>
   </div>
-    <input type="hidden" v-model="memoData.id"/>
+    <input type="hidden" v-model="archiveData.id"/>
   </form>
 
 </div>
@@ -98,12 +100,12 @@ export default {
         backgroundColor:'#ffffff'
     }
   },
-  props:['memoData'],
+  props:['archiveData'],
   created(){
 
   },
   mounted(){
-    this.backgroundColor = this.memoData.backgroundColor
+    this.backgroundColor = this.archiveData.backgroundColor
     this.initResizeTextarea(this.$refs.titleTextarea)
     this.initResizeTextarea(this.$refs.memoTextarea)
   },
@@ -155,11 +157,11 @@ export default {
     update($event){
       axios.post('/', {
         mode: 'update',
-        id:this.memoData.id,
-        title: this.memoData.title,
-        memo: this.memoData.memo,
+        id:this.archiveData.id,
+        title: this.archiveData.title,
+        memo: this.archiveData.memo,
         backgroundColor: this.backgroundColor,
-        isArchive :this.memoData.isArchive
+        isArchive :this.archiveData.isArchive
       })
       .then(function (res) {
         console.log(res['data']);
@@ -169,11 +171,11 @@ export default {
       })
     },
     del($event){
-      this.$emit('del-memo-event',this.memoData.id)
+      this.$emit('del-memo-event',this.archiveData.id)
       let that = this
       axios.post('/', {
         mode: 'delete',
-        id:this.memoData.id,
+        id:this.archiveData.id,
       })
       .then(function (res) {
         that.isShow = false;
@@ -183,12 +185,12 @@ export default {
         console.log(error);
       });
     },
-    sendArchive(){
-      // console.log(this.memoData.isArchive)
-      this.memoData.isArchive = !this.memoData.isArchive
-      // console.log(this.memoData.isArchive)
+    kickArchive(){
+      // console.log(this.archiveData.isArchive)
+      this.archiveData.isArchive = false
+      // console.log(this.archiveData.isArchive)
       this.update()
-      console.log('アーカイブ')
+      console.log('アーカイブ追い出す')
     }
   },
   computed:{
