@@ -112,6 +112,7 @@ div.contentBox{
             align-items:flex-end;
             align-content: flex-start;
             li{
+              position: relative;
               button{
                 @include buttonReset;
                 padding:6px 12px;
@@ -123,6 +124,29 @@ div.contentBox{
                   font-size:0.9rem;
                   color:#787878;
                 }
+              }
+              div.opTooltip{
+                text-align: center;
+                display: none;
+                position: absolute;
+                padding: 4px;
+                font-size: 1rem;
+                color: #fff;
+                border-radius: 5px;
+                background: #000;
+                left:50%;
+                transform: translate(-50%,0);
+                box-sizing: border-box;
+                white-space: nowrap;
+                z-index:40;
+                p{
+                  font-size:0.7rem;
+                }
+              }
+              &:hover div.opTooltip{
+                  display: inline-block;
+                  top: 100%;
+                  left: 50%;
               }
               &.colorPalleteLi{
                 @include colorPalleteLi();
@@ -237,7 +261,6 @@ div.contentBox{
                     position: absolute;
                     padding: 4px;
                     font-size: 1rem;
-                    // line-height: 1.6em;
                     color: #fff;
                     border-radius: 5px;
                     background: #000;
@@ -245,7 +268,6 @@ div.contentBox{
                     transform: translate(-50%,0);
                     box-sizing: border-box;
                     white-space: nowrap;
-                    // max-width:200px;
                     z-index:40;
                     p{
                       font-size:0.7rem;
@@ -253,7 +275,7 @@ div.contentBox{
                   }
                   &:hover div.opTooltip{
                       display: inline-block;
-                      top: 30px;
+                      top: 100%;
                       left: 50%;
                   }
                 }

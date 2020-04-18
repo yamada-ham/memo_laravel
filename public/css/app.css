@@ -568,6 +568,10 @@ div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOper
   align-content: flex-start;
 }
 
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li {
+  position: relative;
+}
+
 div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button {
   background-color: transparent;
   border: none;
@@ -588,6 +592,32 @@ div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOper
 div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li button i {
   font-size: 0.9rem;
   color: #787878;
+}
+
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li div.opTooltip {
+  text-align: center;
+  display: none;
+  position: absolute;
+  padding: 4px;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-sizing: border-box;
+  white-space: nowrap;
+  z-index: 40;
+}
+
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li div.opTooltip p {
+  font-size: 0.7rem;
+}
+
+div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li:hover div.opTooltip {
+  display: inline-block;
+  top: 100%;
+  left: 50%;
 }
 
 div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
@@ -816,7 +846,7 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li:hover div.opTooltip {
   display: inline-block;
-  top: 30px;
+  top: 100%;
   left: 50%;
 }
 

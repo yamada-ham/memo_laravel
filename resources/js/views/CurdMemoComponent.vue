@@ -30,6 +30,7 @@
         <li><button><i class="fas fa-redo-alt"></i>
         </button></li><!--進む-->
         <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+        <li><button><i class="fas fa-ellipsis-v"></i></button><div class="opTooltip"><p>その他</p></div></li><!--その他-->
       </ul>
     </div>
   </div>
