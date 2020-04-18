@@ -39617,12 +39617,6 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "fas fa-trash-alt" })]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("button", [
-                          _c("i", { staticClass: "fas fa-user-lock" })
-                        ])
                       ])
                     ]
                   )
@@ -39829,7 +39823,7 @@ var render = function() {
                           _vm._m(1),
                           _vm._v(" "),
                           _vm._m(2),
-                          _vm._v(" "),
+                          _vm._v("\n          <!"),
                           _vm._m(3),
                           _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [

@@ -30,7 +30,7 @@
       <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
       <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
       <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
-      <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+      <!--<li><button><i class="fas fa-user-lock"></i></button></li>--><!--プライベート-->
     </ul>
   </transition>
   </div>
@@ -65,7 +65,7 @@
           <li><button><i class="fas fa-undo-alt"></i></button></li>
           <li><button><i class="fas fa-redo-alt"></i>
           </button></li>
-          <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+          <!<li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
           <li class="liClose"><button @click.prevent="closeModal($event)">閉じる</button></li>
         </ul>
       </div>

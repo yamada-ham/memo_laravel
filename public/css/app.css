@@ -730,7 +730,7 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
 }
