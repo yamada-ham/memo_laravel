@@ -2758,6 +2758,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39557,12 +39559,18 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "fas fa-archive" })]
-                        )
+                        ),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("アーカイブ")])
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("li", { staticClass: "colorPalleteLi" }, [
                         _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
+                        ]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("背景色")])
                         ]),
                         _c(
                           "div",
@@ -39584,22 +39592,6 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("li", [
-                        _c(
-                          "button",
-                          {
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.update($event)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "far fa-edit" })]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
                         _c("button", [_c("i", { staticClass: "fas fa-tag" })])
                       ]),
                       _vm._v(" "),
@@ -39616,7 +39608,19 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "fas fa-trash-alt" })]
-                        )
+                        ),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("削除")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", [
+                          _c("i", { staticClass: "fas fa-ellipsis-v" })
+                        ]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("その他")])
+                        ])
                       ])
                     ]
                   )
@@ -39786,22 +39790,6 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _c("li", [
-                            _c(
-                              "button",
-                              {
-                                attrs: { type: "submit" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.update($event)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "far fa-edit" })]
-                            )
-                          ]),
-                          _vm._v(" "),
                           _vm._m(0),
                           _vm._v(" "),
                           _c("li", [
@@ -39823,8 +39811,10 @@ var render = function() {
                           _vm._m(1),
                           _vm._v(" "),
                           _vm._m(2),
-                          _vm._v("\n          <!"),
+                          _vm._v(" "),
                           _vm._m(3),
+                          _vm._v(" "),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
@@ -39911,6 +39901,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", [
       _c("button", [_c("i", { staticClass: "fas fa-user-lock" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-ellipsis-v" })])
     ])
   }
 ]

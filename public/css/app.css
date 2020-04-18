@@ -735,6 +735,10 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   align-items: center;
 }
 
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li {
+  position: relative;
+}
+
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button {
   background-color: transparent;
   border: none;
@@ -788,6 +792,32 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
   border: 2px solid #000000;
+}
+
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li div.opTooltip {
+  text-align: center;
+  display: none;
+  position: absolute;
+  padding: 4px;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-sizing: border-box;
+  white-space: nowrap;
+  z-index: 40;
+}
+
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li div.opTooltip p {
+  font-size: 0.7rem;
+}
+
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li:hover div.opTooltip {
+  display: inline-block;
+  top: 30px;
+  left: 50%;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox {
@@ -1005,6 +1035,7 @@ div.contentBox div.archiveCardComponentBox {
   width: 98%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 100px;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox {

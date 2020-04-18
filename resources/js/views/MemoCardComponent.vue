@@ -23,13 +23,14 @@
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
-      <li><button @click="sendArchive()"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
-      <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip" >
+      <li><button @click="sendArchive()"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ</p></div></li><!--アーカイブ-->
+      <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="opTooltip"><p>背景色</p></div><div class="tooltip" >
         <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
       </div></li><!--色変更-->
-      <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
+      <!-- <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li> --><!--更新-->
       <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
-      <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
+      <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button><div class="opTooltip"><p>削除</p></div></li><!--削除-->
+      <li><button><i class="fas fa-ellipsis-v"></i></button><div class="opTooltip"><p>その他</p></div></li><!--その他-->
       <!--<li><button><i class="fas fa-user-lock"></i></button></li>--><!--プライベート-->
     </ul>
   </transition>
@@ -59,13 +60,14 @@
           <li class="colorPalleteLi"><button @click.prevent><i class="fas fa-palette"></i></button><div class="tooltip" >
             <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
           </div></li><!--色変更-->
-          <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
+          <!-- <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li> --><!--更新-->
           <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
           <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button></li><!--削除-->
           <li><button><i class="fas fa-undo-alt"></i></button></li>
           <li><button><i class="fas fa-redo-alt"></i>
           </button></li>
-          <!<li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+          <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+          <li><button><i class="fas fa-ellipsis-v"></i></button></li><!--その他-->
           <li class="liClose"><button @click.prevent="closeModal($event)">閉じる</button></li>
         </ul>
       </div>
