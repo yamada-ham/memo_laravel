@@ -2104,7 +2104,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     kickArchive: function kickArchive() {
-      // console.log(this.archiveData.isArchive)
+      this.$emit('kick-arcive-event', this.archiveData.id); // console.log(this.archiveData.isArchive)
+
       this.archiveData.isArchive = false; // console.log(this.archiveData.isArchive)
 
       this.update();
@@ -2860,7 +2861,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     sendArchive: function sendArchive() {
-      // console.log(this.memoData.isArchive)
+      this.$emit('send-archive-event', this.memoData.id); // console.log(this.memoData.isArchive)
+
       this.memoData.isArchive = !this.memoData.isArchive; // console.log(this.memoData.isArchive)
 
       this.update();
@@ -39063,7 +39065,10 @@ var render = function() {
               [
                 _c("archive-card-component", {
                   attrs: { "archive-data": memo },
-                  on: { "del-memo-event": _vm.parentsMethod }
+                  on: {
+                    "del-memo-event": _vm.parentsMethod,
+                    "kick-arcive-event": _vm.parentsMethod
+                  }
                 })
               ],
               1
@@ -39279,7 +39284,10 @@ var render = function() {
               [
                 _c("memo-card-component", {
                   attrs: { "memo-data": memo },
-                  on: { "del-memo-event": _vm.parentsMethod }
+                  on: {
+                    "del-memo-event": _vm.parentsMethod,
+                    "send-archive-event": _vm.parentsMethod
+                  }
                 })
               ],
               1

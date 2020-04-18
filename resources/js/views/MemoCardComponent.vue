@@ -184,6 +184,7 @@ export default {
       });
     },
     sendArchive(){
+      this.$emit('send-archive-event',this.memoData.id)
       // console.log(this.memoData.isArchive)
       this.memoData.isArchive = !this.memoData.isArchive
       // console.log(this.memoData.isArchive)

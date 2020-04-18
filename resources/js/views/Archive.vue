@@ -3,7 +3,7 @@
 <div class="archiveCardComponentBox">
   <transition-group name="memoCard" tag="ul" class="inArchiveCardComponentBox">
     <li v-for="memo in archiveData" :key="memo['id']" class="archiveCardLi">
-      <archive-card-component  :archive-data="memo" @del-memo-event="parentsMethod"></archive-card-component>
+      <archive-card-component  :archive-data="memo" @del-memo-event="parentsMethod" @kick-arcive-event="parentsMethod"></archive-card-component>
     </li>
 </transition-group>
 </div>

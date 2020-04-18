@@ -186,6 +186,7 @@ export default {
       });
     },
     kickArchive(){
+      this.$emit('kick-arcive-event',this.archiveData.id)
       // console.log(this.archiveData.isArchive)
       this.archiveData.isArchive = false
       // console.log(this.archiveData.isArchive)

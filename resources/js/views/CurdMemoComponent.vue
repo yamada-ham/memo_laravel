@@ -38,7 +38,7 @@
 <div class="memoCardComponentBox">
   <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
     <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
-      <memo-card-component  :memo-data="memo" @del-memo-event="parentsMethod"></memo-card-component>
+      <memo-card-component  :memo-data="memo" @del-memo-event="parentsMethod" @send-archive-event="parentsMethod"></memo-card-component>
     </li>
 </transition-group>
 </div>
