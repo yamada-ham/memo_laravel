@@ -151,6 +151,21 @@ div.contentBox{
               &.colorPalleteLi{
                 @include colorPalleteLi();
               }
+              div.labelFormBox{
+                position:absolute;
+                background: red;
+                position:absolute;
+                transform: translate(-25%,-100%);
+                display:inline-block;
+                z-index:15;
+                // display: inline-block;
+                // position:absolute;
+                background:#f6f6f6;
+                width:170px;
+                // height:10vh;
+                box-shadow:0px 0px 4px #c9d0d5;
+                border-radius: 4px;
+              }
             }
           }
         }

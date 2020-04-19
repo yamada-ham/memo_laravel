@@ -2627,6 +2627,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           _this.isMaking = false;
         }
+
+        if (classes.indexOf('labelLi') < 0) {
+          if (_this.isLabelForm) {
+            _this.isLabelForm = false;
+          }
+        }
       });
     },
     selectMemos: function selectMemos() {
@@ -39280,10 +39286,11 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(3),
                 _vm._v(" "),
-                _c("li", [
+                _c("li", { staticClass: "labelLi" }, [
                   _c(
                     "button",
                     {
+                      staticClass: "labelBtn",
                       on: {
                         click: function($event) {
                           _vm.isLabelForm = true

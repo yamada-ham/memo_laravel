@@ -27,8 +27,8 @@
           <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
         </div></li><!--色変更-->
         <li><button type="submit"><i class="far fa-edit"></i></button><div class="opTooltip"><p>更新</p></div></li><!--更新-->
-        <li>
-          <button @click="isLabelForm = true"><i class="fas fa-tag"></i></button><div class="opTooltip"><p>ラベル追加</p></div>
+        <li class="labelLi">
+          <button @click="isLabelForm = true" class="labelBtn"><i class="fas fa-tag"></i></button><div class="opTooltip"><p>ラベル追加</p></div>
           <div v-show="isLabelForm" class="labelFormBox">
             <form>
               <input type="text" v-model="label">
@@ -91,9 +91,9 @@ export default {
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
     windowClick(){
+
       //div.createMemoBox外がクリックすされたら実行
       window.addEventListener('click',(e)=>{
-
         let classes =[]
         e.path.forEach((el)=>{
           if(el.classList){//classListプロパティが存在すればtrue
@@ -109,6 +109,12 @@ export default {
               this.create()
           }
           this.isMaking = false
+        }
+
+        if(classes.indexOf('labelLi') < 0) {
+          if(this.isLabelForm){
+            this.isLabelForm = false
+          }
         }
       });
     },
