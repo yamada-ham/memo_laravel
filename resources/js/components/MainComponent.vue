@@ -56,8 +56,9 @@ export default {
       if(this.isMenuBar){
         this.menuBarData.css.width = '20%'
         this.inMenuBarData.css.width = '200px'
-        if(window.innerWidth < 767){
-          this.inMenuBarData.css.boxShadow = '1px 0px 5px  rgba(0,0,0,0.4)'
+        this.inMenuBarData.css.boxShadow = '1px 0px 5px  rgba(0,0,0,0.4)'
+        if(window.innerWidth > 991){
+          this.inMenuBarData.css.boxShadow = 'none'
         }
         this.routerLinkData.css.width = '100%'
         this.isLiTest = true
