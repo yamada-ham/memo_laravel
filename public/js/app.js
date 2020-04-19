@@ -2569,6 +2569,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       title: '',
       memo: '',
+      label: null,
       isMaking: false,
       memoData: false,
       backgroundColor: '#ffffff'
@@ -2636,7 +2637,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         mode: 'create',
         title: this.title,
         memo: this.memo,
-        backgroundColor: this.backgroundColor
+        backgroundColor: this.backgroundColor,
+        label: this.label
       }).then(function (res) {
         that.memoData.unshift(res['data']);
         that.title = '';

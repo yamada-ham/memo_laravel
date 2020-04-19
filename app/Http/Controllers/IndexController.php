@@ -27,6 +27,7 @@ class IndexController extends Controller
           'title' => $request->title,
           'memo' => $request->memo,
           'backgroundColor'=>$request->backgroundColor,
+          'label'=>$request->label,
           'isArchive' => false
         ];
         DB::table('memo')->insert($param);

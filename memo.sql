@@ -7,9 +7,13 @@ create table memo (
   title varchar(255),
   memo varchar(255),
   backgroundColor varchar(255)
-  isArchive boolean
+  isArchive boolean NOT NULL
+  label varchar(255)
 );
 
 
 ALTER TABLE memo
 ADD isArchive boolean NOT NULL;
+
+ALTER TABLE memo
+ADD label varchar(255);

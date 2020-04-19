@@ -60,6 +60,7 @@ export default {
     return{
         title:'',
         memo:'',
+        label:null,
         isMaking:false,
         memoData:false,
         backgroundColor:'#ffffff',
@@ -120,7 +121,8 @@ export default {
         mode: 'create',
         title: this.title,
         memo: this.memo,
-        backgroundColor:this.backgroundColor
+        backgroundColor:this.backgroundColor,
+        label:this.label
       })
       .then(function (res) {
         that.memoData.unshift(res['data']);
