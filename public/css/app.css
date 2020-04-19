@@ -602,7 +602,7 @@ div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOper
   font-size: 1rem;
   color: #fff;
   border-radius: 5px;
-  background: #000;
+  background: #6f6969;
   left: 50%;
   transform: translate(-50%, 0);
   box-sizing: border-box;
@@ -832,7 +832,7 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   font-size: 1rem;
   color: #fff;
   border-radius: 5px;
-  background: #000;
+  background: #6f6969;
   left: 50%;
   transform: translate(-50%, 0);
   box-sizing: border-box;
@@ -1175,6 +1175,10 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
   flex-wrap: nowrap;
 }
 
+div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li {
+  position: relative;
+}
+
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button {
   background-color: transparent;
   border: none;
@@ -1228,6 +1232,32 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi:hover div.tooltip span:hover {
   border: 2px solid #000000;
+}
+
+div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li div.opTooltip {
+  text-align: center;
+  display: none;
+  position: absolute;
+  padding: 4px;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #6f6969;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-sizing: border-box;
+  white-space: nowrap;
+  z-index: 40;
+}
+
+div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li div.opTooltip p {
+  font-size: 0.7rem;
+}
+
+div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li:hover div.opTooltip {
+  display: inline-block;
+  top: 100%;
+  left: 50%;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.modalBox {

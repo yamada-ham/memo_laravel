@@ -2554,6 +2554,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
  // import MenuBarComponent from './MenuBarComponent'
@@ -38422,12 +38424,18 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "fas fa-archive" })]
-                        )
+                        ),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("アーカイブ解除")])
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("li", { staticClass: "colorPalleteLi" }, [
                         _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
+                        ]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("背景色")])
                         ]),
                         _c(
                           "div",
@@ -38461,12 +38469,18 @@ var render = function() {
                             }
                           },
                           [_c("i", { staticClass: "fas fa-trash-alt" })]
-                        )
+                        ),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("削除")])
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("li", [
                         _c("button", [
                           _c("i", { staticClass: "fas fa-ellipsis-v" })
+                        ]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("その他")])
                         ])
                       ])
                     ]
@@ -39222,6 +39236,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("li", { staticClass: "colorPalleteLi" }, [
                   _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
                   _c(
                     "div",
                     { staticClass: "tooltip" },
@@ -39253,18 +39270,19 @@ var render = function() {
                       }
                     },
                     [_c("i", { staticClass: "far fa-edit" })]
-                  )
+                  ),
+                  _vm._m(3)
                 ]),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
                 _vm._v(" "),
                 _vm._m(4),
                 _vm._v(" "),
                 _vm._m(5),
                 _vm._v(" "),
-                _vm._m(6)
+                _vm._m(6),
+                _vm._v(" "),
+                _vm._m(7),
+                _vm._v(" "),
+                _vm._m(8)
               ])
             ])
           ])
@@ -39313,7 +39331,8 @@ var staticRenderFns = [
     return _c("li", [
       _c("button", { attrs: { type: "submit" } }, [
         _c("i", { staticClass: "fas fa-archive" })
-      ])
+      ]),
+      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("アーカイブ")])])
     ])
   },
   function() {
@@ -39326,14 +39345,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [_c("button", [_c("i", { staticClass: "fas fa-tag" })])])
+    return _c("div", { staticClass: "opTooltip" }, [
+      _c("p", [_vm._v("背景色")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("更新")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", [
-      _c("button", [_c("i", { staticClass: "fas fa-undo-alt" })])
+      _c("button", [_c("i", { staticClass: "fas fa-tag" })]),
+      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("タグ追加")])])
     ])
   },
   function() {
@@ -39341,7 +39369,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", [
-      _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })])
+      _c("button", [_c("i", { staticClass: "fas fa-undo-alt" })]),
+      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("戻す")])])
     ])
   },
   function() {
@@ -39349,7 +39378,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", [
-      _c("button", [_c("i", { staticClass: "fas fa-user-lock" })])
+      _c("button", [_c("i", { staticClass: "fas fa-redo-alt" })]),
+      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("進む")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-user-lock" })]),
+      _c("div", { staticClass: "opTooltip" }, [
+        _c("p", [_vm._v("プライベート")])
+      ])
     ])
   },
   function() {

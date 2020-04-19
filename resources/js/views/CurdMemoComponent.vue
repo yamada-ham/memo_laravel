@@ -20,16 +20,18 @@
   <div class="operationBox">
     <div class="inOperationBox">
       <ul>
-        <li><button type="submit"><i class="fas fa-archive"></i></button></li><!--アーカイブ-->
-        <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="tooltip">
+        <li><button type="submit"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ</p></div></li><!--アーカイブ-->
+        <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button>
+          <div class="opTooltip"><p>背景色</p></div>
+          <div class="tooltip">
           <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
         </div></li><!--色変更-->
-        <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li><!--更新-->
-        <li><button><i class="fas fa-tag"></i></button></li><!--タグを追加-->
-        <li><button><i class="fas fa-undo-alt"></i></button></li><!--戻る-->
+        <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button><div class="opTooltip"><p>更新</p></div></li><!--更新-->
+        <li><button><i class="fas fa-tag"></i></button><div class="opTooltip"><p>タグ追加</p></div></li><!--タグを追加-->
+        <li><button><i class="fas fa-undo-alt"></i></button><div class="opTooltip"><p>戻す</p></div></li><!--戻る-->
         <li><button><i class="fas fa-redo-alt"></i>
-        </button></li><!--進む-->
-        <li><button><i class="fas fa-user-lock"></i></button></li><!--プライベート-->
+        </button><div class="opTooltip"><p>進む</p></div></li><!--進む-->
+        <li><button><i class="fas fa-user-lock"></i></button><div class="opTooltip"><p>プライベート</p></div></li><!--プライベート-->
         <li><button><i class="fas fa-ellipsis-v"></i></button><div class="opTooltip"><p>その他</p></div></li><!--その他-->
       </ul>
     </div>
