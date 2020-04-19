@@ -2557,6 +2557,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
  // import MenuBarComponent from './MenuBarComponent'
@@ -2569,10 +2576,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       title: '',
       memo: '',
-      label: null,
+      label: '',
       isMaking: false,
       memoData: false,
-      backgroundColor: '#ffffff'
+      backgroundColor: '#ffffff',
+      isLabelForm: false
     };
   },
   props: [],
@@ -2640,6 +2648,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         backgroundColor: this.backgroundColor,
         label: this.label
       }).then(function (res) {
+        console.log(that.memoData.label);
         that.memoData.unshift(res['data']);
         that.title = '';
         that.memo = '';
@@ -2766,6 +2775,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2777,6 +2794,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isShowOperation: false,
       title: '',
       memo: '',
+      // label:'',
       paddingVal: '',
       isScrollModal: false,
       backgroundColor: '#ffffff'
@@ -39260,24 +39278,61 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
                 _c("li", [
                   _c(
                     "button",
                     {
-                      attrs: { type: "submit" },
                       on: {
                         click: function($event) {
-                          $event.preventDefault()
-                          return _vm.update($event)
+                          _vm.isLabelForm = true
                         }
                       }
                     },
-                    [_c("i", { staticClass: "far fa-edit" })]
+                    [_c("i", { staticClass: "fas fa-tag" })]
                   ),
-                  _vm._m(3)
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.isLabelForm,
+                          expression: "isLabelForm"
+                        }
+                      ],
+                      staticClass: "labelFormBox"
+                    },
+                    [
+                      _c("form", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.label,
+                              expression: "label"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.label },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.label = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  )
                 ]),
-                _vm._v(" "),
-                _vm._m(4),
                 _vm._v(" "),
                 _vm._m(5),
                 _vm._v(" "),
@@ -39356,15 +39411,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("更新")])])
+    return _c("li", [
+      _c("button", { attrs: { type: "submit" } }, [
+        _c("i", { staticClass: "far fa-edit" })
+      ]),
+      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("更新")])])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("button", [_c("i", { staticClass: "fas fa-tag" })]),
-      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("タグ追加")])])
+    return _c("div", { staticClass: "opTooltip" }, [
+      _c("p", [_vm._v("ラベル追加")])
     ])
   },
   function() {
@@ -39584,6 +39643,19 @@ var render = function() {
               ])
             ]
           ),
+          _vm._v(" "),
+          _c("div", { staticClass: "labelBox" }, [
+            _c("div", { staticClass: "inLabelBox" }, [
+              _c("ul", [
+                _c("li", [
+                  _c("p", [
+                    _c("span", [_vm._v(_vm._s(_vm.memoData.label))]),
+                    _vm._m(0)
+                  ])
+                ])
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "operationBox" }, [
             _c(
@@ -39846,7 +39918,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(0),
+                          _vm._m(1),
                           _vm._v(" "),
                           _c("li", [
                             _c(
@@ -39864,13 +39936,13 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(1),
-                          _vm._v(" "),
                           _vm._m(2),
                           _vm._v(" "),
                           _vm._m(3),
                           _vm._v(" "),
                           _vm._m(4),
+                          _vm._v(" "),
+                          _vm._m(5),
                           _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
@@ -39929,6 +40001,12 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [_c("i", { staticClass: "fas fa-times" })])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

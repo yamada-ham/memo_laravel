@@ -230,6 +230,28 @@ div.contentBox{
               }
             }
           }
+          div.labelBox{
+            height:30px;
+            div.inLabelBox{
+              ul{
+                display:flex;
+                flex-wrap: nowrap;
+                li{
+                  display: inline-block;
+                  p{
+                    span{
+
+                    }
+                    button{
+                      i{
+
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
           div.operationBox{
             min-height:36px;
             div.inOperationBox{

@@ -19,6 +19,14 @@
   <input type="hidden" v-model="memoData.id"/>
 </div>
 </div>
+<div class="labelBox">
+  <div class="inLabelBox">
+    <ul>
+      <li><p><span>{{memoData.label}}</span><button><i class="fas fa-times"></i></button></p></li>
+    </ul>
+
+  </div>
+</div>
 <div class="operationBox" >
   <div class="inOperationBox">
     <transition name="operationBox">
@@ -95,6 +103,7 @@ export default {
         isShowOperation:false,
         title:'',
         memo:'',
+        // label:'',
         paddingVal:'',
         isScrollModal:false,
         backgroundColor:'#ffffff'

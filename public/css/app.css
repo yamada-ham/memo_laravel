@@ -754,6 +754,19 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   height: 32px;
 }
 
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.labelBox {
+  height: 30px;
+}
+
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.labelBox div.inLabelBox ul {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.labelBox div.inLabelBox ul li {
+  display: inline-block;
+}
+
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox {
   min-height: 36px;
 }

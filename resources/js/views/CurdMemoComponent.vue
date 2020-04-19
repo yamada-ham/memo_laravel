@@ -26,8 +26,15 @@
           <div class="tooltip">
           <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex"></span>
         </div></li><!--色変更-->
-        <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button><div class="opTooltip"><p>更新</p></div></li><!--更新-->
-        <li><button><i class="fas fa-tag"></i></button><div class="opTooltip"><p>タグ追加</p></div></li><!--タグを追加-->
+        <li><button type="submit"><i class="far fa-edit"></i></button><div class="opTooltip"><p>更新</p></div></li><!--更新-->
+        <li>
+          <button @click="isLabelForm = true"><i class="fas fa-tag"></i></button><div class="opTooltip"><p>ラベル追加</p></div>
+          <div v-show="isLabelForm" class="labelFormBox">
+            <form>
+              <input type="text" v-model="label">
+            </form>
+          </div>
+        </li><!--ラベルを追加-->
         <li><button><i class="fas fa-undo-alt"></i></button><div class="opTooltip"><p>戻す</p></div></li><!--戻る-->
         <li><button><i class="fas fa-redo-alt"></i>
         </button><div class="opTooltip"><p>進む</p></div></li><!--進む-->
@@ -60,10 +67,11 @@ export default {
     return{
         title:'',
         memo:'',
-        label:null,
+        label:'',
         isMaking:false,
         memoData:false,
         backgroundColor:'#ffffff',
+        isLabelForm:false
     }
   },
   props:[],
@@ -85,6 +93,7 @@ export default {
     windowClick(){
       //div.createMemoBox外がクリックすされたら実行
       window.addEventListener('click',(e)=>{
+
         let classes =[]
         e.path.forEach((el)=>{
           if(el.classList){//classListプロパティが存在すればtrue
@@ -125,6 +134,7 @@ export default {
         label:this.label
       })
       .then(function (res) {
+        console.log(that.memoData.label)
         that.memoData.unshift(res['data']);
         that.title = ''
         that.memo = ''
