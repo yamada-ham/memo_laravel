@@ -2564,6 +2564,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
  // import MenuBarComponent from './MenuBarComponent'
@@ -2577,6 +2578,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       title: '',
       memo: '',
       label: '',
+      labels: [],
       isMaking: false,
       memoData: false,
       backgroundColor: '#ffffff',
@@ -2672,6 +2674,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
         }
       }
+    },
+    createLabel: function createLabel() {
+      var that = this;
+      axios.post('/', {
+        mode: 'createLabel',
+        label: this.label
+      }).then(function (res) {
+        console.log(res['data']);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
@@ -39335,7 +39348,20 @@ var render = function() {
                               _vm.label = $event.target.value
                             }
                           }
-                        })
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.createLabel()
+                              }
+                            }
+                          },
+                          [_vm._v("+作成")]
+                        )
                       ])
                     ]
                   )

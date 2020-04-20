@@ -17,3 +17,8 @@ ADD isArchive boolean NOT NULL;
 
 ALTER TABLE memo
 ADD label varchar(255);
+
+create table label (
+  id int not null auto_increment primary key,
+  label varchar(255) NOT NULL
+);

@@ -32,6 +32,7 @@
           <div v-show="isLabelForm" class="labelFormBox">
             <form>
               <input type="text" v-model="label">
+              <button @click.prevent="createLabel()">+作成</button>
             </form>
           </div>
         </li><!--ラベルを追加-->
@@ -68,6 +69,7 @@ export default {
         title:'',
         memo:'',
         label:'',
+        labels:[],
         isMaking:false,
         memoData:false,
         backgroundColor:'#ffffff',
@@ -159,6 +161,19 @@ export default {
           break;
         }
       }
+    },
+    createLabel(){
+      let that = this
+      axios.post('/', {
+        mode: 'createLabel',
+        label:this.label
+      })
+      .then(function (res) {
+        console.log(res['data'])
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
     }
   },
   computed:{

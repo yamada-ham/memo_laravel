@@ -57,6 +57,11 @@ class IndexController extends Controller
         header('content-type: application/json; charset=utf-8');
         echo json_encode('Successfully deleted!!');
         break;
+      case 'createLabel':
+        DB::table('labels')->insert(['label'=>$request->label]);
+        header('content-type: application/json; charset=utf-8');
+        echo json_encode('Successfully Create Label!!');
+        break;
     }
 
     // return view('index',['param','ぱらめーただよ']);
