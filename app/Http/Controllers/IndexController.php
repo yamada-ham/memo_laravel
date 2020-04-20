@@ -62,6 +62,11 @@ class IndexController extends Controller
         header('content-type: application/json; charset=utf-8');
         echo json_encode('Successfully Create Label!!');
         break;
+      case 'selectLabel':
+        $selectAll = DB::table('labels')->get();
+        header('content-type: application/json; charset=utf-8');
+        echo json_encode($selectAll);
+        break;
     }
 
     // return view('index',['param','ぱらめーただよ']);

@@ -2565,6 +2565,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
  // import MenuBarComponent from './MenuBarComponent'
@@ -2579,6 +2586,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       memo: '',
       label: '',
       labels: [],
+      placeholderLabel: '',
+      optionLabel: '',
       isMaking: false,
       memoData: false,
       backgroundColor: '#ffffff',
@@ -2592,6 +2601,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     this.$refs.textareaTitle.focus();
+    this.selectLabel();
   },
   methods: {
     autoResizeTextarea: function autoResizeTextarea($event) {
@@ -2676,15 +2686,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     createLabel: function createLabel() {
+      if (this.placeholderLabel == '') {
+        return;
+      }
+
       var that = this;
       axios.post('/', {
         mode: 'createLabel',
-        label: this.label
+        label: this.placeholderLabel
       }).then(function (res) {
         console.log(res['data']);
+        that.labels.push({
+          'label': that.placeholderLabel
+        });
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    selectLabel: function selectLabel() {
+      var that = this;
+      axios.post('/', {
+        mode: 'selectLabel'
+      }).then(function (res) {
+        console.log(res['data']);
+        that.labels = res['data'];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addLabel: function addLabel(val) {
+      if (val === 'text') {
+        this.label = this.placeholderLabel;
+        this.optionLabel = '';
+      } else if (val === 'select') {
+        this.label = this.optionLabel;
+        this.placeholderLabel = '';
+      }
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
@@ -39269,6 +39306,10 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "labelBox" }, [
+            _c("p", [_vm._v(_vm._s(_vm.label))])
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "operationBox" }, [
             _c("div", { staticClass: "inOperationBox" }, [
               _c("ul", [
@@ -39334,18 +39375,18 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.label,
-                              expression: "label"
+                              value: _vm.placeholderLabel,
+                              expression: "placeholderLabel"
                             }
                           ],
                           attrs: { type: "text" },
-                          domProps: { value: _vm.label },
+                          domProps: { value: _vm.placeholderLabel },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.label = $event.target.value
+                              _vm.placeholderLabel = $event.target.value
                             }
                           }
                         }),
@@ -39356,11 +39397,55 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.createLabel()
+                                _vm.createLabel()
+                                _vm.addLabel("text")
                               }
                             }
                           },
                           [_vm._v("+作成")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.optionLabel,
+                                expression: "optionLabel"
+                              }
+                            ],
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.optionLabel = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                                function($event) {
+                                  return _vm.addLabel("select")
+                                }
+                              ]
+                            }
+                          },
+                          [
+                            _c("option"),
+                            _vm._v(" "),
+                            _vm._l(_vm.labels, function(item) {
+                              return _c("option", [_vm._v(_vm._s(item.label))])
+                            })
+                          ],
+                          2
                         )
                       ])
                     ]

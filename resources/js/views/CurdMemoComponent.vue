@@ -17,6 +17,9 @@
     <button  class="hidden" @click="create($event) "type="submit" @click.prevent>作成</button>
   </div>
   </form>
+  <div class="labelBox">
+    <p>{{label}}</p>
+  </div>
   <div class="operationBox">
     <div class="inOperationBox">
       <ul>
@@ -31,8 +34,12 @@
           <button @click="isLabelForm = true" class="labelBtn"><i class="fas fa-tag"></i></button><div class="opTooltip"><p>ラベル追加</p></div>
           <div v-show="isLabelForm" class="labelFormBox">
             <form>
-              <input type="text" v-model="label">
-              <button @click.prevent="createLabel()">+作成</button>
+              <input type="text" v-model="placeholderLabel">
+              <button @click.prevent="createLabel(); addLabel('text')">+作成</button>
+              <select @change="addLabel('select')" v-model="optionLabel">
+                <option></option>
+                <option v-for='item in labels'>{{item.label}}</option>
+              </select>
             </form>
           </div>
         </li><!--ラベルを追加-->
@@ -70,6 +77,8 @@ export default {
         memo:'',
         label:'',
         labels:[],
+        placeholderLabel:'',
+        optionLabel:'',
         isMaking:false,
         memoData:false,
         backgroundColor:'#ffffff',
@@ -83,6 +92,7 @@ export default {
   },
   mounted(){
     this.$refs.textareaTitle.focus()
+    this.selectLabel()
   },
   methods:{
     autoResizeTextarea($event){
@@ -163,17 +173,43 @@ export default {
       }
     },
     createLabel(){
+      if(this.placeholderLabel==''){
+        return;
+      }
       let that = this
       axios.post('/', {
         mode: 'createLabel',
-        label:this.label
+        label:this.placeholderLabel
       })
       .then(function (res) {
         console.log(res['data'])
+        that.labels.push({'label':that.placeholderLabel})
       })
       .catch(function (error) {
         console.log(error);
       })
+    },
+    selectLabel(){
+      let that = this
+      axios.post('/', {
+        mode: 'selectLabel',
+      })
+      .then(function (res) {
+        console.log(res['data'])
+        that.labels = res['data']
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    },
+    addLabel(val){
+      if(val === 'text'){
+        this.label = this.placeholderLabel
+        this.optionLabel = ''
+      }else if(val === 'select'){
+        this.label = this.optionLabel
+        this.placeholderLabel = ''
+      }
     }
   },
   computed:{
