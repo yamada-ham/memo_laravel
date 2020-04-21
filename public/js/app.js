@@ -2279,6 +2279,11 @@ __webpack_require__.r(__webpack_exports__);
         iconClass: 'fas fa-user-lock'
       }, {
         id: 3,
+        text: 'ラベル編集',
+        to: '/label',
+        iconClass: 'fas fa-tag'
+      }, {
+        id: 4,
         text: 'ゴミ箱',
         to: '/trash',
         iconClass: 'fas fa-trash-alt'
@@ -39824,7 +39829,10 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("li", [
-                        _c("button", [_c("i", { staticClass: "fas fa-tag" })])
+                        _c("button", [_c("i", { staticClass: "fas fa-tag" })]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("ラベルを追加")])
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("li", [
