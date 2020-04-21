@@ -36,7 +36,7 @@ export default {
         {id:0,text:'メモ',to:'/',iconClass:'fas fa-book memo'},
         {id:1,text:'アーカイブ',to:'/archive',iconClass:'fas fa-archive archive'},
         {id:2,text:'プライベート',to:'/private',iconClass:'fas fa-user-lock'},
-        {id:3,text:'ラベル編集',to:'/label',iconClass:'fas fa-tag'},
+        {id:3,text:'ラベル編集',to:'/edit_label',iconClass:'fas fa-tag'},
         {id:4,text:'ゴミ箱',to:'/trash',iconClass:'fas fa-trash-alt'},
       ],
       isLiTest:false,

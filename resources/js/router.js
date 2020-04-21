@@ -2,6 +2,7 @@ import Router from 'vue-router';
 import Home from './views/Home';
 import Thank from './views/Thank';
 import Archive from './views/Archive';
+import EditLabel from './views/EditLabel';
 // import MemoCardComponent from './views/MemoCardComponent';
 import CurdMemoComponent from './views/CurdMemoComponent';
 
@@ -23,6 +24,10 @@ export default new Router({
     {
       path: '/archive',
       component: Archive
+    },
+    {
+      path: '/edit_label',
+      component: EditLabel
     },
   ]
 });

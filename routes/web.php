@@ -8,3 +8,6 @@ Route::post('/archive', 'archiveController@post');
 
 Route::get('/trash', 'IndexController@get');
 Route::post('/trash', 'IndexController@post');
+
+Route::get('/edit_label', 'IndexController@get');
+Route::post('/edit_label', 'IndexController@post');
