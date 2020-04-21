@@ -17,8 +17,10 @@
     <button  class="hidden" @click="create($event) "type="submit" @click.prevent>作成</button>
   </div>
   </form>
-  <div class="labelBox">
-    <p>{{label}}</p>
+  <div class="labelBox" v-show="isLabel">
+    <div class="inLabelBox">
+      <p><a>{{label}}</a><button @click="label=''; isLabel = false"><i class="fas fa-times"></i></button></p>
+    </div>
   </div>
   <div class="operationBox">
     <div class="inOperationBox">
@@ -36,7 +38,7 @@
             <form>
               <input type="text" v-model="placeholderLabel">
               <button @click.prevent="createLabel(); addLabel('text')">+作成</button>
-              <select @change="addLabel('select')" v-model="optionLabel">
+              <select @change="addLabel('select')" v-model="selectLabel">
                 <option></option>
                 <option v-for='item in labels'>{{item.label}}</option>
               </select>
@@ -78,6 +80,8 @@ export default {
         label:'',
         labels:[],
         placeholderLabel:'',
+        selectLabel:'',
+        isLabel:false,
         optionLabel:'',
         isMaking:false,
         memoData:false,
@@ -176,6 +180,8 @@ export default {
       if(this.placeholderLabel==''){
         return;
       }
+      this.selectLabel = ''
+      this.isLabel = true
       let that = this
       axios.post('/', {
         mode: 'createLabel',
@@ -207,7 +213,7 @@ export default {
         this.label = this.placeholderLabel
         this.optionLabel = ''
       }else if(val === 'select'){
-        this.label = this.optionLabel
+        this.label = this.selectLabel
         this.placeholderLabel = ''
       }
     }

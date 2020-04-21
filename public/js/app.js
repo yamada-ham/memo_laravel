@@ -2577,6 +2577,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
  // import MenuBarComponent from './MenuBarComponent'
@@ -2592,6 +2594,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       label: '',
       labels: [],
       placeholderLabel: '',
+      selectLabel: '',
+      isLabel: false,
       optionLabel: '',
       isMaking: false,
       memoData: false,
@@ -2695,6 +2699,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
+      this.selectLabel = '';
+      this.isLabel = true;
       var that = this;
       axios.post('/', {
         mode: 'createLabel',
@@ -2724,7 +2730,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.label = this.placeholderLabel;
         this.optionLabel = '';
       } else if (val === 'select') {
-        this.label = this.optionLabel;
+        this.label = this.selectLabel;
         this.placeholderLabel = '';
       }
     }
@@ -39344,9 +39350,39 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "labelBox" }, [
-            _c("p", [_vm._v(_vm._s(_vm.label))])
-          ]),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isLabel,
+                  expression: "isLabel"
+                }
+              ],
+              staticClass: "labelBox"
+            },
+            [
+              _c("div", { staticClass: "inLabelBox" }, [
+                _c("p", [
+                  _c("a", [_vm._v(_vm._s(_vm.label))]),
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.label = ""
+                          _vm.isLabel = false
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-times" })]
+                  )
+                ])
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "operationBox" }, [
             _c("div", { staticClass: "inOperationBox" }, [
@@ -39450,8 +39486,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.optionLabel,
-                                expression: "optionLabel"
+                                value: _vm.selectLabel,
+                                expression: "selectLabel"
                               }
                             ],
                             on: {
@@ -39466,7 +39502,7 @@ var render = function() {
                                         "_value" in o ? o._value : o.value
                                       return val
                                     })
-                                  _vm.optionLabel = $event.target.multiple
+                                  _vm.selectLabel = $event.target.multiple
                                     ? $$selectedVal
                                     : $$selectedVal[0]
                                 },

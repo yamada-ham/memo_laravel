@@ -104,6 +104,22 @@ div.contentBox{
           }
         }
       }
+      div.labelBox{
+        div.inLabelBox{
+          p{
+            a{
+              background:#dadada;
+              padding: 2px 7px;
+              border-radius: 20px;
+              font-size:0.8rem;
+            }
+            button{
+              margin-left:2px;
+              border:none;
+            }
+          }
+        }
+      }
       div.operationBox{
         div.inOperationBox{
           ul{
