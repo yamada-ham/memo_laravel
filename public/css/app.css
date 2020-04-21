@@ -1127,12 +1127,6 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
   }
 }
 
-@media only screen and (min-width: 1199px) {
-  div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi {
-    width: 19%;
-  }
-}
-
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap {
   position: relative;
   background: none;

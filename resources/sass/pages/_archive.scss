@@ -86,9 +86,6 @@ div.contentBox{
         @include media(l){
           width:24%;
         }
-        @include media(xl){
-          width:19%;
-        }
         div.archiveCardWrap{
           position:relative;
           background: none;
