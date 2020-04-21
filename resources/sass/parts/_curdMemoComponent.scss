@@ -429,6 +429,7 @@ div.contentBox{
                           }
                           &.colorPalleteLi{
                             @include colorPalleteLi();
+                            z-index:45;
                           }
                         }
                       }

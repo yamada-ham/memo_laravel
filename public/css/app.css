@@ -997,6 +997,10 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   color: #787878;
 }
 
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi {
+  z-index: 45;
+}
+
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi div.tooltip {
   display: none;
 }
