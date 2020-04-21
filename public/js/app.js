@@ -2610,7 +2610,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     this.$refs.textareaTitle.focus();
-    this.selectLabel();
+    this.getSelectLabel();
   },
   methods: {
     autoResizeTextarea: function autoResizeTextarea($event) {
@@ -2695,12 +2695,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     createLabel: function createLabel() {
-      if (this.placeholderLabel == '') {
-        return;
-      }
-
-      this.selectLabel = '';
-      this.isLabel = true;
       var that = this;
       axios.post('/', {
         mode: 'createLabel',
@@ -2710,11 +2704,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         that.labels.push({
           'label': that.placeholderLabel
         });
+        that.placeholderLabel = '';
+        that.selectLabel = '';
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    selectLabel: function selectLabel() {
+    getSelectLabel: function getSelectLabel() {
       var that = this;
       axios.post('/', {
         mode: 'selectLabel'
@@ -2727,12 +2723,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     addLabel: function addLabel(val) {
       if (val === 'text') {
+        if (this.placeholderLabel === '') {
+          return;
+        }
+
+        this.isLabel = true;
         this.label = this.placeholderLabel;
         this.optionLabel = '';
       } else if (val === 'select') {
+        if (this.selectLabel === '') {
+          this.isLabel = false;
+        } else {
+          this.isLabel = true;
+        }
+
         this.label = this.selectLabel;
         this.placeholderLabel = '';
       }
+
+      console.log(this.label);
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
@@ -39516,7 +39525,11 @@ var render = function() {
                             _c("option"),
                             _vm._v(" "),
                             _vm._l(_vm.labels, function(item) {
-                              return _c("option", [_vm._v(_vm._s(item.label))])
+                              return _c(
+                                "option",
+                                { attrs: { keys: item.id } },
+                                [_vm._v(_vm._s(item.label))]
+                              )
                             })
                           ],
                           2

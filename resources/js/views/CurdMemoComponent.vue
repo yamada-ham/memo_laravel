@@ -40,7 +40,7 @@
               <button @click.prevent="createLabel(); addLabel('text')">+作成</button>
               <select @change="addLabel('select')" v-model="selectLabel">
                 <option></option>
-                <option v-for='item in labels'>{{item.label}}</option>
+                <option v-for='item in labels' :keys="item.id">{{item.label}}</option>
               </select>
             </form>
           </div>
@@ -96,7 +96,7 @@ export default {
   },
   mounted(){
     this.$refs.textareaTitle.focus()
-    this.selectLabel()
+    this.getSelectLabel()
   },
   methods:{
     autoResizeTextarea($event){
@@ -177,11 +177,6 @@ export default {
       }
     },
     createLabel(){
-      if(this.placeholderLabel==''){
-        return;
-      }
-      this.selectLabel = ''
-      this.isLabel = true
       let that = this
       axios.post('/', {
         mode: 'createLabel',
@@ -190,12 +185,14 @@ export default {
       .then(function (res) {
         console.log(res['data'])
         that.labels.push({'label':that.placeholderLabel})
+        that.placeholderLabel = ''
+        that.selectLabel = ''
       })
       .catch(function (error) {
         console.log(error);
       })
     },
-    selectLabel(){
+    getSelectLabel(){
       let that = this
       axios.post('/', {
         mode: 'selectLabel',
@@ -210,12 +207,23 @@ export default {
     },
     addLabel(val){
       if(val === 'text'){
+        if(this.placeholderLabel === ''){
+          return;
+        }
+        this.isLabel = true
         this.label = this.placeholderLabel
         this.optionLabel = ''
       }else if(val === 'select'){
+        if(this.selectLabel === ''){
+          this.isLabel = false
+        }else{
+          this.isLabel = true
+        }
         this.label = this.selectLabel
         this.placeholderLabel = ''
       }
+      console.log(this.label)
+
     }
   },
   computed:{

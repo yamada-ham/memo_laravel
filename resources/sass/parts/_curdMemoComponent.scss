@@ -105,6 +105,8 @@ div.contentBox{
         }
       }
       div.labelBox{
+        margin-top:14px;
+        margin-bottom:14px;
         div.inLabelBox{
           p{
             a{
@@ -116,6 +118,10 @@ div.contentBox{
             button{
               margin-left:2px;
               border:none;
+              vertical-align: middle;
+              i{
+
+              }
             }
           }
         }

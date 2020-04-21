@@ -561,6 +561,11 @@ div.contentBox div.createMemoBox div.inCreateMemoBox form.createMemoFormBox div.
   background: none;
 }
 
+div.contentBox div.createMemoBox div.inCreateMemoBox div.labelBox {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
 div.contentBox div.createMemoBox div.inCreateMemoBox div.labelBox div.inLabelBox p a {
   background: #dadada;
   padding: 2px 7px;
@@ -571,6 +576,7 @@ div.contentBox div.createMemoBox div.inCreateMemoBox div.labelBox div.inLabelBox
 div.contentBox div.createMemoBox div.inCreateMemoBox div.labelBox div.inLabelBox p button {
   margin-left: 2px;
   border: none;
+  vertical-align: middle;
 }
 
 div.contentBox div.createMemoBox div.inCreateMemoBox div.operationBox div.inOperationBox ul {
