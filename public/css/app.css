@@ -709,12 +709,6 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   }
 }
 
-@media only screen and (min-width: 1199px) {
-  div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
-    width: 19%;
-  }
-}
-
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap {
   position: relative;
   background: none;
@@ -726,8 +720,6 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap:hover {
-  -webkit-animation-name: delAnime;
-          animation-name: delAnime;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   border: 1px solid rgba(145, 152, 158, 0);
@@ -758,6 +750,7 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.memoCardBox div.inMemoCardBox form.memoCardFormBox div.inMemoCardFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
+  font-size: 0.9rem;
   background: none;
   width: 100%;
   display: block;
@@ -789,10 +782,13 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
+  height: 100%;
+  min-height: 36px;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li {
   position: relative;
+  height: 100%;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button {

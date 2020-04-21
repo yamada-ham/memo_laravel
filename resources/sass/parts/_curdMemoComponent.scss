@@ -197,9 +197,9 @@ div.contentBox{
         @include media(l){
           width:24%;
         }
-        @include media(xl){
-          width:19%;
-        }
+        // @include media(xl){
+        //   width:19%;
+        // }
         div.memoCardWrap{
           position:relative;
           background: none;
@@ -209,7 +209,6 @@ div.contentBox{
           margin-bottom:12px;
           background: #fff;
           &:hover{
-            animation-name:delAnime;
             animation-duration: 3s;
             border:1px solid rgba(145, 152, 158, 0);
             box-shadow:0px 0px 10px #91989e;
@@ -236,6 +235,7 @@ div.contentBox{
                   div.textareaMemoBox{
                     div.inTextareaMemoBox{
                       textarea{
+                        font-size: 0.9rem;
                         background: none;
                         @include textareaDefault()
                       }
@@ -270,13 +270,17 @@ div.contentBox{
           div.operationBox{
             min-height:36px;
             div.inOperationBox{
+              // height:100%;
               ul{
                 display:flex;
                 flex-wrap: nowrap;
                 justify-content: space-around;
                 align-items:center;
+                height:100%;
+                min-height:36px;
                 li{
                   position: relative;
+                  height:100%;
                   button{
                     @include buttonReset;
                     padding:4px 8px;

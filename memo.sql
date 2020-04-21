@@ -5,9 +5,9 @@ use memo_laravel
 create table memo (
   id int not null auto_increment primary key,
   title varchar(255),
-  memo varchar(255),
-  backgroundColor varchar(255)
-  isArchive boolean NOT NULL
+  memo varchar(1000),
+  backgroundColor varchar(255),
+  isArchive boolean NOT NULL,
   label varchar(255)
 );
 

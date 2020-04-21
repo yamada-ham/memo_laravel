@@ -2838,7 +2838,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39762,19 +39761,6 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "labelBox" }, [
-            _c("div", { staticClass: "inLabelBox" }, [
-              _c("ul", [
-                _c("li", [
-                  _c("p", [
-                    _c("span", [_vm._v(_vm._s(_vm.memoData.label))]),
-                    _vm._m(0)
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "operationBox" }, [
             _c(
               "div",
@@ -40036,7 +40022,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _vm._m(0),
                           _vm._v(" "),
                           _c("li", [
                             _c(
@@ -40054,13 +40040,13 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
+                          _vm._m(1),
+                          _vm._v(" "),
                           _vm._m(2),
                           _vm._v(" "),
                           _vm._m(3),
                           _vm._v(" "),
                           _vm._m(4),
-                          _vm._v(" "),
-                          _vm._m(5),
                           _vm._v(" "),
                           _c("li", { staticClass: "liClose" }, [
                             _c(
@@ -40119,12 +40105,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [_c("i", { staticClass: "fas fa-times" })])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
