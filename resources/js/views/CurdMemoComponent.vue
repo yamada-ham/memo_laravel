@@ -36,7 +36,7 @@
           <button @click="isLabelForm = true" class="labelBtn"><i class="fas fa-tag"></i></button><div class="opTooltip"><p>ラベル追加</p></div>
           <div v-show="isLabelForm" class="labelFormBox">
             <form>
-              <input type="text" v-model="placeholderLabel">
+              <input type="text" v-model="placeholderLabel" placeholder="ラベル名を入力">
               <button @click.prevent="createLabel(); addLabel('text')">+作成</button>
               <select @change="addLabel('select')" v-model="selectLabel">
                 <option></option>

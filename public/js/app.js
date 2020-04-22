@@ -39462,7 +39462,10 @@ var render = function() {
                               expression: "placeholderLabel"
                             }
                           ],
-                          attrs: { type: "text" },
+                          attrs: {
+                            type: "text",
+                            placeholder: "ラベル名を入力"
+                          },
                           domProps: { value: _vm.placeholderLabel },
                           on: {
                             input: function($event) {

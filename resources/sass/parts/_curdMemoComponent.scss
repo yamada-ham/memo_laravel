@@ -175,18 +175,37 @@ div.contentBox{
               }
               div.labelFormBox{
                 position:absolute;
-                background: red;
-                position:absolute;
                 transform: translate(-25%,-100%);
                 display:inline-block;
                 z-index:15;
                 // display: inline-block;
                 // position:absolute;
-                background:#f6f6f6;
+                background:#fff;
+                height:100px;
                 width:170px;
                 // height:10vh;
-                box-shadow:0px 0px 4px #c9d0d5;
+                box-shadow:0px 0px 6px #b3babf;
                 border-radius: 4px;
+                form{
+                  position:absolute;
+                  top:50%;
+                  transform: translateY(-50%);
+                  margin-left:4px;
+                  margin-right:4px;
+                  input[type='text']{
+                    width:100%;
+                    border:none;
+                    font-size:1.0rem;
+                  }
+                  button{
+                   display:block;
+                  }
+                  select{
+                    option{
+
+                    }
+                  }
+                }
               }
             }
           }
