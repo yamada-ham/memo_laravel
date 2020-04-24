@@ -160,6 +160,8 @@ export default {
         that.memoData.unshift(res['data']);
         that.title = ''
         that.memo = ''
+        that.label = ''
+        that.isLabel = false
         that.backgroundColor = '#ffffff'
         that.$refs.textareaTitle.style.height = '32px'
         that.$refs.textareaMemo.style.height = '32px'
