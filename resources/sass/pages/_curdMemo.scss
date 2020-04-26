@@ -1,0 +1,278 @@
+@mixin textareaDefault() {
+  width:100%;
+  display:block;
+  resize: none;
+  overflow: auto;
+  border:none;
+  height:32px;
+}
+
+@mixin colorPalleteLi(){
+  button{
+    i{
+
+    }
+  }
+  div.tooltip{
+    display:none;
+  }
+  &:hover{
+    button{
+      position: relative;
+
+      i{
+
+      }
+    }
+    div.tooltip{
+      position:absolute;
+      transform: translate(-25%,-100%);
+      display:inline-block;
+      z-index:15;
+      // display: inline-block;
+      // position:absolute;
+      background:#f6f6f6;
+      width:170px;
+      // height:10vh;
+      box-shadow:0px 0px 4px #c9d0d5;
+      border-radius: 4px;
+      span{
+        float:left;
+        display:block;
+        border-radius: 45px;
+        box-sizing: border-box;
+        width:24px;
+        height:24px;
+        margin:4px;
+        &:hover{
+          border: 2px solid #000000;
+        }
+      }
+    }
+  }
+}
+
+div.contentBox{
+  width:80%;
+  margin-left: auto;
+  // margin-right: auto;
+  @include media(m){
+    margin-left: 0;
+    margin-right: 0;
+  }
+  div.createMemoBox{
+    margin-top:100px;
+    margin-bottom:70px;
+    width:600px;
+    max-width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow:none;
+    border:1px solid #91989e;
+    border-radius: 10px;
+    padding:10px 10px;
+    &.making{
+      border:1px solid rgba(145, 152, 158, 0);
+      box-shadow:0px 0px 10px #91989e;
+    }
+    div.inCreateMemoBox{
+      form.createMemoFormBox{
+        div.inCreateMemoFormBox{
+          div.textareaTitleBox{
+            margin-bottom:8px;
+            min-height:32px;
+            max-height:20vh;
+            overflow: scroll;
+            div.inTextareaTitleBox{
+              textarea{
+                @include textareaDefault();
+                background: none;
+              }
+            }
+          }
+          div.textareaMemoBox{
+            margin-bottom:8px;
+            min-height:32px;
+            max-height:50vh;
+            overflow: scroll;
+            div.inTextareaMemoBox{
+              textarea{
+                @include textareaDefault();
+                background: none;
+              }
+            }
+          }
+        }
+      }
+      div.labelBox{
+        margin-top:14px;
+        margin-bottom:14px;
+        div.inLabelBox{
+          p{
+            a{
+              background:#dadada;
+              padding: 2px 7px;
+              border-radius: 20px;
+              font-size:0.8rem;
+            }
+            button{
+              margin-left:2px;
+              border:none;
+              vertical-align: middle;
+              i{
+
+              }
+            }
+          }
+        }
+      }
+      div.operationBox{
+        div.inOperationBox{
+          ul{
+            display:flex;
+            flex-wrap: wrap;
+            align-items:flex-end;
+            align-content: flex-start;
+            li{
+              position: relative;
+              button{
+                @include buttonReset;
+                padding:6px 12px;
+                border-radius: 45px;
+                &:hover{
+                  background:#dedede;
+                }
+                i{
+                  font-size:0.9rem;
+                  color:#787878;
+                }
+              }
+              div.opTooltip{
+                text-align: center;
+                display: none;
+                position: absolute;
+                padding: 4px;
+                font-size: 1rem;
+                color: #fff;
+                border-radius: 5px;
+                background: #6f6969;
+                left:50%;
+                transform: translate(-50%,0);
+                box-sizing: border-box;
+                white-space: nowrap;
+                z-index:40;
+                p{
+                  font-size:0.7rem;
+                }
+              }
+              &:hover div.opTooltip{
+                  display: inline-block;
+                  top: 100%;
+                  left: 50%;
+              }
+              &.colorPalleteLi{
+                @include colorPalleteLi();
+              }
+              div.labelFormBox{
+                position:absolute;
+                transform: translate(-25%,-100%);
+                display:inline-block;
+                z-index:15;
+                // display: inline-block;
+                // position:absolute;
+                background:#fff;
+                height:100px;
+                width:170px;
+                // height:10vh;
+                box-shadow:0px 0px 6px #b3babf;
+                border-radius: 4px;
+                form{
+                  position:absolute;
+                  top:50%;
+                  transform: translateY(-50%);
+                  margin-left:4px;
+                  margin-right:4px;
+                  input[type='text']{
+                    width:100%;
+                    border:none;
+                    font-size:1.0rem;
+                  }
+                  button{
+                   display:block;
+                  }
+                  select{
+                    option{
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.memoCardComponentBox{
+    width:98%;
+    margin-left: auto;
+    margin-right:auto;
+    // position:relative;
+    ul.inMemoCardComponentBox{
+      width:100%;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items:center;
+      align-content: flex-start;
+      &:after{
+        @include clear()
+      }
+      li.memoCardLi{
+        width:100%;
+        @include media(s){
+          width:49%;
+        }
+        @include media(m){
+          width:32%;
+        }
+        @include media(l){
+          width:24%;
+        }
+        @import './parts/cardMemoComponent';
+      }
+    }
+  }
+}
+div.mask{
+  background: rgba(201, 201, 201, 0.6);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index:50;
+}
+
+.operationBox-enter-active, .operationBox-leave-active{
+	transition:opacity 0.3s;
+}
+.operationBox-enter, .operationBox-leave-to{
+	opacity:0;
+}
+.operationBox-enter-to, .operationBox-leave{
+	opacity:1;
+}
+
+
+.memoCard-enter-active, .memoCard-leave-active,.memoCard-move{
+	transition:all 0.4s;
+  position:relative;
+}
+
+.memoCard-enter, .memoCard-leave-to{
+  opacity: 0;
+}
+.memoCard-leave-active {
+  position: absolute;
+}

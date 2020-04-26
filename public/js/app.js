@@ -2020,6 +2020,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   props: ['archiveData'],
+  //Archive.vueから送られるアーカイブのデータ
   created: function created() {},
   mounted: function mounted() {
     this.backgroundColor = this.archiveData.backgroundColor;
@@ -2066,6 +2067,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.isScrollModal = true;
       }
     },
+    //アーカイブカードの編集
     update: function update($event) {
       axios.post('/', {
         mode: 'update',
@@ -2080,6 +2082,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //アーカイブカードの削除
     del: function del($event) {
       this.$emit('del-memo-event', this.archiveData.id);
       var that = this;

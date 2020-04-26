@@ -97,7 +97,7 @@ export default {
         isScrollModal:false,//モダールがスクロールされているか真偽
     }
   },
-  props:['archiveData'],
+  props:['archiveData'],//Archive.vueから送られるアーカイブのデータ
   created(){
 
   },
@@ -147,6 +147,8 @@ export default {
         this.isScrollModal = true
       }
     },
+
+    //アーカイブカードの編集
     update($event){
       axios.post('/', {
         mode: 'update',
@@ -163,6 +165,8 @@ export default {
         console.log(error);
       })
     },
+
+    //アーカイブカードの削除
     del($event){
       this.$emit('del-memo-event',this.archiveData.id)
       let that = this

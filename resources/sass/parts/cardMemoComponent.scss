@@ -1,0 +1,237 @@
+div.memoCardWrap{
+  position:relative;
+  background: none;
+  box-sizing: border-box;
+  border:1px solid #91989e;
+  border-radius: 8px;
+  margin-bottom:12px;
+  background: #fff;
+  &:hover{
+    animation-duration: 3s;
+    border:1px solid rgba(145, 152, 158, 0);
+    box-shadow:0px 0px 10px #91989e;
+  }
+  div.memoCardBox{
+    div.inMemoCardBox{
+      height:30vh;
+      overflow: scroll;
+      form.memoCardFormBox{
+        width:90%;
+        margin-left: auto;
+        margin-right: auto;
+        div.inMemoCardFormBox{
+          div.textareaTitleBox{
+            div.inTextareaTitleBox{
+              textarea{
+                font-size:1.1rem;
+                font-weight: bold;
+                background: none;
+                @include textareaDefault()
+              }
+            }
+          }
+          div.textareaMemoBox{
+            div.inTextareaMemoBox{
+              textarea{
+                font-size: 0.9rem;
+                background: none;
+                @include textareaDefault()
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.labelBox{
+    height:30px;
+    div.inLabelBox{
+      ul{
+        display:flex;
+        flex-wrap: nowrap;
+        li{
+          display: inline-block;
+          p{
+            span{
+
+            }
+            button{
+              i{
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.operationBox{
+    box-shadow:0px -1px 4px #7a7f83;
+    border-radius:0 0 8px 8px;
+    min-height:36px;
+    div.inOperationBox{
+      ul{
+        display:flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items:center;
+        height:100%;
+        min-height:36px;
+        li{
+          position: relative;
+          height:100%;
+          button{
+            @include buttonReset;
+            padding:4px 8px;
+            border-radius: 45px;
+            &:hover{
+              background:#dedede;
+            }
+            i{
+              color:#787878;
+              font-size:0.9rem;
+            }
+          }
+          &.colorPalleteLi{
+            @include colorPalleteLi();
+          }
+          div.opTooltip{
+            text-align: center;
+            display: none;
+            position: absolute;
+            padding: 4px;
+            font-size: 1rem;
+            color: #fff;
+            border-radius: 5px;
+            background: #6f6969;
+            left:50%;
+            transform: translate(-50%,0);
+            box-sizing: border-box;
+            white-space: nowrap;
+            z-index:40;
+            p{
+              font-size:0.7rem;
+            }
+          }
+          &:hover div.opTooltip{
+              display: inline-block;
+              top: 100%;
+              left: 50%;
+          }
+        }
+      }
+    }
+  }
+  div.modalBox{
+    position:fixed;
+    left:50%;
+    top:0%;
+    transform: translate(-50%,0%);
+    background:#fff;
+    border-radius: 8px;
+    box-shadow:0px 0px 10px #91989e;
+    z-index:55;
+    width:700px;
+    max-width:100%;
+    @include media(s){
+      top:14%;
+      // max-height:76vh;
+    }
+    div.inModalBox{
+      form.modalFormBox{
+        div.inModalFormBox{
+          div.modalTitleBox{
+            position:relative;
+            width:100%;
+            // padding-left:20px;
+            // transform: translate(-50%,0%);
+            border-radius: 8px 8px 0 0;
+            padding-top:10px;
+            padding-bottom:10px;
+            z-index:40;
+            overflow: scroll;
+            box-sizing: border-box;
+            // @include media(s){
+              height:auto;
+              max-height:16vh;
+            // }
+            &.scroll{
+              box-shadow:0px 1px 4px #91989e;
+            }
+            div.inModalTitleBox{
+              textarea{
+                box-sizing: border-box;
+                padding-left:20px;
+                font-size: 1.5rem;
+                font-weight: bold;
+                background: none;
+                @include textareaDefault();
+              }
+            }
+          }
+          div.modalMemoBox{
+            position: relative;
+            width:94%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom:40px;
+            overflow: scroll;
+            z-index:35;
+              height:auto;
+              max-height:52vh;
+            div.inModalMemoBox{
+              textarea{
+                background: none;
+                @include textareaDefault();
+              }
+            }
+          }
+          div.modalOperationBox{
+            box-sizing: border-box;
+            box-shadow:0px -1px 4px #91989e;
+            box-sizing: border-box;
+            width:100%;
+            z-index:40;
+            border-radius: 0px 0px 8px 8px;
+            background: #fff;
+            div.inModalOperationBox{
+              height:100%;
+              ul{
+                height:100%;
+                display:flex;
+                flex-wrap: wrap;
+                align-items:center;
+                align-content: flex-start;
+                li{
+                  &.liClose{
+                    margin-left:auto;
+                    height:100%;
+                    button{
+                      font-size: 1rem;
+                      height:100%;
+                    }
+                  }
+                  button{
+                    @include buttonReset;
+                    padding:6px 12px;
+                    border-radius: 4px;
+                    &:hover{
+                      background:#dedede;
+                    }
+                    i{
+                      color:#787878;
+                    }
+                  }
+                  &.colorPalleteLi{
+                    @include colorPalleteLi();
+                    z-index:45;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
