@@ -2463,27 +2463,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       isShow: true,
-      isModal: false,
+      //メモカードの(非)表示の真偽
       isShowOperation: false,
+      //メモカードのオペーレションの(非)表示の真偽
+      isModal: false,
+      //モーダルの(非)表示の真偽
       title: '',
+      //メモカードのタイトル
       memo: '',
+      //メモカードの文章
+      backgroundColor: '#ffffff',
+      //メモカードの背景色
       // label:'',
-      paddingVal: '',
-      isScrollModal: false,
-      backgroundColor: '#ffffff'
+      isScrollModal: false //モダールがスクロールされているか真偽
+
     };
   },
-  props: ['memoData'],
+  props: ['memoData' //「CurdMemo」から送られてきたメモカードのデータ
+  ],
   created: function created() {},
   mounted: function mounted() {
     this.backgroundColor = this.memoData.backgroundColor;
-    this.initResizeTextarea(this.$refs.titleTextarea);
-    this.initResizeTextarea(this.$refs.memoTextarea);
+    this.autoResizeTextarea(this.$refs.titleTextarea);
+    this.autoResizeTextarea(this.$refs.memoTextarea);
   },
   updated: function updated() {
     if (this.isModal) {
-      this.initResizeTextarea(this.$refs.modalTitleTextarea);
-      this.initResizeTextarea(this.$refs.modalMemoTextarea);
+      this.autoResizeTextarea(this.$refs.modalTitleTextarea);
+      this.autoResizeTextarea(this.$refs.modalMemoTextarea);
     }
   },
   methods: {
@@ -2494,7 +2501,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isModal = false;
       this.update();
     },
-    initResizeTextarea: function initResizeTextarea(el) {
+    //テキストエリアの初期状態の高さを設定
+    autoResizeTextarea: function autoResizeTextarea(el) {
       var areaHeight = el.scrollHeight;
       areaHeight = parseInt(areaHeight) - 54;
 
@@ -2505,26 +2513,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       el.style.height = areaHeight + "px";
       el.style.height = el.scrollHeight + 2 + 'px';
     },
-    autoResizeTextarea: function autoResizeTextarea($event) {
+    inputResizeTextarea: function inputResizeTextarea($event) {
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
       if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
-        this.newLineTextarea(this.$refs.titleTextarea);
-        this.newLineTextarea(this.$refs.memoTextarea);
-      }
+        this.autoResizeTextarea(this.$refs.titleTextarea);
+        this.autoResizeTextarea(this.$refs.memoTextarea);
+      } // this.newLineTextarea($event.target)
 
-      this.newLineTextarea($event.target);
     },
-    newLineTextarea: function newLineTextarea(textarea) {
-      var areaHeight = textarea.scrollHeight;
-      areaHeight = parseInt(areaHeight) - 54;
-
-      if (areaHeight < 30) {
-        areaHeight = 30;
-      }
-
-      textarea.style.height = areaHeight + "px";
-      textarea.style.height = textarea.scrollHeight + 2 + 'px';
-    },
+    //  newLineTextarea(textarea){
+    //    var areaHeight = textarea.scrollHeight
+    //    areaHeight = parseInt(areaHeight) - 54;
+    //    if(areaHeight < 30){ areaHeight = 30; }
+    //   textarea.style.height = areaHeight + "px";
+    //   textarea.style.height = textarea.scrollHeight + 2 + 'px'
+    // },
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
         this.isScrollModal = false;
@@ -2968,7 +2971,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
-    //ラベルを追加
+    //作成するメモにラベルを追加
     addLabel: function addLabel(val) {
       if (val === 'text') {
         if (this.placeholderLabel === '') {
@@ -39265,7 +39268,7 @@ var render = function() {
                                 )
                               },
                               function($event) {
-                                return _vm.autoResizeTextarea($event)
+                                return _vm.inputResizeTextarea($event)
                               }
                             ]
                           }
@@ -39304,7 +39307,7 @@ var render = function() {
                                 )
                               },
                               function($event) {
-                                return _vm.autoResizeTextarea($event)
+                                return _vm.inputResizeTextarea($event)
                               }
                             ]
                           }
@@ -39494,7 +39497,7 @@ var render = function() {
                                   )
                                 },
                                 function($event) {
-                                  return _vm.autoResizeTextarea($event)
+                                  return _vm.inputResizeTextarea($event)
                                 }
                               ]
                             }
@@ -39545,7 +39548,7 @@ var render = function() {
                                   )
                                 },
                                 function($event) {
-                                  return _vm.autoResizeTextarea($event)
+                                  return _vm.inputResizeTextarea($event)
                                 }
                               ]
                             }

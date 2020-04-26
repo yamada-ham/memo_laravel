@@ -213,7 +213,7 @@ export default {
       })
     },
 
-    //ラベルを追加
+    //作成するメモにラベルを追加
     addLabel(val){
       if(val === 'text'){
         if(this.placeholderLabel === ''){
