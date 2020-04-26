@@ -238,9 +238,6 @@ div.contentBox{
         @include media(l){
           width:24%;
         }
-        // @include media(xl){
-        //   width:19%;
-        // }
         div.memoCardWrap{
           position:relative;
           background: none;
@@ -313,7 +310,6 @@ div.contentBox{
             border-radius:0 0 8px 8px;
             min-height:36px;
             div.inOperationBox{
-              // height:100%;
               ul{
                 display:flex;
                 flex-wrap: nowrap;
@@ -372,7 +368,6 @@ div.contentBox{
             top:0%;
             transform: translate(-50%,0%);
             background:#fff;
-            // box-sizing: border-box;
             border-radius: 8px;
             box-shadow:0px 0px 10px #91989e;
             z-index:55;
@@ -420,13 +415,10 @@ div.contentBox{
                     margin-left: auto;
                     margin-right: auto;
                     margin-bottom:40px;
-                    // height:50vh;
                     overflow: scroll;
                     z-index:35;
-                    // @include media(s){
                       height:auto;
                       max-height:52vh;
-                    // }
                     div.inModalMemoBox{
                       textarea{
                         background: none;

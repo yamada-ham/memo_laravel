@@ -1179,8 +1179,6 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap:hover {
-  -webkit-animation-name: delAnime;
-          animation-name: delAnime;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   border: 1px solid rgba(145, 152, 158, 0);
@@ -1211,6 +1209,7 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.archiveCardBox div.inArchiveCardBox form.archiveCardFormBox div.inArchiveCardFormBox div.textareaMemoBox div.inTextareaMemoBox textarea {
+  font-size: 0.9rem;
   background: none;
   width: 100%;
   display: block;
@@ -1221,19 +1220,23 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox {
+  box-shadow: 0px -1px 4px #7a7f83;
+  border-radius: 0 0 8px 8px;
   min-height: 36px;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: nowrap;
+  height: 100%;
+  min-height: 36px;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li {
   position: relative;
+  height: 100%;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button {
@@ -1440,6 +1443,10 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li button i {
   color: #787878;
+}
+
+div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi {
+  z-index: 45;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.modalBox div.inModalBox form.modalFormBox div.inModalFormBox div.modalOperationBox div.inModalOperationBox ul li.colorPalleteLi div.tooltip {
