@@ -178,6 +178,8 @@ export default {
         console.log(error);
       })
     },
+
+    //メモを削除
     del($event){
       this.$emit('del-memo-event',this.memoData.id)
       let that = this
@@ -193,13 +195,12 @@ export default {
         console.log(error);
       });
     },
+
+    //アーカイブにメモを移動する処理の発火
     sendArchive(){
       this.$emit('send-archive-event',this.memoData.id)
-      // console.log(this.memoData.isArchive)
       this.memoData.isArchive = !this.memoData.isArchive
-      // console.log(this.memoData.isArchive)
       this.update()
-      console.log('アーカイブ')
     }
   },
   computed:{

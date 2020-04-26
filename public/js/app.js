@@ -2656,6 +2656,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
     },
+    //すべてのメモを取得
     selectMemos: function selectMemos() {
       var that = this;
       axios.post('/', {
@@ -2666,6 +2667,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //メモの作成
     create: function create($event) {
       var that = this;
       axios.post('/', {
@@ -2675,7 +2677,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         backgroundColor: this.backgroundColor,
         label: this.label
       }).then(function (res) {
-        console.log(that.memoData.label);
         that.memoData.unshift(res['data']);
         that.title = '';
         that.memo = '';
@@ -2688,7 +2689,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
-    parentsMethod: function parentsMethod(id) {
+    //メモデータの配列から要素を取り除く。メモの削除、アーカイブ移動のときに使う。
+    memoDataSplice: function memoDataSplice(id) {
       for (var i = 0; i < this.memoData.length; i++) {
         if (this.memoData[i]['id'] === id) {
           this.memoData.splice(i, 1);
@@ -2712,6 +2714,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //ラベル一覧を取得
     getSelectLabel: function getSelectLabel() {
       var that = this;
       axios.post('/', {
@@ -2723,6 +2726,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //ラベルを追加
     addLabel: function addLabel(val) {
       if (val === 'text') {
         if (this.placeholderLabel === '') {
@@ -2984,6 +2988,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //メモを削除
     del: function del($event) {
       this.$emit('del-memo-event', this.memoData.id);
       var that = this;
@@ -2997,13 +3002,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //アーカイブにメモを移動する処理の発火
     sendArchive: function sendArchive() {
-      this.$emit('send-archive-event', this.memoData.id); // console.log(this.memoData.isArchive)
-
-      this.memoData.isArchive = !this.memoData.isArchive; // console.log(this.memoData.isArchive)
-
+      this.$emit('send-archive-event', this.memoData.id);
+      this.memoData.isArchive = !this.memoData.isArchive;
       this.update();
-      console.log('アーカイブ');
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
@@ -39576,8 +39579,8 @@ var render = function() {
                 _c("memo-card-component", {
                   attrs: { "memo-data": memo },
                   on: {
-                    "del-memo-event": _vm.parentsMethod,
-                    "send-archive-event": _vm.parentsMethod
+                    "del-memo-event": _vm.memoDataSplice,
+                    "send-archive-event": _vm.memoDataSplice
                   }
                 })
               ],

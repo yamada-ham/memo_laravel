@@ -58,7 +58,7 @@
 <div class="memoCardComponentBox">
   <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
     <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
-      <memo-card-component  :memo-data="memo" @del-memo-event="parentsMethod" @send-archive-event="parentsMethod"></memo-card-component>
+      <memo-card-component  :memo-data="memo" @del-memo-event="memoDataSplice" @send-archive-event="memoDataSplice"></memo-card-component>
     </li>
 </transition-group>
 </div>
@@ -107,7 +107,6 @@ export default {
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
     windowClick(){
-
       //div.createMemoBox外がクリックすされたら実行
       window.addEventListener('click',(e)=>{
         let classes =[]
@@ -134,6 +133,8 @@ export default {
         }
       });
     },
+
+    //すべてのメモを取得
     selectMemos(){
       let that = this
       axios.post('/', {
@@ -146,6 +147,8 @@ export default {
         console.log(error);
       })
     },
+
+    //メモの作成
     create($event){
       let that = this
       axios.post('/', {
@@ -156,7 +159,6 @@ export default {
         label:this.label
       })
       .then(function (res) {
-        console.log(that.memoData.label)
         that.memoData.unshift(res['data']);
         that.title = ''
         that.memo = ''
@@ -170,7 +172,9 @@ export default {
         console.log(error);
       })
     },
-    parentsMethod:function(id){
+
+    //メモデータの配列から要素を取り除く。メモの削除、アーカイブ移動のときに使う。
+    memoDataSplice(id){
       for(let i = 0; i < this.memoData.length; i++){
         if(this.memoData[i]['id'] === id){
           this.memoData.splice(i,1)
@@ -194,6 +198,8 @@ export default {
         console.log(error);
       })
     },
+
+    //ラベル一覧を取得
     getSelectLabel(){
       let that = this
       axios.post('/', {
@@ -207,6 +213,8 @@ export default {
         console.log(error);
       })
     },
+
+    //ラベルを追加
     addLabel(val){
       if(val === 'text'){
         if(this.placeholderLabel === ''){
