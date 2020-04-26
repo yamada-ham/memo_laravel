@@ -69,7 +69,7 @@
 <script>
 import {mapState,mapGetters } from 'vuex';
 import store from '../store/store.js';
-import MemoCardComponent from './MemoCardComponent'
+import MemoCardComponent from '../components/MemoCardComponent'
 // import MenuBarComponent from './MenuBarComponent'
 export default {
   components:{MemoCardComponent},
