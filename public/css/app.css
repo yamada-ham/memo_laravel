@@ -809,6 +809,8 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox {
+  box-shadow: 0px -1px 4px #7a7f83;
+  border-radius: 0 0 8px 8px;
   min-height: 36px;
 }
 
