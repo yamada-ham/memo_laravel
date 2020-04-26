@@ -98,6 +98,7 @@ export default {
     this.getSelectLabel()
   },
   methods:{
+    //テキストエリアの高さを自動で変更する
     autoResizeTextarea($event){
       var areaHeight = $event.target.scrollHeight
       areaHeight = parseInt(areaHeight) - 54;
@@ -105,17 +106,22 @@ export default {
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px'
     },
+
+    //ウィンドウをクリックされたときの処理
     windowClick(){
-      //div.createMemoBox外がクリックすされたら実行
       window.addEventListener('click',(e)=>{
+
+        //クリックされた要素に含まれるクラスを全て取得
         let classes =[]
         e.path.forEach((el)=>{
           if(el.classList){//classListプロパティが存在すればtrue
             el.classList.forEach((val)=>{
               classes.push(val)
-            });
+            })
           }
-        });
+        })
+
+        //クリックされた要素に「createMemoBox」が含まれていなければ作成
         if(classes.indexOf('createMemoBox')  < 0){
           if(this.isMaking &
             (this.title.length > 0 || this.memo.length > 0)){
@@ -123,12 +129,6 @@ export default {
               this.create()
           }
           this.isMaking = false
-        }
-
-        if(classes.indexOf('labelLi') < 0) {
-          if(this.isLabelForm){
-            this.isLabelForm = false
-          }
         }
       });
     },
@@ -230,8 +230,7 @@ export default {
         this.label = this.selectLabel
         this.placeholderLabel = ''
       }
-      console.log(this.label)
-
+      this.isLabelForm = false
     }
   },
   computed:{

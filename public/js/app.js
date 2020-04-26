@@ -2859,6 +2859,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getSelectLabel();
   },
   methods: {
+    //テキストエリアの高さを自動で変更する
     autoResizeTextarea: function autoResizeTextarea($event) {
       var areaHeight = $event.target.scrollHeight;
       areaHeight = parseInt(areaHeight) - 54;
@@ -2870,11 +2871,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $event.target.style.height = areaHeight + "px";
       $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
     },
+    //ウィンドウをクリックされたときの処理
     windowClick: function windowClick() {
       var _this = this;
 
-      //div.createMemoBox外がクリックすされたら実行
       window.addEventListener('click', function (e) {
+        //クリックされた要素に含まれるクラスを全て取得
         var classes = [];
         e.path.forEach(function (el) {
           if (el.classList) {
@@ -2883,7 +2885,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               classes.push(val);
             });
           }
-        });
+        }); //クリックされた要素に「createMemoBox」が含まれていなければ作成
 
         if (classes.indexOf('createMemoBox') < 0) {
           if (_this.isMaking & (_this.title.length > 0 || _this.memo.length > 0)) {
@@ -2893,12 +2895,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
 
           _this.isMaking = false;
-        }
-
-        if (classes.indexOf('labelLi') < 0) {
-          if (_this.isLabelForm) {
-            _this.isLabelForm = false;
-          }
         }
       });
     },
@@ -2992,7 +2988,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.placeholderLabel = '';
       }
 
-      console.log(this.label);
+      this.isLabelForm = false;
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
