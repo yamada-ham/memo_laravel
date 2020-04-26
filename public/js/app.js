@@ -2826,17 +2826,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       title: '',
+      //作成するメモのタイトル
       memo: '',
-      label: '',
-      labels: [],
-      placeholderLabel: '',
-      selectLabel: '',
-      isLabel: false,
-      optionLabel: '',
-      isMaking: false,
-      memoData: false,
+      //作成するメモの文章
       backgroundColor: '#ffffff',
-      isLabelForm: false
+      //作成するメモの背景色
+      label: '',
+      //作成するメモのラベル
+      labels: [],
+      //ラベルの一覧
+      placeholderLabel: '',
+      //新しくラベルを作成するラベル
+      selectLabel: '',
+      //ラベル一覧から選択したラベル
+      isLabel: false,
+      //ラベルを使用しているかの真偽
+      isMaking: true,
+      //メモが作成中か真偽
+      memoData: [],
+      //メモの一覧
+      isLabelForm: false //ラベル作成フォームの(非)表示のフラグ
+
     };
   },
   props: [],
@@ -2971,7 +2981,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         this.isLabel = true;
         this.label = this.placeholderLabel;
-        this.optionLabel = '';
       } else if (val === 'select') {
         if (this.selectLabel === '') {
           this.isLabel = false;
