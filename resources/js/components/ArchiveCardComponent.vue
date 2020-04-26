@@ -113,13 +113,14 @@ export default {
     }
   },
   methods:{
-    // modalMemoCardBox($event){
-    //   this.isModal = true
-    // },
+
+    //モーダルが閉じる時の処理
     closeModal($event){
       this.isModal = false
       this.update()
     },
+
+    //テキストエリアの高さを設定
     autoResizeTextarea(el){
       var areaHeight = el.scrollHeight
       areaHeight = parseInt(areaHeight) - 54;
@@ -127,6 +128,8 @@ export default {
       el.style.height = areaHeight + "px";
       el.style.height = el.scrollHeight + 2 + 'px'
     },
+
+    //テキストエリアが入力されたときの処理
     inputResizeTextarea($event){
 
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
@@ -134,15 +137,9 @@ export default {
         this.autoResizeTextarea(this.$refs.titleTextarea)
         this.autoResizeTextarea(this.$refs.memoTextarea)
       }
-      // this.newLineTextarea($event.target)
     },
-   //  newLineTextarea(textarea){
-   //    var areaHeight = textarea.scrollHeight
-   //    areaHeight = parseInt(areaHeight) - 54;
-   //    if(areaHeight < 30){ areaHeight = 30; }
-   //   textarea.style.height = areaHeight + "px";
-   //   textarea.style.height = textarea.scrollHeight + 2 + 'px'
-   // },
+
+    //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow($event){
       if($event.target.scrollTop === 0){
         this.isScrollModal = false
@@ -181,13 +178,12 @@ export default {
         console.log(error);
       });
     },
+
+    //アーカイブからメモカードへ追い出す処理
     kickArchive(){
-      this.$emit('kick-arcive-event',this.archiveData.id)
-      // console.log(this.archiveData.isArchive)
+      this.$emit('kick-arcive-event',this.archiveData.id)//Archive.vueへ発火
       this.archiveData.isArchive = false
-      // console.log(this.archiveData.isArchive)
       this.update()
-      console.log('アーカイブ追い出す')
     }
   },
   computed:{

@@ -2033,13 +2033,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
-    // modalMemoCardBox($event){
-    //   this.isModal = true
-    // },
+    //モーダルが閉じる時の処理
     closeModal: function closeModal($event) {
       this.isModal = false;
       this.update();
     },
+    //テキストエリアの高さを設定
     autoResizeTextarea: function autoResizeTextarea(el) {
       var areaHeight = el.scrollHeight;
       areaHeight = parseInt(areaHeight) - 54;
@@ -2051,21 +2050,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       el.style.height = areaHeight + "px";
       el.style.height = el.scrollHeight + 2 + 'px';
     },
+    //テキストエリアが入力されたときの処理
     inputResizeTextarea: function inputResizeTextarea($event) {
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
       if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
         this.autoResizeTextarea(this.$refs.titleTextarea);
         this.autoResizeTextarea(this.$refs.memoTextarea);
-      } // this.newLineTextarea($event.target)
-
+      }
     },
-    //  newLineTextarea(textarea){
-    //    var areaHeight = textarea.scrollHeight
-    //    areaHeight = parseInt(areaHeight) - 54;
-    //    if(areaHeight < 30){ areaHeight = 30; }
-    //   textarea.style.height = areaHeight + "px";
-    //   textarea.style.height = textarea.scrollHeight + 2 + 'px'
-    // },
+    //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
         this.isScrollModal = false;
@@ -2100,13 +2093,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    //アーカイブからメモカードへ追い出す処理
     kickArchive: function kickArchive() {
-      this.$emit('kick-arcive-event', this.archiveData.id); // console.log(this.archiveData.isArchive)
+      this.$emit('kick-arcive-event', this.archiveData.id); //Archive.vueへ発火
 
-      this.archiveData.isArchive = false; // console.log(this.archiveData.isArchive)
-
+      this.archiveData.isArchive = false;
       this.update();
-      console.log('アーカイブ追い出す');
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
@@ -2495,7 +2487,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isModal = false;
       this.update();
     },
-    //テキストエリアの初期状態の高さを設定
+    //テキストエリアの高さを設定
     autoResizeTextarea: function autoResizeTextarea(el) {
       var areaHeight = el.scrollHeight;
       areaHeight = parseInt(areaHeight) - 54;
@@ -2507,6 +2499,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       el.style.height = areaHeight + "px";
       el.style.height = el.scrollHeight + 2 + 'px';
     },
+    //テキストエリアが入力されたときの処理
     inputResizeTextarea: function inputResizeTextarea($event) {
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
       if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
@@ -2514,6 +2507,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.autoResizeTextarea(this.$refs.memoTextarea);
       }
     },
+    //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
         this.isScrollModal = false;
@@ -2606,7 +2600,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
- // import MenuBarComponent from './MenuBarComponent'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2614,69 +2607,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      title: '',
-      memo: '',
-      isMaking: false,
       archiveData: {},
-      backgroundColor: '#ffffff'
+      //アーカイブデータの一覧
+      backgroundColor: '#ffffff' //背景色
+
     };
   },
   props: [],
   created: function created() {
     this.selectArchiveMemos();
-    this.windowClick();
   },
   mounted: function mounted() {},
   methods: {
-    autoResizeTextarea: function autoResizeTextarea($event) {
-      var areaHeight = $event.target.scrollHeight;
-      areaHeight = parseInt(areaHeight) - 54;
-
-      if (areaHeight < 30) {
-        areaHeight = 30;
-      }
-
-      $event.target.style.height = areaHeight + "px";
-      $event.target.style.height = $event.target.scrollHeight + 2 + 'px';
-    },
-    windowClick: function windowClick() {
-      var _this = this;
-
-      //div.createMemoBox外がクリックすされたら実行
-      window.addEventListener('click', function (e) {
-        var classes = [];
-        e.path.forEach(function (el) {
-          if (el.classList) {
-            //classListプロパティが存在すればtrue
-            el.classList.forEach(function (val) {
-              classes.push(val);
-            });
-          }
-        });
-
-        if (classes.indexOf('createMemoBox') < 0) {
-          if (_this.isMaking & (_this.title.length > 0 || _this.memo.length > 0)) {
-            console.log('実行');
-
-            _this.create();
-          }
-
-          _this.isMaking = false;
-        }
-      });
-    },
-    // selectMemos(){
-    //   let that = this
-    //   axios.post('/', {
-    //     mode: 'select',
-    //   })
-    //   .then(function (res) {
-    //     that.archiveData = res['data']
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   })
-    // },
+    //アーカイブのデータ一覧を取得
     selectArchiveMemos: function selectArchiveMemos() {
       var that = this;
       axios.post('/archive', {
@@ -2687,25 +2630,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
-    create: function create($event) {
-      var that = this;
-      axios.post('/', {
-        mode: 'create',
-        title: this.title,
-        memo: this.memo,
-        backgroundColor: this.backgroundColor
-      }).then(function (res) {
-        that.archiveData.unshift(res['data']);
-        that.title = '';
-        that.memo = '';
-        that.backgroundColor = '#ffffff';
-        that.$refs.textareaTitle.style.height = '32px';
-        that.$refs.textareaMemo.style.height = '32px';
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    parentsMethod: function parentsMethod(id) {
+    //メモデータの配列から要素を取り除く。メモの削除、アーカイブ移動のときに使う。
+    memoDataSplice: function memoDataSplice(id) {
       for (var i = 0; i < this.archiveData.length; i++) {
         if (this.archiveData[i]['id'] === id) {
           this.archiveData.splice(i, 1);
@@ -39754,8 +39680,8 @@ var render = function() {
                 _c("archive-card-component", {
                   attrs: { "archive-data": memo },
                   on: {
-                    "del-memo-event": _vm.parentsMethod,
-                    "kick-arcive-event": _vm.parentsMethod
+                    "del-memo-event": _vm.memoDataSplice,
+                    "kick-arcive-event": _vm.memoDataSplice
                   }
                 })
               ],

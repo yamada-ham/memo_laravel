@@ -128,7 +128,7 @@ export default {
       this.update()
     },
 
-    //テキストエリアの初期状態の高さを設定
+    //テキストエリアの高さを設定
     autoResizeTextarea(el){
       let areaHeight = el.scrollHeight
       areaHeight = parseInt(areaHeight) - 54;
@@ -136,6 +136,7 @@ export default {
       el.style.height = areaHeight + "px";
       el.style.height = el.scrollHeight + 2 + 'px'
     },
+    //テキストエリアが入力されたときの処理
     inputResizeTextarea($event){
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
       if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
@@ -143,6 +144,8 @@ export default {
         this.autoResizeTextarea(this.$refs.memoTextarea)
       }
     },
+
+    //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow($event){
       if($event.target.scrollTop === 0){
         this.isScrollModal = false
