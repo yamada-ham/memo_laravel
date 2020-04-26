@@ -1,6 +1,6 @@
 <template>
 <div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false" :style="{'background':backgroundColor}">
-<div :class="['memoCardBox',{modalWindow:isModal}]"   @click="modalMemoCardBox($event)">
+<div :class="['memoCardBox',{modalWindow:isModal}]"   @click="isModal = true">
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
   <div class="inMemoCardFormBox">
@@ -123,9 +123,6 @@ export default {
     }
   },
   methods:{
-    modalMemoCardBox($event){
-      this.isModal = true
-    },
     closeModal($event){
       this.isModal = false
       this.update()
@@ -145,15 +142,7 @@ export default {
         this.autoResizeTextarea(this.$refs.titleTextarea)
         this.autoResizeTextarea(this.$refs.memoTextarea)
       }
-      // this.newLineTextarea($event.target)
     },
-   //  newLineTextarea(textarea){
-   //    var areaHeight = textarea.scrollHeight
-   //    areaHeight = parseInt(areaHeight) - 54;
-   //    if(areaHeight < 30){ areaHeight = 30; }
-   //   textarea.style.height = areaHeight + "px";
-   //   textarea.style.height = textarea.scrollHeight + 2 + 'px'
-   // },
     modalMemoScrollAndTitleShadow($event){
       if($event.target.scrollTop === 0){
         this.isScrollModal = false
@@ -161,6 +150,7 @@ export default {
         this.isScrollModal = true
       }
     },
+    //メモカードの編集
     update($event){
       axios.post('/', {
         mode: 'update',

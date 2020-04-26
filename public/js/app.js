@@ -2008,37 +2008,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       isShow: true,
+      //アーカイブカードの(非)表示
       isModal: false,
+      //モダールの(非)表示
       isShowOperation: false,
-      title: '',
-      memo: '',
-      paddingVal: '',
-      isScrollModal: false,
-      backgroundColor: '#ffffff'
+      //オペレーションの(非)表示
+      backgroundColor: '#ffffff',
+      //背景色
+      isScrollModal: false //モダールがスクロールされているか真偽
+
     };
   },
   props: ['archiveData'],
   created: function created() {},
   mounted: function mounted() {
     this.backgroundColor = this.archiveData.backgroundColor;
-    this.initResizeTextarea(this.$refs.titleTextarea);
-    this.initResizeTextarea(this.$refs.memoTextarea);
+    this.autoResizeTextarea(this.$refs.titleTextarea);
+    this.autoResizeTextarea(this.$refs.memoTextarea);
   },
   updated: function updated() {
     if (this.isModal) {
-      this.initResizeTextarea(this.$refs.modalTitleTextarea);
-      this.initResizeTextarea(this.$refs.modalMemoTextarea);
+      this.autoResizeTextarea(this.$refs.modalTitleTextarea);
+      this.autoResizeTextarea(this.$refs.modalMemoTextarea);
     }
   },
   methods: {
-    modalMemoCardBox: function modalMemoCardBox($event) {
-      this.isModal = true;
-    },
+    // modalMemoCardBox($event){
+    //   this.isModal = true
+    // },
     closeModal: function closeModal($event) {
       this.isModal = false;
       this.update();
     },
-    initResizeTextarea: function initResizeTextarea(el) {
+    autoResizeTextarea: function autoResizeTextarea(el) {
       var areaHeight = el.scrollHeight;
       areaHeight = parseInt(areaHeight) - 54;
 
@@ -2049,26 +2051,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       el.style.height = areaHeight + "px";
       el.style.height = el.scrollHeight + 2 + 'px';
     },
-    autoResizeTextarea: function autoResizeTextarea($event) {
+    inputResizeTextarea: function inputResizeTextarea($event) {
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
       if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
-        this.newLineTextarea(this.$refs.titleTextarea);
-        this.newLineTextarea(this.$refs.memoTextarea);
-      }
+        this.autoResizeTextarea(this.$refs.titleTextarea);
+        this.autoResizeTextarea(this.$refs.memoTextarea);
+      } // this.newLineTextarea($event.target)
 
-      this.newLineTextarea($event.target);
     },
-    newLineTextarea: function newLineTextarea(textarea) {
-      var areaHeight = textarea.scrollHeight;
-      areaHeight = parseInt(areaHeight) - 54;
-
-      if (areaHeight < 30) {
-        areaHeight = 30;
-      }
-
-      textarea.style.height = areaHeight + "px";
-      textarea.style.height = textarea.scrollHeight + 2 + 'px';
-    },
+    //  newLineTextarea(textarea){
+    //    var areaHeight = textarea.scrollHeight
+    //    areaHeight = parseInt(areaHeight) - 54;
+    //    if(areaHeight < 30){ areaHeight = 30; }
+    //   textarea.style.height = areaHeight + "px";
+    //   textarea.style.height = textarea.scrollHeight + 2 + 'px'
+    // },
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
         this.isScrollModal = false;
@@ -2494,9 +2491,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
-    modalMemoCardBox: function modalMemoCardBox($event) {
-      this.isModal = true;
-    },
     closeModal: function closeModal($event) {
       this.isModal = false;
       this.update();
@@ -2518,16 +2512,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
         this.autoResizeTextarea(this.$refs.titleTextarea);
         this.autoResizeTextarea(this.$refs.memoTextarea);
-      } // this.newLineTextarea($event.target)
-
+      }
     },
-    //  newLineTextarea(textarea){
-    //    var areaHeight = textarea.scrollHeight
-    //    areaHeight = parseInt(areaHeight) - 54;
-    //    if(areaHeight < 30){ areaHeight = 30; }
-    //   textarea.style.height = areaHeight + "px";
-    //   textarea.style.height = textarea.scrollHeight + 2 + 'px'
-    // },
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
         this.isScrollModal = false;
@@ -2535,6 +2521,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.isScrollModal = true;
       }
     },
+    //メモカードの編集
     update: function update($event) {
       axios.post('/', {
         mode: 'update',
@@ -38425,7 +38412,7 @@ var render = function() {
               class: ["archiveCardBox", { modalWindow: _vm.isModal }],
               on: {
                 click: function($event) {
-                  return _vm.modalMemoCardBox($event)
+                  _vm.isModal = true
                 }
               }
             },
@@ -38464,7 +38451,7 @@ var render = function() {
                                 )
                               },
                               function($event) {
-                                return _vm.autoResizeTextarea($event)
+                                return _vm.inputResizeTextarea($event)
                               }
                             ]
                           }
@@ -38503,7 +38490,7 @@ var render = function() {
                                 )
                               },
                               function($event) {
-                                return _vm.autoResizeTextarea($event)
+                                return _vm.inputResizeTextarea($event)
                               }
                             ]
                           }
@@ -38686,7 +38673,7 @@ var render = function() {
                                   )
                                 },
                                 function($event) {
-                                  return _vm.autoResizeTextarea($event)
+                                  return _vm.inputResizeTextarea($event)
                                 }
                               ]
                             }
@@ -38737,7 +38724,7 @@ var render = function() {
                                   )
                                 },
                                 function($event) {
-                                  return _vm.autoResizeTextarea($event)
+                                  return _vm.inputResizeTextarea($event)
                                 }
                               ]
                             }
@@ -39229,7 +39216,7 @@ var render = function() {
               class: ["memoCardBox", { modalWindow: _vm.isModal }],
               on: {
                 click: function($event) {
-                  return _vm.modalMemoCardBox($event)
+                  _vm.isModal = true
                 }
               }
             },
