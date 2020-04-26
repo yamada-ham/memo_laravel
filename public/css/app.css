@@ -705,6 +705,7 @@ div.contentBox div.memoCardComponentBox {
   width: 98%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox {
@@ -1129,6 +1130,7 @@ div.contentBox div.archiveCardComponentBox {
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
+  position: relative;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox {
