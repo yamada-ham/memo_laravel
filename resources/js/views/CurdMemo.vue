@@ -37,11 +37,11 @@
           <div v-show="isLabelForm" class="labelFormBox">
             <form>
               <input type="text" v-model="placeholderLabel" placeholder="ラベル名を入力">
-              <button @click.prevent="createLabel(); addLabel('text')">+作成</button>
               <select @change="addLabel('select')" v-model="selectLabel">
                 <option></option>
                 <option v-for='item in labels' :keys="item.id">{{item.label}}</option>
               </select>
+              <div class="addLabelBox" v-show="isAddLabelBox"><button @click.prevent="createLabel(); addLabel('text')">+作成</button></div>
             </form>
           </div>
         </li><!--ラベルを追加-->
@@ -80,12 +80,13 @@ export default {
         backgroundColor:'#ffffff',//作成するメモの背景色
         label:'',//作成するメモのラベル
         labels:[],//ラベルの一覧
-        placeholderLabel:'',//新しくラベルを作成するラベル
+        placeholderLabel:'',//新しく作成するラベル
         selectLabel:'',//ラベル一覧から選択したラベル
         isLabel:false,//ラベルを使用しているかの真偽
         isMaking:true,//メモが作成中か真偽
         memoData:[],//メモの一覧
-        isLabelForm:false//ラベル作成フォームの(非)表示のフラグ
+        isLabelForm:false,//ラベル作成フォームの(非)表示のフラグ
+        isAddLabelBox:false,
     }
   },
   props:[],
@@ -182,6 +183,7 @@ export default {
       }
     },
     createLabel(){
+      placeholder
       let that = this
       axios.post('/', {
         mode: 'createLabel',
@@ -213,6 +215,25 @@ export default {
       })
     },
 
+    searchLabel(){
+
+      if(this.placeholderLabel == ''){
+        this.isAddLabelBox = false
+        return
+      }
+
+      this.labels.some((item)=>{
+        if(item.label === this.placeholderLabel){
+          console.log('一致')
+          this.isAddLabelBox = false
+          return true
+        }else{
+          console.log('ふ一致')
+          this.isAddLabelBox = true
+        }
+      })
+    },
+
     //作成するメモにラベルを追加
     addLabel(val){
       if(val === 'text'){
@@ -235,6 +256,16 @@ export default {
   },
   computed:{
     ...mapState(['colorPallete']),
+  },
+
+  watch: {
+    placeholderLabel: {
+      handler: function(newVal, oldVal) {
+        this.searchLabel()
+      },
+      deep: true,
+      immediate: true
+    },
   }
 }
 </script>

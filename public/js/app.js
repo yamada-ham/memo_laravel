@@ -2755,7 +2755,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       labels: [],
       //ラベルの一覧
       placeholderLabel: '',
-      //新しくラベルを作成するラベル
+      //新しく作成するラベル
       selectLabel: '',
       //ラベル一覧から選択したラベル
       isLabel: false,
@@ -2764,8 +2764,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       //メモが作成中か真偽
       memoData: [],
       //メモの一覧
-      isLabelForm: false //ラベル作成フォームの(非)表示のフラグ
-
+      isLabelForm: false,
+      //ラベル作成フォームの(非)表示のフラグ
+      isAddLabelBox: false
     };
   },
   props: [],
@@ -2860,6 +2861,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     createLabel: function createLabel() {
+      placeholder;
       var that = this;
       axios.post('/', {
         mode: 'createLabel',
@@ -2887,6 +2889,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log(error);
       });
     },
+    searchLabel: function searchLabel() {
+      var _this2 = this;
+
+      if (this.placeholderLabel == '') {
+        this.isAddLabelBox = false;
+        return;
+      }
+
+      this.labels.some(function (item) {
+        if (item.label === _this2.placeholderLabel) {
+          console.log('一致');
+          _this2.isAddLabelBox = false;
+          return true;
+        } else {
+          console.log('ふ一致');
+          _this2.isAddLabelBox = true;
+        }
+      });
+    },
     //作成するメモにラベルを追加
     addLabel: function addLabel(val) {
       if (val === 'text') {
@@ -2910,7 +2931,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isLabelForm = false;
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])),
+  watch: {
+    placeholderLabel: {
+      handler: function handler(newVal, oldVal) {
+        this.searchLabel();
+      },
+      deep: true,
+      immediate: true
+    }
+  }
 });
 
 /***/ }),
@@ -39948,20 +39978,6 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                _vm.createLabel()
-                                _vm.addLabel("text")
-                              }
-                            }
-                          },
-                          [_vm._v("+作成")]
-                        ),
-                        _vm._v(" "),
-                        _c(
                           "select",
                           {
                             directives: [
@@ -40006,6 +40022,36 @@ var render = function() {
                             })
                           ],
                           2
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.isAddLabelBox,
+                                expression: "isAddLabelBox"
+                              }
+                            ],
+                            staticClass: "addLabelBox"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    _vm.createLabel()
+                                    _vm.addLabel("text")
+                                  }
+                                }
+                              },
+                              [_vm._v("+作成")]
+                            )
+                          ]
                         )
                       ])
                     ]
