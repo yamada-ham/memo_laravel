@@ -2001,6 +2001,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2448,6 +2449,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2666,6 +2668,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -38523,6 +38526,15 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
+                      _c("li", [
+                        _c("button", [
+                          _c("i", { staticClass: "fas fa-file-download" })
+                        ]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("ダウンロード")])
+                        ])
+                      ]),
+                      _vm._v(" "),
                       _c("li", { staticClass: "colorPalleteLi" }, [
                         _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
@@ -39327,6 +39339,12 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
+                      _c("li", [
+                        _c("button", [
+                          _c("i", { staticClass: "fas fa-file-download" })
+                        ])
+                      ]),
+                      _vm._v(" "),
                       _c("li", { staticClass: "colorPalleteLi" }, [
                         _c("button", [
                           _c("i", { staticClass: "fas fa-palette" })
@@ -39902,10 +39920,12 @@ var render = function() {
               _c("ul", [
                 _vm._m(0),
                 _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
                 _c("li", { staticClass: "colorPalleteLi" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
                   _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -39925,7 +39945,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("li", { staticClass: "labelLi" }, [
                   _c(
@@ -39940,7 +39960,7 @@ var render = function() {
                     },
                     [_c("i", { staticClass: "fas fa-tag" })]
                   ),
-                  _vm._m(4),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -40062,13 +40082,13 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
                 _vm._m(6),
                 _vm._v(" "),
                 _vm._m(7),
                 _vm._v(" "),
-                _vm._m(8)
+                _vm._m(8),
+                _vm._v(" "),
+                _vm._m(9)
               ])
             ])
           ])
@@ -40119,6 +40139,17 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-archive" })
       ]),
       _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("アーカイブ")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [_c("i", { staticClass: "fas fa-file-download" })]),
+      _c("div", { staticClass: "opTooltip" }, [
+        _c("p", [_vm._v("ダウンロード")])
+      ])
     ])
   },
   function() {

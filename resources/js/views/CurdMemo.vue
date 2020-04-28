@@ -26,6 +26,7 @@
     <div class="inOperationBox">
       <ul>
         <li><button type="submit"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ</p></div></li><!--アーカイブ-->
+        <li><button><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
         <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button>
           <div class="opTooltip"><p>背景色</p></div>
           <div class="tooltip">
