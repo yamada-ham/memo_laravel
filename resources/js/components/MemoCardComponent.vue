@@ -1,23 +1,23 @@
 <template>
 <div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false" :style="{'background':backgroundColor}">
 <div :class="['memoCardBox',{modalWindow:isModal}]"   @click="isModal = true;">
-<div class="inMemoCardBox">
-  <form class="memoCardFormBox">
-  <div class="inMemoCardFormBox">
-    <div class="textareaTitleBox">
-    <div class="inTextareaTitleBox">
-      <textarea ref="titleTextarea" @input="inputResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" disabled></textarea>
+  <div class="inMemoCardBox">
+    <form class="memoCardFormBox">
+    <div class="inMemoCardFormBox">
+      <div class="textareaTitleBox">
+      <div class="inTextareaTitleBox">
+        <textarea ref="titleTextarea" @input="inputResizeTextarea($event)" v-model="memoData.title" rows="1" placeholder="タイトル" disabled></textarea>
+      </div>
+      </div>
+      <div class="textareaMemoBox">
+      <div class="inTextareaMemoBox">
+        <textarea ref="memoTextarea" @input="inputResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
+      </div>
+      </div>
     </div>
-    </div>
-    <div class="textareaMemoBox">
-    <div class="inTextareaMemoBox">
-      <textarea ref="memoTextarea" @input="inputResizeTextarea($event)" v-model="memoData.memo" rows="1" placeholder="メモを入力..." disabled></textarea>
-    </div>
-    </div>
+    </form>
+    <input type="hidden" v-model="memoData.id"/>
   </div>
-  </form>
-  <input type="hidden" v-model="memoData.id"/>
-</div>
 </div>
 <!-- <div class="labelBox">
   <div class="inLabelBox">
@@ -30,8 +30,9 @@
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
+      <li><button class="favoriteBtn"><i class="fas fa-star favorite"></i></button><div class="opTooltip"><p>お気に入り</p></div></li>
       <li><button @click="sendArchive()"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ</p></div></li><!--アーカイブ-->
-      <li><button><i class="fas fa-file-download"></i></button></li><!--テキストファイルをダウンロード-->
+      <li><button><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="opTooltip"><p>背景色</p></div><div class="tooltip" >
         <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
       </div></li><!--色変更-->
@@ -118,6 +119,8 @@ export default {
     this.autoResizeTextarea(this.$refs.memoTextarea)
   },
   updated(){
+
+    //モダールが表示されるときにモダールのサイズを設定
     if(this.isModal){
       this.autoResizeTextarea(this.$refs.modalTitleTextarea)
       this.autoResizeTextarea(this.$refs.modalMemoTextarea)

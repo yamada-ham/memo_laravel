@@ -25,6 +25,7 @@
   <div class="operationBox">
     <div class="inOperationBox">
       <ul>
+        <li><button class="favoriteBtn"><i class="fas fa-star favorite"></i></button><div class="opTooltip"><p>お気に入り</p></div></li>
         <li><button type="submit"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ</p></div></li><!--アーカイブ-->
         <li><button><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
         <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button>

@@ -19,6 +19,7 @@ div.memoCardWrap{
         width:90%;
         margin-left: auto;
         margin-right: auto;
+        padding-top:8px;
         div.inMemoCardFormBox{
           div.textareaTitleBox{
             div.inTextareaTitleBox{
@@ -90,6 +91,15 @@ div.memoCardWrap{
             i{
               color:#787878;
               font-size:0.9rem;
+            }
+            &.favoriteBtn{
+              &:hover{
+                background: none;
+              }
+              i{
+                color:#fff;
+                -webkit-text-stroke: 1px #787878;
+              }
             }
           }
           &.colorPalleteLi{
