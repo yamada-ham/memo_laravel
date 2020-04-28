@@ -131,6 +131,10 @@ export default {
           }
           this.isMaking = false
         }
+
+        if(classes.indexOf('labelLi')  < 0){
+          this.isLabelForm = false
+        }
       });
     },
 
@@ -216,7 +220,6 @@ export default {
     },
 
     searchLabel(){
-
       if(this.placeholderLabel == ''){
         this.isAddLabelBox = false
         return

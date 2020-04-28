@@ -2816,6 +2816,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           _this.isMaking = false;
         }
+
+        if (classes.indexOf('labelLi') < 0) {
+          _this.isLabelForm = false;
+        }
       });
     },
     //すべてのメモを取得
