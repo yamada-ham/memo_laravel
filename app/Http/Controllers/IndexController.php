@@ -30,15 +30,19 @@ class IndexController extends Controller
           'label'=>$request->label,
           'isArchive' => false
         ];
-        DB::table('memo')->insert($param);
-        // \Debugbar::info($param);
+        DB::beginTransaction();
+        try{
+          DB::table('memo')->insert($param);
+          $lastInsertId = DB::table('memo')->max('id');
+          $lastInsertMemo = DB::table('memo')->where('id',$lastInsertId)->first();
+          header('content-type: application/json; charset=utf-8');
+          echo json_encode($lastInsertMemo);
+          DB::commit();
+        }catch(\Exception $e){
+          DB::rollback();
+          \Debugbar::error($e);
+        }
 
-        $lastInsertId = DB::table('memo')->max('id');
-        $lastInsertMemo = DB::table('memo')->where('id',$lastInsertId)->first();
-        // \Debugbar::info($lastInsertMemo);
-
-        header('content-type: application/json; charset=utf-8');
-        echo json_encode($lastInsertMemo);
         break;
       case 'update':
         $param = [
@@ -48,7 +52,6 @@ class IndexController extends Controller
           'isArchive'=>$request->isArchive,
           'isFavorite'=>$request->isFavorite
         ];
-        \Debugbar::info($param);
         DB::table('memo')->where('id',$request->id)->update($param);
         header('content-type: application/json; charset=utf-8');
         echo json_encode('Successfully updated!!');
