@@ -1,6 +1,6 @@
 <template>
 <div class="memoCardWrap" v-if="isShow" @mouseenter="isShowOperation=true" @mouseleave="isShowOperation=false" :style="{'background':backgroundColor}">
-<div :class="['memoCardBox',{modalWindow:isModal}]"   @click="isModal = true">
+<div :class="['memoCardBox',{modalWindow:isModal}]"   @click="isModal = true;">
 <div class="inMemoCardBox">
   <form class="memoCardFormBox">
   <div class="inMemoCardFormBox">
@@ -140,10 +140,10 @@ export default {
     //テキストエリアが入力されたときの処理
     inputResizeTextarea($event){
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-      if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
         this.autoResizeTextarea(this.$refs.titleTextarea)
         this.autoResizeTextarea(this.$refs.memoTextarea)
-      }
+      // }
     },
 
     //モダールがスクロールされた時にタイトルに影をつくる
@@ -156,6 +156,10 @@ export default {
     },
     //メモカードの編集
     update($event){
+      //編集するときにメモカードのテキストエリアのサイズを変更
+      this.autoResizeTextarea(this.$refs.titleTextarea)
+      this.autoResizeTextarea(this.$refs.memoTextarea)
+
       axios.post('/', {
         mode: 'update',
         id:this.memoData.id,

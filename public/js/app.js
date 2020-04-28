@@ -2507,10 +2507,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //テキストエリアが入力されたときの処理
     inputResizeTextarea: function inputResizeTextarea($event) {
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-      if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
-        this.autoResizeTextarea(this.$refs.titleTextarea);
-        this.autoResizeTextarea(this.$refs.memoTextarea);
-      }
+      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+      this.autoResizeTextarea(this.$refs.titleTextarea);
+      this.autoResizeTextarea(this.$refs.memoTextarea); // }
     },
     //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
@@ -2522,6 +2521,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     //メモカードの編集
     update: function update($event) {
+      //編集するときにメモカードのテキストエリアのサイズを変更
+      this.autoResizeTextarea(this.$refs.titleTextarea);
+      this.autoResizeTextarea(this.$refs.memoTextarea);
       axios.post('/', {
         mode: 'update',
         id: this.memoData.id,
