@@ -2532,7 +2532,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: this.memoData.title,
         memo: this.memoData.memo,
         backgroundColor: this.backgroundColor,
-        isArchive: this.memoData.isArchive
+        isArchive: this.memoData.isArchive,
+        isFavorite: this.memoData.isFavorite
       }).then(function (res) {
         console.log(res['data']);
       })["catch"](function (error) {
@@ -39328,9 +39329,23 @@ var render = function() {
                     },
                     [
                       _c("li", [
-                        _c("button", { staticClass: "favoriteBtn" }, [
-                          _c("i", { staticClass: "fas fa-star favorite" })
-                        ]),
+                        _c(
+                          "button",
+                          {
+                            class: [
+                              "favoriteBtn",
+                              { add: _vm.memoData.isFavorite }
+                            ],
+                            on: {
+                              click: function($event) {
+                                _vm.memoData.isFavorite = !_vm.memoData
+                                  .isFavorite
+                                _vm.update()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-star favorite" })]
+                        ),
                         _c("div", { staticClass: "opTooltip" }, [
                           _c("p", [_vm._v("お気に入り")])
                         ])

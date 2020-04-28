@@ -96,6 +96,11 @@ div.memoCardWrap{
               &:hover{
                 background: none;
               }
+              &.add{
+                i{
+                  color:#f8ff73;
+                }
+              }
               i{
                 color:#fff;
                 -webkit-text-stroke: 1px #787878;

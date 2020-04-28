@@ -7,8 +7,9 @@ create table memo (
   title varchar(255),
   memo varchar(1000),
   backgroundColor varchar(255),
-  isArchive boolean NOT NULL,
-  label varchar(255)
+  isArchive boolean NOT NULL default "0",
+  label varchar(255),
+  isFavorite boolean NOT NULL default "0"
 );
 
 
@@ -17,6 +18,9 @@ ADD isArchive boolean NOT NULL;
 
 ALTER TABLE memo
 ADD label varchar(255);
+
+ALTER TABLE memo
+ADD favorite boolean NOT NULL default "0";
 
 create table label (
   id int not null auto_increment primary key,

@@ -855,6 +855,10 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   background: none;
 }
 
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn.add i {
+  color: #f8ff73;
+}
+
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn i {
   color: #fff;
   -webkit-text-stroke: 1px #787878;
