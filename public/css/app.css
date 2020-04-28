@@ -710,11 +710,6 @@ div.contentBox div.memoCardComponentBox {
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: flex-start;
 }
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox:after {
@@ -725,23 +720,27 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox:after {
 
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
   width: 100%;
+  float: left;
 }
 
 @media only screen and (min-width: 575px) {
   div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 49%;
+    margin-right: 1%;
   }
 }
 
 @media only screen and (min-width: 767px) {
   div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 32%;
+    margin-right: 1%;
   }
 }
 
 @media only screen and (min-width: 991px) {
   div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi {
     width: 24%;
+    margin-right: 1%;
   }
 }
 
@@ -1135,11 +1134,6 @@ div.contentBox div.archiveCardComponentBox {
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: flex-start;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox:after {
@@ -1150,23 +1144,27 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox:after {
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi {
   width: 100%;
+  float: left;
 }
 
 @media only screen and (min-width: 575px) {
   div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi {
     width: 49%;
+    margin-right: 1%;
   }
 }
 
 @media only screen and (min-width: 767px) {
   div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi {
     width: 32%;
+    margin-right: 1%;
   }
 }
 
 @media only screen and (min-width: 991px) {
   div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi {
     width: 24%;
+    margin-right: 1%;
   }
 }
 

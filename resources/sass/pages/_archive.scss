@@ -68,24 +68,28 @@ div.contentBox{
     position:relative;
     ul.inArchiveCardComponentBox{
       width:100%;
-      display:flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items:center;
-      align-content: flex-start;
+      // display:flex;
+      // flex-wrap: wrap;
+      // justify-content: space-between;
+      // align-items:center;
+      // align-content: flex-start;
       &:after{
         @include clear()
       }
       li.archiveCardLi{
         width:100%;
+        float:left;
         @include media(s){
           width:49%;
+          margin-right:1%;
         }
         @include media(m){
           width:32%;
+          margin-right:1%;
         }
         @include media(l){
           width:24%;
+          margin-right:1%;
         }
         @import './parts/archiveCardComponent';
       }
