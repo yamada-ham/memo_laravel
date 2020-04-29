@@ -851,19 +851,6 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   font-size: 0.9rem;
 }
 
-div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn:hover {
-  background: none;
-}
-
-div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn.add i {
-  color: #f8ff73;
-}
-
-div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn i {
-  color: #fff;
-  -webkit-text-stroke: 1px #787878;
-}
-
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {
   display: none;
 }
@@ -1273,19 +1260,6 @@ div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archi
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button i {
   color: #787878;
   font-size: 0.9rem;
-}
-
-div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn:hover {
-  background: none;
-}
-
-div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn.add i {
-  color: #f8ff73;
-}
-
-div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li button.favoriteBtn i {
-  color: #fff;
-  -webkit-text-stroke: 1px #787878;
 }
 
 div.contentBox div.archiveCardComponentBox ul.inArchiveCardComponentBox li.archiveCardLi div.archiveCardWrap div.operationBox div.inOperationBox ul li.colorPalleteLi div.tooltip {

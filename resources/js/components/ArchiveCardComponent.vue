@@ -23,7 +23,6 @@
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
-      <li><button :class="['favoriteBtn',{add:archiveData.isFavorite}]" @click="archiveData.isFavorite = !archiveData.isFavorite; update()" ><i class="fas fa-star favorite"></i></button><div class="opTooltip"><p>お気に入り</p></div></li><!--お気に入り-->
       <li><button @click="kickArchive()"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ解除</p></div></li><!--アーカイブ戻す-->
       <li><button><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="opTooltip"><p>背景色</p></div><div class="tooltip" >

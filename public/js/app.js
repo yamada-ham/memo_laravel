@@ -2002,7 +2002,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2418,7 +2417,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2604,7 +2602,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -38450,29 +38447,6 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            class: [
-                              "favoriteBtn",
-                              { add: _vm.archiveData.isFavorite }
-                            ],
-                            on: {
-                              click: function($event) {
-                                _vm.archiveData.isFavorite = !_vm.archiveData
-                                  .isFavorite
-                                _vm.update()
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-star favorite" })]
-                        ),
-                        _c("div", { staticClass: "opTooltip" }, [
-                          _c("p", [_vm._v("お気に入り")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
                             on: {
                               click: function($event) {
                                 return _vm.kickArchive()
@@ -39293,29 +39267,6 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            class: [
-                              "favoriteBtn",
-                              { add: _vm.memoData.isFavorite }
-                            ],
-                            on: {
-                              click: function($event) {
-                                _vm.memoData.isFavorite = !_vm.memoData
-                                  .isFavorite
-                                _vm.update()
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fas fa-star favorite" })]
-                        ),
-                        _c("div", { staticClass: "opTooltip" }, [
-                          _c("p", [_vm._v("お気に入り")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
                             on: {
                               click: function($event) {
                                 return _vm.sendArchive()
@@ -39915,12 +39866,10 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
                 _c("li", { staticClass: "colorPalleteLi" }, [
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
-                  _vm._m(4),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -39940,7 +39889,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("li", { staticClass: "labelLi" }, [
                   _c(
@@ -39955,7 +39904,7 @@ var render = function() {
                     },
                     [_c("i", { staticClass: "fas fa-tag" })]
                   ),
-                  _vm._m(6),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -40077,13 +40026,13 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
                 _vm._m(7),
                 _vm._v(" "),
                 _vm._m(8),
                 _vm._v(" "),
-                _vm._m(9),
-                _vm._v(" "),
-                _vm._m(10)
+                _vm._m(9)
               ])
             ])
           ])
@@ -40125,17 +40074,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("button", { staticClass: "favoriteBtn" }, [
-        _c("i", { staticClass: "fas fa-star favorite" })
-      ]),
-      _c("div", { staticClass: "opTooltip" }, [_c("p", [_vm._v("お気に入り")])])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

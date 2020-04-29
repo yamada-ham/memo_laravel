@@ -69,20 +69,6 @@ div.archiveCardWrap{
               color:#787878;
               font-size:0.9rem;
             }
-            &.favoriteBtn{
-              &:hover{
-                background: none;
-              }
-              &.add{
-                i{
-                  color:#f8ff73;
-                }
-              }
-              i{
-                color:#fff;
-                -webkit-text-stroke: 1px #787878;
-              }
-            }
           }
           &.colorPalleteLi{
             @include colorPalleteLi();
