@@ -4,6 +4,16 @@ export default {
 
     }
   },
+  mounted(){
+    this.autoResizeTextarea(this.$refs.titleTextarea)
+    this.autoResizeTextarea(this.$refs.memoTextarea)
+  },
+  updated(){
+    if(this.isModal){
+      this.autoResizeTextarea(this.$refs.modalTitleTextarea)
+      this.autoResizeTextarea(this.$refs.modalMemoTextarea)
+    }
+  },
   methods:{
     //テキストエリアの高さを設定
     autoResizeTextarea(el){
@@ -22,6 +32,19 @@ export default {
         this.autoResizeTextarea(this.$refs.titleTextarea)
         this.autoResizeTextarea(this.$refs.memoTextarea)
       // }
+    },
+    //モダールがスクロールされた時にタイトルに影をつくる
+    modalMemoScrollAndTitleShadow($event){
+      if($event.target.scrollTop === 0){
+        this.isScrollModal = false
+      }else{
+        this.isScrollModal = true
+      }
+    },
+    //モーダルが閉じる時の処理
+    closeModal($event){
+      this.isModal = false
+      this.update()
     },
   }
 }

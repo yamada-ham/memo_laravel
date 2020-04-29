@@ -117,48 +117,11 @@ export default {
   created(){},
   mounted(){
     this.backgroundColor = this.memoData.backgroundColor
-    this.autoResizeTextarea(this.$refs.titleTextarea)
-    this.autoResizeTextarea(this.$refs.memoTextarea)
   },
   updated(){
 
-    //モダールが表示されるときにモダールのサイズを設定
-    if(this.isModal){
-      this.autoResizeTextarea(this.$refs.modalTitleTextarea)
-      this.autoResizeTextarea(this.$refs.modalMemoTextarea)
-    }
   },
   methods:{
-    closeModal($event){
-      this.isModal = false
-      this.update()
-    },
-
-    // //テキストエリアの高さを設定
-    // autoResizeTextarea(el){
-    //   let areaHeight = el.scrollHeight
-    //   areaHeight = parseInt(areaHeight) - 54;
-    //   if(areaHeight < 30){ areaHeight = 30; }
-    //   el.style.height = areaHeight + "px";
-    //   el.style.height = el.scrollHeight + 2 + 'px'
-    // },
-    // //テキストエリアが入力されたときの処理
-    // inputResizeTextarea($event){
-    //   //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-    //   // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
-    //     this.autoResizeTextarea(this.$refs.titleTextarea)
-    //     this.autoResizeTextarea(this.$refs.memoTextarea)
-    //   // }
-    // },
-
-    //モダールがスクロールされた時にタイトルに影をつくる
-    modalMemoScrollAndTitleShadow($event){
-      if($event.target.scrollTop === 0){
-        this.isScrollModal = false
-      }else{
-        this.isScrollModal = true
-      }
-    },
     //メモカードの編集
     update($event){
       //編集するときにメモカードのテキストエリアのサイズを変更
