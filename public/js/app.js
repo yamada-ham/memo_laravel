@@ -1910,6 +1910,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _store_store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store.js */ "./resources/js/store/store.js");
+/* harmony import */ var _mixins_CardMixin_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/CardMixin.js */ "./resources/js/mixins/CardMixin.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2002,7 +2003,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2023,6 +2024,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   props: ['archiveData'],
   //Archive.vueから送られるアーカイブのデータ
+  mixins: [_mixins_CardMixin_js__WEBPACK_IMPORTED_MODULE_2__["default"]],
   created: function created() {},
   mounted: function mounted() {
     this.backgroundColor = this.archiveData.backgroundColor;
@@ -2041,25 +2043,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isModal = false;
       this.update();
     },
-    //テキストエリアの高さを設定
-    autoResizeTextarea: function autoResizeTextarea(el) {
-      var areaHeight = el.scrollHeight;
-      areaHeight = parseInt(areaHeight) - 54;
-
-      if (areaHeight < 30) {
-        areaHeight = 30;
-      }
-
-      el.style.height = areaHeight + "px";
-      el.style.height = el.scrollHeight + 2 + 'px';
-    },
-    //テキストエリアが入力されたときの処理
-    inputResizeTextarea: function inputResizeTextarea($event) {
-      //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
-      this.autoResizeTextarea(this.$refs.titleTextarea);
-      this.autoResizeTextarea(this.$refs.memoTextarea); // }
-    },
+    // //テキストエリアの高さを設定
+    // autoResizeTextarea(el){
+    //   var areaHeight = el.scrollHeight
+    //   areaHeight = parseInt(areaHeight) - 54;
+    //   if(areaHeight < 30){ areaHeight = 30; }
+    //   el.style.height = areaHeight + "px";
+    //   el.style.height = el.scrollHeight + 2 + 'px'
+    // },
+    //
+    // //テキストエリアが入力されたときの処理
+    // inputResizeTextarea($event){
+    //
+    //   //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
+    //   // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+    //     this.autoResizeTextarea(this.$refs.titleTextarea)
+    //     this.autoResizeTextarea(this.$refs.memoTextarea)
+    //   // }
+    // },
     //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
@@ -2355,6 +2356,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _store_store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store.js */ "./resources/js/store/store.js");
+/* harmony import */ var _mixins_CardMixin_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/CardMixin.js */ "./resources/js/mixins/CardMixin.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2457,6 +2459,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   data: function data() {
@@ -2480,6 +2483,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   props: ['memoData' //「CurdMemo」から送られてきたメモカードのデータ
   ],
+  mixins: [_mixins_CardMixin_js__WEBPACK_IMPORTED_MODULE_2__["default"]],
   created: function created() {},
   mounted: function mounted() {
     this.backgroundColor = this.memoData.backgroundColor;
@@ -2498,25 +2502,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isModal = false;
       this.update();
     },
-    //テキストエリアの高さを設定
-    autoResizeTextarea: function autoResizeTextarea(el) {
-      var areaHeight = el.scrollHeight;
-      areaHeight = parseInt(areaHeight) - 54;
-
-      if (areaHeight < 30) {
-        areaHeight = 30;
-      }
-
-      el.style.height = areaHeight + "px";
-      el.style.height = el.scrollHeight + 2 + 'px';
-    },
-    //テキストエリアが入力されたときの処理
-    inputResizeTextarea: function inputResizeTextarea($event) {
-      //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
-      this.autoResizeTextarea(this.$refs.titleTextarea);
-      this.autoResizeTextarea(this.$refs.memoTextarea); // }
-    },
+    // //テキストエリアの高さを設定
+    // autoResizeTextarea(el){
+    //   let areaHeight = el.scrollHeight
+    //   areaHeight = parseInt(areaHeight) - 54;
+    //   if(areaHeight < 30){ areaHeight = 30; }
+    //   el.style.height = areaHeight + "px";
+    //   el.style.height = el.scrollHeight + 2 + 'px'
+    // },
+    // //テキストエリアが入力されたときの処理
+    // inputResizeTextarea($event){
+    //   //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
+    //   // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+    //     this.autoResizeTextarea(this.$refs.titleTextarea)
+    //     this.autoResizeTextarea(this.$refs.memoTextarea)
+    //   // }
+    // },
     //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
       if ($event.target.scrollTop === 0) {
@@ -56855,6 +56856,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MemoCardComponent_vue_vue_type_template_id_4e994f50___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/mixins/CardMixin.js":
+/*!******************************************!*\
+  !*** ./resources/js/mixins/CardMixin.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  methods: {
+    //テキストエリアの高さを設定
+    autoResizeTextarea: function autoResizeTextarea(el) {
+      var areaHeight = el.scrollHeight;
+      areaHeight = parseInt(areaHeight) - 54;
+
+      if (areaHeight < 30) {
+        areaHeight = 30;
+      }
+
+      el.style.height = areaHeight + "px";
+      el.style.height = el.scrollHeight + 2 + 'px';
+    },
+    //テキストエリアが入力されたときの処理
+    inputResizeTextarea: function inputResizeTextarea($event) {
+      //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
+      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+      this.autoResizeTextarea(this.$refs.titleTextarea);
+      this.autoResizeTextarea(this.$refs.memoTextarea); // }
+    }
+  }
+});
 
 /***/ }),
 
