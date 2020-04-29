@@ -23,13 +23,14 @@
   <div class="inOperationBox">
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
+      <li><button :class="['favoriteBtn',{add:archiveData.isFavorite}]" @click="archiveData.isFavorite = !archiveData.isFavorite; update()" ><i class="fas fa-star favorite"></i></button><div class="opTooltip"><p>お気に入り</p></div></li><!--お気に入り-->
       <li><button @click="kickArchive()"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ解除</p></div></li><!--アーカイブ戻す-->
       <li><button><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="opTooltip"><p>背景色</p></div><div class="tooltip" >
         <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
       </div></li><!--色変更-->
+      <li><button><i class="fas fa-tag"></i></button><div class="opTooltip"><p>ラベルを追加</p></div></li><!--ラベルを追加-->
       <!-- <li><button @click.prevent="update($event)" type="submit"><i class="far fa-edit"></i></button></li> --><!--更新-->
-      <!--<li><button><i class="fas fa-tag"></i></button></li>--><!--タグを追加-->
       <li><button @click.prevent="del($event)" type="submit"><i class="fas fa-trash-alt"></i></button><div class="opTooltip"><p>削除</p></div></li><!--削除-->
       <!-- <li><button><i class="fas fa-user-lock"></i></button></li> --><!--プライベート-->
       <li><button><i class="fas fa-ellipsis-v"></i></button><div class="opTooltip"><p>その他</p></div></li><!--その他-->
@@ -134,10 +135,10 @@ export default {
     inputResizeTextarea($event){
 
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-      if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
         this.autoResizeTextarea(this.$refs.titleTextarea)
         this.autoResizeTextarea(this.$refs.memoTextarea)
-      }
+      // }
     },
 
     //モダールがスクロールされた時にタイトルに影をつくる
@@ -151,13 +152,18 @@ export default {
 
     //アーカイブカードの編集
     update($event){
+      //編集するときにメモカードのテキストエリアのサイズを変更
+      this.autoResizeTextarea(this.$refs.titleTextarea)
+      this.autoResizeTextarea(this.$refs.memoTextarea)
+
       axios.post('/', {
         mode: 'update',
         id:this.archiveData.id,
         title: this.archiveData.title,
         memo: this.archiveData.memo,
         backgroundColor: this.backgroundColor,
-        isArchive :this.archiveData.isArchive
+        isArchive :this.archiveData.isArchive,
+        isFavorite:this.archiveData.isFavorite
       })
       .then(function (res) {
         console.log(res['data']);

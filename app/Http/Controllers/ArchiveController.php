@@ -43,7 +43,8 @@ class ArchiveController extends Controller
           'title' => $request->title,
           'memo' => $request->memo,
           'backgroundColor'=>$request->backgroundColor,
-          'isArchive'=>$request->isArchive
+          'isArchive'=>$request->isArchive,
+          'isFavorite'=>$request->isFavorite
         ];
         \Debugbar::info($param);
         DB::table('memo')->where('id',$request->id)->update($param);

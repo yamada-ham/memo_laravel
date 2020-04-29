@@ -2002,6 +2002,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2055,10 +2056,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //テキストエリアが入力されたときの処理
     inputResizeTextarea: function inputResizeTextarea($event) {
       //モーダルのテキストエリアが入力されたら、対応するメモカード内のテキストエリア改行する。
-      if ($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea') {
-        this.autoResizeTextarea(this.$refs.titleTextarea);
-        this.autoResizeTextarea(this.$refs.memoTextarea);
-      }
+      // if($event.target.className === 'modalTitleTextarea' || $event.target.className === 'modalMemoTextarea'){
+      this.autoResizeTextarea(this.$refs.titleTextarea);
+      this.autoResizeTextarea(this.$refs.memoTextarea); // }
     },
     //モダールがスクロールされた時にタイトルに影をつくる
     modalMemoScrollAndTitleShadow: function modalMemoScrollAndTitleShadow($event) {
@@ -2070,13 +2070,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     //アーカイブカードの編集
     update: function update($event) {
+      //編集するときにメモカードのテキストエリアのサイズを変更
+      this.autoResizeTextarea(this.$refs.titleTextarea);
+      this.autoResizeTextarea(this.$refs.memoTextarea);
       axios.post('/', {
         mode: 'update',
         id: this.archiveData.id,
         title: this.archiveData.title,
         memo: this.archiveData.memo,
         backgroundColor: this.backgroundColor,
-        isArchive: this.archiveData.isArchive
+        isArchive: this.archiveData.isArchive,
+        isFavorite: this.archiveData.isFavorite
       }).then(function (res) {
         console.log(res['data']);
       })["catch"](function (error) {
@@ -38519,6 +38523,29 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            class: [
+                              "favoriteBtn",
+                              { add: _vm.archiveData.isFavorite }
+                            ],
+                            on: {
+                              click: function($event) {
+                                _vm.archiveData.isFavorite = !_vm.archiveData
+                                  .isFavorite
+                                _vm.update()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-star favorite" })]
+                        ),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("お気に入り")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
                             on: {
                               click: function($event) {
                                 return _vm.kickArchive()
@@ -38565,6 +38592,13 @@ var render = function() {
                           }),
                           0
                         )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _c("button", [_c("i", { staticClass: "fas fa-tag" })]),
+                        _c("div", { staticClass: "opTooltip" }, [
+                          _c("p", [_vm._v("ラベルを追加")])
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("li", [
