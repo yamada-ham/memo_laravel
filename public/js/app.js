@@ -2488,6 +2488,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit('send-archive-event', this.memoData.id);
       this.memoData.isArchive = !this.memoData.isArchive;
       this.update();
+    },
+    downloadMemo: function downloadMemo() {
+      console.log('メモをダウンロード開始');
+      var that = this;
+      axios.post('/', {
+        mode: 'download',
+        title: this.memoData.title,
+        memo: this.memoData.memo
+      }).then(function (res) {
+        console.log(res);
+        console.log('メモのダウンロード成功');
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
@@ -39281,9 +39295,17 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("li", [
-                        _c("button", [
-                          _c("i", { staticClass: "fas fa-file-download" })
-                        ]),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.downloadMemo()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-file-download" })]
+                        ),
                         _c("div", { staticClass: "opTooltip" }, [
                           _c("p", [_vm._v("ダウンロード")])
                         ])

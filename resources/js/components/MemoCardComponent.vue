@@ -31,7 +31,7 @@
     <transition name="operationBox">
     <ul v-show="isShowOperation" >
       <li><button @click="sendArchive()"><i class="fas fa-archive"></i></button><div class="opTooltip"><p>アーカイブ</p></div></li><!--アーカイブ-->
-      <li><button><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
+      <li><button @click="downloadMemo()"><i class="fas fa-file-download"></i></button><div class="opTooltip"><p>ダウンロード</p></div></li><!--テキストファイルをダウンロード-->
       <li class="colorPalleteLi"><button ><i class="fas fa-palette"></i></button><div class="opTooltip"><p>背景色</p></div><div class="tooltip" >
         <span v-for="color in colorPallete" :key="color.id" :style="{'background':color.hex}" @click="backgroundColor = color.hex; update()"></span>
       </div></li><!--色変更-->
@@ -166,6 +166,23 @@ export default {
       this.$emit('send-archive-event',this.memoData.id)
       this.memoData.isArchive = !this.memoData.isArchive
       this.update()
+    },
+
+    downloadMemo(){
+      console.log('メモをダウンロード開始')
+      let that = this
+      axios.post('/', {
+        mode: 'download',
+        title:this.memoData.title,
+        memo:this.memoData.memo,
+      })
+      .then(function (res) {
+        console.log(res)
+        console.log('メモのダウンロード成功');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   },
   computed:{

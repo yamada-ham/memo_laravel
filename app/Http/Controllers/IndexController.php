@@ -71,6 +71,9 @@ class IndexController extends Controller
         header('content-type: application/json; charset=utf-8');
         echo json_encode($selectAll);
         break;
+      case 'download':
+        echo json_encode('ダウンロード機能作成中');
+        break;
     }
 
     // return view('index',['param','ぱらめーただよ']);
