@@ -2851,16 +2851,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      this.labels.some(function (item) {
-        if (item.label === _this2.placeholderLabel) {
-          console.log('一致');
-          _this2.isAddLabelBox = false;
-          return true;
-        } else {
-          console.log('ふ一致');
-          _this2.isAddLabelBox = true;
-        }
-      });
+      if (this.labels.length > 0) {
+        this.labels.some(function (item) {
+          if (item.label === _this2.placeholderLabel) {
+            console.log('一致');
+            _this2.isAddLabelBox = false;
+            return true;
+          } else {
+            console.log('ふ一致');
+            _this2.isAddLabelBox = true;
+          }
+        });
+      } else {
+        this.isAddLabelBox = true;
+      }
     },
     //作成するメモにラベルを追加
     addLabel: function addLabel(val) {

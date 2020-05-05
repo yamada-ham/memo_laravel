@@ -224,17 +224,21 @@ export default {
         this.isAddLabelBox = false
         return
       }
+      if(this.labels.length > 0){
+        this.labels.some((item)=>{
+          if(item.label === this.placeholderLabel){
+            console.log('一致')
+            this.isAddLabelBox = false
+            return true
+          }else{
+            console.log('ふ一致')
+            this.isAddLabelBox = true
+          }
+        })
+      }else{
+        this.isAddLabelBox = true
+      }
 
-      this.labels.some((item)=>{
-        if(item.label === this.placeholderLabel){
-          console.log('一致')
-          this.isAddLabelBox = false
-          return true
-        }else{
-          console.log('ふ一致')
-          this.isAddLabelBox = true
-        }
-      })
     },
 
     //作成するメモにラベルを追加
