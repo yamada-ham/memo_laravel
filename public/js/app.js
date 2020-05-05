@@ -2816,7 +2816,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     createLabel: function createLabel() {
-      placeholder;
       var that = this;
       axios.post('/', {
         mode: 'createLabel',

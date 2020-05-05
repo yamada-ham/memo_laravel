@@ -188,7 +188,6 @@ export default {
       }
     },
     createLabel(){
-      placeholder
       let that = this
       axios.post('/', {
         mode: 'createLabel',
