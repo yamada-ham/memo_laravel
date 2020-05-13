@@ -52,6 +52,7 @@ class IndexController extends Controller
           'isArchive'=>$request->isArchive,
           'isFavorite'=>$request->isFavorite
         ];
+        \Debugbar::info($param);
         DB::table('memo')->where('id',$request->id)->update($param);
         header('content-type: application/json; charset=utf-8');
         echo json_encode('Successfully updated!!');

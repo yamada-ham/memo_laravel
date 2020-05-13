@@ -211,7 +211,6 @@ export default {
         mode: 'selectLabel',
       })
       .then(function (res) {
-        console.log(res['data'])
         that.labels = res['data']
       })
       .catch(function (error) {

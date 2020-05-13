@@ -168,21 +168,20 @@ export default {
       this.update()
     },
 
+    //メモをテキストファイルとしてダウンロード
     downloadMemo(){
       console.log('メモをダウンロード開始')
-      let that = this
-      axios.post('/', {
-        mode: 'download',
-        title:this.memoData.title,
-        memo:this.memoData.memo,
-      })
-      .then(function (res) {
-        console.log(res)
-        console.log('メモのダウンロード成功');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+      const text = `タイトル:${this.memoData.title}\r\nメモ:${this.memoData.memo}`;
+      const blob = new Blob([text], {type: 'text/plain'});
+      const url = URL.createObjectURL(blob);//一時的なURLを作成
+      const tmp_a = document.createElement("a");
+      document.body.appendChild(tmp_a);
+      tmp_a.download = this.memoData.title + '.txt';//ダウンロードするファイル名
+      tmp_a.href = url;
+      tmp_a.click();
+      tmp_a.remove();
+      URL.revokeObjectURL(url);//一時的なURL削除
     }
   },
   computed:{

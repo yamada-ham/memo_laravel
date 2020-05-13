@@ -2489,19 +2489,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.memoData.isArchive = !this.memoData.isArchive;
       this.update();
     },
+    //メモをテキストファイルとしてダウンロード
     downloadMemo: function downloadMemo() {
       console.log('メモをダウンロード開始');
-      var that = this;
-      axios.post('/', {
-        mode: 'download',
-        title: this.memoData.title,
-        memo: this.memoData.memo
-      }).then(function (res) {
-        console.log(res);
-        console.log('メモのダウンロード成功');
-      })["catch"](function (error) {
-        console.log(error);
+      var text = "\u30BF\u30A4\u30C8\u30EB:".concat(this.memoData.title, "\r\n\u30E1\u30E2:").concat(this.memoData.memo);
+      var blob = new Blob([text], {
+        type: 'text/plain'
       });
+      var url = URL.createObjectURL(blob); //一時的なURLを作成
+
+      var tmp_a = document.createElement("a");
+      document.body.appendChild(tmp_a);
+      tmp_a.download = this.memoData.title + '.txt'; //ダウンロードするファイル名
+
+      tmp_a.href = url;
+      tmp_a.click();
+      tmp_a.remove();
+      URL.revokeObjectURL(url); //一時的なURL削除
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])) // watch: {
@@ -2837,7 +2841,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post('/', {
         mode: 'selectLabel'
       }).then(function (res) {
-        console.log(res['data']);
         that.labels = res['data'];
       })["catch"](function (error) {
         console.log(error);
