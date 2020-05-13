@@ -2491,7 +2491,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     //メモをテキストファイルとしてダウンロード
     downloadMemo: function downloadMemo() {
-      console.log('メモをダウンロード開始');
       var text = "\u30BF\u30A4\u30C8\u30EB:".concat(this.memoData.title, "\r\n\u30E1\u30E2:").concat(this.memoData.memo);
       var blob = new Blob([text], {
         type: 'text/plain'
@@ -2500,7 +2499,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var tmp_a = document.createElement("a");
       document.body.appendChild(tmp_a);
-      tmp_a.download = this.memoData.title + '.txt'; //ダウンロードするファイル名
+      var file_title = '';
+
+      if (this.memoData.title === null || this.memoData.title === '') {
+        file_title = 'タイトルなし';
+      } else {
+        file_title = this.memoData.title;
+      }
+
+      tmp_a.download = file_title + '.txt'; //ダウンロードするファイル名
 
       tmp_a.href = url;
       tmp_a.click();

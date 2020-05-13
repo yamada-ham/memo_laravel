@@ -170,14 +170,20 @@ export default {
 
     //メモをテキストファイルとしてダウンロード
     downloadMemo(){
-      console.log('メモをダウンロード開始')
 
-      const text = `タイトル:${this.memoData.title}\r\nメモ:${this.memoData.memo}`;
-      const blob = new Blob([text], {type: 'text/plain'});
-      const url = URL.createObjectURL(blob);//一時的なURLを作成
-      const tmp_a = document.createElement("a");
-      document.body.appendChild(tmp_a);
-      tmp_a.download = this.memoData.title + '.txt';//ダウンロードするファイル名
+      const text = `タイトル:${this.memoData.title}\r\nメモ:${this.memoData.memo}`
+      const blob = new Blob([text], {type: 'text/plain'})
+      const url = URL.createObjectURL(blob)//一時的なURLを作成
+      const tmp_a = document.createElement("a")
+      document.body.appendChild(tmp_a)
+
+      let file_title = ''
+      if(this.memoData.title === null || this.memoData.title === ''){
+        file_title = 'タイトルなし'
+      }else{
+        file_title = this.memoData.title
+      }
+      tmp_a.download = file_title + '.txt';//ダウンロードするファイル名
       tmp_a.href = url;
       tmp_a.click();
       tmp_a.remove();
