@@ -43816,6 +43816,13 @@ var render = function() {
             end: function($event) {
               return _vm.sort_id()
             }
+          },
+          model: {
+            value: _vm.memoData,
+            callback: function($$v) {
+              _vm.memoData = $$v
+            },
+            expression: "memoData"
           }
         },
         [
@@ -64029,14 +64036,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./resources/js/views/CurdMemo.vue ***!
   \*****************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CurdMemo_vue_vue_type_template_id_3ad69ac6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CurdMemo.vue?vue&type=template&id=3ad69ac6& */ "./resources/js/views/CurdMemo.vue?vue&type=template&id=3ad69ac6&");
 /* harmony import */ var _CurdMemo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CurdMemo.vue?vue&type=script&lang=js& */ "./resources/js/views/CurdMemo.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CurdMemo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CurdMemo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -64066,7 +64074,7 @@ component.options.__file = "resources/js/views/CurdMemo.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/views/CurdMemo.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
