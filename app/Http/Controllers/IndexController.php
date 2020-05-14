@@ -50,7 +50,6 @@ class IndexController extends Controller
           'memo' => $request->memo,
           'backgroundColor'=>$request->backgroundColor,
           'isArchive'=>$request->isArchive,
-          'isFavorite'=>$request->isFavorite
         ];
         DB::table('memo')->where('id',$request->id)->update($param);
         header('content-type: application/json; charset=utf-8');

@@ -1,26 +1,17 @@
-create database memo_laravel character set utf8;;
+create database memo_laravel character set utf8;
 
 use memo_laravel
 
 create table memo (
-  id int not null auto_increment primary key,
+  id int NOT NULL auto_increment primary key,
+  indexNumber int,
   title varchar(255),
   memo varchar(1000),
   backgroundColor varchar(255),
   isArchive boolean NOT NULL default "0",
-  label varchar(255),
-  isFavorite boolean NOT NULL default "0"
+  label varchar(255)
 );
 
-
-ALTER TABLE memo
-ADD isArchive boolean NOT NULL;
-
-ALTER TABLE memo
-ADD label varchar(255);
-
-ALTER TABLE memo
-ADD favorite boolean NOT NULL default "0";
 
 create table label (
   id int not null auto_increment primary key,
