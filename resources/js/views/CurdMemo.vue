@@ -56,13 +56,13 @@
   </div>
 </div>
 </div>
-<div class="memoCardComponentBox">
-  <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
-    <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
-      <memo-card-component  :memo-data="memo" @del-memo-event="memoDataSplice" @send-archive-event="memoDataSplice"></memo-card-component>
-    </li>
+<draggable tag="div" class="memoCardComponentBox">
+<transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
+  <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
+    <memo-card-component  :memo-data="memo" @del-memo-event="memoDataSplice" @send-archive-event="memoDataSplice"></memo-card-component>
+  </li>
 </transition-group>
-</div>
+</draggable>
 
 </div>
 </template>
@@ -71,9 +71,11 @@
 import {mapState,mapGetters } from 'vuex';
 import store from '../store/store.js';
 import MemoCardComponent from '../components/MemoCardComponent'
+import draggable from 'vuedraggable'
+
 // import MenuBarComponent from './MenuBarComponent'
 export default {
-  components:{MemoCardComponent},
+  components:{MemoCardComponent,draggable},
   data(){
     return{
         title:'',//作成するメモのタイトル
