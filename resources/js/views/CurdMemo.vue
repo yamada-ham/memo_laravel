@@ -56,7 +56,7 @@
   </div>
 </div>
 </div>
-<draggable tag="div" class="memoCardComponentBox">
+<draggable tag="div" class="memoCardComponentBox" @end=sort_id()>
 <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
   <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
     <memo-card-component  :memo-data="memo" @del-memo-event="memoDataSplice" @send-archive-event="memoDataSplice"></memo-card-component>
@@ -260,6 +260,17 @@ export default {
         this.placeholderLabel = ''
       }
       this.isLabelForm = false
+    },
+    sort_id(){
+      console.log(this.memoData);
+      // let that = this;
+      // axios.post('/', {
+      // 	mode: '',
+      // }) .then(function (res) {
+      //
+      // }).catch(function (error) {
+      // 	console.log(error);
+      // });
     }
   },
   computed:{

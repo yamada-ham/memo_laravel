@@ -2901,6 +2901,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.isLabelForm = false;
+    },
+    sort_id: function sort_id() {
+      console.log(this.memoData); // let that = this;
+      // axios.post('/', {
+      // 	mode: '',
+      // }) .then(function (res) {
+      //
+      // }).catch(function (error) {
+      // 	console.log(error);
+      // });
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['colorPallete'])),
@@ -43799,7 +43809,15 @@ var render = function() {
       _vm._v(" "),
       _c(
         "draggable",
-        { staticClass: "memoCardComponentBox", attrs: { tag: "div" } },
+        {
+          staticClass: "memoCardComponentBox",
+          attrs: { tag: "div" },
+          on: {
+            end: function($event) {
+              return _vm.sort_id()
+            }
+          }
+        },
         [
           _c(
             "transition-group",
