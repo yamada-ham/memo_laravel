@@ -56,7 +56,7 @@
   </div>
 </div>
 </div>
-<draggable tag="div" v-model="memoData" class="memoCardComponentBox" @end="sort_id()">
+<draggable tag="div" v-model="memoData" class="memoCardComponentBox" @end="sort_id()" :options="{scroll:true}">
 <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
   <li v-for="memo in memoData" :key="memo['id']" :class="['memoCardLi',{'drag':memo['isDrag']}]" @dragstart="memo['isDrag'] = true" @dragend="memo['isDrag'] = false" >
     <memo-card-component  :memo-data="memo" @del-memo-event="memoDataSplice" @send-archive-event="memoDataSplice"></memo-card-component>

@@ -43819,7 +43819,7 @@ var render = function() {
         "draggable",
         {
           staticClass: "memoCardComponentBox",
-          attrs: { tag: "div" },
+          attrs: { tag: "div", options: { scroll: true } },
           on: {
             end: function($event) {
               return _vm.sort_id()
