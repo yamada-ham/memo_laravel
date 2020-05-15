@@ -118,7 +118,7 @@ export default {
     this.backgroundColor = this.memoData.backgroundColor
   },
   updated(){
-
+    console.log(this.memoData);
   },
   methods:{
     //メモカードの編集

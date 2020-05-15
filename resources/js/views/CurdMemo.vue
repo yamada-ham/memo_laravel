@@ -56,9 +56,9 @@
   </div>
 </div>
 </div>
-<draggable tag="div" v-model="memoData" class="memoCardComponentBox" @end=sort_id()>
+<draggable tag="div" v-model="memoData" class="memoCardComponentBox" @end="sort_id()">
 <transition-group name="memoCard" tag="ul" class="inMemoCardComponentBox">
-  <li v-for="memo in memoData" :key="memo['id']" class="memoCardLi">
+  <li v-for="memo in memoData" :key="memo['id']" :class="['memoCardLi',{'drag':memo['isDrag']}]" @dragstart="memo['isDrag'] = true" @dragend="memo['isDrag'] = false" >
     <memo-card-component  :memo-data="memo" @del-memo-event="memoDataSplice" @send-archive-event="memoDataSplice"></memo-card-component>
   </li>
 </transition-group>
@@ -102,6 +102,9 @@ export default {
     this.getSelectLabel()
   },
   methods:{
+    drag(){
+      console.log('drag')
+    },
     //テキストエリアの高さを自動で変更する
     autoResizeTextarea($event){
       var areaHeight = $event.target.scrollHeight
@@ -148,7 +151,10 @@ export default {
         mode: 'select',
       })
       .then(function (res) {
-        that.memoData = res['data']
+        that.memoData = res['data'].map((item)=>{
+          item['isDrag'] = false
+          return item
+        })
       })
       .catch(function (error) {
         console.log(error);

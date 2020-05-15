@@ -243,6 +243,11 @@ div.contentBox{
           width:24%;
           margin-right:1%;
         }
+        &.drag{
+          div.memoCardWrap{
+            box-shadow:0px 0px 15px #91989e;
+          }
+        }
         @import './parts/cardMemoComponent';
       }
     }

@@ -744,6 +744,10 @@ div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi 
   }
 }
 
+div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi.drag div.memoCardWrap {
+  box-shadow: 0px 0px 15px #91989e;
+}
+
 div.contentBox div.memoCardComponentBox ul.inMemoCardComponentBox li.memoCardLi div.memoCardWrap {
   position: relative;
   background: none;

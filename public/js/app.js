@@ -2448,7 +2448,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     this.backgroundColor = this.memoData.backgroundColor;
   },
-  updated: function updated() {},
+  updated: function updated() {
+    console.log(this.memoData);
+  },
   methods: {
     //メモカードの編集
     update: function update($event) {
@@ -2745,6 +2747,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getSelectLabel();
   },
   methods: {
+    drag: function drag() {
+      console.log('drag');
+    },
     //テキストエリアの高さを自動で変更する
     autoResizeTextarea: function autoResizeTextarea($event) {
       var areaHeight = $event.target.scrollHeight;
@@ -2794,7 +2799,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post('/', {
         mode: 'select'
       }).then(function (res) {
-        that.memoData = res['data'];
+        that.memoData = res['data'].map(function (item) {
+          item['isDrag'] = false;
+          return item;
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -43835,7 +43843,18 @@ var render = function() {
             _vm._l(_vm.memoData, function(memo) {
               return _c(
                 "li",
-                { key: memo["id"], staticClass: "memoCardLi" },
+                {
+                  key: memo["id"],
+                  class: ["memoCardLi", { drag: memo["isDrag"] }],
+                  on: {
+                    dragstart: function($event) {
+                      memo["isDrag"] = true
+                    },
+                    dragend: function($event) {
+                      memo["isDrag"] = false
+                    }
+                  }
+                },
                 [
                   _c("memo-card-component", {
                     attrs: { "memo-data": memo },
