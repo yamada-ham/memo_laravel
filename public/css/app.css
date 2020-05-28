@@ -498,12 +498,14 @@ header.header div.inHeader div.accountBtnBox div.inAccountBtnBox button i {
 }
 
 div.contentBox {
-  width: 80%;
-  margin-left: auto;
+  width: 76%;
+  margin-left: 19%;
+  margin-right: 5%;
 }
 
 @media only screen and (min-width: 767px) {
   div.contentBox {
+    width: 80%;
     margin-left: 0;
     margin-right: 0;
   }
@@ -1115,11 +1117,6 @@ div.mask {
 
 .memoCard-leave-active {
   position: absolute;
-}
-
-div.contentBox {
-  width: 80%;
-  margin-left: auto;
 }
 
 @media only screen and (min-width: 767px) {
